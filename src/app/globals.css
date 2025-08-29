@@ -69,7 +69,11 @@ p {
   @apply !bg-white opacity-100;
 }
 
-#home .tombol-pink {
+.text-pink {
+  @apply text-[#f77];
+}
+
+.tombol-pink, #home .tombol-pink {
   @apply bg-[#f5818f] hover:bg-[#f5818f]/80 text-white px-8 py-3 rounded-xl transition text-sm;
 }
 
@@ -102,5 +106,5 @@ p {
 }
 
 #home .text-karakter {
-  @apply text-[#8562a8] text-[40px] leading-13 font-bold pb-4;
+  @apply text-[#8562a8] text-[34px] lg:text-[40px] leading-13 font-bold pb-4;
 }

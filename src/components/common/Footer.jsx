@@ -5,7 +5,7 @@ export default function Footer() {
         {/* Back to top + Logo */}
         <div className="mb-8">
           <img
-            src="/images/logo/Logo-for-FigmaLogo-62x_1.avif"
+            src="/images/logo/logo-tm-putih.avif"
             alt="Terusmengajar Logo"
             className="h-10"
           />

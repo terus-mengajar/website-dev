@@ -18,7 +18,7 @@ export default function FunpaperHarian() {
               Ribuan Worksheet Telah <br /> di Download
             </h3>
           </div>
-          <div className="lg:flex-basis-5/10 flex items-center rounded-xl p-6 bg-[url('/images/bg/bg-tm-logo-half.avif')] bg-cover bg-center w-full h-[230px]">
+          <div className="lg:flex-basis-5/10 flex items-center rounded-xl p-6 bg-[url('/images/bg/bg-tm-logo-half.avif')] bg-cover bg-center w-full h-[280px] md:h-[230px]">
             <img
               src="/images/funpaper/bundle/bundle-1.avif"
               alt="Funpaper Bundle"
@@ -49,7 +49,7 @@ export default function FunpaperHarian() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-center">
             {/* Contoh item (nanti bisa map data) */}
             {cards.map((num) => (
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center" key={num}>
                 <div className="mb-2">
                     <div className="w-32 h-32 bg-white flex items-center justify-center rounded-md bg-[url('/images/shapes/oval-ungu.avif')] bg-cover bg-center">
                     <img

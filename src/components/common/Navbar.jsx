@@ -12,11 +12,12 @@ export default function NavbarTransparent() {
   const pathname = usePathname();
 
   // daftar halaman yang pakai navbar transparan
-  const transparentRoutes = [""]
+  console.log(pathname)
+  const transparentRoutes = ["/"]
   const isTransparent = transparentRoutes.includes(pathname)
 
   return (
-    <header className={(isTransparent ? "bg-white" : "mb-[-68px]") + " z-999 relative" }>
+    <header className={(!isTransparent ? "bg-white" : "mb-[-68px]") + " z-999 relative" }>
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         {/* Brand */}
         <Link href="/" className="flex items-center">
@@ -98,10 +99,10 @@ export default function NavbarTransparent() {
 
           {/* Login Buttons */}
           <div className="flex gap-3">
-            <Link href="/sign-up" className="hover:underline">
+            <Link href="/auth/signup" className="hover:underline">
               Daftar
             </Link>
-            <Link href="/log-in" className="hover:underline">
+            <Link href="/auth/login" className="hover:underline">
               Masuk
             </Link>
           </div>

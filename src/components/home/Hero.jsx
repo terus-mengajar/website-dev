@@ -13,7 +13,7 @@ export default function Hero() {
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
-        // autoplay={{ delay: 4000 }}
+        autoplay={{ delay: 4000 }}
         navigation
         pagination={{ clickable: true }}
         className="w-full"

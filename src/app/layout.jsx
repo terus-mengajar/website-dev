@@ -17,7 +17,7 @@ export const metadata = {
     // icon: "/images/favicon.png", // favicon default
     // apple: "/images/apple-touch-icon.png", // optional untuk iOS
     icon: [
-      {rel: "icon", type: "image/png", url: "images/favicon.png"}
+      {rel: "icon", type: "image/png", url: "/images/favicon.png"}
     ]
   },
 };
