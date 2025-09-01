@@ -2,37 +2,49 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import { Menu, X, ChevronDown, Search } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-export default function NavbarTransparent() {
+import { useSession, signOut } from "next-auth/react";
+
+export default function Navbar() {
+  // const session = await auth();
+  const { data: session, status } = useSession();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const pathname = usePathname();
 
   // daftar halaman yang pakai navbar transparan
-  console.log(pathname)
-  const transparentRoutes = ["/"]
-  const isTransparent = transparentRoutes.includes(pathname)
+  const transparentRoutes = ["/"];
+  const isTransparent = transparentRoutes.includes(pathname);
 
   return (
-    <header className={(!isTransparent ? "bg-white" : "mb-[-68px]") + " z-999 relative" }>
+    <header
+      className={
+        (!isTransparent ? "bg-white" : "mb-[-68px]") + " z-999 relative"
+      }
+    >
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         {/* Brand */}
         <Link href="/" className="flex items-center">
-          <Image
-            src="/images/logo/tm-logo-warna.avif"
+          <img
+            src="/images/logo/logo-tm-warna.avif"
             alt="Logo"
-            width={64}
-            height={40}
-            priority
+            width="64"
           />
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6">
-          <Link href="/" className={"hover:underline " + (pathname === "/" ? "font-bold text-blue-500" : "")}>
+          <Link
+            href="/"
+            className={
+              "hover:underline " +
+              (pathname === "/" ? "font-bold text-blue-500" : "")
+            }
+          >
             Home
           </Link>
 
@@ -48,10 +60,16 @@ export default function NavbarTransparent() {
             </button>
             {dropdownOpen === "download" && (
               <div className="absolute top-full mt-2 w-40 bg-white text-black rounded shadow">
-                <Link href="/funpaper-harian" className="block px-3 py-2 hover:bg-gray-100">
+                <Link
+                  href="/funpaper-harian"
+                  className="block px-3 py-2 hover:bg-gray-100"
+                >
                   Funpaper Harian
                 </Link>
-                <Link href="/funpaper-tema" className="block px-3 py-2 hover:bg-gray-100">
+                <Link
+                  href="/funpaper-tema"
+                  className="block px-3 py-2 hover:bg-gray-100"
+                >
                   Funpaper Tema
                 </Link>
               </div>
@@ -74,10 +92,16 @@ export default function NavbarTransparent() {
             </button>
             {dropdownOpen === "lainnya" && (
               <div className="absolute top-full mt-2 w-40 bg-white text-black rounded shadow">
-                <Link href="/galeri-produk" className="block px-3 py-2 hover:bg-gray-100">
+                <Link
+                  href="/galeri-produk"
+                  className="block px-3 py-2 hover:bg-gray-100"
+                >
                   Galeri Produk
                 </Link>
-                <Link href="/tentang-kami" className="block px-3 py-2 hover:bg-gray-100">
+                <Link
+                  href="/tentang-kami"
+                  className="block px-3 py-2 hover:bg-gray-100"
+                >
                   Tentang Kami
                 </Link>
               </div>
@@ -85,7 +109,11 @@ export default function NavbarTransparent() {
           </div>
 
           {/* Search */}
-          <form action="/cari-produk" method="get" className="flex items-center gap-2">
+          <form
+            action="/cari-produk"
+            method="get"
+            className="flex items-center gap-2"
+          >
             <input
               type="text"
               name="nama"
@@ -99,12 +127,25 @@ export default function NavbarTransparent() {
 
           {/* Login Buttons */}
           <div className="flex gap-3">
-            <Link href="/auth/signup" className="hover:underline">
-              Daftar
-            </Link>
-            <Link href="/auth/login" className="hover:underline">
-              Masuk
-            </Link>
+            {status === "authenticated" ? (
+              <>
+                <Link href="/profil" className="hover:underline">
+                  Profil
+                </Link>
+                <a href="#" onClick={() => signOut()} className="hover:underline">
+                  Logout
+                </a>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/signup" className="hover:underline">
+                  Daftar
+                </Link>
+                <Link href="/auth/login" className="hover:underline">
+                  Masuk
+                </Link>
+              </>
+            )}
           </div>
         </nav>
 

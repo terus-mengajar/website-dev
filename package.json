@@ -23,6 +23,7 @@
     "@types/react": "19.1.12",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "wrangler": "^4.33.1"
   }
 }

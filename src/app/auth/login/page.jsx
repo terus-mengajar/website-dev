@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { auth, signIn } from "@/lib/auth";
 // import { redirect } from "next/dist/server/api-utils";
 
-export default async function LoginPage() {
+export default async function Login() {
   const session = await auth();
   if(session) redirect("/");
 
@@ -89,7 +89,7 @@ export default async function LoginPage() {
         <form
           action={async () => {
             "use server"
-            await signIn("google", {redirectTo: '/profil'})
+            await signIn("google", {redirectTo: '/auth/loading'})
           }}
         >
           <button type="submit" className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-lg py-2 hover:bg-gray-100 transition"><img src="https://cdn.prod.website-files.com/644f34dbedcce472b908fe59/65c58fc135f02f4e7656d433_google.svg" alt="Google" className="w-5 h-5" /> Lanjutkan dengan Google</button>

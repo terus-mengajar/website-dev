@@ -1,0 +1,6 @@
+name = "terusmengajar-dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "development-db"
+database_id = "ac69cb51-447c-4e96-b42b-0b68c3b0a8c9"
