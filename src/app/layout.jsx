@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
+import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
@@ -36,6 +37,14 @@ export default function RootLayout({ children }) {
           {!hideLayout && <Navbar />}
           {children}
           {!hideLayout && <Footer />}
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              style: {
+                marginTop: "75px", // supaya agak ke bawah, tidak nutup navbar
+              },
+            }}
+          />
         </SessionProvider>
       </body>
     </html>

@@ -74,7 +74,7 @@ p {
 }
 
 .tombol-pink, #home .tombol-pink {
-  @apply bg-[#f5818f] hover:bg-[#f5818f]/80 text-white px-8 py-3 rounded-xl transition text-sm;
+  @apply bg-[#f5818f] hover:bg-[#f5818f]/80 disabled:bg-gray-300 disabled:cursor-not-allowed  text-white px-8 py-3 rounded-xl transition text-sm;
 }
 
 #home .tombol-biru {

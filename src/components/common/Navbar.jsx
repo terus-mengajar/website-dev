@@ -196,13 +196,27 @@ export default function Navbar() {
             </button>
           </form>
           <div className="flex gap-3 mt-3">
-            <Link href="/sign-up" className="hover:underline">
-              Daftar
-            </Link>
-            <Link href="/log-in" className="hover:underline">
-              Masuk
-            </Link>
+            {status === "authenticated" ? (
+              <>
+                <Link href="/profil" className="hover:underline">
+                  Profil
+                </Link>
+                <a href="#" onClick={() => signOut()} className="hover:underline">
+                  Logout
+                </a>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/signup" className="hover:underline">
+                  Daftar
+                </Link>
+                <Link href="/auth/login" className="hover:underline">
+                  Masuk
+                </Link>
+              </>
+            )}
           </div>
+          
         </nav>
       )}
     </header>

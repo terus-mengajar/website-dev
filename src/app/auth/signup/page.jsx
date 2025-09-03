@@ -1,26 +1,9 @@
-// src/app/auth/login/page.tsx
-"use client";
+import { auth, signIn } from "@/lib/auth";
+import SignupForm from "./SignupForm";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
-export default function LoginPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-
-    // contoh fake login (ganti dengan API request kamu)
-    if (email === "admin@test.com" && password === "123456") {
-      router.push("/"); // redirect ke home
-    } else {
-      setError("Email atau password salah! Mohon coba kembali");
-    }
-  };
+export default async function LoginPage() {
+  const session = await auth();
+  if (session) redirect("/");
 
   return (
     <div className="relative overflow-hidden min-h-screen flex flex-col justify-center items-center bg-[#fff3d5]">
@@ -35,72 +18,7 @@ export default function LoginPage() {
       <div className="relative z-9 w-full max-w-md bg-white rounded-2xl shadow-lg p-6">
         <h3 className="text-xl font-semibold mb-8">Daftar Sekarang</h3>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="mb-8">
-            <label htmlFor="signin-email" className="block text-sm font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              id="signin-email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 block w-full rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border-[#cbaf78]"
-              required
-            />
-          </div>
-          <div className="mb-8">
-            <label
-              htmlFor="signin-password"
-              className="block text-sm font-medium"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="signin-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
-              required
-            />
-          </div>
-          {error && (
-            <div className="text-red-500 text-sm text-center">{error}</div>
-          )}
-
-          <label
-            for="signup-agree"
-            class="flex items-start space-x-2 cursor-pointer"
-          >
-            <input
-              id="signup-agree"
-              type="checkbox"
-              required
-              class="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-            />
-
-            <span class="text-sm text-gray-700">
-              Dengan mendaftar, saya menyetujui
-              <a
-                href="syarat-dan-ketentuan.html"
-                target="_blank"
-                class="text-blue-600 underline hover:text-blue-800"
-              >
-                syarat &amp; ketentuan
-              </a>{" "}
-              website ini
-            </span>
-          </label>
-
-          <button
-            type="submit"
-            id="tombol-login"
-            className="tombol-pink w-full"
-          >
-            Daftar
-          </button>
-        </form>
+        <SignupForm />
 
         <div className="flex items-center gap-2 my-6">
           <div className="flex-grow h-px bg-gray-300"></div>
@@ -108,17 +26,24 @@ export default function LoginPage() {
           <div className="flex-grow h-px bg-gray-300"></div>
         </div>
 
-        <button
-          id="signin-google"
-          className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-lg py-2 hover:bg-gray-100 transition"
+        <form
+          action={async () => {
+            "use server";
+            await signIn("google", { redirectTo: "/" });
+          }}
         >
-          <img
-            src="https://cdn.prod.website-files.com/644f34dbedcce472b908fe59/65c58fc135f02f4e7656d433_google.svg"
-            alt="Google"
-            className="w-5 h-5"
-          />
-          <span>Lanjutkan dengan Google</span>
-        </button>
+          <button
+            type="submit"
+            className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-lg py-2 hover:bg-gray-100 transition"
+          >
+            <img
+              src="https://cdn.prod.website-files.com/644f34dbedcce472b908fe59/65c58fc135f02f4e7656d433_google.svg"
+              alt="Google"
+              className="w-5 h-5"
+            />{" "}
+            Lanjutkan dengan Google
+          </button>
+        </form>
 
         <div className="text-center mt-6 text-sm">
           Sudah memiliki akun?{" "}

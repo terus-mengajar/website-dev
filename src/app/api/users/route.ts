@@ -1,8 +1,8 @@
 export async function POST(req) {
-  console.log("🔥 /api/users dipanggil");
+  // console.log("🔥 /api/users dipanggil");
 
   const { email } = await req.json();
-  console.log("Email yang diterima:", email);
+  // console.log("Email yang diterima:", email);
 
   try {
     const response = await fetch(
@@ -25,10 +25,10 @@ export async function POST(req) {
     );
 
     const data = await response.json();
-    console.log("Hasil query:", JSON.stringify(data, null, 2));
+    // console.log("Hasil query:", JSON.stringify(data, null, 2));
     return Response.json(data);
   } catch (err) {
-    console.error("Error di API /api/users:", err);
+    // console.error("Error di API /api/users:", err);
     return Response.json(
       { success: false, error: err.message },
       { status: 500 }
