@@ -2,6 +2,12 @@ import { auth } from "@/lib/auth"; // sesuaikan path import auth()
 import { redirect } from "next/navigation";
 import ProfilePage from "./ProfilePage";
 
+export const metadata = {
+  title: "Profil",
+//   description:
+//     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+};
+
 export default async function Page() {
   const session = await auth();
   // console.log(session)

@@ -45,10 +45,10 @@ button {
   @apply min-h-[400px] py-20 lg:py-26 px-5 lg:px-28;
 }
 
-p {
+/* p {
   font-size: 16px;
   line-height: 150%;
-}
+} */
 
 /* HOME */
 .swiper-button-next {
