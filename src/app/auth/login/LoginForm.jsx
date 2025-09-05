@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 
-export default function LoginForm() {
+export default function LoginForm({ callbackUrl }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -31,7 +31,7 @@ export default function LoginForm() {
       toast.success("Masuk berhasil");
       // router.push("/auth/login/loading");
       setTimeout(() => {
-        router.push("/");
+        router.push(callbackUrl);
       }, 500);
     }
   };

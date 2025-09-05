@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
 
-export async function GET() {
-
+export async function POST(
+  request: Request,
+  { params }
+) {
   try {
+    const { slug } = await params;
+
     const res = await fetch(
       `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_DATABASE_ID}/query`,
       {
@@ -13,20 +17,20 @@ export async function GET() {
         },
         body: JSON.stringify({
           sql: `
-          SELECT * 
-          FROM mini_game
-          ORDER BY played DESC
+            UPDATE funpaper
+            SET downloaded = downloaded + 1
+            WHERE slug = ?
           `,
+          params: [slug],
         }),
       }
     );
 
     const data = await res.json();
-    const logs = data?.result?.[0]?.results ?? [];
 
-    return NextResponse.json(logs);
+    return NextResponse.json({ success: true, result: data });
   } catch (err) {
-    console.error("Gagal ambil data:", err);
+    console.error("Gagal update downloaded:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

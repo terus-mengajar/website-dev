@@ -16,7 +16,7 @@ export async function GET() {
           SELECT * 
           FROM funpaper
           WHERE funpaper_type_id=1
-          ORDER BY download_count DESC
+          ORDER BY downloaded DESC
           `,
         }),
       }

@@ -2,7 +2,6 @@
 
 import LoadingCard from "@/components/common/LoadingCard";
 import { useEffect, useState, useMemo } from "react";
-import Link from "next/link";
 
 export default function FunpaperHarianList() {
   const [funpaperData, setFunpaperData] = useState([]);
@@ -80,8 +79,7 @@ export default function FunpaperHarianList() {
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {funpapers.map((funpaper) => (
-              <Link
-                href={"/funpaper-harian/" + funpaper.slug}
+              <div
                 key={funpaper.id}
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
@@ -106,7 +104,7 @@ export default function FunpaperHarianList() {
                     Lihat Produk
                   </button>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
 

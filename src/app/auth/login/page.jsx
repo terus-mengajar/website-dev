@@ -2,9 +2,13 @@ import { redirect } from "next/navigation";
 import { auth, signIn } from "@/lib/auth";
 import LoginForm from "./LoginForm";
 
-export default async function Login() {
+export default async function Login({ searchParams }) {
   const session = await auth();
   if (session) redirect("/");
+
+  const sp = await searchParams; // harus di-await
+  const callbackUrl = sp?.callbackUrl || "/";
+  console.log('Callback URL:', callbackUrl);
 
   return (
     <div className="relative overflow-hidden min-h-screen flex flex-col justify-center items-center bg-[#fff3d5]">
@@ -19,7 +23,7 @@ export default async function Login() {
       <div className="relative z-9 w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
         <h3 className="text-xl font-semibold mb-8">Masuk Sekarang</h3>
 
-        <LoginForm />
+        <LoginForm callbackUrl={callbackUrl} />
 
         <div className="flex items-center gap-2 my-6">
           <div className="flex-grow h-px bg-gray-300"></div>
@@ -31,7 +35,7 @@ export default async function Login() {
         <form
           action={async () => {
             "use server";
-            await signIn("google", { redirectTo: "/" });
+            await signIn("google", { redirectTo: callbackUrl });
           }}
         >
           <button

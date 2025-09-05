@@ -43,7 +43,7 @@ export default function SidebarMedsos() {
   ];
 
   return (
-    <aside className="space-y-3 w-[220px]">
+    <aside className="space-y-3 w-min-[220px]">
       <h2 className="text-xs font-semibold">Ikuti Kami di</h2>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
