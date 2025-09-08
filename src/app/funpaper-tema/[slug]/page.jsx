@@ -1,12 +1,12 @@
 // app/funpaper-harian/[slug]/page.tsx
 import Link from "next/link";
-import DownloadButton from "./DownloadButton";
-import ProdukTerkait from "./ProdukTerkait";
+import { File } from 'lucide-react';
+// import ProdukTerkait from "./ProdukTerkait";
 
-export default async function FunpaperHarianPage({ params }) {
+export default async function FunpaperTemaPage({ params }) {
   const { slug } = await params;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-harian/${slug}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-tema/${slug}`,
     {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
@@ -22,10 +22,7 @@ export default async function FunpaperHarianPage({ params }) {
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">
               <img
-                src={
-                  funpaper.image_url ||
-                  "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64f2e5e2c76668758d64db30_A4QRdAhK1VbdRudiEt3Rfp4yEG1JzmXx-214krru_GQ.jpeg"
-                }
+                src={funpaper.mockup_url}
               />
             </div>
           </div>
@@ -47,7 +44,7 @@ export default async function FunpaperHarianPage({ params }) {
             {/* Info funpaper */}
             <div className="md:col-span-2">
               <h2 className="text-2xl md:text-4xl text-center md:text-left font-bold text-[#ef9e00] mb-12">
-                {funpaper.name}
+                {funpaper.name_on_website}
               </h2>
               <div className="flex mb-10 items-center">
                 <div className="flex-1 text-center border-l border-[#cbaf78] py-2 px-6">
@@ -58,7 +55,7 @@ export default async function FunpaperHarianPage({ params }) {
                 </div>
                 <div className="flex-1 text-center border-x border-[#cbaf78] py-2 px-6">
                   <p className="text-[#6296b2] text-xl sm:text-5xl md:text-3xl lg:text-5xl font-bold mb-1">
-                    1
+                    {funpaper.total_pages}
                   </p>
                   <p className="text-gray-600 text-xs lg:text-sm">
                     Lembar Soal
@@ -66,53 +63,45 @@ export default async function FunpaperHarianPage({ params }) {
                 </div>
                 <div className="flex-1 text-center border-r border-[#cbaf78] py-2 px-6">
                   <p className="text-[#9ec288] text-xl sm:text-5xl md:text-3xl lg:text-5xl font-bold mb-1">
-                    A4/A5
+                    A4
                   </p>
                   <p className="text-gray-600 text-xs lg:text-sm">Paper</p>
                 </div>
               </div>
-              <div className="">
-                <h3 className="text-lg font-bold mb-4">Kategori</h3>
-                <div className="flex flex-row gap-2">
-                  <Link href={`/funpaper-harian?tema=${funpaper.theme_id}`} className="py-4 px-4 md:px-8 bg-[#fcfbf8] rounded-lg flex-1">
-                    <p className="text-xs font-semibold mb-2">Tema</p>
-                    <div className="flex flex-row gap-4 items-center">
-                      <p className="text-xs md:text-lg font-semibold">{funpaper.theme}</p>
-                      <img
-                        src="https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64ed60015ee7db085feed091_Icon%20Tema%20-%20Mengenal%20Huruf.svg"
-                        className="w-8"
-                        alt="Logo"
-                      />
-                    </div>
-                  </Link>
-
-                  <Link href={`/funpaper-harian?aktivitas=${funpaper.activity_id}`} className="py-4 px-4 md:px-8 bg-[#fcfbf8] rounded-lg flex-1">
-                    <p className="text-xs font-semibold mb-2">Aktivitas</p>
-                    <div className="flex flex-row gap-4 items-center">
-                      <p className="text-xs md:text-lg font-semibold">{funpaper.activity}</p>
-                      <img
-                        src="https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64ed60015ee7db085feed091_Icon%20Tema%20-%20Mengenal%20Huruf.svg"
-                        className="w-8"
-                        alt="Logo"
-                      />
-                    </div>
-                  </Link>
-                </div>
+              <div className="text-gray-700">
+                {funpaper.description.split("\n").map((line, i) => (
+                  <p key={i} className="text-gray-700 leading-relaxed mb-3">
+                    {line}
+                  </p>
+                ))}
               </div>
             </div>
 
-            {/* Sidebar Gratis untuk desktop */}
-            <DownloadButton
-              slug={slug}
-              linkA4={funpaper.link_a4}
-              linkA5={funpaper.link_a5}
-            />
+            {/* Sidebar Beli untuk desktop */}
+            <div className="mt-6">
+              <h3 className="text-2xl font-bold mb-4">{'Rp. '+funpaper.price.toLocaleString('id-ID')}</h3>
+
+              <div className="flex gap-3 mb-8">
+                <button
+                  type="button"
+                  className="px-2 py-1 rounded-lg border flex items-center text-xs font-medium gap-2 text-red-600 border-red-500"
+                >
+                  <File /> Versi PDF
+                </button>
+
+              </div>
+
+              <a
+                target="_blank"
+                href={funpaper.mayar_url}
+                className="tombol-pink py-2! text-center px-22! w-full! block sm:w-auto!" 
+              >
+                Beli
+              </a>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Produk Terkait */}
-      <ProdukTerkait activityId={funpaper.activity_id} themeId={funpaper.theme_id} />
     </div>
   );
 }

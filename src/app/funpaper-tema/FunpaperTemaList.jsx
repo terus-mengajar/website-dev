@@ -4,51 +4,24 @@ import LoadingCard from "@/components/common/LoadingCard";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 
-export default function FunpaperHarianList() {
+export default function FunpaperTemaList() {
   const [funpaperData, setFunpaperData] = useState([]);
-  const [sort, setSort] = useState("populer");
   const [page, setPage] = useState(1);
   const perPage = 16;
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch("/api/funpaper-harian");
+      const res = await fetch("/api/funpaper-tema");
       const data = await res.json();
       setFunpaperData(data);
     }
     fetchData();
   }, []);
 
-  const sortedFunpaper = useMemo(() => {
-    let sorted = [...funpaperData];
-    switch (sort) {
-      case "populer":
-        sorted.sort((a, b) => b.downloaded - a.downloaded); // ganti sesuai ada/tidaknya kolom 'played'
-        break;
-      case "baru":
-        sorted.sort(
-          (a, b) =>
-            new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
-        );
-        break;
-      case "lama":
-        sorted.sort(
-          (a, b) =>
-            new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime()
-        );
-        break;
-      case "az":
-        sorted.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case "za":
-        sorted.sort((a, b) => b.name.localeCompare(a.name));
-        break;
-    }
-    return sorted;
-  }, [sort, funpaperData]);
+  const totalPages = Math.ceil(funpaperData.length / perPage);
+  const funpapers = funpaperData.slice((page - 1) * perPage, page * perPage);
 
-  const totalPages = Math.ceil(sortedFunpaper.length / perPage);
-  const funpapers = sortedFunpaper.slice((page - 1) * perPage, page * perPage);
+  // console.log(funpaperData);
 
   return (
     <div className="w-full">
@@ -57,20 +30,6 @@ export default function FunpaperHarianList() {
         <p className="font-medium">
           Menampilkan {funpapers.length} dari {funpaperData.length} Produk
         </p>
-        <select
-          value={sort}
-          onChange={(e) => {
-            setSort(e.target.value);
-            setPage(1);
-          }}
-          className="border border-[#ecdab7] text-xs rounded px-2 py-1"
-        >
-          <option value="populer">Terpopuler</option>
-          <option value="baru">Terbaru</option>
-          <option value="lama">Terlama</option>
-          <option value="az">Nama (A-Z)</option>
-          <option value="za">Nama (Z-A)</option>
-        </select>
       </div>
 
       {/* Funpaper List */}
@@ -81,20 +40,17 @@ export default function FunpaperHarianList() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {funpapers.map((funpaper) => (
               <Link
-                href={"/funpaper-harian/" + funpaper.slug}
+                href={"/funpaper-tema/" + funpaper.slug}
                 key={funpaper.id}
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
                 <div className="">
                   <img
-                    src={
-                      funpaper.thumbnail_url ||
-                      "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64f2e5e2c76668758d64daf9_sCzcERTr_AT6cMLPjiWcmu3Y0xgYTRrRzRBlxmCqG8c.jpeg"
-                    }
-                    alt={funpaper.name}
+                    src={funpaper.mockup_thumbnail_url}
+                    alt={funpaper.name_on_website}
                     className="w-40 h-24 object-contain mb-6"
                   />
-                  <p className="text-xs text-center mb-2">{funpaper.name}</p>
+                  <p className="text-xs text-center mb-2">{funpaper.name_on_website}</p>
                   {funpaper.downloaded > 0 && (
                     <p className="text-xs text-gray-400 text-center">
                       Diunduh {funpaper.downloaded} kali

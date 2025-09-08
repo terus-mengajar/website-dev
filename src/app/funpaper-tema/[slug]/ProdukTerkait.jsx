@@ -1,16 +1,15 @@
-// src/components/FunpaperHarian.jsx
 "use client";
 
 import { useEffect, useState } from "react";
-import LoadingCard from "../common/LoadingCard";
+import LoadingCard from "@/components/common/LoadingCard";
 import Link from "next/link";
 
-export default function FunpaperHarian() {
+export default function ProdukTerkait({ activityId, themeId }) {
   const [funpapers, setFunpapers] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch("/api/funpaper-harian?limit=8");
+      const res = await fetch(`/api/funpaper-harian?limit=4&activity_id=${activityId}&theme_id=${themeId}`);
       const data = await res.json();
       setFunpapers(data);
       // console.log(data);
@@ -19,43 +18,12 @@ export default function FunpaperHarian() {
   }, []);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-[#fcfcfc]">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Judul */}
-        <h1 className="text-3xl lg:text-4xl font-bold mb-10">
-          Funpaper Harian
-        </h1>
-
-        {/* Hero Section */}
-        <div className="flex flex-col lg:flex-row items-center justify-between mb-16 gap-4">
-          <div className="lg:flex-basis-5/10 flex items-center justify-center rounded-xl lg:mb-0 bg-[url('/images/bg/bg-activity-1.avif')] bg-cover bg-center w-full h-[230px]">
-            <h3 className="text-2xl font-bold text-[#785556] text-center">
-              Ribuan Worksheet Telah <br /> di Download
-            </h3>
-          </div>
-          <div className="lg:flex-basis-5/10 flex items-center rounded-xl p-6 bg-[url('/images/bg/bg-tm-logo-half.avif')] bg-cover bg-center w-full h-[280px] md:h-[230px]">
-            <img
-              src="/images/funpaper/bundle/bundle-1.avif"
-              alt="Funpaper Bundle"
-              className="h-auto mr-6 w-[100px]"
-            />
-            <div className="flex flex-col gap-1 w-full">
-              <p className="font-semibold">Free Funpaper Harian Bundle</p>
-              <p className="text-sm text-gray-600 mb-3">
-                Semua bisa download secara gratis! <br />
-                Dapatkan 15 Lembar Kerja Gratis dalam tiap bundle
-              </p>
-              <div>
-                <a
-                  href="/funpaper-harian"
-                  className="text-center tombol-pink float-end text-white text-sm font-medium py-1 rounded-lg transition"
-                >
-                  Lihat
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h2 className="text-2xl lg:text-3xl font-bold mb-10">
+          Produk Terkait
+        </h2>
 
         {/* Produk Terkait */}
         <div className="mb-8">
@@ -92,12 +60,6 @@ export default function FunpaperHarian() {
           )}
         </div>
 
-        {/* Link Lihat Semua */}
-        <div className="text-center pt-4">
-          <a href="/funpaper-harian" className="font-bold">
-            Lihat Semua &gt;
-          </a>
-        </div>
       </div>
     </section>
   );

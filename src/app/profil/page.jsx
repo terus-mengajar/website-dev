@@ -4,8 +4,8 @@ import ProfilePage from "./ProfilePage";
 
 export const metadata = {
   title: "Profil",
-//   description:
-//     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+  //   description:
+  //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
 };
 
 export default async function Page() {
@@ -17,8 +17,9 @@ export default async function Page() {
     redirect("/");
   }
 
+
   return (
-    <main className="bg-[#fcfbf8] text-sm">
+    <main className="bg-[#fcfbf8] text-sm mt-[68px]">
       <section className="pt-[40px] pb-[80px]">
         <div className="container">
           <ProfilePage session={session} />

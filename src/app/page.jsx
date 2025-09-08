@@ -6,7 +6,7 @@ import EbookCalistung from "@/components/home/EbookCalistung";
 
 export default function Home() {
   return (
-    <main id="home">
+    <main id="home" className="-mt-[68px]">
       <Hero />
       <Petualangan />
       <KatabaAI />

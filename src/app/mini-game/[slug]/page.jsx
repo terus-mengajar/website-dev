@@ -4,29 +4,15 @@ import PlayButton from "./PlayButton";
 export default async function MiniGamePage({ params }) {
   const { slug } = await params;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/minigame/${slug}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/mini-game/${slug}`,
     {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
   const game = await res.json();
 
-  const handlePlay = async () => {
-    try {
-      // update jumlah_main
-      await fetch(`/api/minigame/${slug}/played`, {
-        method: "POST",
-      });
-    } catch (err) {
-      console.error("Gagal update played:", err);
-    }
-
-    // setelah update, redirect ke game.link
-    window.open(link, "_blank");
-  };
-
   return (
-    <div className="w-full">
+    <div className="w-full mt-[68px]">
       {/* Section 1 */}
       <section className="py-12 bg-[#fcfbf8]">
         <div className="container mx-auto px-4">
@@ -77,9 +63,13 @@ export default async function MiniGamePage({ params }) {
                   </p>
                 </div>
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                {game.description}
-              </p>
+              <div className="text-gray-700">
+                {game.description.split("\n").map((line, i) => (
+                  <p key={i} className="text-gray-700 leading-relaxed mb-3">
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
 
             {/* Sidebar Gratis untuk desktop */}

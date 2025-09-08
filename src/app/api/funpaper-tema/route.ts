@@ -5,29 +5,30 @@ export async function GET(
 ) {
 
   try {
-    const { searchParams } = new URL(req.url);
-    const limit = searchParams.get("limit");
-    const activity_id = searchParams.get("activity_id");
-    const theme_id = searchParams.get("theme_id");
+    // const { searchParams } = new URL(req.url);
+    // const limit = searchParams.get("limit");
+    // const activity_id = searchParams.get("activity_id");
+    // const theme_id = searchParams.get("theme_id");
 
     let sql = `
       SELECT * 
-      FROM funpaper
-      WHERE funpaper_type_id = 1
+      FROM funpaper_bundle
+      WHERE funpaper_type_id = 5
+      AND slug IS NOT NULL
     `;
 
-    if (activity_id) {
-      sql += ` AND activity_id=${Number(activity_id)}`;
-    }
-    if (theme_id) {
-      sql += ` AND theme_id=${Number(theme_id)}`;
-    }
+    // if (activity_id) {
+    //   sql += ` AND activity_id=${Number(activity_id)}`;
+    // }
+    // if (theme_id) {
+    //   sql += ` AND theme_id=${Number(theme_id)}`;
+    // }
 
-    sql += ` ORDER BY downloaded DESC`;
+    // sql += ` ORDER BY downloaded DESC`;
 
-    if (limit) {
-      sql += ` LIMIT ${Number(limit)}`;
-    }
+    // if (limit) {
+    //   sql += ` LIMIT ${Number(limit)}`;
+    // }
 
     const res = await fetch(
       `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_DATABASE_ID}/query`,
@@ -43,6 +44,8 @@ export async function GET(
 
     const data = await res.json();
     const logs = data?.result?.[0]?.results ?? [];
+    if(data.errors)
+      console.log(data.errors);
 
     return NextResponse.json(logs);
   } catch (err) {

@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} antialiased`}>
         <SessionProvider>
           {!hideLayout && <Navbar />}
-          {children}
+            {children}
           {!hideLayout && <Footer />}
           <Toaster
             position="top-center"

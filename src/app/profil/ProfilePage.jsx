@@ -29,7 +29,7 @@ export default function ProfilePage({ session }) {
 
   useEffect(() => {
     const fetchMinigameLogs = async () => {
-      const res = await fetch("/api/minigame-log");
+      const res = await fetch("/api/mini-game-log");
       if (res.ok) {
         const data = await res.json();
         setMiniGameLogs(data);

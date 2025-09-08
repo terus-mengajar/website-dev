@@ -3,7 +3,7 @@ export default function EbookCalistung() {
     <section className="base-section py-24 bg-[url('/images/bg/bg-calistung-1.avif')] bg-cover bg-center">
       <div className="container flex flex-col lg:flex-row gap-8 items-center">
         <div className="lg:basis-6/10 text-center lg:text-left order-2 lg:order-1">
-          <h2 className="text-[#3763a1] text-6xl font-bold mb-5">
+          <h2 className="text-[#3763a1] text-4xl md:text-6xl font-bold mb-5">
             E-Book Calistung
           </h2>
           <p>

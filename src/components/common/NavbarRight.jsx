@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Search, User, ArrowLeft } from "lucide-react";
 import { useSession, signOut } from "next-auth/react";
@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 export default function NavbarRight() {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
+  const [openUser, setOpenUser] = useState(false);
+  const dropdownRef = useRef(null);
   const searchParams = useSearchParams();
 
   // === Search mobile states ===
@@ -24,10 +26,25 @@ export default function NavbarRight() {
     setQuery(qParam);
   }, [searchParams]);
 
-  const openSearch = () => {
-    setClosing(false);
-    setShowSearch(true);
-  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setOpenUser(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // const openSearch = () => {
+  //   setClosing(false);
+  //   setShowSearch(true);
+  // };
 
   const startCloseSearch = () => {
     // jangan unmount dulu; biarkan animasi keluar jalan
@@ -51,7 +68,7 @@ export default function NavbarRight() {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2" ref={dropdownRef}>
       {/* Search Box (Desktop) */}
       <div className="hidden sm:flex sm:items-center bg-[#fff8e7] rounded-xl overflow-hidden">
         <form onSubmit={handleSearch} className="flex flex-1">
@@ -80,22 +97,25 @@ export default function NavbarRight() {
       {/* User Dropdown */}
       <div className="relative">
         <button
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpenUser((prev) => !prev)}
           className="bg-[#ef8f00] text-white p-2 rounded-xl"
         >
           <User size={18} />
         </button>
 
-        {open &&
+        {openUser &&
           (status === "authenticated" ? (
             <div className="absolute flex flex-col right-0 mt-2 w-32 bg-white rounded-lg shadow-lg z-50 overflow-hidden">
-              <Link href="/profil" className="hover:bg-amber-50 px-2 pt-2 pb-1">
+              <Link href="/profil" 
+              onClick={() => setOpenUser(false)}
+              className="hover:bg-amber-50 px-2 pt-2 pb-1">
                 Profil
               </Link>
               <button
                 onClick={async () => {
-                  await signOut({ redirect: false });
+                  await signOut({ redirectTo: '/' });
                   toast.success("Logout berhasil");
+                  setOpenUser(false);
                 }}
                 className="hover:bg-amber-50 text-left px-2 pt-1 pb-2"
               >
@@ -106,12 +126,14 @@ export default function NavbarRight() {
             <div className="absolute flex flex-col right-0 mt-2 w-32 bg-white rounded-lg shadow-lg z-50 overflow-hidden">
               <Link
                 href="/auth/signup"
+                onClick={() => setOpenUser(false)}
                 className="hover:bg-amber-50 px-2 pt-2 pb-1"
               >
                 Daftar
               </Link>
               <Link
                 href="/auth/login"
+                onClick={() => setOpenUser(false)}
                 className="hover:bg-amber-50 px-2 pt-1 pb-2"
               >
                 Masuk

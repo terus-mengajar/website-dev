@@ -20,7 +20,7 @@ export default function GameList() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch("/api/minigame");
+      const res = await fetch("/api/mini-game");
       const data = await res.json();
       setGamesData(data);
     }
@@ -91,22 +91,25 @@ export default function GameList() {
               <Link
                 href={"/mini-game/" + game.slug}
                 key={game.id}
-                className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center"
+                className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
-                <img
-                  src={
-                    game.thumbnail_url ||
-                    "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/6865f624219eac01de947d16_6865e34270b964514b7b7006_3-p-800.png"
-                  }
-                  alt={game.name}
-                  className="w-40 h-24 object-contain mb-6"
-                />
-                <p className="text-xs text-center mb-2">{game.name}</p>
-                {game.played > 0 && (
-                  <p className="text-xs text-gray-400 text-center">
-                    Dimainkan {game.played} kali
-                  </p>
-                )}
+                <div>
+                  <img
+                    src={
+                      game.thumbnail_url ||
+                      "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/6865f624219eac01de947d16_6865e34270b964514b7b7006_3-p-800.png"
+                    }
+                    alt={game.name}
+                    className="w-40 h-24 object-contain mb-6"
+                  />
+                  <p className="text-xs text-center mb-2">{game.name}</p>
+                  {game.played > 0 && (
+                    <p className="text-xs text-gray-400 text-center">
+                      Dimainkan {game.played} kali
+                    </p>
+                  )}
+                </div>
+
                 <button className="bg-[#8562a8] text-white text-xs px-4 py-1 mt-3 rounded-lg hover:bg-[#8562a8]/90 w-full">
                   Lihat Produk
                 </button>
