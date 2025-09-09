@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
 import { User, Clock, Settings, LogOut } from "lucide-react";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 export default function ProfilePage({ session }) {
   // console.log("Session:", session);
@@ -108,9 +109,11 @@ export default function ProfilePage({ session }) {
       {/* Header */}
       <div className="flex items-center space-x-4 bg-[#fbf6f2] px-8 md:px-20 py-5 md:py-8 rounded-xl mb-14">
         <div className="flex me-8 items-center justify-center w-30 h-20 rounded-full">
-          <img
+          <Image
             src={session?.user?.image || "/images/profil-default.avif"}
             alt="Foto Profil"
+            width={96}
+            height={96}
             className="bg-[#e4cbb2] rounded-full"
           />
         </div>

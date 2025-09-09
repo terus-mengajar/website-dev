@@ -18,17 +18,17 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Produk</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/funpaper-harian" className="hover:underline">
+                <a href="/funpaper-harian" className="">
                   Funpaper Harian
                 </a>
               </li>
               <li>
-                <a href="/funpaper-tema" className="hover:underline">
+                <a href="/funpaper-tema" className="">
                   Funpaper Tema
                 </a>
               </li>
               <li>
-                <a href="/mini-games" className="hover:underline">
+                <a href="/mini-game" className="">
                   Mini Games
                 </a>
               </li>

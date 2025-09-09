@@ -116,7 +116,17 @@ export default function Navbar() {
                 }
                 onClick={() => setDropdownOpen(null)}
               >
-                Mini Game
+                Mini Game <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">New</span>
+              </Link>
+
+              <Link
+                href="/kataba-ai"
+                className={
+                  pathname === "/kataba-ai" ? "font-bold text-blue-500" : ""
+                }
+                onClick={() => setDropdownOpen(null)}
+              >
+                Kataba AI <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">New</span>
               </Link>
 
               {/* Dropdown Lainnya */}
@@ -216,7 +226,18 @@ export default function Navbar() {
               setDropdownOpen(null);
             }}
           >
-            Mini Game
+            Mini Game <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">New</span>
+          </Link>
+
+          <Link
+            href="/kataba-ai"
+            className="block py-2 border-b border-[#cbaf78]"
+            onClick={() => {
+              setMenuOpen(false);
+              setDropdownOpen(null);
+            }}
+          >
+            Kataba AI <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">New</span>
           </Link>
 
           {/* Dropdown Lainnya */}
