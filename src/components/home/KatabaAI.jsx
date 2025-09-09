@@ -6,7 +6,7 @@ export default function KatabaAI() {
           <h2 className="text-karakter">
             Bingung mana yang cocok buat ananda?
           </h2>
-          <button className="tombol-kataba-ai">🌟 Tanya KATABA AI</button>
+          <a href="/kataba-ai" className="tombol-kataba-ai">🌟 Tanya KATABA AI</a>
         </div>
 
         <div className="lg:basis-5/10 flex justify-center lg:justify-end order-1 lg:order-2">

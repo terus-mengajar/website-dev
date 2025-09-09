@@ -43,8 +43,8 @@ export default function Petualangan() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores consectetur temporibus provident facere. Dolor Sit Amet.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <button className="tombol-pink">Selengkapnya</button>
-              <button className="tombol-biru">Download</button>
+              <a href="/funpaper-harian" className="tombol-pink">Selengkapnya</a>
+              <a href="/funpaper-harian" className="tombol-biru">Download</a>
             </div>
           </div>
         </div>
@@ -74,8 +74,8 @@ export default function Petualangan() {
               consectetur temporibus provident facere. Dolor Sit Amet.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <button className="tombol-pink">Selengkapnya</button>
-              <button className="tombol-biru">Download</button>
+              <a href="/funpaper-tema" className="tombol-pink">Selengkapnya</a>
+              <a href="/funpaper-tema" className="tombol-biru">Download</a>
             </div>
           </div>
         </div>
@@ -105,8 +105,8 @@ export default function Petualangan() {
               consectetur temporibus provident facere. Dolor Sit Amet.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <button className="tombol-pink">Selengkapnya</button>
-              <button className="tombol-biru">Download</button>
+              <a href="/mini-game" className="tombol-pink">Selengkapnya</a>
+              <a href="/mini-game" className="tombol-biru">Download</a>
             </div>
           </div>
         </div>
