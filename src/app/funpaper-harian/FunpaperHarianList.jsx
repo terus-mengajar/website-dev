@@ -94,7 +94,7 @@ export default function FunpaperHarianList() {
                     alt={funpaper.name}
                     className="w-40 h-24 object-contain mb-6"
                   />
-                  <p className="text-xs text-center mb-2">{funpaper.name}</p>
+                  <p className="text-xs text-center mb-2">{funpaper.name+ ' - ' +funpaper.activity}</p>
                   {funpaper.downloaded > 0 && (
                     <p className="text-xs text-gray-400 text-center">
                       Diunduh {funpaper.downloaded} kali

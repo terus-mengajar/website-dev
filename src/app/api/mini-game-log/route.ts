@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 
 export async function GET() {
   const session = await auth();
@@ -12,13 +13,10 @@ export async function GET() {
 
   try {
     const res = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_DATABASE_ID}/query`,
+      CLOUDFLARE_D1_URL,
       {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
-          "Content-Type": "application/json",
-        },
+        headers: CLOUDFLARE_HEADER,
         body: JSON.stringify({
           sql: `
           SELECT mgml.id, mg.slug, mg.name

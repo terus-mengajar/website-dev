@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 
 export async function POST(
   request: Request,
@@ -6,31 +7,59 @@ export async function POST(
 ) {
   try {
     const { slug } = await params;
+    const { email, mini_game_id } = await request.json();
 
-    const res = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_DATABASE_ID}/query`,
+    // 1. Update jumlah downloaded
+    const updateRes = await fetch(
+      CLOUDFLARE_D1_URL,
       {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
-          "Content-Type": "application/json",
-        },
+        headers: CLOUDFLARE_HEADER,
         body: JSON.stringify({
           sql: `
             UPDATE mini_game
             SET played = played + 1
-            WHERE slug = ?
+            WHERE id = ?
           `,
-          params: [slug],
+          params: [mini_game_id],
         }),
       }
     );
 
-    const data = await res.json();
+    const updateData = await updateRes.json();
 
-    return NextResponse.json({ success: true, result: data });
+    // 2. Insert log download
+    const insertRes = await fetch(
+      CLOUDFLARE_D1_URL,
+      {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({
+          sql: `
+            INSERT INTO mini_game_main_log (created_at, email, mini_game_id)
+            VALUES (CURRENT_TIMESTAMP, ?, ?)
+          `,
+          params: [email, mini_game_id],
+        }),
+      }
+    );
+
+    const insertData = await insertRes.json();
+
+    if(!updateData.success){
+      console.error("Gagal update:", updateData.errors);
+    }
+    if(!insertData.success){
+      console.error("Gagal insert:", insertData.errors);
+    }
+
+    return NextResponse.json({
+      success: true,
+      update: updateData,
+      insert: insertData,
+    });
   } catch (err) {
-    console.error("Gagal update played:", err);
+    console.error("Gagal update & insert:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

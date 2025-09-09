@@ -47,7 +47,7 @@ export default async function FunpaperHarianPage({ params }) {
             {/* Info funpaper */}
             <div className="md:col-span-2">
               <h2 className="text-2xl md:text-4xl text-center md:text-left font-bold text-[#ef9e00] mb-12">
-                {funpaper.name}
+                {funpaper.name + ' - ' + funpaper.activity}
               </h2>
               <div className="flex mb-10 items-center">
                 <div className="flex-1 text-center border-l border-[#cbaf78] py-2 px-6">
@@ -103,6 +103,7 @@ export default async function FunpaperHarianPage({ params }) {
 
             {/* Sidebar Gratis untuk desktop */}
             <DownloadButton
+              id={funpaper.id}
               slug={slug}
               linkA4={funpaper.link_a4}
               linkA5={funpaper.link_a5}

@@ -1,6 +1,7 @@
 // app/funpaper-harian/[slug]/page.tsx
 import Link from "next/link";
 import { File } from 'lucide-react';
+import Aktivitas from "./Aktivitas";
 // import ProdukTerkait from "./ProdukTerkait";
 
 export default async function FunpaperTemaPage({ params }) {
@@ -75,6 +76,8 @@ export default async function FunpaperTemaPage({ params }) {
                   </p>
                 ))}
               </div>
+
+              <Aktivitas slug={slug} id={funpaper.id} />
             </div>
 
             {/* Sidebar Beli untuk desktop */}

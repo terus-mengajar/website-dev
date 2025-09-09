@@ -6,8 +6,8 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-export default function PlayButton({ slug, link }) {
-  const { status } = useSession();
+export default function PlayButton({ id, slug, link }) {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -22,8 +22,15 @@ export default function PlayButton({ slug, link }) {
 
     try {
       // update jumlah played
-      await fetch(`/api/minigame/${slug}/played`, {
+      await fetch(`/api/mini-game/${slug}/played`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: session.user.email, // isi dari state/props/context
+          mini_game_id: id, // isi dari props atau data
+        }),
       });
     } catch (err) {
       console.error("Gagal update played:", err);

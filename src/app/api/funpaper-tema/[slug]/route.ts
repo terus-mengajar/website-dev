@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 
 export async function GET(
   request: Request,
@@ -8,13 +9,10 @@ export async function GET(
     const { slug } = await params;
 
     const res = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_DATABASE_ID}/query`,
+      CLOUDFLARE_D1_URL,
       {
         method: "POST", // tetap POST untuk Cloudflare D1
-        headers: {
-          Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
-          "Content-Type": "application/json",
-        },
+        headers: CLOUDFLARE_HEADER,
         body: JSON.stringify({
           sql: `
             SELECT funpaper_bundle.*, age.short_name as age
@@ -29,7 +27,7 @@ export async function GET(
     );
 
     const data = await res.json();
-    if(data.errors)
+    if(!data.success)
       console.log(data.errors);
 
     const funpaper = data?.result?.[0]?.results?.[0] ?? null;

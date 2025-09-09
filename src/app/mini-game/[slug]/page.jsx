@@ -73,7 +73,7 @@ export default async function MiniGamePage({ params }) {
             </div>
 
             {/* Sidebar Gratis untuk desktop */}
-            <PlayButton slug={slug} link={game.link} />
+            <PlayButton id={game.id} slug={slug} link={game.link} />
           </div>
         </div>
       </section>

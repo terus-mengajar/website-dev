@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { File } from 'lucide-react';
+import { File } from "lucide-react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-export default function FunpaperDownload({ slug, linkA4, linkA5 }) {
-  const { status } = useSession();
+export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   const [selected, setSelected] = useState("A4");
@@ -26,6 +26,13 @@ export default function FunpaperDownload({ slug, linkA4, linkA5 }) {
       // update jumlah_downloaded
       await fetch(`/api/funpaper-harian/${slug}/download`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: session.user.email, // isi dari state/props/context
+          funpaper_id: id, // isi dari props atau data
+        }),
       });
     } catch (err) {
       console.error("Gagal update downloaded:", err);

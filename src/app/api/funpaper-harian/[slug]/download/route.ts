@@ -1,13 +1,34 @@
 import { NextResponse } from "next/server";
+import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 
 export async function POST(
   request: Request,
-  { params }
+  { params }: { params: { slug: string } }
 ) {
   try {
-    const { slug } = await params;
+    const { email, funpaper_id } = await request.json();
 
-    const res = await fetch(
+    // 1. Update jumlah downloaded
+    const updateRes = await fetch(
+      CLOUDFLARE_D1_URL,
+      {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({
+          sql: `
+            UPDATE funpaper
+            SET downloaded = downloaded + 1
+            WHERE id = ?
+          `,
+          params: [funpaper_id],
+        }),
+      }
+    );
+
+    const updateData = await updateRes.json();
+
+    // 2. Insert log download
+    const insertRes = await fetch(
       `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_DATABASE_ID}/query`,
       {
         method: "POST",
@@ -17,20 +38,23 @@ export async function POST(
         },
         body: JSON.stringify({
           sql: `
-            UPDATE funpaper
-            SET downloaded = downloaded + 1
-            WHERE slug = ?
+            INSERT INTO funpaper_download_log (created_at, email, funpaper_id)
+            VALUES (CURRENT_TIMESTAMP, ?, ?)
           `,
-          params: [slug],
+          params: [email, funpaper_id],
         }),
       }
     );
 
-    const data = await res.json();
+    const insertData = await insertRes.json();
 
-    return NextResponse.json({ success: true, result: data });
+    return NextResponse.json({
+      success: true,
+      update: updateData,
+      insert: insertData,
+    });
   } catch (err) {
-    console.error("Gagal update downloaded:", err);
+    console.error("Gagal update & insert:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

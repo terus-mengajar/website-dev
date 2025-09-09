@@ -12,7 +12,6 @@ export default function ProdukTerkait({ activityId, themeId }) {
       const res = await fetch(`/api/funpaper-harian?limit=4&activity_id=${activityId}&theme_id=${themeId}`);
       const data = await res.json();
       setFunpapers(data);
-      // console.log(data);
     }
     fetchData();
   }, []);
@@ -46,7 +45,7 @@ export default function ProdukTerkait({ activityId, themeId }) {
                     />
                   </div>
                   <h4 className="text-center text-sm font-medium mt-2">
-                    {funpaper.name}
+                    {funpaper.name+ ' - ' + funpaper.activity}
                   </h4>
                 </div>
                 <span
