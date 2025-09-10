@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -36,7 +37,8 @@ export default function Navbar() {
   return (
     <header
       className={
-        (!isTransparent ? "bg-white fixed top-0 right-0 left-0" : "relative") + " z-[1000] font-medium text-sm leading-8"
+        (!isTransparent ? "bg-white fixed top-0 right-0 left-0" : "relative") +
+        " z-[1000] font-medium text-sm leading-8"
       }
       ref={navRef}
     >
@@ -116,7 +118,10 @@ export default function Navbar() {
                 }
                 onClick={() => setDropdownOpen(null)}
               >
-                Mini Game <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">New</span>
+                Mini Game{" "}
+                <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                  New
+                </span>
               </Link>
 
               <Link
@@ -126,7 +131,10 @@ export default function Navbar() {
                 }
                 onClick={() => setDropdownOpen(null)}
               >
-                Kataba AI <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">New</span>
+                Kataba AI{" "}
+                <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                  New
+                </span>
               </Link>
 
               {/* Dropdown Lainnya */}
@@ -160,7 +168,9 @@ export default function Navbar() {
           </div>
 
           {/* Search */}
-          <NavbarRight />
+          <Suspense fallback={null}>
+            <NavbarRight />
+          </Suspense>
         </div>
       </div>
 
@@ -226,7 +236,10 @@ export default function Navbar() {
               setDropdownOpen(null);
             }}
           >
-            Mini Game <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">New</span>
+            Mini Game{" "}
+            <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+              New
+            </span>
           </Link>
 
           <Link
@@ -237,14 +250,21 @@ export default function Navbar() {
               setDropdownOpen(null);
             }}
           >
-            Kataba AI <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">New</span>
+            Kataba AI{" "}
+            <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+              New
+            </span>
           </Link>
 
           {/* Dropdown Lainnya */}
           <div>
             <button
               onClick={() => toggleDropdown("lainnya")}
-              className={(dropdownOpen === 'lainnya' ? 'border-b border-[#cbaf78] ' : '') + "flex w-full items-center justify-between py-2"}
+              className={
+                (dropdownOpen === "lainnya"
+                  ? "border-b border-[#cbaf78] "
+                  : "") + "flex w-full items-center justify-between py-2"
+              }
             >
               <span>Lainnya</span>
               <ChevronDown
