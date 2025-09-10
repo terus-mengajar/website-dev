@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LoadingCard from "@/components/common/LoadingCard";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Image from "next/image";
 
 export default function Aktivitas({ id, slug }) {
   const [activities, setActivities] = useState([]);
@@ -50,9 +51,11 @@ export default function Aktivitas({ id, slug }) {
                     setOpen(true);
                   }}
                 >
-                  <img
-                    src={activity.thumbnail_url}
+                  <Image
+                    src={activity.image_url}
                     alt={activity.name}
+                    width={110}
+                    height={155}
                     className="rounded-lg"
                   />
                 </div>

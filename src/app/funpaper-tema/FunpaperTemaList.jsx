@@ -3,6 +3,7 @@
 import LoadingCard from "@/components/common/LoadingCard";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FunpaperTemaList() {
   const [funpaperData, setFunpaperData] = useState([]);
@@ -45,12 +46,16 @@ export default function FunpaperTemaList() {
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
                 <div className="">
-                  <img
+                  <Image
+                    width={128}
+                    height={96}
                     src={funpaper.mockup_thumbnail_url}
                     alt={funpaper.name_on_website}
-                    className="w-40 h-24 object-contain mb-6"
+                    className="object-contain mb-6"
                   />
-                  <p className="text-xs text-center mb-2">{funpaper.name_on_website}</p>
+                  <p className="text-xs text-center mb-2">
+                    {funpaper.name_on_website}
+                  </p>
                   {funpaper.downloaded > 0 && (
                     <p className="text-xs text-gray-400 text-center">
                       Diunduh {funpaper.downloaded} kali

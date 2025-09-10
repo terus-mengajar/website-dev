@@ -22,6 +22,7 @@ export async function GET(req: Request, { params }) {
             JOIN activity ON activity.id=funpaper.activity_id
             WHERE funpaper_bundle.slug = ?
             GROUP BY activity.name
+            HAVING MIN(funpaper.image_url) IS NOT NULL
             ORDER BY MIN(activity.name) ASC
         `,
         params: [slug],

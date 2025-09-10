@@ -3,3 +3,4 @@ export const CLOUDFLARE_HEADER = {
   Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
   "Content-Type": "application/json",
 };
+export const CLOUDFLARE_R2_WEBSITE_ASSETS_URL = 'https://pub-61ce2a798f304449b474f2fef180a9a5.r2.dev';

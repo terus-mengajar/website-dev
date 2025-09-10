@@ -1,6 +1,7 @@
 // app/funpaper-harian/[slug]/page.tsx
 import { File } from 'lucide-react';
 import Aktivitas from "./Aktivitas";
+import Image from 'next/image';
 // import ProdukTerkait from "./ProdukTerkait";
 
 export async function generateMetadata({ params }) {
@@ -32,13 +33,17 @@ export default async function FunpaperTemaPage({ params }) {
   return (
     <div className="w-full mt-[68px]">
       {/* Section 1 */}
-      <section className="py-12 bg-[#fcfbf8]">
-        <div className="container mx-auto px-4">
+      <section className="py-12 px-4 bg-[#fcfbf8]">
+        <div className="container">
           <div className="flex justify-center">
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">
-              <img
+              <Image
                 src={funpaper.mockup_url}
+                width={800}
+                height={450}
+                alt="Funpaper Tema"
+                className='mx-auto'
               />
             </div>
           </div>

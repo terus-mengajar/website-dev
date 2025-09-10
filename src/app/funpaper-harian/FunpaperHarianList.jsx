@@ -3,6 +3,8 @@
 import LoadingCard from "@/components/common/LoadingCard";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
+import Image from "next/image";
 
 export default function FunpaperHarianList() {
   const [funpaperData, setFunpaperData] = useState([]);
@@ -86,13 +88,14 @@ export default function FunpaperHarianList() {
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
                 <div className="">
-                  <img
+                  <Image
                     src={
-                      funpaper.thumbnail_url ||
-                      "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64f2e5e2c76668758d64daf9_sCzcERTr_AT6cMLPjiWcmu3Y0xgYTRrRzRBlxmCqG8c.jpeg"
+                      CLOUDFLARE_R2_WEBSITE_ASSETS_URL + '/funpaper-harian/'+funpaper.slug+'.jpg'
                     }
+                    height={180}
+                    width={128}
                     alt={funpaper.name}
-                    className="w-40 h-24 object-contain mb-6"
+                    className="object-contain mb-6"
                   />
                   <p className="text-xs text-center mb-2">{funpaper.name+ ' - ' +funpaper.activity}</p>
                   {funpaper.downloaded > 0 && (

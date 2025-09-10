@@ -2,6 +2,8 @@
 import Link from "next/link";
 import DownloadButton from "./DownloadButton";
 import ProdukTerkait from "./ProdukTerkait";
+import Image from "next/image";
+import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -14,7 +16,7 @@ export async function generateMetadata({ params }) {
   const funpaper = await res.json();
 
   return {
-    title: funpaper.name + ' - ' + funpaper.activity,
+    title: funpaper.name + " - " + funpaper.activity,
     // description: funpaper.description",
   };
 }
@@ -37,11 +39,17 @@ export default async function FunpaperHarianPage({ params }) {
           <div className="flex justify-center">
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">
-              <img
+              <Image
                 src={
-                  funpaper.image_url ||
-                  "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64f2e5e2c76668758d64db30_A4QRdAhK1VbdRudiEt3Rfp4yEG1JzmXx-214krru_GQ.jpeg"
+                  CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
+                  "/funpaper-harian/" +
+                  funpaper.slug +
+                  ".jpg"
                 }
+                height={461}
+                width={328}
+                alt={funpaper.name}
+                className="mx-auto"
               />
             </div>
           </div>
@@ -63,7 +71,7 @@ export default async function FunpaperHarianPage({ params }) {
             {/* Info funpaper */}
             <div className="md:col-span-2">
               <h2 className="text-2xl md:text-4xl text-center md:text-left font-bold text-[#ef9e00] mb-12">
-                {funpaper.name + ' - ' + funpaper.activity}
+                {funpaper.name + " - " + funpaper.activity}
               </h2>
               <div className="flex mb-10 items-center">
                 <div className="flex-1 text-center border-l border-[#cbaf78] py-2 px-6">
@@ -90,10 +98,15 @@ export default async function FunpaperHarianPage({ params }) {
               <div className="">
                 <h3 className="text-lg font-bold mb-4">Kategori</h3>
                 <div className="flex flex-row gap-2">
-                  <Link href={`/funpaper-harian?tema=${funpaper.theme_id}`} className="py-4 px-4 md:px-8 bg-[#fcfbf8] rounded-lg flex-1">
+                  <Link
+                    href={`/funpaper-harian?tema=${funpaper.theme_id}`}
+                    className="py-4 px-4 md:px-8 bg-[#fcfbf8] rounded-lg flex-1"
+                  >
                     <p className="text-xs font-semibold mb-2">Tema</p>
                     <div className="flex flex-row gap-4 items-center">
-                      <p className="text-xs md:text-lg font-semibold">{funpaper.theme}</p>
+                      <p className="text-xs md:text-lg font-semibold">
+                        {funpaper.theme}
+                      </p>
                       <img
                         src="https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64ed60015ee7db085feed091_Icon%20Tema%20-%20Mengenal%20Huruf.svg"
                         className="w-8"
@@ -102,10 +115,15 @@ export default async function FunpaperHarianPage({ params }) {
                     </div>
                   </Link>
 
-                  <Link href={`/funpaper-harian?aktivitas=${funpaper.activity_id}`} className="py-4 px-4 md:px-8 bg-[#fcfbf8] rounded-lg flex-1">
+                  <Link
+                    href={`/funpaper-harian?aktivitas=${funpaper.activity_id}`}
+                    className="py-4 px-4 md:px-8 bg-[#fcfbf8] rounded-lg flex-1"
+                  >
                     <p className="text-xs font-semibold mb-2">Aktivitas</p>
                     <div className="flex flex-row gap-4 items-center">
-                      <p className="text-xs md:text-lg font-semibold">{funpaper.activity}</p>
+                      <p className="text-xs md:text-lg font-semibold">
+                        {funpaper.activity}
+                      </p>
                       <img
                         src="https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64ed60015ee7db085feed091_Icon%20Tema%20-%20Mengenal%20Huruf.svg"
                         className="w-8"
@@ -129,7 +147,10 @@ export default async function FunpaperHarianPage({ params }) {
       </section>
 
       {/* Produk Terkait */}
-      <ProdukTerkait activityId={funpaper.activity_id} themeId={funpaper.theme_id} />
+      <ProdukTerkait
+        activityId={funpaper.activity_id}
+        themeId={funpaper.theme_id}
+      />
     </div>
   );
 }
