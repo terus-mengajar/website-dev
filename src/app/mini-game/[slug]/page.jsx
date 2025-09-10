@@ -1,6 +1,26 @@
 // app/mini-games/[slug]/page.tsx
 import PlayButton from "./PlayButton";
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/mini-game/${slug}`,
+    {
+      cache: "no-store", // biar ga cache kalau datanya dinamis
+    }
+  );
+  const game = await res.json();
+
+  return {
+    title: game.name,
+    // description: game.description || "Mainkan mini game seru di sini!",
+  };
+}
+
+// export const metadata = {
+//   title: "Detail Mini Game",
+// };
+
 export default async function MiniGamePage({ params }) {
   const { slug } = await params;
   const res = await fetch(

@@ -1,8 +1,23 @@
 // app/funpaper-harian/[slug]/page.tsx
-import Link from "next/link";
 import { File } from 'lucide-react';
 import Aktivitas from "./Aktivitas";
 // import ProdukTerkait from "./ProdukTerkait";
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-tema/${slug}`,
+    {
+      cache: "no-store", // biar ga cache kalau datanya dinamis
+    }
+  );
+  const funpaper = await res.json();
+
+  return {
+    title: funpaper.name_on_website,
+    // description: funpaper.description",
+  };
+}
 
 export default async function FunpaperTemaPage({ params }) {
   const { slug } = await params;

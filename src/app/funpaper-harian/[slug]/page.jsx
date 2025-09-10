@@ -3,6 +3,22 @@ import Link from "next/link";
 import DownloadButton from "./DownloadButton";
 import ProdukTerkait from "./ProdukTerkait";
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-harian/${slug}`,
+    {
+      cache: "no-store", // biar ga cache kalau datanya dinamis
+    }
+  );
+  const funpaper = await res.json();
+
+  return {
+    title: funpaper.name + ' - ' + funpaper.activity,
+    // description: funpaper.description",
+  };
+}
+
 export default async function FunpaperHarianPage({ params }) {
   const { slug } = await params;
   const res = await fetch(

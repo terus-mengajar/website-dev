@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Syarat dan Ketentuan",
+  title: "Credit & Atribution",
 };
 
 export default function SyaratKetentuan() {

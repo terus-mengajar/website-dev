@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -15,7 +16,11 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Terus Mengajar",
+  title: {
+    default: "Terus Mengajar - Download Lembar Kerja",
+    // template: "%s | Terus Mengajar"
+    template: "%s"
+  },
   description:
     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya",
   icons: {

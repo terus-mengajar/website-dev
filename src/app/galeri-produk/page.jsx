@@ -1,22 +1,26 @@
 "use client";
 
 import Lottie from "lottie-react";
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import LoadingCard from "@/components/common/LoadingCard";
 
 export default function GaleriProduk() {
+  const [galleries, setGalleries] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("/api/galeri-produk");
+      const data = await res.json();
+      setGalleries(data);
+    }
+    fetchData();
+  }, []);
+
   const [open, setOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
-
-  const galeries = Array.from({ length: 18 }, (_, i) => ({
-    id: i + 1,
-    thumbnail_url:
-      "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/65cf2e9fa10234ecb7a281a7_3%20thumb.jpg",
-    image_url:
-      "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/65cf2e9a465d82f8f3c2e2e8_3%20resze.jpg",
-  }));
-
 
   return (
     <main className="mt-[68px]">
@@ -40,31 +44,37 @@ export default function GaleriProduk() {
 
       <section className="px-12 pt-8 pb-20">
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 justify-center">
-            {galeries.map((galery, idx) => (
-              <div key={idx}>
-                <div
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setPhotoIndex(idx);
-                    setOpen(true);
-                  }}
-                >
-                  <img
-                    src={galery.thumbnail_url}
-                    className=""
-                  />
+          {galleries.length === 0 && <LoadingCard cols={3} />}
+
+          {galleries.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 justify-center">
+              {galleries.map((gallery, idx) => (
+                <div key={idx}>
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setPhotoIndex(idx);
+                      setOpen(true);
+                    }}
+                  >
+                    <Image
+                      width={300}
+                      height={300}
+                      src={gallery.url}
+                      alt="Foto Galeri"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* Lightbox */}
           <Lightbox
             open={open}
             close={() => setOpen(false)}
             index={photoIndex}
-            slides={galeries.map((a) => ({ src: a.image_url }))}
+            slides={galleries.map((a) => ({ src: a.url }))}
             carousel={{ finite: true }} // biar ga looping
             controller={{ closeOnBackdropClick: true }} // klik overlay bisa close
           />
