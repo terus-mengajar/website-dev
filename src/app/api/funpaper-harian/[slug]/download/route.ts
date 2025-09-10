@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 
 export async function POST(
-  request: Request,
-  { params }: { params: { slug: string } }
+  request: Request
 ) {
   try {
     const { email, funpaper_id } = await request.json();
