@@ -3,10 +3,9 @@ import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 
 export async function POST(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }
 ) {
   try {
-    const { slug } = await params;
     const { email, mini_game_id } = await request.json();
 
     // 1. Update jumlah downloaded
