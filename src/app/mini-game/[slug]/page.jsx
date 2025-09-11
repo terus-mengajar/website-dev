@@ -1,5 +1,7 @@
 // app/mini-games/[slug]/page.tsx
+import Image from "next/image";
 import PlayButton from "./PlayButton";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -9,6 +11,11 @@ export async function generateMetadata({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
+
+  if (res.status == 404) {
+    redirect("/mini-game");
+  }
+
   const game = await res.json();
 
   return {
@@ -39,11 +46,13 @@ export default async function MiniGamePage({ params }) {
           <div className="flex justify-center">
             {/* Card Game Preview */}
             <div className="w-full max-w-lg">
-              <img
+              <Image
                 src={
-                  game.image_url ||
-                  "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/6865f624219eac01de947d16_6865e34270b964514b7b7006_3-p-800.png"
+                  game.image_url
                 }
+                width={800}
+                height={500}
+                alt="Gambar Mini Game"
               />
             </div>
           </div>

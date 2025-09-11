@@ -87,7 +87,13 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => toggleDropdown("download")}
-                  className="flex items-center gap-1"
+                  className={
+                    "flex items-center gap-1 " +
+                    (pathname === "/funpaper-harian" ||
+                    pathname === "/funpaper-tema"
+                      ? "font-bold text-blue-500"
+                      : "")
+                  }
                 >
                   Download <ChevronDown size={16} />
                 </button>
@@ -95,14 +101,24 @@ export default function Navbar() {
                   <div className="absolute top-9 mt-2 w-40 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
                     <Link
                       href="/funpaper-harian"
-                      className="block px-3 py-2 hover:bg-gray-100"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/funpaper-harian"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
                       onClick={() => setDropdownOpen(null)}
                     >
                       Funpaper Harian
                     </Link>
                     <Link
                       href="/funpaper-tema"
-                      className="block px-3 py-2 hover:bg-gray-100"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/funpaper-tema"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
                       onClick={() => setDropdownOpen(null)}
                     >
                       Funpaper Tema
@@ -141,7 +157,13 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => toggleDropdown("lainnya")}
-                  className="flex items-center gap-1"
+                  className={
+                    "flex items-center gap-1 " +
+                    (pathname === "/galeri-produk" ||
+                    pathname === "/tentang-kami"
+                      ? "font-bold text-blue-500"
+                      : "")
+                  }
                 >
                   Lainnya <ChevronDown size={16} />
                 </button>
@@ -149,14 +171,24 @@ export default function Navbar() {
                   <div className="absolute top-9 mt-2 w-40 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
                     <Link
                       href="/galeri-produk"
-                      className="block px-3 py-2 hover:bg-gray-100"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/galeri-produk"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
                       onClick={() => setDropdownOpen(null)}
                     >
                       Galeri Produk
                     </Link>
                     <Link
                       href="/tentang-kami"
-                      className="block px-3 py-2 hover:bg-gray-100"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/tentang-kami"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
                       onClick={() => setDropdownOpen(null)}
                     >
                       Tentang Kami
@@ -176,7 +208,7 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {menuOpen && (
-        <nav className="fixed left-0 right-0 top-[68px] lg:hidden bg-white px-4 py-4 space-y-3 z-[999] overflow-y-auto">
+        <nav className={ (!isTransparent ? "fixed " : "absolute ") + "left-0 right-0 top-[68px] lg:hidden bg-white px-4 py-4 space-y-3 z-[999] overflow-y-auto"}>
           <Link
             href="/"
             className="block py-2 border-b border-[#cbaf78]"
@@ -192,7 +224,13 @@ export default function Navbar() {
           <div>
             <button
               onClick={() => toggleDropdown("download")}
-              className="flex w-full items-center justify-between py-2 border-b border-[#cbaf78]"
+              className={
+                "flex w-full items-center justify-between py-2 border-b border-[#cbaf78] " +
+                (pathname === "/funpaper-harian" ||
+                pathname === "/funpaper-tema"
+                  ? " font-bold text-blue-500 "
+                  : "")
+              }
             >
               <span>Download</span>
               <ChevronDown
@@ -206,7 +244,12 @@ export default function Navbar() {
               <div className="pl-4 mt-2 space-y-2">
                 <Link
                   href="/funpaper-harian"
-                  className="block py-2 border-b border-[#cbaf78]"
+                  className={
+                    "block py-2 border-b border-[#cbaf78] " +
+                    (pathname === "/funpaper-harian"
+                      ? " font-bold text-blue-500 "
+                      : "")
+                  }
                   onClick={() => {
                     setMenuOpen(false);
                     setDropdownOpen(null);
@@ -216,7 +259,12 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/funpaper-tema"
-                  className="block py-2 border-b border-[#cbaf78]"
+                  className={
+                    "block py-2 border-b border-[#cbaf78] " +
+                    (pathname === "/funpaper-tema"
+                      ? " font-bold text-blue-500 "
+                      : "")
+                  }
                   onClick={() => {
                     setMenuOpen(false);
                     setDropdownOpen(null);
@@ -261,9 +309,13 @@ export default function Navbar() {
             <button
               onClick={() => toggleDropdown("lainnya")}
               className={
+                (pathname === "/galeri-produk" || pathname === "/tentang-kami"
+                  ? " font-bold text-blue-500 "
+                  : "") +
                 (dropdownOpen === "lainnya"
-                  ? "border-b border-[#cbaf78] "
-                  : "") + "flex w-full items-center justify-between py-2"
+                  ? " border-b border-[#cbaf78] "
+                  : "") +
+                " flex w-full items-center justify-between py-2 "
               }
             >
               <span>Lainnya</span>
@@ -278,7 +330,12 @@ export default function Navbar() {
               <div className="pl-4 mt-2 space-y-2">
                 <Link
                   href="/galeri-produk"
-                  className="block py-2 border-b border-[#cbaf78]"
+                  className={
+                    "block py-2 border-b border-[#cbaf78] " +
+                    (pathname === "/galeri-produk"
+                      ? "font-bold text-blue-500"
+                      : "")
+                  }
                   onClick={() => {
                     setMenuOpen(false);
                     setDropdownOpen(null);
@@ -288,7 +345,12 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/tentang-kami"
-                  className="block py-2"
+                  className={
+                    "block py-2 " +
+                    (pathname === "/tentang-kami"
+                      ? "font-bold text-blue-500"
+                      : "")
+                  }
                   onClick={() => {
                     setMenuOpen(false);
                     setDropdownOpen(null);

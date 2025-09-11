@@ -2,6 +2,7 @@
 import { File } from 'lucide-react';
 import Aktivitas from "./Aktivitas";
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 // import ProdukTerkait from "./ProdukTerkait";
 
 export async function generateMetadata({ params }) {
@@ -12,6 +13,11 @@ export async function generateMetadata({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
+  
+  if (res.status == 404) {
+    redirect("/funpaper-tema");
+  }
+
   const funpaper = await res.json();
 
   return {

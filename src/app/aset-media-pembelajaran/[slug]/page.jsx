@@ -1,6 +1,7 @@
 import LoadingCard from "@/components/common/LoadingCard";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -10,6 +11,11 @@ export async function generateMetadata({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
+
+  if (res.status == 404) {
+    redirect("/aset-media-pembelajaran");
+  }
+
   const asset = await res.json();
 
   return {

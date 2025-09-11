@@ -51,7 +51,7 @@ export default function FunpaperTemaList() {
                     height={96}
                     src={funpaper.mockup_thumbnail_url}
                     alt={funpaper.name_on_website}
-                    className="object-contain mb-6"
+                    className="mx-auto object-contain mb-6"
                   />
                   <p className="text-xs text-center mb-2">
                     {funpaper.name_on_website}

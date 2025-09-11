@@ -4,6 +4,7 @@ import DownloadButton from "./DownloadButton";
 import ProdukTerkait from "./ProdukTerkait";
 import Image from "next/image";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -13,6 +14,9 @@ export async function generateMetadata({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
+  if (res.status == 404) {
+    redirect("/funpaper-harian");
+  }
   const funpaper = await res.json();
 
   return {

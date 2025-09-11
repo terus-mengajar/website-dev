@@ -95,7 +95,7 @@ export default function FunpaperHarianList() {
                     height={180}
                     width={128}
                     alt={funpaper.name}
-                    className="object-contain mb-6"
+                    className="mx-auto object-contain mb-6"
                   />
                   <p className="text-xs text-center mb-2">{funpaper.name+ ' - ' +funpaper.activity}</p>
                   {funpaper.downloaded > 0 && (

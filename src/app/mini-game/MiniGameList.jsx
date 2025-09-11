@@ -3,6 +3,8 @@
 import { useEffect, useState, useMemo } from "react";
 import LoadingCard from "@/components/common/LoadingCard";
 import Link from "next/link";
+import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
+import Image from "next/image";
 
 // type Game = {
 //   id: number;
@@ -94,13 +96,14 @@ export default function GameList() {
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
                 <div>
-                  <img
+                  <Image
                     src={
-                      game.thumbnail_url ||
-                      "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/6865f624219eac01de947d16_6865e34270b964514b7b7006_3-p-800.png"
+                      game.thumbnail_url
                     }
+                    height={145}
+                    width={242}
                     alt={game.name}
-                    className="w-40 h-24 object-contain mb-6"
+                    className="object-contain mb-6"
                   />
                   <p className="text-xs text-center mb-2">{game.name}</p>
                   {game.played > 0 && (
