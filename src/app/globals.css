@@ -73,8 +73,20 @@ button {
   @apply text-[#f77];
 }
 
+.text-biru {
+  @apply text-[#6296b2];
+}
+
+.text-hijau {
+  @apply text-[#9ec288];
+}
+
 .tombol-pink, #home .tombol-pink {
   @apply bg-[#f5818f] hover:bg-[#f5818f]/80 disabled:bg-gray-300 disabled:cursor-not-allowed  text-white px-8 py-3 rounded-xl transition text-sm;
+}
+
+.tombol-hijau {
+  @apply bg-[#0a7473] hover:bg-[#0a7473]/90 text-white px-8 py-3 rounded-xl transition text-sm;
 }
 
 .tombol-pink-kataba-ai {
