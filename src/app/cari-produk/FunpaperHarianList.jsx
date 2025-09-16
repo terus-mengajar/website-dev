@@ -1,22 +1,30 @@
 "use client";
 
 import LoadingCard from "@/components/common/LoadingCard";
+import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
+import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
+import Lottie from "lottie-react";
+import { ListFilter } from "lucide-react";
 
-export default function FunpaperHarianList() {
+export default function FunpaperHarianList({ nama }) {
   const [funpaperData, setFunpaperData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("populer");
   const [page, setPage] = useState(1);
   const perPage = 16;
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch("/api/funpaper-harian");
+      setLoading(true);
+      const res = await fetch(`/api/funpaper-harian?nama=${nama}`);
       const data = await res.json();
       setFunpaperData(data);
+      console.log(data);
+      setLoading(false); // selesai loading
     }
     fetchData();
-  }, []);
+  }, [nama]);
 
   const sortedFunpaper = useMemo(() => {
     let sorted = [...funpaperData];
@@ -56,6 +64,14 @@ export default function FunpaperHarianList() {
         <p>
           Menampilkan {funpapers.length} dari {funpaperData.length} Produk
         </p>
+
+        <button
+          className="border border-[#ecdab7] hover:bg-gray-100 text-sm rounded font-medium px-2 py-1 lg:hidden flex flex-row gap-1 items-center"
+          onClick={() => setOpenMobileSidebar(true)}
+        >
+          <ListFilter size={16} /> Filter
+        </button>
+
         <select
           value={sort}
           onChange={(e) => {
@@ -73,7 +89,27 @@ export default function FunpaperHarianList() {
       </div>
 
       {/* Funpaper List */}
-      {funpapers.length === 0 && <LoadingCard />}
+      {loading && <LoadingCard />}
+
+      {!loading && funpapers.length === 0 && (
+        <div className="card-header">
+          <div className="w-60 lg:w-120">
+            <Lottie
+              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              loop={true}
+            />
+          </div>
+          <div>
+            <p className="font-bold text-lg mb-2">
+              Waah, Produknya tidak ditemukan!
+            </p>
+            <p className="text-sm">
+              Waah, Produknya tidak ditemukan! Silakan coba kata pencarian lain
+              untuk menemukan funpaper yang sesuai dengan yang kamu inginkan.
+            </p>
+          </div>
+        </div>
+      )}
 
       {funpapers.length > 0 && (
         <>
@@ -84,15 +120,21 @@ export default function FunpaperHarianList() {
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
                 <div>
-                  <img
+                  <Image
                     src={
-                      funpaper.thumbnail_url ||
-                      "https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/64f2e5e2c76668758d64daf9_sCzcERTr_AT6cMLPjiWcmu3Y0xgYTRrRzRBlxmCqG8c.jpeg"
+                      CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
+                      "/funpaper-harian/" +
+                      funpaper.slug +
+                      ".jpg"
                     }
+                    height={180}
+                    width={128}
                     alt={funpaper.name}
-                    className="w-40 h-24 object-contain mb-6"
+                    className="mx-auto object-contain mb-6"
                   />
-                  <p className="text-xs text-center mb-2">{funpaper.name}</p>
+                  <p className="text-xs text-center mb-2">
+                    {funpaper.name + " - " + funpaper.activity}
+                  </p>
                   {funpaper.downloaded > 0 && (
                     <p className="text-xs text-gray-400 text-center">
                       Diunduh {funpaper.downloaded} kali

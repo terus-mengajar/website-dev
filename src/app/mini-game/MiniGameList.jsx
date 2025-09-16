@@ -15,6 +15,7 @@ import Image from "next/image";
 // };
 
 export default function GameList() {
+  const [loading, setLoading] = useState(true);
   const [gamesData, setGamesData] = useState([]);
   const [sort, setSort] = useState("populer");
   const [page, setPage] = useState(1);
@@ -22,9 +23,11 @@ export default function GameList() {
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const res = await fetch("/api/mini-game");
       const data = await res.json();
       setGamesData(data);
+      setLoading(false);
     }
     fetchData();
   }, []);
@@ -63,7 +66,26 @@ export default function GameList() {
   return (
     <div className="w-full">
       {/* Game List */}
-      {games.length === 0 && <LoadingCard cols={3} />}
+      {loading && <LoadingCard cols={3} />}
+
+      {!loading && games.length === 0 && (
+        <div className="card-header">
+          <div className="w-60 lg:w-120">
+            <Lottie
+              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              loop={true}
+            />
+          </div>
+          <div>
+            <p className="font-bold text-lg mb-2">
+              Waah, Produknya tidak ditemukan!
+            </p>
+            <p className="text-sm">
+              Waah, Gamenya tidak ditemukan!
+            </p>
+          </div>
+        </div>
+      )}
 
       {games.length > 0 && (
         <>
@@ -97,9 +119,7 @@ export default function GameList() {
               >
                 <div>
                   <Image
-                    src={
-                      game.thumbnail_url
-                    }
+                    src={game.thumbnail_url}
                     height={145}
                     width={242}
                     alt={game.name}

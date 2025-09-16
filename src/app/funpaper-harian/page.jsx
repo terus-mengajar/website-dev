@@ -1,5 +1,4 @@
-import SidebarMedsos from "@/components/common/SidebarMedsos";
-import FunpaperHarianList from "./FunpaperHarianList";
+import FunpaperHarianClient from "./FunpaperHarianClient";
 
 export const metadata = {
   title: "Funpaper Harian",
@@ -16,7 +15,7 @@ export default async function Page() {
             Home &gt; <b>Funpaper Harian</b>
           </p>
 
-          <div className="flex flex-col lg:flex-row gap-2 lg:gap-16 px-12 py-4 bg-[#fbf6f2] bg-[url(/images/shapes/logo-tm-cream-cropped-30.avif)] bg-cover lg:bg-contain bg-no-repeat bg-right rounded-lg items-center">
+          <div className="card-header">
             <img src="/images/assets/funpaper.avif" className="w-32" alt="" />
             <div className="flex flex-col gap-3 py-4">
               <p className="font-bold">Funpaper Harian</p>
@@ -30,18 +29,7 @@ export default async function Page() {
         </div>
       </section>
 
-      <section>
-        <div className="container">
-          <div className="flex flex-col lg:flex-row gap-12">
-            <div className="order-2 lg:order-1 w-full lg:w-auto">
-              <SidebarMedsos />
-            </div>
-            <div className="flex-1 order-1 lg:order-2">
-              <FunpaperHarianList />
-            </div>
-          </div>
-        </div>
-      </section>
+      <FunpaperHarianClient />
     </main>
   );
 }

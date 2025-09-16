@@ -22,8 +22,8 @@ export default function NavbarRight() {
 
   // Ambil q dari URL saat mount / ketika URL berubah
   useEffect(() => {
-    const qParam = searchParams.get("q") || "";
-    setQuery(qParam);
+    const namaParam = searchParams.get("nama") || "";
+    setQuery(namaParam);
   }, [searchParams]);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function NavbarRight() {
     e.preventDefault();
     if (query.trim()) {
       setShowSearch(false);
-      router.push(`/cari-produk?q=${encodeURIComponent(query)}`);
+      router.push(`/cari-produk?nama=${encodeURIComponent(query)}`);
     }
   };
 

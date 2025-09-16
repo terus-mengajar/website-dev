@@ -125,6 +125,9 @@ button {
   @apply text-[#8562a8] text-[34px] lg:text-[40px] leading-13 font-bold pb-4;
 }
 
+.card-header {
+  @apply flex flex-col lg:flex-row gap-6 lg:gap-8 px-12 py-6 bg-[#fbf6f2] bg-[url(/images/shapes/logo-tm-cream-cropped-30.avif)] bg-cover lg:bg-contain bg-no-repeat bg-right rounded-lg items-center;
+}
 
 
 @keyframes fadeIn {

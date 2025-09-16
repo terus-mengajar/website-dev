@@ -5,8 +5,13 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import Image from "next/image";
+// import Filter from "@/components/common/Filter";
+import { ListFilter } from "lucide-react";
+import Lottie from "lottie-react";
 
-export default function FunpaperHarianList() {
+export default function FunpaperHarianList({ onOpenFilter, filters }) {
+  // const [onOpenFilter, setOnOpenFilter] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
   const [sort, setSort] = useState("populer");
   const [page, setPage] = useState(1);
@@ -14,12 +19,14 @@ export default function FunpaperHarianList() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch("/api/funpaper-harian");
+      setLoading(true);
+      const res = await fetch(`/api/funpaper-harian?${filters}`);
       const data = await res.json();
       setFunpaperData(data);
+      setLoading(false);
     }
     fetchData();
-  }, []);
+  }, [filters]);
 
   const sortedFunpaper = useMemo(() => {
     let sorted = [...funpaperData];
@@ -56,9 +63,18 @@ export default function FunpaperHarianList() {
     <div className="w-full">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <p className="font-medium">
+        <p className="font-medium hidden lg:block">
           Menampilkan {funpapers.length} dari {funpaperData.length} Produk
         </p>
+
+        {/* Tombol filter khusus mobile */}
+        <button
+          className="border border-[#ecdab7] hover:bg-gray-100 text-sm rounded font-medium px-2 py-1 lg:hidden flex flex-row gap-1 items-center mb-4"
+          onClick={onOpenFilter}
+        >
+          <ListFilter size={16} /> Filter
+        </button>
+
         <select
           value={sort}
           onChange={(e) => {
@@ -76,9 +92,28 @@ export default function FunpaperHarianList() {
       </div>
 
       {/* Funpaper List */}
-      {funpapers.length === 0 && <LoadingCard />}
+      {loading && <LoadingCard />}
 
-      {funpapers.length > 0 && (
+      {!loading && funpapers.length === 0 && (
+        <div className="card-header">
+          <div className="w-60 lg:w-120">
+            <Lottie
+              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              loop={true}
+            />
+          </div>
+          <div>
+            <p className="font-bold text-lg mb-2">
+              Waah, Produknya tidak ditemukan!
+            </p>
+            <p className="text-sm">
+              Waah, Produknya tidak ditemukan!
+            </p>
+          </div>
+        </div>
+      )}
+
+      {!loading && funpapers.length > 0 && (
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {funpapers.map((funpaper) => (
@@ -90,14 +125,19 @@ export default function FunpaperHarianList() {
                 <div className="">
                   <Image
                     src={
-                      CLOUDFLARE_R2_WEBSITE_ASSETS_URL + '/funpaper-harian/'+funpaper.slug+'.jpg'
+                      CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
+                      "/funpaper-harian/" +
+                      funpaper.slug +
+                      ".jpg"
                     }
                     height={180}
                     width={128}
                     alt={funpaper.name}
                     className="mx-auto object-contain mb-6"
                   />
-                  <p className="text-xs text-center mb-2">{funpaper.name+ ' - ' +funpaper.activity}</p>
+                  <p className="text-xs text-center mb-2">
+                    {funpaper.name + " - " + funpaper.activity}
+                  </p>
                   {funpaper.downloaded > 0 && (
                     <p className="text-xs text-gray-400 text-center">
                       Diunduh {funpaper.downloaded} kali

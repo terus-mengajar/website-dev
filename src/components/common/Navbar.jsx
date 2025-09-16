@@ -12,13 +12,11 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const pathname = usePathname();
-  console.log(pathname)
   const navRef = useRef(null);
 
   // daftar halaman yang pakai navbar transparan
   const transparentRoutes = ["/", "/info/funpaper-tema", "/info/funpaper-harian-bundle", "/info/funsticker", "/info/mini-game", "/info/funpaper-activity"];
   const isTransparent = transparentRoutes.includes(pathname);
-  console.log(isTransparent)
 
   const toggleDropdown = (name) => {
     setDropdownOpen(dropdownOpen === name ? null : name);

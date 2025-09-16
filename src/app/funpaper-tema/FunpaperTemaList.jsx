@@ -4,17 +4,21 @@ import LoadingCard from "@/components/common/LoadingCard";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Lottie from "lottie-react";
 
 export default function FunpaperTemaList() {
+  const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
   const [page, setPage] = useState(1);
   const perPage = 16;
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const res = await fetch("/api/funpaper-tema");
       const data = await res.json();
       setFunpaperData(data);
+      setLoading(false);
     }
     fetchData();
   }, []);
@@ -34,9 +38,28 @@ export default function FunpaperTemaList() {
       </div>
 
       {/* Funpaper List */}
-      {funpapers.length === 0 && <LoadingCard />}
+      {loading && <LoadingCard />}
 
-      {funpapers.length > 0 && (
+      {!loading && funpapers.length === 0 && (
+        <div className="card-header">
+          <div className="w-60 lg:w-120">
+            <Lottie
+              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              loop={true}
+            />
+          </div>
+          <div>
+            <p className="font-bold text-lg mb-2">
+              Waah, Produknya tidak ditemukan!
+            </p>
+            <p className="text-sm">
+              Waah, Produknya tidak ditemukan!
+            </p>
+          </div>
+        </div>
+      )}
+
+      {!loading && funpapers.length > 0 && (
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {funpapers.map((funpaper) => (

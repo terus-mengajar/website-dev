@@ -1,4 +1,4 @@
-import TentangKamiClient from "./TentangKami";
+import TentangKamiClient from "./TentangKamiClient";
 
 export const metadata = {
   title: "Tentang Kami",

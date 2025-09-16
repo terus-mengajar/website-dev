@@ -47,7 +47,7 @@ export default async function Page({ params }) {
       <section className="mb-8">
         <div className="container">
           <p className="mb-4 text-sm">
-            Home &gt; Aset Media Pembelajaran &gt; <b>{asset.name}</b>
+            Home &gt; <Link href="/aset-media-pembelajaran">Aset Media Pembelajaran</Link> &gt; <b>{asset.name}</b>
           </p>
         </div>
       </section>

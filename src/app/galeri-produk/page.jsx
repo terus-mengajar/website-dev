@@ -26,7 +26,7 @@ export default function GaleriProduk() {
     <main className="mt-[68px]">
       <section className="py-8 px-12">
         <div className="container">
-          <div className="flex flex-col lg:flex-row gap-2 lg:gap-16 px-12 py-4 bg-[#fbf6f2] bg-[url(/images/shapes/logo-tm-cream-cropped-30.avif)] bg-cover lg:bg-contain bg-no-repeat bg-right rounded-lg items-center">
+          <div className="card-header">
             <div className="max-w-[200px]">
               <Lottie
                 animationData={require("/public/lottie/kamera_gerak.json")}
