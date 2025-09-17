@@ -1,15 +1,16 @@
 "use client";
 
 import LoadingCard from "@/components/common/LoadingCard";
+import { useEffect, useState, useMemo } from "react";
+import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import Image from "next/image";
-import { useEffect, useState, useMemo } from "react";
-import Lottie from "lottie-react";
 import { ListFilter } from "lucide-react";
+import Lottie from "lottie-react";
 
-export default function FunpaperHarianList({ nama }) {
-  const [funpaperData, setFunpaperData] = useState([]);
+export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
   const [loading, setLoading] = useState(true);
+  const [funpaperData, setFunpaperData] = useState([]);
   const [sort, setSort] = useState("populer");
   const [page, setPage] = useState(1);
   const perPage = 16;
@@ -17,14 +18,13 @@ export default function FunpaperHarianList({ nama }) {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await fetch(`/api/funpaper-harian?nama=${nama}`);
+      const res = await fetch(`/api/funpaper-harian?nama=${nama}&${filters}`);
       const data = await res.json();
       setFunpaperData(data);
-      console.log(data);
       setLoading(false); // selesai loading
     }
     fetchData();
-  }, [nama]);
+  }, [nama, filters]);
 
   const sortedFunpaper = useMemo(() => {
     let sorted = [...funpaperData];
@@ -61,13 +61,13 @@ export default function FunpaperHarianList({ nama }) {
     <div className="w-full">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <p>
+        <p className="font-medium hidden lg:block">
           Menampilkan {funpapers.length} dari {funpaperData.length} Produk
         </p>
 
         <button
           className="border border-[#ecdab7] hover:bg-gray-100 text-sm rounded font-medium px-2 py-1 lg:hidden flex flex-row gap-1 items-center"
-          onClick={() => setOpenMobileSidebar(true)}
+          onClick={onOpenFilter}
         >
           <ListFilter size={16} /> Filter
         </button>
@@ -115,7 +115,8 @@ export default function FunpaperHarianList({ nama }) {
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {funpapers.map((funpaper) => (
-              <div
+              <Link
+                href={"/funpaper-harian/" + funpaper.slug}
                 key={funpaper.id}
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
@@ -146,7 +147,7 @@ export default function FunpaperHarianList({ nama }) {
                     Lihat Produk
                   </button>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

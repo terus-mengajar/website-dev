@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -7,6 +7,7 @@ import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
 import { SessionProvider } from "next-auth/react";
+import PageLoader from "@/components/common/PageLoader";
 // import { usePathname } from "next/navigation";
 
 const poppins = Poppins({
@@ -19,7 +20,7 @@ export const metadata = {
   title: {
     default: "Terus Mengajar - Download Lembar Kerja",
     // template: "%s | Terus Mengajar"
-    template: "%s"
+    template: "%s",
   },
   description:
     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya",
@@ -40,7 +41,8 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} antialiased`}>
         <SessionProvider>
           {!hideLayout && <Navbar />}
-            {children}
+          <PageLoader />
+          {children}
           {!hideLayout && <Footer />}
           <Toaster
             position="top-center"

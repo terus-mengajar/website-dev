@@ -5,8 +5,9 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Lottie from "lottie-react";
+import { ListFilter } from "lucide-react";
 
-export default function FunpaperTemaList() {
+export default function FunpaperTemaList({ onOpenFilter, filters }) {
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
   const [page, setPage] = useState(1);
@@ -15,13 +16,13 @@ export default function FunpaperTemaList() {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await fetch("/api/funpaper-tema");
+      const res = await fetch(`/api/funpaper-tema?${filters}`);
       const data = await res.json();
       setFunpaperData(data);
       setLoading(false);
     }
     fetchData();
-  }, []);
+  }, [filters]);
 
   const totalPages = Math.ceil(funpaperData.length / perPage);
   const funpapers = funpaperData.slice((page - 1) * perPage, page * perPage);
@@ -32,9 +33,16 @@ export default function FunpaperTemaList() {
     <div className="w-full">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <p className="font-medium">
+        <p className="font-medium hidden lg:block">
           Menampilkan {funpapers.length} dari {funpaperData.length} Produk
         </p>
+
+        <button
+          className="border border-[#ecdab7] hover:bg-gray-100 text-sm rounded font-medium px-2 py-1 lg:hidden flex flex-row gap-1 items-center"
+          onClick={onOpenFilter}
+        >
+          <ListFilter size={16} /> Filter
+        </button>
       </div>
 
       {/* Funpaper List */}
@@ -42,7 +50,7 @@ export default function FunpaperTemaList() {
 
       {!loading && funpapers.length === 0 && (
         <div className="card-header">
-          <div className="w-60 lg:w-120">
+          <div className="w-60">
             <Lottie
               animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
               loop={true}
@@ -52,9 +60,7 @@ export default function FunpaperTemaList() {
             <p className="font-bold text-lg mb-2">
               Waah, Produknya tidak ditemukan!
             </p>
-            <p className="text-sm">
-              Waah, Produknya tidak ditemukan!
-            </p>
+            <p className="text-sm">Waah, Produknya tidak ditemukan!</p>
           </div>
         </div>
       )}

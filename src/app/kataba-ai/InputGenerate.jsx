@@ -1,6 +1,15 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 export default function InputGenerate() {
+  const router = useRouter();
+
+  const handleGenerate = () => {
+    // navigasi ke halaman /kataba-ai/chat
+    router.push("/kataba-ai/chat");
+  };
+
   return (
     <div className="relative w-full max-w-3xl mx-auto">
       {/* Input */}
@@ -11,7 +20,10 @@ export default function InputGenerate() {
       />
 
       {/* Tombol di dalam input */}
-      <button className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 rounded-xl bg-purple-600 text-white font-medium hover:bg-purple-600 transition shadow">
+      <button
+        className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 rounded-xl bg-purple-600 text-white font-medium hover:bg-purple-600 transition shadow"
+        onClick={handleGenerate}
+      >
         ✨ Mulai Generate
       </button>
     </div>

@@ -1,5 +1,4 @@
-import SidebarMedsos from "@/components/common/SidebarMedsos";
-import FunpaperTemaList from "./FunpaperTemaList";
+import FunpaperTemaClient from "./FunpaperTemaClient";
 
 export const metadata = {
   title: "Funpaper Tema",
@@ -21,25 +20,16 @@ export default async function Page() {
             <div className="flex flex-col gap-3 py-4">
               <p className="font-bold">Funpaper Tema</p>
               <p>
-                Kenalin! worksheet tematik siap pakai untuk anak usia 2-6 tahun. Kumpulan lembar kerja (worksheet) bertema dan berstruktur untuk anak usia dini
+                Kenalin! worksheet tematik siap pakai untuk anak usia 2-6 tahun.
+                Kumpulan lembar kerja (worksheet) bertema dan berstruktur untuk
+                anak usia dini
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="container">
-          <div className="flex flex-col lg:flex-row gap-12">
-            <div className="order-2 lg:order-1 w-full lg:w-auto">
-              <SidebarMedsos />
-            </div>
-            <div className="flex-1 order-1 lg:order-2">
-              <FunpaperTemaList />
-            </div>
-          </div>
-        </div>
-      </section>
+      <FunpaperTemaClient />
     </main>
   );
 }

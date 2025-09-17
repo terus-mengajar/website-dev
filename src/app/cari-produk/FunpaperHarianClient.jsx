@@ -6,7 +6,7 @@ import Filter from "@/components/common/Filter";
 import { useEffect, useState } from "react";
 import FilterMobile from "@/components/common/FilterMobile";
 
-export default function Client() {
+export default function FunpaperHarianClient({ nama }) {
   const [openMobileSidebar, setOpenMobileSidebar] = useState(false);
 
   // ✅ state global untuk filter
@@ -70,7 +70,11 @@ export default function Client() {
             <SidebarMedsos />
           </div>
           <div className="flex-1 order-1 lg:order-2">
+            <p className="text-xs mb-4">
+              Menampilkan hasil pencarian <b>"{nama}"</b>
+            </p>
             <FunpaperHarianList
+              nama={nama}
               filters={filterValues} // ✅ selalu dapat filter terbaru setelah debounce
               onOpenFilter={() => setOpenMobileSidebar(true)}
             />

@@ -1,6 +1,4 @@
-import SidebarMedsos from "@/components/common/SidebarMedsos";
-import FunpaperHarianList from "./FunpaperHarianList";
-import Filter from "@/components/common/Filter";
+import FunpaperHarianClient from "./FunpaperHarianClient";
 
 export const metadata = {
   title: "Funpaper Harian",
@@ -16,7 +14,6 @@ export default async function Page({ searchParams }) {
     <main className="bg-[#fcfbf8] text-sm mt-[68px] pt-[40px] pb-[80px] px-[20px]">
       <section className="mb-14">
         <div className="container">
-
           <div className="card-header">
             <img src="/images/assets/funpaper.avif" className="w-32" alt="" />
             <div className="flex flex-col gap-3 py-4">
@@ -24,27 +21,15 @@ export default async function Page({ searchParams }) {
               <p>
                 Cari produk.
                 <br />
-                Manfaatkan filter untuk lebih mudah menemukan funpaper sesuai keinginan
+                Manfaatkan filter untuk lebih mudah menemukan funpaper sesuai
+                keinginan
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="container">
-          <div className="flex flex-col lg:flex-row gap-12">
-            <div className="order-2 lg:order-1 w-full lg:w-auto">
-              <Filter sidebar={true} />
-              <SidebarMedsos />
-            </div>
-            <div className="flex-1 order-1 lg:order-2">
-              <p className="text-xs mb-4">Menampilkan hasil pencarian <b>"{nama}"</b></p>
-              <FunpaperHarianList nama={nama} />
-            </div>
-          </div>
-        </div>
-      </section>
+      <FunpaperHarianClient nama={nama} />
     </main>
   );
 }

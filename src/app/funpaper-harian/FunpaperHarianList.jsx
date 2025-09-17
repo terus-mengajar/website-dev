@@ -5,12 +5,10 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import Image from "next/image";
-// import Filter from "@/components/common/Filter";
 import { ListFilter } from "lucide-react";
 import Lottie from "lottie-react";
 
 export default function FunpaperHarianList({ onOpenFilter, filters }) {
-  // const [onOpenFilter, setOnOpenFilter] = useState(false);
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
   const [sort, setSort] = useState("populer");
