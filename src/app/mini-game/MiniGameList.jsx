@@ -147,7 +147,7 @@ export default function GameList() {
               disabled={page === 1}
               className="px-3 py-1 border rounded disabled:opacity-50"
             >
-              Prev
+              Sebelumnya
             </button>
             <span>
               {page} / {totalPages}
@@ -155,9 +155,9 @@ export default function GameList() {
             <button
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page === totalPages}
-              className="px-3 py-1 border rounded disabled:opacity-50"
+              className="px-3 py-1 border border-[#DCD3BB] rounded disabled:opacity-50"
             >
-              Next
+              Berikutnya
             </button>
           </div>
         </>

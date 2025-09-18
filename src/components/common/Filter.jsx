@@ -3,7 +3,9 @@
 import { ChevronDown, ListFilter } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function SidebarFilter({
+export default function Filter({
+  temaInitial,
+  aktivitasInitial,
   selectedKategori,
   toggleCheckboxKategori,
   selectedUsia,
@@ -18,6 +20,8 @@ export default function SidebarFilter({
   const [loadingKategori, setLoadingKategori] = useState(true);
   const [loadingUsia, setLoadingUsia] = useState(true);
   // const [openMobileSidebar, setOpenMobileSidebar] = useState(false);
+  // console.log('temaI '+temaInitial)
+  // console.log('aktivI '+aktivitasInitial)
 
   // AMBIL LIST FILTER KATEGORI
   useEffect(() => {
@@ -30,7 +34,40 @@ export default function SidebarFilter({
       setLoadingKategori(false);
     }
     fetchData();
-  }, []);
+  }, [temaInitial, aktivitasInitial]);
+
+  useEffect(() => {
+    if (filterKategori.length > 0) {
+      // 🔑 Auto-select dari URL param (tema / aktivitas)
+      let defaults = [];
+      if (temaInitial) {
+        defaults = [
+          ...defaults,
+          ...filterKategori
+            .filter((k) => k.value == temaInitial)
+            .flatMap((k) => k.activities.map((a) => `${k.value}_${a.value}`)),
+        ];
+      }
+
+      if (aktivitasInitial) {
+        defaults = [
+          ...defaults,
+          ...filterKategori.flatMap((k) =>
+            k.activities
+              .filter((a) => a.value == aktivitasInitial)
+              .map((a) => `${k.value}_${a.value}`)
+          ),
+        ];
+      }
+
+      // kirim ke parent lewat toggleCheckboxKategori
+      defaults.forEach((val) => {
+        if (!selectedKategori.includes(val)) {
+          toggleCheckboxKategori(val);
+        }
+      });
+    }
+  }, [filterKategori]);
 
   // AMBIL LIST FILTER KATEGORI
   useEffect(() => {
@@ -74,7 +111,9 @@ export default function SidebarFilter({
           )}
 
           {!loadingKategori && expandedKategori && (
+            
             <div className="space-y-2 py-2 pl-4">
+              
               {filterKategori.map((kategori, idx) => (
                 <div key={kategori.value + "_" + kategori.value}>
                   <p className="font-bold">{kategori.label}</p>
@@ -98,7 +137,7 @@ export default function SidebarFilter({
                               kategori.value + "_" + activity.value
                             )
                           }
-                          className="rounded-lg"
+                          className="custom-checkbox"
                           value={kategori.value + "_" + activity.value}
                         />
                         <span>{activity.label}</span>
@@ -145,7 +184,7 @@ export default function SidebarFilter({
                       type="checkbox"
                       checked={selectedUsia.includes(usia.value)}
                       onChange={() => toggleCheckboxUsia(usia.value)}
-                      className="rounded-lg"
+                      className="custom-checkbox"
                     />
                     <span>{usia.label}</span>
                   </label>

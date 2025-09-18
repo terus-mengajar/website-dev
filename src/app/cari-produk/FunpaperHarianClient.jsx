@@ -61,12 +61,14 @@ export default function FunpaperHarianClient({ nama }) {
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="order-2 lg:order-1 w-full lg:w-auto">
-            <Filter
-              selectedKategori={selectedKategori}
-              toggleCheckboxKategori={toggleCheckboxKategori}
-              selectedUsia={selectedUsia}
-              toggleCheckboxUsia={toggleCheckboxUsia}
-            />
+            <div className="hidden lg:block">
+              <Filter
+                selectedKategori={selectedKategori}
+                toggleCheckboxKategori={toggleCheckboxKategori}
+                selectedUsia={selectedUsia}
+                toggleCheckboxUsia={toggleCheckboxUsia}
+              />
+            </div>
             <SidebarMedsos />
           </div>
           <div className="flex-1 order-1 lg:order-2">

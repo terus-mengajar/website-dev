@@ -6,7 +6,10 @@ import Filter from "@/components/common/Filter";
 import { useEffect, useState } from "react";
 import FilterMobile from "@/components/common/FilterMobile";
 
-export default function Client() {
+export default function Client({ params }) {
+  const temaInitial = params.tema;
+  const aktivitasInitial = params.aktivitas;
+
   const [openMobileSidebar, setOpenMobileSidebar] = useState(false);
 
   // ✅ state global untuk filter
@@ -61,12 +64,16 @@ export default function Client() {
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="order-2 lg:order-1 w-full lg:w-auto">
-            <Filter
-              selectedKategori={selectedKategori}
-              toggleCheckboxKategori={toggleCheckboxKategori}
-              selectedUsia={selectedUsia}
-              toggleCheckboxUsia={toggleCheckboxUsia}
-            />
+            <div className="hidden lg:block">
+              <Filter
+                temaInitial={temaInitial}
+                aktivitasInitial={aktivitasInitial}
+                selectedKategori={selectedKategori}
+                toggleCheckboxKategori={toggleCheckboxKategori}
+                selectedUsia={selectedUsia}
+                toggleCheckboxUsia={toggleCheckboxUsia}
+              />
+            </div>
             <SidebarMedsos />
           </div>
           <div className="flex-1 order-1 lg:order-2">
@@ -82,6 +89,8 @@ export default function Client() {
       {openMobileSidebar && (
         <>
           <FilterMobile
+            temaInitial={temaInitial}
+            aktivitasInitial={aktivitasInitial}
             selectedKategori={selectedKategori}
             toggleCheckboxKategori={toggleCheckboxKategori}
             selectedUsia={selectedUsia}

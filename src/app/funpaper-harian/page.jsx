@@ -6,7 +6,9 @@ export const metadata = {
   //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
 };
 
-export default async function Page() {
+export default async function Page({ searchParams }) {
+  const params = await searchParams;
+
   return (
     <main className="bg-[#fcfbf8] text-sm mt-[68px] pt-[40px] pb-[80px] px-[20px]">
       <section className="mb-14">
@@ -29,7 +31,7 @@ export default async function Page() {
         </div>
       </section>
 
-      <FunpaperHarianClient />
+      <FunpaperHarianClient params={params} />
     </main>
   );
 }

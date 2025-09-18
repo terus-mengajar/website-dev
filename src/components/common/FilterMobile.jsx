@@ -2,6 +2,8 @@ import Filter from "@/components/common/Filter";
 import { X } from "lucide-react";
 
 export default function FilterMobile({
+  temaInitial,
+  aktivitasInitial,
   selectedKategori,
   toggleCheckboxKategori,
   selectedUsia,
@@ -14,6 +16,8 @@ export default function FilterMobile({
         <X size={18} />
       </button>
       <Filter
+        temaInitial={temaInitial}
+        aktivitasInitial={aktivitasInitial}
         selectedKategori={selectedKategori}
         toggleCheckboxKategori={toggleCheckboxKategori}
         selectedUsia={selectedUsia}

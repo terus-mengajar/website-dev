@@ -1,5 +1,5 @@
 'use client';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useTransition } from 'react';
 import NProgress from 'nprogress';
@@ -7,6 +7,7 @@ import 'nprogress/nprogress.css';
 
 export default function PageLoader() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [mounted, setMounted] = useState(false);
   const [isPending, startTransition] = useTransition();
 
@@ -41,7 +42,7 @@ export default function PageLoader() {
     startTransition(() => {
       NProgress.done();
     });
-  }, [pathname, mounted]);
+  }, [pathname, searchParams, mounted]);
 
   return null;
 }

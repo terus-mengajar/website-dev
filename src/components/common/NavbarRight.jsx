@@ -95,7 +95,7 @@ export default function NavbarRight() {
       <div className="relative">
         <button
           onClick={() => setOpenUser((prev) => !prev)}
-          className="bg-[#ef8f00] text-white p-2 rounded-xl"
+          className="bg-[#ef8f00] text-white p-2 rounded-xl flex items-center justify-center"
         >
           <User size={18} />
         </button>

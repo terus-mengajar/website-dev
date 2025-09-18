@@ -16,18 +16,26 @@ export default function Hero() {
         autoplay={{ delay: 4000 }}
         navigation
         pagination={{ clickable: true }}
+        // navigation={{
+        //   nextEl: ".hero-next",
+        //   prevEl: ".hero-prev",
+        // }}
+        // pagination={{
+        //   el: ".hero-pagination",
+        //   clickable: true,
+        // }}
         className="w-full"
       >
         {/* Slide 1 */}
         <SwiperSlide>
           <section className="relative bg-[url('/images/bg/bg-lembar-kerja.avif')] bg-cover bg-center h-[600px]">
             <img
-                src="/images/funpaper/carousel-1.avif"
-                alt="Slide 1"
-                className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
+              src="/images/funpaper/carousel-1.avif"
+              alt="Slide 1"
+              className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
             />
 
-            <div className="absolute inset-0 flex flex-col justify-center px-20 lg:px-56 text-center items-center lg:items-start lg:text-left">
+            <div className="container h-full flex flex-col justify-center text-center items-center lg:items-start lg:text-left">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#ef9e00]">
                 400+ Lembar Kerja <br /> Gratis untuk Anak
               </h1>
@@ -50,12 +58,12 @@ export default function Hero() {
         <SwiperSlide>
           <section className="relative bg-[url('/images/bg/bg-tele.avif')] bg-cover bg-center h-[600px]">
             <img
-                src="/images/funpaper/carousel-1.avif"
-                alt="Slide 1"
-                className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
+              src="/images/funpaper/carousel-1.avif"
+              alt="Slide 1"
+              className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
             />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-20 lg:px-56 lg:items-start lg:text-left">
+            <div className="container h-full flex flex-col items-center justify-center text-center lg:items-start lg:text-left">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#713131]">
                 Join Telegram Channel
               </h1>
@@ -79,12 +87,12 @@ export default function Hero() {
         <SwiperSlide>
           <section className="relative bg-[url('/images/bg/bg-tematik.avif')] bg-cover bg-center h-[600px]">
             <img
-                src="/images/funpaper/carousel-2.avif"
-                alt="Slide 1"
-                className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
+              src="/images/funpaper/carousel-2.avif"
+              alt="Slide 1"
+              className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
             />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-20 lg:px-56 lg:items-start lg:text-left">
+            <div className="container h-full flex flex-col items-center justify-center text-center  lg:items-start lg:text-left">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#416cbd]">
                 Funpaper Tematik
               </h1>
@@ -102,6 +110,8 @@ export default function Hero() {
           </section>
         </SwiperSlide>
       </Swiper>
+
+      
     </section>
   );
 }

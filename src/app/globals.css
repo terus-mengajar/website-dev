@@ -62,7 +62,7 @@ button {
 .swiper-button-next::after,
 .swiper-button-prev::after {
   @apply text-white text-3xl font-bold;
-  text-shadow: 0 2px 4px rgba(0,0,0,.12);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
 
 .swiper-pagination-bullet-active {
@@ -81,7 +81,8 @@ button {
   @apply text-[#9ec288];
 }
 
-.tombol-pink, #home .tombol-pink {
+.tombol-pink,
+#home .tombol-pink {
   @apply bg-[#f5818f] hover:bg-[#f5818f]/80 disabled:bg-gray-300 disabled:cursor-not-allowed  text-white px-8 py-3 rounded-xl transition text-sm;
 }
 
@@ -125,26 +126,100 @@ button {
   @apply text-[#8562a8] text-[34px] lg:text-[40px] leading-13 font-bold pb-4;
 }
 
+/* Tombol panah umum */
+.swiper-button-prev,
+.swiper-button-next {
+  @apply w-8 h-8 rounded-full bg-white/80 flex items-center justify-center shadow-md top-[95%] md:top-[50%];
+}
+
+/* .swiper-button-prev {
+  @apply left-[30%];
+}
+
+.swiper-button-next {
+  @apply right-[40%];
+} */
+
+/* Ikon panah bawaan Swiper */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  /* content: ""; */
+  @apply text-[14px] font-bold text-[#DEAE53]; /* krem */
+}
+
+/* Kalau mau beda warna pas hover */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  @apply bg-[#fef8f3]; /* putih krem */
+}
+
+.swiper-pagination {
+  bottom: 20px !important;
+}
+
+/* CSS untuk custom checkbox */
+input[type="checkbox"].custom-checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #cbaf78;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+input[type="checkbox"].custom-checkbox:checked {
+  background-color: #cbaf78;
+  position: relative;
+}
+
+input[type="checkbox"].custom-checkbox:checked::after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .card-header {
   @apply flex flex-col lg:flex-row gap-6 lg:gap-8 px-12 py-6 bg-[#fbf6f2] bg-[url(/images/shapes/logo-tm-cream-cropped-30.avif)] bg-cover lg:bg-contain bg-no-repeat bg-right rounded-lg items-center;
 }
 
-
 @keyframes fadeIn {
-  from { opacity: 0 }
-  to { opacity: 1 }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes fadeOut {
-  from { opacity: 1 }
-  to { opacity: 0 }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 @keyframes slideDown {
-  from { transform: translateY(-100%) }
-  to { transform: translateY(0) }
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 @keyframes slideUp {
-  from { transform: translateY(0) }
-  to { transform: translateY(-100%) }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
 }
 
 .animate-fadeIn {

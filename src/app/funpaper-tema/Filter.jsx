@@ -64,7 +64,7 @@ export default function SidebarFilter({
                       type="checkbox"
                       checked={selectedUsia.includes(usia.value)}
                       onChange={() => toggleCheckboxUsia(usia.value)}
-                      className="rounded-lg"
+                      className="custom-checkbox"
                     />
                     <span>{usia.label}</span>
                   </label>
