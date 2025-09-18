@@ -1,4 +1,5 @@
 // import { Metadata } from "next";
+import { Suspense } from "react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -41,9 +42,15 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} antialiased`}>
         <SessionProvider>
           {!hideLayout && <Navbar />}
-          <PageLoader />
+
+          <Suspense fallback={null}>
+            <PageLoader />
+          </Suspense>
+
           {children}
+
           {!hideLayout && <Footer />}
+          
           <Toaster
             position="top-center"
             toastOptions={{
