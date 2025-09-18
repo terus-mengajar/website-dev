@@ -14,9 +14,7 @@ export async function generateMetadata({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
-  if (res.status == 404) {
-    redirect("/funpaper-harian");
-  }
+
   const funpaper = await res.json();
 
   return {
@@ -33,6 +31,11 @@ export default async function FunpaperHarianPage({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
+
+  if (res.status == 404) {
+    redirect("/funpaper-harian");
+  }
+
   const funpaper = await res.json();
 
   return (
@@ -43,18 +46,20 @@ export default async function FunpaperHarianPage({ params }) {
           <div className="flex justify-center">
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">
-              <Image
-                src={
-                  CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                  "/funpaper-harian/" +
-                  funpaper.slug +
-                  ".jpg"
-                }
-                height={461}
-                width={328}
-                alt={funpaper.name}
-                className="mx-auto"
-              />
+              {funpaper.slug && (
+                <Image
+                  src={
+                    CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
+                    "/funpaper-harian/" +
+                    funpaper.slug +
+                    ".jpg"
+                  }
+                  height={461}
+                  width={328}
+                  alt={funpaper.name}
+                  className="mx-auto"
+                />
+              )}
             </div>
           </div>
         </div>

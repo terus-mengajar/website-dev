@@ -1,8 +1,8 @@
 // app/funpaper-harian/[slug]/page.tsx
-import { File } from 'lucide-react';
+import { File } from "lucide-react";
 import Aktivitas from "./Aktivitas";
-import Image from 'next/image';
-import { redirect } from 'next/navigation';
+import Image from "next/image";
+import { redirect } from "next/navigation";
 // import ProdukTerkait from "./ProdukTerkait";
 
 export async function generateMetadata({ params }) {
@@ -13,10 +13,6 @@ export async function generateMetadata({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
-  
-  if (res.status == 404) {
-    redirect("/funpaper-tema");
-  }
 
   const funpaper = await res.json();
 
@@ -34,6 +30,11 @@ export default async function FunpaperTemaPage({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
+
+  if (res.status == 404) {
+    redirect("/funpaper-tema");
+  }
+
   const funpaper = await res.json();
 
   return (
@@ -44,13 +45,15 @@ export default async function FunpaperTemaPage({ params }) {
           <div className="flex justify-center">
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">
-              <Image
-                src={funpaper.mockup_url}
-                width={800}
-                height={450}
-                alt="Funpaper Tema"
-                className='mx-auto'
-              />
+              {funpaper.mockup_url && (
+                <Image
+                  src={funpaper.mockup_url}
+                  width={800}
+                  height={450}
+                  alt="Funpaper Tema"
+                  className="mx-auto"
+                />
+              )}
             </div>
           </div>
         </div>
@@ -96,7 +99,7 @@ export default async function FunpaperTemaPage({ params }) {
                 </div>
               </div>
               <div className="text-gray-700">
-                {funpaper.description.split("\n").map((line, i) => (
+                {funpaper.description && funpaper.description.split("\n").map((line, i) => (
                   <p key={i} className="text-gray-700 leading-relaxed mb-3">
                     {line}
                   </p>
@@ -108,7 +111,9 @@ export default async function FunpaperTemaPage({ params }) {
 
             {/* Sidebar Beli untuk desktop */}
             <div className="mt-6">
-              <h3 className="text-2xl font-bold mb-4">{'Rp. '+funpaper.price.toLocaleString('id-ID')}</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                {funpaper.price && "Rp. " + funpaper.price.toLocaleString("id-ID")}
+              </h3>
 
               <div className="flex gap-3 mb-8">
                 <button
@@ -117,13 +122,12 @@ export default async function FunpaperTemaPage({ params }) {
                 >
                   <File /> Versi PDF
                 </button>
-
               </div>
 
               <a
                 target="_blank"
                 href={funpaper.mayar_url}
-                className="tombol-pink py-2! text-center px-22! w-full! block sm:w-auto!" 
+                className="tombol-pink py-2! text-center px-22! w-full! block sm:w-auto!"
               >
                 Beli
               </a>

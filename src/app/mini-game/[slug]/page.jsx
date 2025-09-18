@@ -12,10 +12,6 @@ export async function generateMetadata({ params }) {
     }
   );
 
-  if (res.status == 404) {
-    redirect("/mini-game");
-  }
-
   const game = await res.json();
 
   return {
@@ -36,6 +32,11 @@ export default async function MiniGamePage({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
+
+  if (res.status == 404) {
+    redirect("/mini-game");
+  }
+
   const game = await res.json();
 
   return (
@@ -46,14 +47,14 @@ export default async function MiniGamePage({ params }) {
           <div className="flex justify-center">
             {/* Card Game Preview */}
             <div className="w-full max-w-lg">
-              <Image
-                src={
-                  game.image_url
-                }
-                width={800}
-                height={500}
-                alt="Gambar Mini Game"
-              />
+              {game.image_url && (
+                <Image
+                  src={game.image_url}
+                  width={800}
+                  height={500}
+                  alt="Gambar Mini Game"
+                />
+              )}
             </div>
           </div>
         </div>

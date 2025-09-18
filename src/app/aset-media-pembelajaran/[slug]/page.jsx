@@ -12,10 +12,6 @@ export async function generateMetadata({ params }) {
     }
   );
 
-  if (res.status == 404) {
-    redirect("/aset-media-pembelajaran");
-  }
-
   const asset = await res.json();
 
   return {
@@ -32,6 +28,11 @@ export default async function Page({ params }) {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     }
   );
+
+  if (res.status == 404) {
+    redirect("/aset-media-pembelajaran");
+  }
+
   const asset = await res.json();
 
   const res2 = await fetch(
@@ -47,7 +48,9 @@ export default async function Page({ params }) {
       <section className="mb-8">
         <div className="container">
           <p className="mb-4 text-sm">
-            Home &gt; <Link href="/aset-media-pembelajaran">Aset Media Pembelajaran</Link> &gt; <b>{asset.name}</b>
+            Home &gt;{" "}
+            <Link href="/aset-media-pembelajaran">Aset Media Pembelajaran</Link>{" "}
+            &gt; <b>{asset.name}</b>
           </p>
         </div>
       </section>
@@ -61,12 +64,14 @@ export default async function Page({ params }) {
             </a>
           </div>
 
-          <Image
-            src={asset.cover_url}
-            width={940}
-            height={520}
-            alt="Gambar Aset"
-          />
+          {asset.cover_url && (
+            <Image
+              src={asset.cover_url}
+              width={940}
+              height={520}
+              alt="Gambar Aset"
+            />
+          )}
         </div>
       </section>
 
@@ -84,13 +89,15 @@ export default async function Page({ params }) {
                   key={idx}
                 >
                   <div className="mb-3">
-                    <Image
-                      src={asset_lainnya.cover_url}
-                      alt="Cover Aset"
-                      width={336}
-                      height={188}
-                      className="rounded-xl "
-                    />
+                    {asset_lainnya.cover_url && (
+                      <Image
+                        src={asset_lainnya.cover_url}
+                        alt="Cover Aset"
+                        width={336}
+                        height={188}
+                        className="rounded-xl "
+                      />
+                    )}
                   </div>
 
                   <p className="text-center text-sm">{asset_lainnya.name}</p>

@@ -1,6 +1,4 @@
-"use client";
 
-import { Suspense } from "react";
 
 function NotFoundContent() {
   return (
@@ -13,8 +11,6 @@ function NotFoundContent() {
 
 export default function NotFound() {
   return (
-    <Suspense fallback={null}>
       <NotFoundContent />
-    </Suspense>
   );
 }
