@@ -108,7 +108,7 @@ export default function TentangKamiClient() {
                 menarik. Selengkapnya bisa cek disini
               </p>
               <a
-                className="font-bold flex flex-row"
+                className="font-bold flex flex-row items-center"
                 href="/aset-media-pembelajaran"
               >
                 Lihat Selengkapnya&nbsp;&nbsp;

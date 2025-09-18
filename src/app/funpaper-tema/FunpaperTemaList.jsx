@@ -11,7 +11,7 @@ export default function FunpaperTemaList({ onOpenFilter, filters }) {
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
   const [page, setPage] = useState(1);
-  const perPage = 16;
+  const perPage = 18;
 
   useEffect(() => {
     async function fetchData() {
@@ -46,7 +46,7 @@ export default function FunpaperTemaList({ onOpenFilter, filters }) {
       </div>
 
       {/* Funpaper List */}
-      {loading && <LoadingCard />}
+      {loading && <LoadingCard cols={3} />}
 
       {!loading && funpapers.length === 0 && (
         <div className="card-header">
@@ -67,7 +67,7 @@ export default function FunpaperTemaList({ onOpenFilter, filters }) {
 
       {!loading && funpapers.length > 0 && (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {funpapers.map((funpaper) => (
               <Link
                 href={"/funpaper-tema/" + funpaper.slug}
