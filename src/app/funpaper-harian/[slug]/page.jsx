@@ -42,7 +42,7 @@ export default async function FunpaperHarianPage({ params }) {
     <div className="w-full mt-[68px]">
       {/* Section 1 */}
       <section className="py-12 bg-[#fcfbf8]">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="flex justify-center">
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">

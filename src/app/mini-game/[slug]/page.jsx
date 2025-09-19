@@ -43,7 +43,7 @@ export default async function MiniGamePage({ params }) {
     <div className="w-full mt-[68px]">
       {/* Section 1 */}
       <section className="py-12 bg-[#fcfbf8]">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="flex justify-center">
             {/* Card Game Preview */}
             <div className="w-full max-w-lg">
@@ -64,13 +64,6 @@ export default async function MiniGamePage({ params }) {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-14 items-start">
-            {/* Sidebar Gratis untuk HP */}
-            {/* <div className="flex md:hidden flex-col">
-              <h3 className="text-3xl font-bold mb-2">Gratis</h3>
-              <button className="tombol-pink py-2!">
-                Mainkan Sekarang
-              </button>
-            </div> */}
 
             {/* Info Game */}
             <div className="md:col-span-2">
@@ -78,14 +71,14 @@ export default async function MiniGamePage({ params }) {
                 {game.name}
               </h2>
               <div className="flex mb-10">
-                <div className="flex-1 text-center border-x border-[#cbaf78] px-18">
-                  <p className="text-[#f77] text-4xl lg:text-5xl font-bold">
+                <div className="flex-1 text-center border-x border-[#cbaf78] px-10 md:px-16 py-2">
+                  <p className="text-[#f77] text-3xl lg:text-5xl font-bold">
                     {game.age}
                   </p>
                   <p className="text-gray-600 text-xs lg:text-sm">Tahun</p>
                 </div>
-                <div className="flex-1 text-center border-r border-[#cbaf78] px-18">
-                  <p className="text-[#6296b2] text-4xl lg:text-5xl font-bold">
+                <div className="flex-1 text-center border-r border-[#cbaf78] px-10 md:px-14 py-2">
+                  <p className="text-[#6296b2] text-3xl lg:text-5xl font-bold">
                     {game.slides}
                   </p>
                   <p className="text-gray-600 text-xs lg:text-sm">

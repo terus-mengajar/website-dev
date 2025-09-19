@@ -24,7 +24,7 @@ export default function GaleriProduk() {
 
   return (
     <main className="mt-[68px]">
-      <section className="py-8 px-12">
+      <section className="py-8">
         <div className="container">
           <div className="card-header">
             <div className="max-w-[200px]">
@@ -34,7 +34,7 @@ export default function GaleriProduk() {
               />
             </div>
 
-            <div className="flex flex-col gap-3 py-4">
+            <div className="flex flex-col gap-3 py-4 text-center lg:text-left">
               <p className="font-bold">Galeri Produk</p>
               <p>Foto produk kami!</p>
             </div>
@@ -42,7 +42,7 @@ export default function GaleriProduk() {
         </div>
       </section>
 
-      <section className="px-12 pt-8 pb-20">
+      <section className="pt-8 pb-20">
         <div className="container">
           {galleries.length === 0 && <LoadingCard cols={3} />}
 

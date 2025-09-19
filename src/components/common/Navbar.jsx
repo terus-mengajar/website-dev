@@ -7,6 +7,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import NavbarRight from "./NavbarRight";
+import Image from "next/image";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,14 +39,15 @@ export default function Navbar() {
     <header
       className={
         (!isTransparent ? "bg-white fixed top-0 right-0 left-0" : "relative") +
-        " z-[1000] font-medium text-sm leading-8"
+        " z-[1000] font-medium text-sm lg:text-xs xl:text-sm leading-6"
       }
       ref={navRef}
     >
       <div className="container">
-        <div className="flex items-center justify-between px-4 lg:px-0 py-4">
+        <div className="flex items-center justify-between gap-4 py-4">
+
           <div className="flex flex-row">
-            <div className="flex items-center flex-1 gap-6">
+            <div className="flex items-center gap-6">
               {/* Mobile Button */}
               <button
                 className="lg:hidden"
@@ -58,17 +60,17 @@ export default function Navbar() {
               {/* Brand */}
               <Link
                 href="/"
-                className="flex items-center me-8"
+                className="flex items-center me-6"
                 onClick={() => {
                   setMenuOpen(false);
                   setDropdownOpen(null);
                 }}
               >
-                <img
+                <Image
                   src="/images/logo/logo-tm-warna.avif"
                   alt="Logo"
-                  width="64"
-                  height={32}
+                  height={30}
+                  width={50}
                 />
               </Link>
             </div>
@@ -135,7 +137,7 @@ export default function Navbar() {
                 onClick={() => setDropdownOpen(null)}
               >
                 Mini Game{" "}
-                <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
                   New
                 </span>
               </Link>
@@ -148,7 +150,7 @@ export default function Navbar() {
                 onClick={() => setDropdownOpen(null)}
               >
                 Kataba AI{" "}
-                <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
                   New
                 </span>
               </Link>
@@ -285,7 +287,7 @@ export default function Navbar() {
             }}
           >
             Mini Game{" "}
-            <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+            <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
               New
             </span>
           </Link>
@@ -299,7 +301,7 @@ export default function Navbar() {
             }}
           >
             Kataba AI{" "}
-            <span className="text-xs text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+            <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
               New
             </span>
           </Link>

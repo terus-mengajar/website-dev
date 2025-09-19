@@ -10,7 +10,7 @@ export default async function Page({ searchParams }) {
   const params = await searchParams;
 
   return (
-    <main className="bg-[#fcfbf8] text-sm mt-[68px] pt-[40px] pb-[80px] px-[20px]">
+    <main className="bg-[#fcfbf8] text-sm mt-[68px] pt-[40px] pb-[80px]">
       <section className="mb-14">
         <div className="container">
           <p className="mb-4 text-sm">

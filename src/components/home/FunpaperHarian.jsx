@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import LoadingCard from "../common/LoadingCard";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FunpaperHarian() {
   const [funpapers, setFunpapers] = useState([]);
@@ -20,7 +21,7 @@ export default function FunpaperHarian() {
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto">
         {/* Judul */}
         <h1 className="text-3xl lg:text-4xl font-bold mb-10">
           Funpaper Harian
@@ -28,30 +29,36 @@ export default function FunpaperHarian() {
 
         {/* Hero Section */}
         <div className="flex flex-col lg:flex-row items-center justify-between mb-16 gap-4">
-          <div className="lg:flex-basis-5/10 flex items-center justify-center rounded-xl lg:mb-0 bg-[url('/images/bg/bg-activity-1.avif')] bg-cover bg-center w-full h-[230px]">
+          <div className="lg:flex-basis-5/10 flex items-center justify-center rounded-xl lg:mb-0 bg-[url('/images/bg/bg-activity-1.avif')] bg-cover bg-center w-full h-[140px] lg:h-[180px]">
             <h3 className="text-2xl font-bold text-[#785556] text-center">
               Ribuan Worksheet Telah <br /> di Download
             </h3>
           </div>
-          <div className="lg:flex-basis-5/10 flex items-center rounded-xl p-6 bg-[url('/images/bg/bg-tm-logo-half.avif')] bg-cover bg-center w-full h-[280px] md:h-[230px]">
-            <img
-              src="/images/funpaper/bundle/bundle-1.avif"
-              alt="Funpaper Bundle"
-              className="h-auto mr-6 w-[100px]"
-            />
-            <div className="flex flex-col gap-1 w-full">
-              <p className="font-semibold">Free Funpaper Harian Bundle</p>
-              <p className="text-sm text-gray-600 mb-3">
-                Semua bisa download secara gratis! <br />
-                Dapatkan 15 Lembar Kerja Gratis dalam tiap bundle
-              </p>
-              <div>
-                <a
-                  href="/funpaper-harian"
-                  className="text-center tombol-pink float-end text-white text-sm font-medium py-1 rounded-lg transition"
-                >
-                  Lihat
-                </a>
+          <div className="lg:flex-basis-5/10 flex items-center rounded-xl px-6 py-6 bg-[url('/images/bg/bg-tm-logo-half.avif')] bg-cover bg-center w-full h-[280px] md:h-[180px]">
+            <div className="flex flex-col md:flex-row gap-2">
+              <div className="">
+                <Image
+                  src="/images/funpaper/bundle/bundle-1.avif"
+                  alt="Funpaper Bundle"
+                  width={140}
+                  height={60}
+                  className="mx-auto md:mx-0"
+                />
+              </div>
+              <div className="flex flex-col gap-1 w-full">
+                <p className="font-semibold">Free Funpaper Harian Bundle</p>
+                <p className="text-sm text-gray-600 mb-3">
+                  Semua bisa download secara gratis! Dapatkan 15 Lembar Kerja
+                  Gratis dalam tiap bundle
+                </p>
+                <div>
+                  <a
+                    href="/funpaper-harian"
+                    className="text-center tombol-pink float-end text-white text-sm font-medium py-2! rounded-lg! transition"
+                  >
+                    Lihat
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -62,33 +69,32 @@ export default function FunpaperHarian() {
           {funpapers.length === 0 && <LoadingCard />}
 
           {funpapers.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-center">
-            {/* Contoh item (nanti bisa map data) */}
-            {funpapers.map((funpaper) => (
-              <Link 
-              className="flex flex-col items-center hover:shadow hover:cursor-pointer rounded-lg p-3 justify-between" 
-              href={"/funpaper-harian/"+funpaper.slug}
-              key={funpaper.id}>
-                <div className="mb-2 flex flex-col items-center">
-                  <div className="w-32 h-32 bg-white flex items-center justify-center rounded-md bg-[url('/images/shapes/oval-ungu.avif')] bg-cover bg-center">
-                    <img
-                      src="https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/65bb81f6575a82c1fa3faf26_HtP2PhawQor0T-bPRYeNjWh9fpgDWXzhPlvNj_wbnyA.jpeg"
-                      alt="Produk Terkait"
-                      className="h-full object-cover w-[80%]"
-                    />
-                  </div>
-                  <h4 className="text-center text-sm font-medium mt-2">
-                    {funpaper.name}
-                  </h4>
-                </div>
-                <span
-                  className="mt-2 inline-block tombol-ungu text-white text-xs font-medium px-3 py-1 rounded-lg transition"
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-center">
+              {/* Contoh item (nanti bisa map data) */}
+              {funpapers.map((funpaper) => (
+                <Link
+                  className="flex flex-col items-center hover:shadow hover:cursor-pointer rounded-lg p-3 justify-between"
+                  href={"/funpaper-harian/" + funpaper.slug}
+                  key={funpaper.id}
                 >
-                  Lihat Produk
-                </span>
-              </Link>
-            ))}
-          </div>
+                  <div className="mb-2 flex flex-col items-center">
+                    <div className="w-32 h-32 bg-white flex items-center justify-center rounded-md bg-[url('/images/shapes/oval-ungu.avif')] bg-cover bg-center">
+                      <img
+                        src="https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/65bb81f6575a82c1fa3faf26_HtP2PhawQor0T-bPRYeNjWh9fpgDWXzhPlvNj_wbnyA.jpeg"
+                        alt="Produk Terkait"
+                        className="h-full object-cover w-[80%]"
+                      />
+                    </div>
+                    <h4 className="text-center text-sm font-medium mt-2">
+                      {funpaper.name}
+                    </h4>
+                  </div>
+                  <span className="mt-2 inline-block tombol-ungu text-white text-xs font-medium px-3 py-1 rounded-lg transition">
+                    Lihat Produk
+                  </span>
+                </Link>
+              ))}
+            </div>
           )}
         </div>
 

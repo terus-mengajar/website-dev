@@ -23,7 +23,7 @@ export default function AsetMediaPembelajaranList() {
   const assets = assetsData.slice((page - 1) * perPage, page * perPage);
 
   return (
-    <section className="px-12 pt-8 pb-20">
+    <section className="pt-8 pb-20">
       <div className="container">
         {assets.length === 0 && <LoadingCard cols={3} />}
 

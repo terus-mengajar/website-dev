@@ -44,7 +44,7 @@ export default async function Page({ params }) {
   const asset_lainnyas = await res2.json();
 
   return (
-    <main className="bg-[#fcfbf8] text-sm mt-[68px] pt-[40px] pb-[80px] px-[20px]">
+    <main className="bg-[#fcfbf8] text-sm mt-[68px] pt-[40px] pb-[80px]">
       <section className="mb-8">
         <div className="container">
           <p className="mb-4 text-sm">

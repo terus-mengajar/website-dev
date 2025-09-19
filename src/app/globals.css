@@ -33,10 +33,11 @@ body {
 }
 
 .container {
-  max-width: 1024px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+  @apply px-5 sm:px-8 md:px-12 lg:px-28;
 }
 
 button {
@@ -44,7 +45,7 @@ button {
 }
 
 .base-section {
-  @apply min-h-[400px] py-20 lg:py-26 px-5 lg:px-28;
+  @apply min-h-[400px] py-20 lg:py-26;
 }
 
 /* p {
@@ -121,11 +122,11 @@ button {
 }
 
 #home .batu img {
-  @apply h-[120px] md:h-[200px] mx-auto;
+  @apply h-[120px] sm:h-[200px] md:h-[240px] mx-auto;
 }
 
 #home .text-karakter {
-  @apply text-[#8562a8] text-[34px] lg:text-[40px] leading-13 font-bold pb-4;
+  @apply text-[#8562a8] text-[34px] lg:text-[42px] leading-[120%] lg:leading-13 font-bold pb-4;
 }
 
 /* Tombol panah umum */
@@ -188,7 +189,7 @@ input[type="checkbox"].custom-checkbox:checked::after {
 }
 
 .card-header {
-  @apply flex flex-col lg:flex-row gap-6 lg:gap-8 px-12 py-6 bg-[#fbf6f2] bg-[url(/images/shapes/logo-tm-cream-cropped-30.avif)] bg-cover lg:bg-contain bg-no-repeat bg-right rounded-lg items-center;
+  @apply flex flex-col lg:flex-row gap-4 lg:gap-8 px-12 py-6 bg-[#fbf6f2] bg-[url(/images/shapes/logo-tm-cream-cropped-30.avif)] bg-cover lg:bg-contain bg-no-repeat bg-right rounded-lg items-center;
 }
 
 @keyframes fadeIn {

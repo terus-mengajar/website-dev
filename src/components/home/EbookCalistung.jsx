@@ -10,8 +10,8 @@ export default function EbookCalistung() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores consectetur temporibus provident facere. Dolor Sit Amet.
           </p>
           <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <button className="tombol-biru">Download</button>
-              <button className="tombol-pink">Aktifkan Notifikasi</button>
+              <button className="tombol-biru text-[12px]! md:text-sm!">Download</button>
+              <button className="tombol-pink text-[12px]! md:text-sm!">Aktifkan Notifikasi</button>
             </div>
         </div>
 

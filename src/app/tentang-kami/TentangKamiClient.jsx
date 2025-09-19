@@ -6,7 +6,7 @@ import { MoveRight } from "lucide-react";
 export default function TentangKamiClient() {
   return (
     <main className="mt-[68px] leading-8">
-      <section className="bg-[#fcfbf8] px-12 py-14 lg:px-28 bg-[url('/images/bg/bg-tm-logo-ujung.avif')] bg-no-repeat bg-left-top bg-contain">
+      <section className="bg-[#fcfbf8] py-14 lg:px-28 bg-[url('/images/bg/bg-tm-logo-ujung.avif')] bg-no-repeat bg-left-top bg-contain">
         <div className="container">
           <div className="flex flex-col lg:flex-row items-center gap-10 py-8">
             <div className="lg:w-1/2">
@@ -87,7 +87,7 @@ export default function TentangKamiClient() {
         </div>
       </section>
 
-      <section className="bg-[#fbf6f2] px-12 py-14 lg:px-28">
+      <section className="bg-[#fbf6f2] py-14">
         <div className="container">
           <div className="flex flex-col lg:flex-row items-center gap-12 py-8">
             <div className="lg:w-1/2 order-1 lg:order-2">
@@ -119,7 +119,7 @@ export default function TentangKamiClient() {
         </div>
       </section>
 
-      <section className="bg-[#fcfbf8] px-12 py-14 lg:px-28">
+      <section className="bg-[#fcfbf8] py-14">
         <div className="container">
           <div className="flex flex-col lg:flex-row items-center gap-12 py-8">
             <div className="lg:w-1/2">

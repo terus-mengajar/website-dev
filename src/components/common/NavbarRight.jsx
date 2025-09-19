@@ -68,18 +68,18 @@ export default function NavbarRight() {
     <div className="flex items-center gap-2" ref={dropdownRef}>
       {/* Search Box (Desktop) */}
       <div className="hidden sm:flex sm:items-center bg-[#fff8e7] rounded-xl overflow-hidden">
-        <form onSubmit={handleSearch} className="flex flex-1">
+        <form onSubmit={handleSearch} className="flex items-stretch">
           <input
             type="text"
             placeholder="Cari..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             required
-            className="px-3 py-2 bg-transparent focus:outline-none text-sm"
+            className="flex-1 w-40 lg:w-30 xl:w-50 px-3 py-2 bg-transparent focus:outline-none text-sm"
           />
           <button
             type="submit"
-            className="bg-[#ef8f00] text-white px-3 py-[10px]"
+            className="bg-[#ef8f00] text-white px-3 py-2"
           >
             <Search size={16} />
           </button>

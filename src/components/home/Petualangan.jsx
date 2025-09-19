@@ -1,14 +1,17 @@
+import Image from "next/image";
+
 export default function Petualangan() {
   return (
     <section className="base-section bg-[#fffbfb]">
       <div className="container">
         {/* 1 */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center justify-items-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center justify-items-center">
           <div className="lg:basis-5/10 flex justify-center order-1 lg:order-2">
-            <img
+            <Image
               src="/images/karakter/karakter-tongkat.avif"
-              alt=""
-              className="w-[400px]"
+              alt="petualangan 1"
+              width={400}
+              height={120}
             />
           </div>
 
@@ -24,12 +27,13 @@ export default function Petualangan() {
         </div>
 
         {/* 2 */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
           <div className="lg:basis-5/10 flex justify-center">
-            <img
+            <Image
               src="/images/karakter/karakter-kertas-bus.avif"
-              alt=""
-              className="w-[480px]"
+              alt="petualangan 2"
+              width={480}
+              height={120}
             />
           </div>
 
@@ -54,12 +58,13 @@ export default function Petualangan() {
         </div>
 
         {/* 3 */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center justify-items-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center justify-items-center">
           <div className="lg:basis-5/10 flex justify-center order-1 lg:order-2">
-            <img
+            <Image
               src="/images/karakter/karakter-buku-kertas.avif"
-              alt=""
-              className="w-[480px]"
+              alt="petualangan 3"
+              width={480}
+              height={120}
             />
           </div>
 
@@ -85,12 +90,13 @@ export default function Petualangan() {
         </div>
 
         {/* 4 */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
           <div className="lg:basis-5/10 flex justify-center">
-            <img
+            <Image
               src="/images/karakter/karakter-minigames.avif"
-              alt=""
-              className="w-[480px]"
+              alt="petualangan 4"
+              width={480}
+              height={120}
             />
           </div>
 
@@ -116,12 +122,13 @@ export default function Petualangan() {
         </div>
 
         {/* 5 */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center justify-items-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center justify-items-center">
           <div className="lg:basis-5/10 flex justify-center order-1 lg:order-2">
-            <img
+            <Image
               src="/images/karakter/karakter-calistung.avif"
-              alt=""
-              className="w-[480px]"
+              alt="petualangan 5"
+              width={480}
+              height={120}
             />
           </div>
 
@@ -144,12 +151,13 @@ export default function Petualangan() {
         </div>
 
         {/* 6 */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
           <div className="lg:basis-5/10 flex justify-center">
-            <img
+            <Image
               src="/images/karakter/karakter-activity.avif"
-              alt=""
-              className="w-[480px]"
+              alt="petualangan 6"
+              width={480}
+              height={120}
             />
           </div>
 
@@ -168,12 +176,13 @@ export default function Petualangan() {
         </div>
 
         {/* 7 */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center justify-items-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center justify-items-center">
           <div className="lg:basis-5/10 flex justify-center order-1 lg:order-2">
-            <img
+            <Image
               src="/images/karakter/karakter-funsticker.avif"
-              alt=""
-              className="w-[480px]"
+              alt="petualangan 7"
+              width={480}
+              height={120}
             />
           </div>
 
@@ -192,12 +201,13 @@ export default function Petualangan() {
         </div>
 
         {/* 8 */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
           <div className="lg:basis-5/10 flex justify-center">
-            <img
+            <Image
               src="/images/karakter/karakter-bundle.avif"
-              alt=""
-              className="w-[480px]"
+              alt="petualangan 8"
+              width={480}
+              height={120}
             />
           </div>
 
@@ -218,10 +228,12 @@ export default function Petualangan() {
         </div>
 
         <div className="py-28">
-          <img
+          <Image
             src="/images/karakter/masih-banyak-lagi.avif"
-            alt=""
-            className="w-[800px] mx-auto"
+            alt="Masih banyak lagi"
+            className="mx-auto"
+            width={900}
+            height={200}
           />
         </div>
       </div>

@@ -8,7 +8,7 @@ export const metadata = {
 export default function GaleriProduk() {
   return (
     <main className="mt-[68px] bg-[#fcfbf8]">
-      <section className="py-8 px-12">
+      <section className="py-8">
         <div className="container">
           <div className="card-header">
             <div className="max-w-[200px]">

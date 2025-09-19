@@ -40,7 +40,7 @@ export default async function FunpaperTemaPage({ params }) {
   return (
     <div className="w-full mt-[68px]">
       {/* Section 1 */}
-      <section className="py-12 px-4 bg-[#fcfbf8]">
+      <section className="py-12 bg-[#fcfbf8]">
         <div className="container">
           <div className="flex justify-center">
             {/* Card Funpaper Preview */}
