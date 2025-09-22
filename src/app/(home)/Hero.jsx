@@ -32,7 +32,7 @@ export default function Hero() {
             <img
               src="/images/funpaper/carousel-1.avif"
               alt="Slide 1"
-              className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
+              className="w-[300px] md:w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] -right-[120px]"
             />
 
             <div className="container h-full flex flex-col justify-center text-center items-center lg:items-start lg:text-left">
@@ -60,7 +60,7 @@ export default function Hero() {
             <img
               src="/images/funpaper/carousel-1.avif"
               alt="Slide 1"
-              className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
+              className="w-[300px] md:w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] -right-[120px]"
             />
 
             <div className="container h-full flex flex-col items-center justify-center text-center lg:items-start lg:text-left">
@@ -89,7 +89,7 @@ export default function Hero() {
             <img
               src="/images/funpaper/carousel-2.avif"
               alt="Slide 1"
-              className="w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] right-[-16%]"
+              className="w-[300px] md:w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] -right-[120px]"
             />
 
             <div className="container h-full flex flex-col items-center justify-center text-center  lg:items-start lg:text-left">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import LoadingCard from "@/components/common/LoadingCard";
+import LoadingCard from "@/components/LoadingCard";
 import Link from "next/link";
 
 export default function ProdukTerkait({ activityId, themeId }) {

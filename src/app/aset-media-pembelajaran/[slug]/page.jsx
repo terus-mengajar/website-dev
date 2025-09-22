@@ -1,4 +1,4 @@
-import LoadingCard from "@/components/common/LoadingCard";
+import LoadingCard from "@/components/LoadingCard";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";

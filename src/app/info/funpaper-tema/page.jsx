@@ -18,10 +18,10 @@ export default function FunpaperTema() {
   return (
     <main className="text-gray-800 -mt-[68px]">
       {/* Hero */}
-      <section className="py-20 px-8 text-center bg-[url(/images/bg/bg-tema-1.avif)] bg-cover bg-no-repeat min-h-[1700px] sm:min-h-[1800px] overflow-hidden">
+      <section className="py-20 px-8 text-center bg-[url(/images/bg/bg-tema-1.avif)] bg-cover bg-no-repeat h-[1700px] sm:h-[1800px] overflow-hidden">
         <div className="container px-4 relative">
           <div 
-            className="mt-24 absolute transition-transform duration-75 space-y-60 sm:space-y-80"
+            className="mt-24 transition-transform duration-75 space-y-60 sm:space-y-80"
             style={{ transform: `translateY(-${offsetY * 0.5}px)` }}
           >
             <div className="text-[#0a7473]">
@@ -377,7 +377,7 @@ export default function FunpaperTema() {
               />
             </div>
             <div>
-              <h2 className="font-bold text-2xl xs:text-4xl mb-8">
+              <h2 className="font-bold text-2xl sm:text-4xl mb-8">
                 Bunda, Aktivitas Edukatif
                 <br />
                 Nggak Harus Ribet

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import LoadingCard from "@/components/common/LoadingCard";
+import LoadingCard from "@/components/LoadingCard";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Image from "next/image";

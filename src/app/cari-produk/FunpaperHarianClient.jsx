@@ -1,10 +1,10 @@
 "use client";
 
-import SidebarMedsos from "@/components/common/SidebarMedsos";
+import SidebarMedsos from "@/components/SidebarMedsos";
 import FunpaperHarianList from "./FunpaperHarianList";
-import Filter from "@/components/common/Filter";
+import Filter from "@/components/Filter";
 import { useEffect, useState } from "react";
-import FilterMobile from "@/components/common/FilterMobile";
+import FilterMobile from "@/components/FilterMobile";
 
 export default function FunpaperHarianClient({ nama }) {
   const [openMobileSidebar, setOpenMobileSidebar] = useState(false);

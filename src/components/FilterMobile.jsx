@@ -1,4 +1,4 @@
-import Filter from "@/components/common/Filter";
+import Filter from "@/components/Filter";
 import { X } from "lucide-react";
 
 export default function FilterMobile({

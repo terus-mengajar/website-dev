@@ -4,11 +4,11 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 
 import { Toaster } from "react-hot-toast";
-import Navbar from "@/components/common/Navbar";
-import Footer from "@/components/common/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 import { SessionProvider } from "next-auth/react";
-import PageLoader from "@/components/common/PageLoader";
+import PageLoader from "@/components/PageLoader";
 // import { usePathname } from "next/navigation";
 
 const poppins = Poppins({

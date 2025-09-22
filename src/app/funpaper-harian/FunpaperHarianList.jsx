@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingCard from "@/components/common/LoadingCard";
+import LoadingCard from "@/components/LoadingCard";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";

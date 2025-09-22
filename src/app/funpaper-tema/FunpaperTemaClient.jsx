@@ -1,6 +1,6 @@
 "use client";
 
-import SidebarMedsos from "@/components/common/SidebarMedsos";
+import SidebarMedsos from "@/components/SidebarMedsos";
 import FunpaperTemaList from "./FunpaperTemaList";
 import Filter from "./Filter";
 import FilterMobile from "./FilterMobile";

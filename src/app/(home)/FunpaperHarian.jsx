@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import LoadingCard from "../common/LoadingCard";
+import LoadingCard from "../../components/LoadingCard";
 import Link from "next/link";
 import Image from "next/image";
 

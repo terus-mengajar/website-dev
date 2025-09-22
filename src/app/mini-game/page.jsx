@@ -1,4 +1,4 @@
-import SidebarMedsos from "@/components/common/SidebarMedsos";
+import SidebarMedsos from "@/components/SidebarMedsos";
 import MiniGameList from "./MiniGameList";
 
 export const metadata = {
