@@ -116,7 +116,11 @@ button {
   @apply bg-blue-500 hover:bg-blue-400 text-white px-8 py-3 rounded-xl transition text-sm;
 }
 
-.tombol-biru {
+.tombol-biru-tua {
+  @apply bg-[#0055A0] hover:bg-[#0055A0]/90 text-white px-8 py-3 rounded-xl transition text-sm;
+}
+
+.tombol-biru-muda {
   @apply bg-[#4BAEE6] hover:bg-[#4BAEE6]/90 text-white px-8 py-3 rounded-xl transition text-sm;
 }
 

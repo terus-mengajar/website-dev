@@ -93,7 +93,7 @@ export default function FunpaperTema() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="text-center text-sm md:text-md flex flex-col gap-1 justify-center border-2 border-white bg-white/20 rounded-xl py-3 px-4 w-30 md:w-40"
+                    className="text-center text-md flex flex-col gap-1 justify-center border-2 border-white bg-white/20 rounded-xl py-3 px-4 w-30 md:w-40"
                   >
                     <Image
                       src={item.img}
@@ -357,7 +357,7 @@ export default function FunpaperTema() {
                 <Link href="/funpaper-tema" className="tombol-pink">
                   Download Sekarang
                 </Link>
-                <Link href="/funpaper-tema" className="tombol-biru">
+                <Link href="/funpaper-tema" className="tombol-biru-muda">
                   Preorder Sekarang
                 </Link>
               </div>
