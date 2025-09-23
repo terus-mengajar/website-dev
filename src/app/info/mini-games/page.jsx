@@ -51,9 +51,9 @@ export default function FunpaperTema() {
                 height={200}
                 className="mx-auto mb-0"
               />
-              <a href="/mini-game" className="tombol-biru-tua">
+              <Link href="/mini-game" className="tombol-biru-tua">
                 Mainkan Sekarang
-              </a>
+              </Link>
             </div>
 
             <div className="text-center space-y-5">

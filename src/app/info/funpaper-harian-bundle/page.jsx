@@ -354,10 +354,10 @@ export default function FunpaperTema() {
               </p>
 
               <div className="flex flex-col md:flex-row gap-4 text-center">
-                <Link href="/funpaper-tema" className="tombol-pink">
+                <Link href="/funpaper-harian" className="tombol-pink">
                   Download Sekarang
                 </Link>
-                <Link href="/funpaper-tema" className="tombol-biru-muda">
+                <Link href="/funpaper-harian" className="tombol-biru-muda">
                   Preorder Sekarang
                 </Link>
               </div>

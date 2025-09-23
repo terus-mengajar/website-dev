@@ -47,7 +47,7 @@ export default function FunpaperTema() {
                 height={200}
                 className="mx-auto"
               />
-              <a href="#kenalin-worksheet" className="tombol-biru-tua">
+              <a href="/funsticker" className="tombol-biru-tua">
                 Beli Sekarang
               </a>
             </div>

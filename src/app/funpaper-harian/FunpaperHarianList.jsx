@@ -7,13 +7,16 @@ import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import Image from "next/image";
 import { ListFilter } from "lucide-react";
 import Lottie from "lottie-react";
+import { useSearchParams } from "next/navigation";
 
 export default function FunpaperHarianList({ onOpenFilter, filters }) {
+  const searchParams = useSearchParams();
+  const hasParams = searchParams.toString().length > 0;
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
   const [sort, setSort] = useState("populer");
   const [page, setPage] = useState(1);
-  const perPage = 18 ;
+  const perPage = 18;
 
   useEffect(() => {
     async function fetchData() {
@@ -60,6 +63,54 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
   return (
     <div className="w-full">
       {/* Header */}
+
+      {/* MENYUKAI */}
+      {!hasParams && (
+        <div className="menyukai">
+          <h3 className="font-bold text-xl mb-4">
+            Anda mungkin juga menyukainya
+          </h3>
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <Link
+              href={`/funpaper-harian?aktivitas=4`}
+              className="p-4 bg-[#FBF6F2] rounded-xl cursor-pointer"
+            >
+              <div className="rounded-xl overflow-hidden mb-2">
+                <Lottie
+                  animationData={require("/public/lottie/bundle_mewarnai.json")}
+                  loop={true}
+                />
+              </div>
+              <p className="font-medium text-center">Bundle Mewarnai</p>
+            </Link>
+            <Link
+              href={`/funpaper-harian?aktivitas=3`}
+              className="p-4 bg-[#FBF6F2] rounded-xl cursor-pointer"
+            >
+              <div className="rounded-xl overflow-hidden mb-2">
+                <Lottie
+                  animationData={require("/public/lottie/bundle_soal_campuran.json")}
+                  loop={true}
+                />
+              </div>
+              <p className="font-medium text-center">Bundle Soal Campuran</p>
+            </Link>
+            <Link
+              href={`/funpaper-harian?aktivitas=7`}
+              className="p-4 bg-[#FBF6F2] rounded-xl"
+            >
+              <div className="rounded-xl overflow-hidden mb-2">
+                <Lottie
+                  animationData={require("/public/lottie/bundle_maze.json")}
+                  loop={true}
+                />
+              </div>
+              <p className="font-medium text-center">Bundle Maze</p>
+            </Link>
+          </div>
+        </div>
+      )}
+
       <div className="flex justify-between items-center mb-4">
         <p className="font-medium hidden lg:block">
           Menampilkan {funpapers.length} dari {funpaperData.length} Produk
@@ -104,9 +155,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
             <p className="font-bold text-lg mb-2">
               Waah, Produknya tidak ditemukan!
             </p>
-            <p className="text-sm">
-              Waah, Produknya tidak ditemukan!
-            </p>
+            <p className="text-sm">Waah, Produknya tidak ditemukan!</p>
           </div>
         </div>
       )}

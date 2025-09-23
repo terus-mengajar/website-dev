@@ -17,10 +17,11 @@ export default function FunpaperTema() {
 
   return (
     <main className="text-gray-800 -mt-[68px]">
+
       {/* Hero */}
       <section className="py-20 px-8 text-center bg-[url(/images/bg/bg-tema-1.avif)] bg-cover bg-no-repeat h-[1700px] sm:h-[1800px] overflow-hidden">
         <div className="container px-4 relative">
-          <div 
+          <div
             className="mt-24 transition-transform duration-75 space-y-60 sm:space-y-80"
             style={{ transform: `translateY(-${offsetY * 0.5}px)` }}
           >
@@ -84,15 +85,20 @@ export default function FunpaperTema() {
             </div>
 
             <div className="text-[#0a7473] text-center mb-8">
-                <h2 className="text-3xl md:text-5xl font-bold mb-8">Tenang, Bunda nggak sendiri</h2>
-                <Image
-                  src="/images/funpaper/tema/funpaper-tema-lain-lain.avif"
-                  height={400}
-                  width={400}
-                  alt="funpaper-tema-lain-lain"
-                  className="mb-8 mx-auto w-[200px] md:w-[400px] h-auto"
-                />
-                <p className="font-bold text-xl md:text-3xl">Kami bantu Bunda menyiapkan aktivitas belajar yang seru, praktis, dan sesuai usia si kecil!</p>
+              <h2 className="text-3xl md:text-5xl font-bold mb-8">
+                Tenang, Bunda nggak sendiri
+              </h2>
+              <Image
+                src="/images/funpaper/tema/funpaper-tema-lain-lain.avif"
+                height={400}
+                width={400}
+                alt="funpaper-tema-lain-lain"
+                className="mb-8 mx-auto w-[200px] md:w-[400px] h-auto"
+              />
+              <p className="font-bold text-xl md:text-3xl">
+                Kami bantu Bunda menyiapkan aktivitas belajar yang seru,
+                praktis, dan sesuai usia si kecil!
+              </p>
             </div>
           </div>
         </div>
