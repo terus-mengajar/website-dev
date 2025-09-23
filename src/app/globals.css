@@ -124,6 +124,10 @@ button {
   @apply bg-[#4BAEE6] hover:bg-[#4BAEE6]/90 text-white px-8 py-3 rounded-xl transition text-sm;
 }
 
+.tombol-coklat {
+  @apply bg-[#613330] hover:bg-[#613330]/90 text-white px-8 py-3 rounded-xl transition text-sm;
+}
+
 .tombol-segera {
   @apply bg-[#d1d1d1] hover:bg-[#d1d1d1]/80 text-white px-8 py-3 rounded-xl transition text-sm;
 }

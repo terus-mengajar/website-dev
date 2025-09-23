@@ -68,7 +68,7 @@ export default function FunpaperTema() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="text-center flex flex-col gap-1 justify-center border-2 border-white bg-white/20 rounded-xl py-8 px-8"
+                    className="text-center flex flex-col gap-1 justify-center border-2 border-white bg-white/20 rounded-xl py-8 px-8 shadow-md"
                   >
                     <Image
                       src={item.img}
@@ -283,14 +283,14 @@ export default function FunpaperTema() {
             ].map((solusi, idx) => (
               <div
                 key={idx}
-                className="flex flex-col lg:flex-row gap-6 border-2 border-white bg-white/20 rounded-xl py-8 sm:py-14 px-8"
+                className="flex flex-col lg:flex-row gap-6 border-2 border-white bg-white/20 rounded-xl py-8 sm:py-14 px-8 shadow-md"
               >
                 <div className="w-[40px] h-[40px]">
                   <Image
                     src={solusi.img}
                     width={40}
                     height={40}
-                    alt={solusi.heading}
+                    alt="solusi"
                     className="h-auto"
                   />
                 </div>
@@ -307,7 +307,7 @@ export default function FunpaperTema() {
           </h2>
 
           <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex flex-col lg:flex-row gap-6 border-2 border-white bg-white/20 rounded-xl py-8 sm:py-14 px-8">
+            <div className="flex flex-col lg:flex-row gap-6 border-2 border-white bg-white/20 rounded-xl py-8 sm:py-14 px-8 shadow-md">
               <div className="w-[40px] h-[40px]">
                 <Image
                   src="/images/assets/susu.avif"
@@ -336,7 +336,7 @@ export default function FunpaperTema() {
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-6 border-2 border-white bg-white/20 rounded-xl py-14 px-8">
+            <div className="flex flex-col lg:flex-row gap-6 border-2 border-white bg-white/20 rounded-xl py-14 px-8 shadow-md">
               <div className="w-[40px] h-[40px]">
                 <Image
                   src="/images/assets/sekolah.avif"

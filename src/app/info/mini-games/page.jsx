@@ -211,7 +211,7 @@ export default function FunpaperTema() {
             ].map((solusi, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center gap-6 border-2 border-white bg-white/40 rounded-xl py-4 sm:py-8 px-4 w-full sm:w-50"
+                className="flex flex-col items-center gap-6 border-2 border-white bg-white/40 rounded-xl py-4 sm:py-8 px-4 w-full sm:w-50 shadow-md"
               >
                 <div className="w-[44px] h-[44px]">
                   <Image
@@ -233,7 +233,7 @@ export default function FunpaperTema() {
             Kenapa orang tua & guru wajib coba?
           </h2>
 
-          <div className="flex flex-col md:flex-row gap-6 border-2 border-white bg-white/40 rounded-xl py-8 px-8 mb-28 max-w-240 mx-auto">
+          <div className="flex flex-col md:flex-row gap-6 border-2 border-white bg-white/40 rounded-xl py-8 px-8 mb-28 max-w-240 mx-auto shadow-md">
             <div className="w-[40px] h-[40px]">
               <Image
                 src="/images/assets/tanda-tanya-2.png"

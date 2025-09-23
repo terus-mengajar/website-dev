@@ -93,7 +93,7 @@ export default function FunpaperTema() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="text-center text-md flex flex-col gap-1 justify-center border-2 border-white bg-white/20 rounded-xl py-3 px-4 w-30 md:w-40"
+                    className="text-center text-md flex flex-col gap-1 justify-center border-2 border-white bg-white/20 rounded-xl py-3 px-4 w-30 md:w-40 shadow-md"
                   >
                     <Image
                       src={item.img}
@@ -264,23 +264,23 @@ export default function FunpaperTema() {
                 heading: "Packaging Terbaik",
                 text: "Dikemas rapi dalam kotak kardus dengan bubble wrap, aman sampai rumah!",
               },
-            ].map((solusi, idx) => (
+            ].map((data, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center gap-6 border-2 border-white bg-white/20 rounded-xl py-4 sm:py-8 px-4 w-full sm:w-60"
+                className="flex flex-col items-center gap-6 border-2 border-white bg-white/20 rounded-xl py-4 sm:py-8 px-4 w-full sm:w-60 shadow-md"
               >
                 <div className="w-[40px] h-[40px]">
                   <Image
-                    src={solusi.img}
+                    src={data.img}
                     width={40}
                     height={40}
-                    alt={solusi.heading}
+                    alt="sticker"
                     className="h-auto"
                   />
                 </div>
                 <div className="text-center">
-                  <p className="font-bold mb-2">{solusi.heading}</p>
-                  <p>{solusi.text}</p>
+                  <p className="font-bold mb-2">{data.heading}</p>
+                  <p>{data.text}</p>
                 </div>
               </div>
             ))}
@@ -311,7 +311,7 @@ export default function FunpaperTema() {
             ].map((solusi, idx) => (
               <div
                 key={idx}
-                className="flex flex-col lg:flex-row gap-6 border-2 border-white bg-white/20 rounded-xl py-4 sm:py-8 px-8 items-center"
+                className="flex flex-col lg:flex-row gap-6 border-2 border-white bg-white/20 rounded-xl py-4 sm:py-8 px-8 items-center shadow-md"
               >
                 <div className="w-[40px] h-[40px]">
                   <Image
