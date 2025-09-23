@@ -321,27 +321,27 @@ export default function FunpaperTema() {
             </div>
             <div className="">
               <p className="flex flex-row gap-2 mb-2">
-                <div>
+                <span>
                   <CircleCheck size={16} className="mt-1" />
-                </div>
+                </span>
                 Ibu rumah tangga yang ingin anaknya aktif tanpa layar
               </p>
               <p className="flex flex-row gap-2 mb-2">
-                <div>
+                <span>
                   <CircleCheck size={16} className="mt-1" />
-                </div>
+                </span>
                 Ibu bekerja yang cari aktivitas edukatif mandiri
               </p>
               <p className="flex flex-row gap-2 mb-2">
-                <div>
+                <span>
                   <CircleCheck size={16} className="mt-1" />
-                </div>
+                </span>
                 Orang tua yang ingin quality time bersama anak
               </p>
               <p className="flex flex-row gap-2 mb-2">
-                <div>
+                <span>
                   <CircleCheck size={16} className="mt-1" />
-                </div>
+                </span>
                 Guru PAUD & terapis anak usia dini sebagai media belajar
                 interaktif
               </p>

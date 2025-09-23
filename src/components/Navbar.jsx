@@ -16,7 +16,14 @@ export default function Navbar() {
   const navRef = useRef(null);
 
   // daftar halaman yang pakai navbar transparan
-  const transparentRoutes = ["/", "/info/funpaper-tema", "/info/funpaper-harian-bundle", "/info/funsticker", "/info/mini-game", "/info/funpaper-activity"];
+  const transparentRoutes = [
+    "/", 
+    "/info/funpaper-tema", 
+    "/info/funpaper-harian-bundle", 
+    "/info/funsticker", 
+    "/info/mini-games", 
+    "/info/funpaper-activity"
+  ];
   const isTransparent = transparentRoutes.includes(pathname);
 
   const toggleDropdown = (name) => {
