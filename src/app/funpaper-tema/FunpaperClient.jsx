@@ -1,26 +1,16 @@
 "use client";
 
 import SidebarMedsos from "@/components/SidebarMedsos";
-import FunpaperHarianList from "./FunpaperHarianList";
-import Filter from "@/components/Filter";
+import FunpaperList from "./FunpaperList";
+import Filter from "./Filter";
+import FilterMobile from "./FilterMobile";
 import { useEffect, useState } from "react";
-import FilterMobile from "@/components/FilterMobile";
 
-export default function Client({ params }) {
-  const temaInitial = params.tema;
-  const aktivitasInitial = params.aktivitas;
-
+export default function Client() {
   const [openMobileSidebar, setOpenMobileSidebar] = useState(false);
 
   // ✅ state global untuk filter
-  const [selectedKategori, setSelectedKategori] = useState([]);
   const [selectedUsia, setSelectedUsia] = useState([]);
-
-  const toggleCheckboxKategori = (value) => {
-    setSelectedKategori((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
-    );
-  };
 
   const toggleCheckboxUsia = (value) => {
     setSelectedUsia((prev) =>
@@ -45,11 +35,9 @@ export default function Client({ params }) {
   useEffect(() => {
     const handler = setTimeout(() => {
       // bikin query string custom
-      const kategoriParam = selectedKategori.join(",");
       const usiaParam = selectedUsia.join(",");
 
       const query = new URLSearchParams();
-      if (kategoriParam) query.set("kategori", kategoriParam);
       if (usiaParam) query.set("usia", usiaParam);
 
       setFilterValues(query.toString());
@@ -57,7 +45,7 @@ export default function Client({ params }) {
 
     // kalau user klik lagi sebelum 500ms → clear timeout
     return () => clearTimeout(handler);
-  }, [selectedUsia, selectedKategori]);
+  }, [selectedUsia]);
 
   return (
     <section>
@@ -66,10 +54,6 @@ export default function Client({ params }) {
           <div className="order-2 lg:order-1 w-full lg:w-auto">
             <div className="hidden lg:block">
               <Filter
-                temaInitial={temaInitial}
-                aktivitasInitial={aktivitasInitial}
-                selectedKategori={selectedKategori}
-                toggleCheckboxKategori={toggleCheckboxKategori}
                 selectedUsia={selectedUsia}
                 toggleCheckboxUsia={toggleCheckboxUsia}
               />
@@ -77,7 +61,7 @@ export default function Client({ params }) {
             <SidebarMedsos />
           </div>
           <div className="flex-1 order-1 lg:order-2">
-            <FunpaperHarianList
+            <FunpaperList
               filters={filterValues} // ✅ selalu dapat filter terbaru setelah debounce
               onOpenFilter={() => setOpenMobileSidebar(true)}
             />
@@ -89,10 +73,6 @@ export default function Client({ params }) {
       {openMobileSidebar && (
         <>
           <FilterMobile
-            temaInitial={temaInitial}
-            aktivitasInitial={aktivitasInitial}
-            selectedKategori={selectedKategori}
-            toggleCheckboxKategori={toggleCheckboxKategori}
             selectedUsia={selectedUsia}
             toggleCheckboxUsia={toggleCheckboxUsia}
             onClose={() => setOpenMobileSidebar(false)}

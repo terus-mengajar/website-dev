@@ -1,7 +1,7 @@
 "use client";
 
 import SidebarMedsos from "@/components/SidebarMedsos";
-import FunpaperHarianList from "./FunpaperHarianList";
+import FunpaperList from "./FunpaperList";
 import Filter from "@/components/Filter";
 import { useEffect, useState } from "react";
 import FilterMobile from "@/components/FilterMobile";
@@ -35,7 +35,7 @@ export default function FunpaperHarianClient({ nama }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Data yang sudah "final" (setelah debounce) → dikirim ke FunpaperHarianList
+  // Data yang sudah "final" (setelah debounce) → dikirim ke FunpaperList
   const [filterValues, setFilterValues] = useState("");
 
   // 🔑 Debounce: update filterValues setelah 500ms, tidak numpuk klik sebelumnya
@@ -75,7 +75,7 @@ export default function FunpaperHarianClient({ nama }) {
             <p className="text-xs mb-4">
               Menampilkan hasil pencarian <b>"{nama}"</b>
             </p>
-            <FunpaperHarianList
+            <FunpaperList
               nama={nama}
               filters={filterValues} // ✅ selalu dapat filter terbaru setelah debounce
               onOpenFilter={() => setOpenMobileSidebar(true)}

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
-import { FUNPAPER_TEMA_BUNDLE } from "@/lib/funpaper_type";
+import { FUNPAPER_HARIAN_BUNDLE } from "@/lib/funpaper_type";
 
 export async function GET(req: Request) {
   try {
@@ -8,29 +8,29 @@ export async function GET(req: Request) {
     // const limit = searchParams.get("limit");
     // const activity_id = searchParams.get("activity_id");
     // const theme_id = searchParams.get("theme_id");
-    const usia = searchParams.get("usia");
+    // const usia = searchParams.get("usia");
 
     let sql = `
       SELECT * 
       FROM funpaper_bundle
-      WHERE funpaper_type_id = ${FUNPAPER_TEMA_BUNDLE}
+      WHERE funpaper_type_id = ${FUNPAPER_HARIAN_BUNDLE}
       AND slug IS NOT NULL
     `;
 
     let params = [];
 
     // filter usia
-    if (usia) {
-      const usiaArr = usia
-        .split(",")
-        .map(Number)
-        .filter((n) => !isNaN(n));
-      if (usiaArr.length) {
-        const placeholders = usiaArr.map(() => "?").join(",");
-        sql += ` AND age_id IN (${placeholders}) `;
-        params.push(...usiaArr);
-      }
-    }
+    // if (usia) {
+    //   const usiaArr = usia
+    //     .split(",")
+    //     .map(Number)
+    //     .filter((n) => !isNaN(n));
+    //   if (usiaArr.length) {
+    //     const placeholders = usiaArr.map(() => "?").join(",");
+    //     sql += ` AND age_id IN (${placeholders}) `;
+    //     params.push(...usiaArr);
+    //   }
+    // }
 
     // if (activity_id) {
     //   sql += ` AND activity_id=${Number(activity_id)}`;

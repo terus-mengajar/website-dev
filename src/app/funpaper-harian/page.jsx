@@ -1,4 +1,4 @@
-import FunpaperHarianClient from "./FunpaperHarianClient";
+import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
   title: "Funpaper Harian",
@@ -31,7 +31,7 @@ export default async function Page({ searchParams }) {
         </div>
       </section>
 
-      <FunpaperHarianClient params={params} />
+      <FunpaperClient params={params} />
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
+import { FUNPAPER_SINGLE_PAGE } from "@/lib/funpaper_type";
 
 export async function GET(req: Request) {
   try {
@@ -15,7 +16,7 @@ export async function GET(req: Request) {
       SELECT funpaper.*, activity.name AS activity
       FROM funpaper
       JOIN activity ON funpaper.activity_id = activity.id
-      WHERE funpaper_type_id = 1
+      WHERE funpaper_type_id = ${FUNPAPER_SINGLE_PAGE}
     `;
 
     let params = [];

@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
+import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -39,6 +40,21 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TL3G10LTXP"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TL3G10LTXP');
+          `}
+        </Script>
+      </head>
       <body className={`${poppins.variable} antialiased`}>
         <SessionProvider>
           {!hideLayout && <Navbar />}
@@ -50,7 +66,7 @@ export default function RootLayout({ children }) {
           {children}
 
           {!hideLayout && <Footer />}
-          
+
           <Toaster
             position="top-center"
             toastOptions={{

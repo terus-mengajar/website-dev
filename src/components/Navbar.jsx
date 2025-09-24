@@ -76,8 +76,8 @@ export default function Navbar() {
                 <Image
                   src="/images/logo/logo-tm-warna.avif"
                   alt="Logo"
-                  height={30}
                   width={50}
+                  height={28}
                 />
               </Link>
             </div>

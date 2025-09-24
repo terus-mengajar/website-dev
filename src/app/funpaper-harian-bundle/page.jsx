@@ -1,7 +1,7 @@
 import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
-  title: "Funpaper Tema",
+  title: "Funpaper Harian Bundle",
   //   description:
   //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
 };
@@ -16,13 +16,12 @@ export default async function Page() {
           </p>
 
           <div className="card-header">
-            <img src="/images/assets/funpaper.avif" className="w-32" alt="" />
+            <img src="/images/funpaper/bundle/bundle-1.avif" className="w-32" alt="" />
             <div className="flex flex-col gap-3 py-4">
-              <p className="font-bold">Funpaper Tema</p>
+              <p className="font-bold">Free Funpaper Harian Bundle</p>
               <p>
-                Kenalin! worksheet tematik siap pakai untuk anak usia 2-6 tahun.
-                Kumpulan lembar kerja (worksheet) bertema dan berstruktur untuk
-                anak usia dini
+               Semua bisa download secara gratis!<br />
+               Dapatkan 15 Lembar Kerja Gratis dalam tiap bundle
               </p>
             </div>
           </div>

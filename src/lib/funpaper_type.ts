@@ -1,0 +1,5 @@
+export const FUNPAPER_SINGLE_PAGE = 1;
+export const FUNPAPER_HARIAN_BUNDLE = 2;
+export const FUNPAPER_HARIAN_BUNDLE_15 = 3;
+export const FUNPAPER_TEMA_SINGLE_PAGE = 4;
+export const FUNPAPER_TEMA_BUNDLE = 5;

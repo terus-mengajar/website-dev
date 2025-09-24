@@ -4,7 +4,7 @@ export default function KatabaAI() {
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-8 items-center">
           <div className="lg:basis-5/10 text-center lg:text-left order-2 lg:order-1">
-            <h2 className="text-karakter">
+            <h2 className="text-karakter mb-2">
               Bingung mana yang cocok buat ananda?
             </h2>
             <a href="/kataba-ai" className="tombol-kataba-ai">

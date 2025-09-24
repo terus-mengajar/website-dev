@@ -29,7 +29,7 @@ export default function FunpaperHarian() {
 
         {/* Hero Section */}
         <div className="flex flex-col lg:flex-row items-center justify-between mb-16 gap-4">
-          <div className="lg:flex-basis-5/10 flex items-center justify-center rounded-xl lg:mb-0 bg-[url('/images/bg/bg-activity-1.avif')] bg-cover bg-center w-full h-[140px] lg:h-[180px]">
+          <div className="lg:flex-basis-5/10 flex items-center justify-center rounded-xl lg:mb-0 bg-[url('/images/bg/bg-activity-2.avif')] bg-cover bg-center w-full h-[140px] lg:h-[180px]">
             <h3 className="text-2xl font-bold text-[#785556] text-center">
               Ribuan Worksheet Telah <br /> di Download
             </h3>
@@ -53,7 +53,7 @@ export default function FunpaperHarian() {
                 </p>
                 <div>
                   <a
-                    href="/funpaper-harian"
+                    href="/funpaper-harian-bundle"
                     className="text-center tombol-pink float-end text-white text-sm font-medium py-2! rounded-lg! transition"
                   >
                     Lihat

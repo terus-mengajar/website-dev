@@ -11,7 +11,7 @@ export default function Petualangan() {
               src="/images/karakter/karakter-tongkat.avif"
               alt="petualangan 1"
               width={400}
-              height={120}
+              height={218}
             />
           </div>
 
@@ -47,7 +47,7 @@ export default function Petualangan() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores consectetur temporibus provident facere. Dolor Sit Amet.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <a href="/funpaper-harian" className="tombol-pink">Selengkapnya</a>
+              <a href="/info/funpaper-harian" className="tombol-pink">Selengkapnya</a>
               <a href="/funpaper-harian" className="tombol-biru">Download</a>
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function Petualangan() {
               consectetur temporibus provident facere. Dolor Sit Amet.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <a href="/funpaper-tema" className="tombol-pink">Selengkapnya</a>
+              <a href="/info/funpaper-tema" className="tombol-pink">Selengkapnya</a>
               <a href="/funpaper-tema" className="tombol-biru">Download</a>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function Petualangan() {
               consectetur temporibus provident facere. Dolor Sit Amet.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <a href="/mini-game" className="tombol-pink">Selengkapnya</a>
+              <a href="/info/mini-games" className="tombol-pink">Selengkapnya</a>
               <a href="/mini-game" className="tombol-biru">Download</a>
             </div>
           </div>
