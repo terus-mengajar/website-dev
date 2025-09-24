@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import LoadingCard from "../../components/LoadingCard";
 import Link from "next/link";
 import Image from "next/image";
+import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 
 export default function FunpaperHarian() {
   const [funpapers, setFunpapers] = useState([]);
@@ -80,7 +81,12 @@ export default function FunpaperHarian() {
                   <div className="mb-2 flex flex-col items-center">
                     <div className="w-32 h-32 bg-white flex items-center justify-center rounded-md bg-[url('/images/shapes/oval-ungu.avif')] bg-cover bg-center">
                       <img
-                        src="https://cdn.prod.website-files.com/644f4d0f9964649ed2f9f0a2/65bb81f6575a82c1fa3faf26_HtP2PhawQor0T-bPRYeNjWh9fpgDWXzhPlvNj_wbnyA.jpeg"
+                        src={
+                          CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
+                          "/funpaper-harian/" +
+                          funpaper.slug +
+                          ".jpg"
+                        }
                         alt="Produk Terkait"
                         className="h-full object-cover w-[80%]"
                       />

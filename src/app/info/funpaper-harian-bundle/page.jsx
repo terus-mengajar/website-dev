@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function FunpaperTema() {
+export default function page() {
   const [offsetY, setOffsetY] = useState(0);
 
   useEffect(() => {

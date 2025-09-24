@@ -11,7 +11,7 @@ export default function EbookCalistung() {
           </p>
           <div className="flex gap-2 pt-5 justify-center lg:justify-start">
               <button className="tombol-biru text-[12px]! md:text-sm!">Download</button>
-              <button className="tombol-pink text-[12px]! md:text-sm!">Aktifkan Notifikasi</button>
+              {/* <button className="tombol-pink text-[12px]! md:text-sm!">Aktifkan Notifikasi</button> */}
             </div>
         </div>
 
