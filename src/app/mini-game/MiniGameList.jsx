@@ -90,8 +90,8 @@ export default function GameList() {
       {games.length > 0 && (
         <>
           {/* Header */}
-          <div className="flex justify-between items-center mb-4">
-            <p className="font-semibold">
+          <div className="flex justify-end lg:justify-between items-center mb-4">
+            <p className="font-semibold hidden lg:block">
               Menampilkan {games.length} dari {gamesData.length} Produk
             </p>
             <select

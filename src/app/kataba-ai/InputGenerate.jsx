@@ -21,7 +21,7 @@ export default function InputGenerate() {
 
       {/* Tombol di dalam input */}
       <button
-        className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 rounded-xl bg-purple-600 text-white font-medium hover:bg-purple-600 transition shadow"
+        className="block mt-2 sm:mt-0 w-full sm:w-auto sm:absolute sm:right-2 sm:top-1/2 sm:-translate-y-1/2 px-6 py-2 rounded-xl bg-purple-600 text-white font-medium hover:bg-purple-600 transition shadow"
         onClick={handleGenerate}
       >
         ✨ Mulai Generate

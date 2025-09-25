@@ -46,17 +46,17 @@ export default function SidebarMedsos() {
     <aside className="space-y-3 w-min-[220px]">
       <h2 className="text-xs font-semibold">Ikuti Kami di</h2>
       <div className="flex flex-col gap-6">
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-row lg:flex-col gap-3">
             {items.map((item, i) => (
             <a
                 key={i}
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${item.color} text-white text-xl flex items-center gap-3 px-6 py-4 rounded-lg font-semibold hover:opacity-90 transition`}
+                className={`${item.color} grow text-white text-xl flex flex-col sm:flex-row items-center gap-3 px-6 py-4 rounded-lg font-semibold hover:opacity-90 transition`}
             >
                 {item.icon}
-                <span>{item.name}</span>
+                <span className="text-sm sm:text-xl">{item.name}</span>
             </a>
             ))}
         </div>
