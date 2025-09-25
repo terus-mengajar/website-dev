@@ -44,7 +44,7 @@ export default function Petualangan() {
               Harian
             </h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores consectetur temporibus provident facere. Dolor Sit Amet.
+              Lembar kerja praktis untuk menemani aktivitas anak setiap hari. Mulai dari mengenal angka, huruf, mewarnai, hingga aktivitas gunting tempel, semuanya tersedia gratis dan bisa diunduh kapan saja.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
               <a href="/info/funpaper-harian" className="tombol-pink">Selengkapnya</a>
@@ -75,8 +75,7 @@ export default function Petualangan() {
               Tema
             </h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              consectetur temporibus provident facere. Dolor Sit Amet.
+              Kumpulan lembar kerja bertema seperti tanaman, alam semesta, dll. Disusun dalam satu paket PDF untuk pengalaman belajar yang lebih mendalam.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
               <a href="/info/funpaper-tema" className="tombol-pink">Selengkapnya</a>
@@ -107,12 +106,11 @@ export default function Petualangan() {
               Games
             </h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              consectetur temporibus provident facere. Dolor Sit Amet.
+              Games edukatif untuk latihan berhitung, menyusun kata, mengenal pola, dan mengasah daya ingat dengan cara yang menyenangkan.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
               <a href="/info/mini-games" className="tombol-pink">Selengkapnya</a>
-              <a href="/mini-game" className="tombol-biru">Download</a>
+              <a href="/mini-game" className="tombol-biru">Mainkan</a>
             </div>
           </div>
         </div>
@@ -139,8 +137,7 @@ export default function Petualangan() {
               Calistung
             </h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              consectetur temporibus provident facere. Dolor Sit Amet.
+              Lembar kerja yang fokus kepada membaca, menulis dan berhitung. Aktivitasnya ringan, menyenangkan, dan sesuai dengan tahap perkembangan anak.
             </p>
             <button className="tombol-segera mt-5">Segera Hadir</button>
           </div>
@@ -164,8 +161,7 @@ export default function Petualangan() {
           <div className="lg:basis-5/10 text-center lg:text-left">
             <h2 className="text-karakter">Funpaper Activity</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              consectetur temporibus provident facere. Dolor Sit Amet.
+              Kumpulan lembar kerja berdasarkan jenis aktivitas yang disukai anak. Dirancang khusus untuk mendukung tumbuh kembang anak melalui aktivitas yang menyenangkan dan siap pakai!
             </p>
             <button className="tombol-segera mt-5">Segera Hadir</button>
           </div>
@@ -189,8 +185,7 @@ export default function Petualangan() {
           <div className="lg:basis-5/10 text-center lg:text-left order-2 lg:order-1">
             <h2 className="text-karakter">Funsticker</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              consectetur temporibus provident facere. Dolor Sit Amet.
+              Buku stiker penuh aktivitas kreatif untuk anak 2–6 tahun. Membantu mengembangkan motorik, logika, dan bahasa, sambil menciptakan waktu bermain berkualitas dengan orang tua.
             </p>
             <button className="tombol-segera mt-5">Segera Hadir</button>
           </div>
@@ -220,10 +215,9 @@ export default function Petualangan() {
               Tiap Pekan
             </h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              consectetur temporibus provident facere. Dolor Sit Amet.
+              Gabung ke channel Telegram Terus Mengajar dan dapatkan Funpaper gratis setiap pekan!
             </p>
-            <button className="tombol-pink mt-5">Dapatkan Sekarang</button>
+            <a href="https://t.me/terusmengajarofficial" target="_blank" className="tombol-pink mt-5 inline-block">Dapatkan Sekarang</a>
           </div>
         </div>
 
@@ -233,7 +227,7 @@ export default function Petualangan() {
             alt="Masih banyak lagi"
             className="mx-auto"
             width={900}
-            height={200}
+            height={491}
           />
         </div>
       </div>

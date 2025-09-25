@@ -149,7 +149,7 @@ export default function Navbar() {
                 </span>
               </Link>
 
-              <Link
+              {/* <Link
                 href="/kataba-ai"
                 className={
                   pathname === "/kataba-ai" ? "font-bold text-blue-500" : ""
@@ -160,7 +160,7 @@ export default function Navbar() {
                 <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
                   New
                 </span>
-              </Link>
+              </Link> */}
 
               {/* Dropdown Lainnya */}
               <div className="relative">
@@ -299,7 +299,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <Link
+          {/* <Link
             href="/kataba-ai"
             className="block py-2 border-b border-[#cbaf78]"
             onClick={() => {
@@ -311,7 +311,7 @@ export default function Navbar() {
             <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
               New
             </span>
-          </Link>
+          </Link> */}
 
           {/* Dropdown Lainnya */}
           <div>

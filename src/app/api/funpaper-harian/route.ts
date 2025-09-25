@@ -11,6 +11,7 @@ export async function GET(req: Request) {
     const theme_id = searchParams.get("theme_id");
     const kategori = searchParams.get("kategori");
     const usia = searchParams.get("usia");
+    const random = searchParams.get("random");
 
     let sql = `
       SELECT funpaper.*, activity.name AS activity
@@ -67,7 +68,11 @@ export async function GET(req: Request) {
       }
     }
 
-    sql += ` ORDER BY funpaper.downloaded DESC `;
+    if(random == '1'){
+      sql += ` ORDER BY RANDOM() `;
+    }else{
+      sql += ` ORDER BY funpaper.downloaded DESC `;
+    }
 
     if (limit) {
       sql += ` LIMIT ? `;
@@ -82,6 +87,10 @@ export async function GET(req: Request) {
 
     const data = await res.json();
     const logs = data?.result?.[0]?.results ?? [];
+
+    if(data.errors){
+      console.log(data.errors);
+    }
 
     return NextResponse.json(logs);
   } catch (err) {

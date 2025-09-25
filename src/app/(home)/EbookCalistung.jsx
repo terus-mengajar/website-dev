@@ -6,12 +6,12 @@ export default function EbookCalistung() {
           <h2 className="text-[#3763a1] text-4xl md:text-6xl font-bold mb-5">
             E-Book Calistung
           </h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores consectetur temporibus provident facere. Dolor Sit Amet.
+          <p className="">
+            E-Book gratis untuk bantu Ayah Bunda mempersiapkan fondasi belajar calistung secara bertahap. Berisi aktivitas seru yang bisa dilakukan di rumah setiap hari.
           </p>
           <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <button className="tombol-biru text-[12px]! md:text-sm!">Download</button>
-              {/* <button className="tombol-pink text-[12px]! md:text-sm!">Aktifkan Notifikasi</button> */}
+              {/* <button className="tombol-biru text-[12px]! md:text-sm!">Download</button> */}
+              <a href="https://t.me/terusmengajarofficial" target="_blank" className="tombol-pink bg-[#DB63A7]! text-[12px]! md:text-sm! inline-block">Join Waiting List</a>
             </div>
         </div>
 

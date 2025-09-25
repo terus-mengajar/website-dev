@@ -9,7 +9,7 @@ export default function Home() {
     <main id="home" className="-mt-[68px]">
       <Hero />
       <Petualangan />
-      <KatabaAI />
+      {/* <KatabaAI /> */}
       <FunpaperHarian />
       <EbookCalistung />
     </main>
