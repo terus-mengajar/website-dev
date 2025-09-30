@@ -18,6 +18,7 @@ export default function Navbar() {
   // daftar halaman yang pakai navbar transparan
   const transparentRoutes = [
     "/", 
+    "/info/funpaper-harian", 
     "/info/funpaper-tema", 
     "/info/funpaper-harian-bundle", 
     "/info/funsticker", 
