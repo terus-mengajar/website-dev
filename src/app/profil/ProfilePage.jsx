@@ -5,6 +5,8 @@ import { signOut } from "next-auth/react";
 import { User, Clock, Settings, LogOut } from "lucide-react";
 import toast from "react-hot-toast";
 import Image from "next/image";
+import RiwayatFunpaper from "./RiwayatFunpaper";
+import RiwayatMiniGame from "./RiwayatMiniGame";
 
 export default function ProfilePage({ session }) {
   // console.log("Session:", session);
@@ -14,30 +16,7 @@ export default function ProfilePage({ session }) {
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
   const [loadingPassword, setLoadingPassword] = useState(false);
-  const [funpaperLogs, setFunpaperLogs] = useState([]);
-  const [miniGameLogs, setMiniGameLogs] = useState([]);
-
-  useEffect(() => {
-    const fetchFunpaperLogs = async () => {
-      const res = await fetch("/api/funpaper-log");
-      if (res.ok) {
-        const data = await res.json();
-        setFunpaperLogs(data);
-      }
-    };
-    fetchFunpaperLogs();
-  }, []);
-
-  useEffect(() => {
-    const fetchMinigameLogs = async () => {
-      const res = await fetch("/api/mini-game-log");
-      if (res.ok) {
-        const data = await res.json();
-        setMiniGameLogs(data);
-      }
-    };
-    fetchMinigameLogs();
-  }, []);
+  
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
@@ -105,7 +84,7 @@ export default function ProfilePage({ session }) {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto p-4 space-y-6">
+    <div className="max-w-5xl mx-auto py-4 space-y-6">
       {/* Header */}
       <div className="flex items-center space-x-4 bg-[#fbf6f2] px-8 md:px-20 py-5 md:py-8 rounded-xl mb-14">
         <div className="flex me-8 items-center justify-center w-30 h-20 rounded-full">
@@ -176,48 +155,10 @@ export default function ProfilePage({ session }) {
               <h2 className="text-xl font-semibold mb-8">Riwayat</h2>
               <div className="space-y-10">
                 {/* FUNPAPER */}
-                <div>
-                  <h3 className="font-bold mb-2">Riwayat Funpaper</h3>
-                  <ul className="divide-y divide-gray-200">
-                    {funpaperLogs.length === 0 && (
-                      <li className="py-2 text-gray-500">Belum ada riwayat.</li>
-                    )}
-
-                    {funpaperLogs.map((log) => (
-                      <li className="flex justify-between py-2" key={log.id}>
-                        <span>{log.name}</span>
-                        <a
-                          href={"/katalog/" + log.slug}
-                          className="text-blue-600 hover:underline"
-                        >
-                          Lihat
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <RiwayatFunpaper />
 
                 {/* MINI GAME */}
-                <div>
-                  <h3 className="font-bold mb-2">Riwayat Mini Game</h3>
-                  <ul className="divide-y divide-gray-200">
-                    {miniGameLogs.length === 0 && (
-                      <li className="py-2 text-gray-500">Belum ada riwayat.</li>
-                    )}
-
-                    {miniGameLogs.map((log) => (
-                      <li className="flex justify-between py-2" key={log.id}>
-                        <span>{log.name}</span>
-                        <a
-                          href={"/mini-game/" + log.slug}
-                          className="text-blue-600 hover:underline"
-                        >
-                          Lihat
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <RiwayatMiniGame />
               </div>
             </div>
           )}
