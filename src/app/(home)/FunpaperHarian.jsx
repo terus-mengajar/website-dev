@@ -30,7 +30,7 @@ export default function FunpaperHarian() {
 
         {/* Hero Section */}
         <div className="flex items-center justify-center rounded-xl bg-[url('/images/bg/bg-konfeti.png')] bg-cover bg-center w-full h-[140px] lg:h-[180px] mb-14 p-2">
-          <h2 className="text-center font-bold text-2xl sm:text-3xl lg:text-4xl text-[#785556]">5000+ kali telah didownload</h2>
+          <h2 className="text-center font-bold text-2xl sm:text-3xl lg:text-4xl text-[#785556]">4600+ kali telah didownload</h2>
         </div>
         {/* <div className="flex flex-col lg:flex-row items-center justify-between mb-16 gap-4">
           <div className="lg:flex-basis-5/10 flex items-center justify-center rounded-xl lg:mb-0 bg-[url('/images/bg/bg-activity-2.avif')] bg-cover bg-center w-full h-[140px] lg:h-[180px]">

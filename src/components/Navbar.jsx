@@ -47,7 +47,7 @@ export default function Navbar() {
     <header
       className={
         (!isTransparent ? "bg-white fixed top-0 right-0 left-0" : "relative") +
-        " z-[1000] font-medium text-sm lg:text-xs xl:text-sm leading-6"
+        " z-[1000] font-medium text-sm leading-6"
       }
       ref={navRef}
     >

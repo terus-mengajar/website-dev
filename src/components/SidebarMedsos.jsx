@@ -56,7 +56,7 @@ export default function SidebarMedsos() {
                 className={`${item.color} grow text-white text-xl flex flex-col sm:flex-row items-center gap-3 px-6 py-4 rounded-lg font-semibold hover:opacity-90 transition`}
             >
                 {item.icon}
-                <span className="text-sm sm:text-xl">{item.name}</span>
+                <span className="hidden sm:inline-block text-sm sm:text-xl">{item.name}</span>
             </a>
             ))}
         </div>
