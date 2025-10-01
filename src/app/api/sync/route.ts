@@ -1,6 +1,6 @@
 // import { client, rqs } from "@/lib/recombee";
 
-// export async function GET(req) {
+export async function GET(req) {
 //   // contoh add item (funpaper)
 //   //   await client.send(new rqs.AddItem("funpaper-123"));
 
@@ -19,4 +19,4 @@
 //     console.error(error);
 //     return Response.json({ ok: false, error: error.message }, { status: 500 });
 //   }
-// }
+}
