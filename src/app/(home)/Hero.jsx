@@ -13,7 +13,7 @@ export default function Hero() {
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
-        autoplay={{ delay: 4000 }}
+        // autoplay={{ delay: 4000 }}
         navigation
         pagination={{ clickable: true }}
         // navigation={{
@@ -29,17 +29,19 @@ export default function Hero() {
         {/* Slide 1 */}
         <SwiperSlide>
           <section className="relative bg-[url('/images/bg/bg-lembar-kerja.avif')] bg-cover bg-center h-[600px]">
-            <img
+            <Image
               src="/images/funpaper/carousel-1.avif"
               alt="Slide 1"
-              className="w-[300px] md:w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] -right-[120px]"
+              height={630}
+              width={630}
+              className="w-[300px] md:w-[400px] lg:w-[580px] xl:w-[630px] h-auto absolute bottom-[-24%] -right-[120px]"
             />
 
             <div className="container h-full flex flex-col justify-center text-center items-center lg:items-start lg:text-left">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#ef9e00]">
                 400+ Lembar Kerja <br /> Gratis untuk Anak
               </h1>
-              <p className="max-w-2xl mb-6">
+              <p className="max-w-2xl mb-6 lg:pe-30">
                 Temukan berbagai macam jenis kegiatan untuk anak seperti
                 mengenal angka, huruf, mewarnai, gunting tempel, dan masih
                 banyak yang lainnya
@@ -57,17 +59,19 @@ export default function Hero() {
         {/* Slide 2 */}
         <SwiperSlide>
           <section className="relative bg-[url('/images/bg/bg-tele.avif')] bg-cover bg-center h-[600px]">
-            <img
+            <Image
               src="/images/funpaper/carousel-1.avif"
               alt="Slide 1"
-              className="w-[300px] md:w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] -right-[120px]"
+              height={630}
+              width={630}
+              className="w-[300px] md:w-[400px] lg:w-[580px] xl:w-[630px] h-auto absolute bottom-[-24%] -right-[120px]"
             />
 
             <div className="container h-full flex flex-col items-center justify-center text-center lg:items-start lg:text-left">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#713131]">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 lg:pe-70 text-[#713131]">
                 Join Telegram Channel
               </h1>
-              <p className="max-w-2xl mb-6">
+              <p className="max-w-2xl mb-6 lg:pe-40">
                 Yuk join kedalam channel Telegram kami untuk mendapatkan info
                 funpaper terbaru!
               </p>
@@ -85,18 +89,20 @@ export default function Hero() {
 
         {/* Slide 3 */}
         <SwiperSlide>
-          <section className="relative bg-[url('/images/bg/bg-tematik.avif')] bg-cover bg-center h-[600px]">
-            <img
-              src="/images/funpaper/carousel-2.avif"
+          <section className="relative bg-[url('/images/bg/bg-tematik.jpg')] bg-cover bg-center h-[600px]">
+            <Image
+              src="/images/funpaper/carousel-2.png"
               alt="Slide 1"
-              className="w-[300px] md:w-[400px] lg:w-[500px] h-auto absolute bottom-[-24%] -right-[120px]"
+              height={630}
+              width={630}
+              className="w-[300px] md:w-[400px] lg:w-[580px] xl:w-[630px] h-auto absolute bottom-[-24%] -right-[120px]"
             />
 
             <div className="container h-full flex flex-col items-center justify-center text-center  lg:items-start lg:text-left">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#416cbd]">
                 Funpaper Tematik
               </h1>
-              <p className="max-w-2xl mb-6">
+              <p className="max-w-2xl mb-6 lg:pe-30">
                 Kumpulan lembar kerja tersusun dalam berbagai macam tema
                 menarik, seperti tema tanaman, kebutuhanku, dll
               </p>
