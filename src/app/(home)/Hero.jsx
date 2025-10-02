@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
+import { SwiperNavButton } from "./SwiperNavButton";
 
 export default function Hero() {
   return (
@@ -13,17 +14,17 @@ export default function Hero() {
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
-        // autoplay={{ delay: 4000 }}
-        navigation
-        pagination={{ clickable: true }}
+        autoplay={{ delay: 4000 }}
+        // navigation
+        // pagination={{ clickable: true }}
         // navigation={{
         //   nextEl: ".hero-next",
         //   prevEl: ".hero-prev",
         // }}
-        // pagination={{
-        //   el: ".hero-pagination",
-        //   clickable: true,
-        // }}
+        pagination={{
+          el: ".hero-pagination",
+          clickable: true,
+        }}
         className="w-full"
       >
         {/* Slide 1 */}
@@ -115,9 +116,9 @@ export default function Hero() {
             </div>
           </section>
         </SwiperSlide>
-      </Swiper>
 
-      
+        <SwiperNavButton />
+      </Swiper>
     </section>
   );
 }

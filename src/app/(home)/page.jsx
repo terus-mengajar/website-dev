@@ -3,6 +3,7 @@ import Petualangan from "./Petualangan";
 import KatabaAI from "./KatabaAI";
 import FunpaperHarian from "./FunpaperHarian";
 import EbookCalistung from "./EbookCalistung";
+import Freebies from "./Freebies";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       {/* <KatabaAI /> */}
       <FunpaperHarian />
       <EbookCalistung />
+      <Freebies />
     </main>
   );
 }
