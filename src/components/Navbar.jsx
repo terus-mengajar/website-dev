@@ -58,7 +58,7 @@ export default function Navbar() {
             <div className="flex items-center gap-6">
               {/* Mobile Button */}
               <button
-                className="lg:hidden"
+                className="xl:hidden"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
               >
@@ -84,7 +84,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-6">
+            <nav className="hidden xl:flex items-center gap-6">
               <Link
                 href="/"
                 className={pathname === "/" ? "font-bold text-blue-500" : ""}
@@ -108,7 +108,7 @@ export default function Navbar() {
                   Download <ChevronDown size={16} />
                 </button>
                 {dropdownOpen === "download" && (
-                  <div className="absolute top-9 mt-2 w-40 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
+                  <div className="absolute top-9 mt-2 w-44 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
                     <Link
                       href="/funpaper-harian"
                       className={
@@ -133,6 +133,18 @@ export default function Navbar() {
                     >
                       Funpaper Tema
                     </Link>
+                    <Link
+                      href="/funpaper-calistung"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/funpaper-calistung"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
+                      onClick={() => setDropdownOpen(null)}
+                    >
+                      Funpaper Calistung
+                    </Link>
                   </div>
                 )}
               </div>
@@ -150,7 +162,7 @@ export default function Navbar() {
                 </span>
               </Link>
 
-              {/* <Link
+              <Link
                 href="/kataba-ai"
                 className={
                   pathname === "/kataba-ai" ? "font-bold text-blue-500" : ""
@@ -161,7 +173,7 @@ export default function Navbar() {
                 <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
                   New
                 </span>
-              </Link> */}
+              </Link>
 
               {/* Dropdown Lainnya */}
               <div className="relative">
@@ -282,6 +294,21 @@ export default function Navbar() {
                 >
                   Funpaper Tema
                 </Link>
+                <Link
+                  href="/funpaper-calistung"
+                  className={
+                    "block py-2 border-b border-[#cbaf78] " +
+                    (pathname === "/funpaper-calistung"
+                      ? " font-bold text-blue-500 "
+                      : "")
+                  }
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setDropdownOpen(null);
+                  }}
+                >
+                  Funpaper Calistung
+                </Link>
               </div>
             )}
           </div>
@@ -300,7 +327,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* <Link
+          <Link
             href="/kataba-ai"
             className="block py-2 border-b border-[#cbaf78]"
             onClick={() => {
@@ -312,7 +339,7 @@ export default function Navbar() {
             <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
               New
             </span>
-          </Link> */}
+          </Link>
 
           {/* Dropdown Lainnya */}
           <div>

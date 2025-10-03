@@ -1,13 +1,18 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-purple text-white py-12">
       <div className="container mx-auto px-4">
         {/* Back to top + Logo */}
         <div className="mb-8">
-          <img
+          <Image
             src="/images/logo/logo-tm-putih.avif"
             alt="Terusmengajar Logo"
-            className="h-10"
+            width={100}
+            height={40}
+            className="h-10 w-auto"
           />
         </div>
 
@@ -18,19 +23,24 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Produk</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/funpaper-harian" className="">
+                <Link href="/funpaper-harian" className="">
                   Funpaper Harian
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/funpaper-tema" className="">
+                <Link href="/funpaper-tema" className="">
                   Funpaper Tema
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/mini-game" className="">
+                <Link href="/funpaper-calistung" className="">
+                  Funpaper Calistung
+                </Link>
+              </li>
+              <li>
+                <Link href="/mini-game" className="">
                   Mini Games
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -40,19 +50,24 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Tentang Kami</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/tentang-kami" className="hover:underline">
+                <Link href="/tentang-kami" className="hover:underline">
                   terusmengajar.id
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/syarat-dan-ketentuan" className="hover:underline">
+                <Link href="https://docs.google.com/forms" className="hover:underline">
+                  Join Internship Program
+                </Link>
+              </li>
+              <li>
+                <Link href="/syarat-dan-ketentuan" className="hover:underline">
                   Syarat dan Ketentuan
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/credit-attribution" className="hover:underline">
+                <Link href="/credit-attribution" className="hover:underline">
                   Credit & Attribution
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
