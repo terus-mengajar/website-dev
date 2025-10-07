@@ -47,13 +47,15 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
   return (
     <div className="mt-6">
       <h3 className="text-2xl font-bold mb-4">Gratis</h3>
-      <ul className="list-disc pl-5 mb-6 text-gray-700 text-sm space-y-3">
+      <ul className="list-disc pl-5 mb-6 text-gray-700 text-sm space-y-3 font-medium">
         <li>Format PDF</li>
         <li>Siap print</li>
         <li>Tersedia dalam 2 ukuran (A4 & A5)</li>
         <li>Hanya untuk penggunaan pribadi</li>
         <li>Tekan tombol download untuk mulai mengunduh Funpaper</li>
       </ul>
+
+      <p className="text-gray-700 text-sm mb-4 font-medium">Silahkan lihat <a href="/syarat-dan-ketentuan" target="_blank" className="text-pink underline">Syarat & Ketentuan</a> sebelum klik tombol download</p>
 
       <div className="flex gap-3 mb-4">
         <button

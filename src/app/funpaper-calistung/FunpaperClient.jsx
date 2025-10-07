@@ -65,14 +65,14 @@ export default function Client({ params }) {
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="order-2 lg:order-1 w-full lg:w-auto">
             <div className="hidden lg:block">
-              <Filter
+              {/* <Filter
                 temaInitial={temaInitial}
                 aktivitasInitial={aktivitasInitial}
                 selectedKategori={selectedKategori}
                 toggleCheckboxKategori={toggleCheckboxKategori}
                 selectedUsia={selectedUsia}
                 toggleCheckboxUsia={toggleCheckboxUsia}
-              />
+              /> */}
             </div>
             <SidebarMedsos />
           </div>
@@ -88,7 +88,7 @@ export default function Client({ params }) {
       {/* Sidebar mobile */}
       {openMobileSidebar && (
         <>
-          <FilterMobile
+          {/* <FilterMobile
             temaInitial={temaInitial}
             aktivitasInitial={aktivitasInitial}
             selectedKategori={selectedKategori}
@@ -96,7 +96,7 @@ export default function Client({ params }) {
             selectedUsia={selectedUsia}
             toggleCheckboxUsia={toggleCheckboxUsia}
             onClose={() => setOpenMobileSidebar(false)}
-          />
+          /> */}
           <div
             className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setOpenMobileSidebar(false)}

@@ -5,8 +5,9 @@ import { File } from "lucide-react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
+export default function FunpaperDownload({ id, slug, link }) {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -16,7 +17,7 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
   const handleDownload = async () => {
     if (status !== "authenticated") {
       toast("Silakan masuk terlebih dahulu untuk download");
-      router.push(`/auth/login?callbackUrl=/funpaper-harian/${slug}`);
+      router.push(`/auth/login?callbackUrl=/funpaper-calistung/${slug}`);
       return;
     }
 
@@ -24,14 +25,14 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
 
     try {
       // update jumlah_downloaded
-      await fetch(`/api/funpaper-harian/${slug}/download`, {
+      await fetch(`/api/funpaper-calistung/${slug}/download`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: session.user.email, // isi dari state/props/context
-          funpaper_id: id, // isi dari props atau data
+          funpaper_calistung_id: id, // isi dari props atau data
         }),
       });
     } catch (err) {
@@ -39,23 +40,25 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
     }
 
     // tentukan link berdasarkan pilihan
-    const url = selected === "A4" ? linkA4 : linkA5;
+    // const url = selected === "A4" ? linkA4 : linkA5;
     setLoading(false);
-    window.open(url, "_blank");
+    window.open(link, "_blank");
   };
 
   return (
     <div className="mt-6">
       <h3 className="text-2xl font-bold mb-4">Gratis</h3>
-      <ul className="list-disc pl-5 mb-6 text-gray-700 text-sm space-y-3">
+      <ul className="list-disc pl-5 mb-6 text-gray-700 text-sm space-y-3 font-medium">
         <li>Format PDF</li>
         <li>Siap print</li>
-        <li>Tersedia dalam 2 ukuran (A4 & A5)</li>
+        {/* <li>Tersedia dalam 2 ukuran (A4 & A5)</li> */}
         <li>Hanya untuk penggunaan pribadi</li>
         <li>Tekan tombol download untuk mulai mengunduh Funpaper</li>
       </ul>
 
-      <div className="flex gap-3 mb-4">
+      <p className="text-gray-700 text-sm mb-4 font-medium">Silahkan lihat <a href="/syarat-dan-ketentuan" target="_blank" className="text-pink underline">Syarat & Ketentuan</a> sebelum klik tombol download</p>
+
+      {/* <div className="flex gap-3 mb-4">
         <button
           type="button"
           onClick={() => setSelected("A4")}
@@ -79,7 +82,7 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
         >
           <File /> Funpaper A5
         </button>
-      </div>
+      </div> */}
 
       <button
         onClick={handleDownload}

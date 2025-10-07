@@ -1,7 +1,7 @@
 import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
-  title: "Funpaper Harian",
+  title: "Funpaper Calistung",
   //   description:
   //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
 };

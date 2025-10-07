@@ -9,7 +9,7 @@ import { ListFilter } from "lucide-react";
 import Lottie from "lottie-react";
 import { useSearchParams } from "next/navigation";
 
-export default function FunpaperHarianList({ onOpenFilter, filters }) {
+export default function FunpaperList({ onOpenFilter, filters }) {
   const searchParams = useSearchParams();
   const hasParams = searchParams.toString().length > 0;
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await fetch(`/api/funpaper-harian?${filters}`);
+      const res = await fetch(`/api/funpaper-calistung`);
       const data = await res.json();
       setFunpaperData(data);
       setLoading(false);
@@ -68,12 +68,12 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
         </p>
 
         {/* Tombol filter khusus mobile */}
-        <button
+        {/* <button
           className="border border-[#ecdab7] hover:bg-gray-100 text-sm rounded font-medium px-2 py-1 lg:hidden flex flex-row gap-1 items-center mb-4"
           onClick={onOpenFilter}
         >
           <ListFilter size={16} /> Filter
-        </button>
+        </button> */}
 
         <select
           value={sort}
@@ -116,7 +116,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {funpapers.map((funpaper) => (
               <Link
-                href={"/funpaper-harian/" + funpaper.slug}
+                href={"/funpaper-calistung/" + funpaper.slug}
                 key={funpaper.id}
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
@@ -124,7 +124,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
                   <Image
                     src={
                       CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                      "/funpaper-harian/" +
+                      "/funpaper-calistung/" +
                       funpaper.slug +
                       ".jpg"
                     }
@@ -134,7 +134,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
                     className="mx-auto object-contain mb-6"
                   />
                   <p className="text-xs text-center mb-2">
-                    {funpaper.name + " - " + funpaper.activity}
+                    {funpaper.name + " - " + funpaper.theme}
                   </p>
                   {funpaper.downloaded > 0 && (
                     <p className="text-xs text-gray-400 text-center">

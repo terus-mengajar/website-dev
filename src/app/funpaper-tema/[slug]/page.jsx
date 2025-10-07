@@ -46,7 +46,7 @@ export default async function FunpaperTemaPage({ params }) {
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">
               {funpaper.mockup_url && (
-                <Image
+                <img
                   src={funpaper.mockup_url}
                   width={800}
                   height={450}
@@ -115,7 +115,9 @@ export default async function FunpaperTemaPage({ params }) {
                 {funpaper.price && "Rp. " + funpaper.price.toLocaleString("id-ID")}
               </h3>
 
-              <div className="flex gap-3 mb-8">
+              <p className="text-gray-700 text-sm mb-4 font-medium">Silahkan lihat <a href="/syarat-dan-ketentuan" target="_blank" className="text-pink underline">Syarat & Ketentuan</a> sebelum klik tombol beli</p>
+
+              <div className="flex gap-3 mb-5">
                 <button
                   type="button"
                   className="px-2 py-1 rounded-lg border flex items-center text-xs font-medium gap-2 text-red-600 border-red-500"

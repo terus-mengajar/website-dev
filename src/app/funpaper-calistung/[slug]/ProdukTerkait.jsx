@@ -5,13 +5,13 @@ import LoadingCard from "@/components/LoadingCard";
 import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 
-export default function ProdukTerkait({ activityId, themeId }) {
+export default function ProdukTerkait({ themeCalistungId }) {
   const [funpapers, setFunpapers] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `/api/funpaper-harian?limit=4&activity_id=${activityId}&theme_id=${themeId}`
+        `/api/funpaper-calistung?limit=4&theme_calistung_id=${themeCalistungId}`
       );
       const data = await res.json();
       setFunpapers(data);
@@ -35,7 +35,7 @@ export default function ProdukTerkait({ activityId, themeId }) {
               {funpapers.map((funpaper) => (
                 <Link
                   className="flex flex-col items-center hover:shadow hover:cursor-pointer rounded-lg p-3 justify-between"
-                  href={"/funpaper-harian/" + funpaper.slug}
+                  href={"/funpaper-calistung/" + funpaper.slug}
                   key={funpaper.id}
                 >
                   <div className="mb-2 flex flex-col items-center">
@@ -43,7 +43,7 @@ export default function ProdukTerkait({ activityId, themeId }) {
                       <img
                         src={
                           CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                          "/funpaper-harian/" +
+                          "/funpaper-calistung/" +
                           funpaper.slug +
                           ".jpg"
                         }
@@ -52,7 +52,7 @@ export default function ProdukTerkait({ activityId, themeId }) {
                       />
                     </div>
                     <h4 className="text-center text-sm font-medium mt-2">
-                      {funpaper.name + " - " + funpaper.activity}
+                      {funpaper.name + " - " + funpaper.theme}
                     </h4>
                   </div>
                   <span className="mt-2 inline-block tombol-ungu text-white text-xs font-medium px-3 py-1 rounded-lg transition">

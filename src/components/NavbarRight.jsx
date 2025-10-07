@@ -75,7 +75,7 @@ export default function NavbarRight() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             required
-            className="flex-1 w-40 lg:w-30 xl:w-50 px-3 py-2 bg-transparent focus:outline-none text-sm"
+            className="flex-1 w-50 px-3 py-2 bg-transparent focus:outline-none text-sm"
           />
           <button
             type="submit"

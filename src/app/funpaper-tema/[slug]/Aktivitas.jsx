@@ -51,7 +51,7 @@ export default function Aktivitas({ id, slug }) {
                     setOpen(true);
                   }}
                 >
-                  <Image
+                  <img
                     src={activity.image_url}
                     alt={activity.name}
                     width={110}
