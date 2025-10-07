@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function RiwayatMiniGame() {
   const [miniGameLogs, setMiniGameLogs] = useState([]);
@@ -39,12 +40,12 @@ export default function RiwayatMiniGame() {
             {minigames.map((log) => (
               <li className="flex justify-between py-2" key={log.id}>
                 <span>{log.name}</span>
-                <a
+                <Link
                   href={"/mini-game/" + log.slug}
                   className="text-blue-600 hover:underline"
                 >
                   Lihat
-                </a>
+                </Link>
               </li>
             ))}
 

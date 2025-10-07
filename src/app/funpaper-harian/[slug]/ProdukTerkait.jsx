@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import LoadingCard from "@/components/LoadingCard";
 import Link from "next/link";
+import Image from "next/image";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 
 export default function ProdukTerkait({ activityId, themeId }) {
@@ -47,6 +48,8 @@ export default function ProdukTerkait({ activityId, themeId }) {
                           funpaper.slug +
                           ".jpg"
                         }
+                        height={461}
+                        width={328}
                         alt="Produk Terkait"
                         className="h-full object-cover w-[80%]"
                       />

@@ -47,7 +47,7 @@ export default async function FunpaperHarianPage({ params }) {
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">
               {funpaper.slug && (
-                <Image
+                <img
                   src={
                     CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
                     "/funpaper-harian/" +

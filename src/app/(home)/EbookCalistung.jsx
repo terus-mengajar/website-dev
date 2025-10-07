@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function EbookCalistung() {
   return (
     <section className="base-section py-24 bg-[url('/images/bg/bg-calistung-1.avif')] bg-cover bg-center">
@@ -16,10 +18,12 @@ export default function EbookCalistung() {
         </div>
 
         <div className="lg:basis-4/10 flex justify-center lg:justify-end order-1 lg:order-2">
-          <img
+          <Image
             src="/images/funpaper/ebook/ebook-calistung.avif"
-            alt=""
-            className="h-[250px]"
+            alt="calistung"
+            className="h-auto"
+            width={300}
+            height={200}
           />
         </div>
       </div>

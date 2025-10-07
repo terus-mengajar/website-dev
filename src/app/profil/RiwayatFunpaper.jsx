@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function RiwayatFunpaper() {
   const [funpaperLogs, setFunpaperLogs] = useState([]);
@@ -39,12 +40,12 @@ export default function RiwayatFunpaper() {
             {funpapers.map((log) => (
               <li className="flex justify-between py-2" key={log.id}>
                 <span>{log.name}</span>
-                <a
-                  href={"/katalog/" + log.slug}
+                <Link
+                  href={"/funpaper-harian/" + log.slug}
                   className="text-blue-600 hover:underline"
                 >
                   Lihat
-                </a>
+                </Link>
               </li>
             ))}
 

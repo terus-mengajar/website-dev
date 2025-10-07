@@ -17,13 +17,14 @@ export default function Navbar() {
 
   // daftar halaman yang pakai navbar transparan
   const transparentRoutes = [
-    "/", 
-    "/info/funpaper-harian", 
-    "/info/funpaper-tema", 
-    "/info/funpaper-harian-bundle", 
-    "/info/funsticker", 
-    "/info/mini-games", 
-    "/info/funpaper-activity"
+    "/",
+    "/info/funpaper-harian",
+    "/info/funpaper-tema",
+    "/info/funpaper-harian-bundle",
+    "/info/funsticker",
+    "/info/mini-games",
+    "/info/funpaper-activity",
+    "/info/funpaper-calistung",
   ];
   const isTransparent = transparentRoutes.includes(pathname);
 
@@ -53,7 +54,6 @@ export default function Navbar() {
     >
       <div className="container">
         <div className="flex items-center justify-between gap-4 py-4">
-
           <div className="flex flex-row">
             <div className="flex items-center gap-6">
               {/* Mobile Button */}
@@ -230,173 +230,180 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {menuOpen && (
-        <nav className={ (!isTransparent ? "fixed " : "absolute ") + "left-0 right-0 top-[68px] lg:hidden bg-white px-4 py-4 space-y-3 z-[999] overflow-y-auto"}>
-          <Link
-            href="/"
-            className="block py-2 border-b border-[#cbaf78]"
-            onClick={() => {
-              setMenuOpen(false);
-              setDropdownOpen(null);
-            }}
-          >
-            Home
-          </Link>
-
-          {/* Dropdown Download */}
-          <div>
-            <button
-              onClick={() => toggleDropdown("download")}
-              className={
-                "flex w-full items-center justify-between py-2 border-b border-[#cbaf78] " +
-                (pathname === "/funpaper-harian" ||
-                pathname === "/funpaper-tema"
-                  ? " font-bold text-blue-500 "
-                  : "")
-              }
+        <nav
+          className={
+            (!isTransparent ? "fixed " : "absolute ") +
+            "left-0 right-0 top-[68px] xl:hidden bg-white px-4 py-4 space-y-3 z-[999] overflow-y-auto"
+          }
+        >
+          <div className="container">
+            <Link
+              href="/"
+              className="block py-2 border-b border-[#cbaf78]"
+              onClick={() => {
+                setMenuOpen(false);
+                setDropdownOpen(null);
+              }}
             >
-              <span>Download</span>
-              <ChevronDown
-                size={16}
-                className={`transition-transform ${
-                  dropdownOpen === "download" ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            {dropdownOpen === "download" && (
-              <div className="pl-4 mt-2 space-y-2">
-                <Link
-                  href="/funpaper-harian"
-                  className={
-                    "block py-2 border-b border-[#cbaf78] " +
-                    (pathname === "/funpaper-harian"
-                      ? " font-bold text-blue-500 "
-                      : "")
-                  }
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setDropdownOpen(null);
-                  }}
-                >
-                  Funpaper Harian
-                </Link>
-                <Link
-                  href="/funpaper-tema"
-                  className={
-                    "block py-2 border-b border-[#cbaf78] " +
-                    (pathname === "/funpaper-tema"
-                      ? " font-bold text-blue-500 "
-                      : "")
-                  }
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setDropdownOpen(null);
-                  }}
-                >
-                  Funpaper Tema
-                </Link>
-                <Link
-                  href="/funpaper-calistung"
-                  className={
-                    "block py-2 border-b border-[#cbaf78] " +
-                    (pathname === "/funpaper-calistung"
-                      ? " font-bold text-blue-500 "
-                      : "")
-                  }
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setDropdownOpen(null);
-                  }}
-                >
-                  Funpaper Calistung
-                </Link>
-              </div>
-            )}
-          </div>
+              Home
+            </Link>
 
-          <Link
-            href="/mini-game"
-            className="block py-2 border-b border-[#cbaf78]"
-            onClick={() => {
-              setMenuOpen(false);
-              setDropdownOpen(null);
-            }}
-          >
-            Mini Game{" "}
-            <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
-              New
-            </span>
-          </Link>
+            {/* Dropdown Download */}
+            <div>
+              <button
+                onClick={() => toggleDropdown("download")}
+                className={
+                  "flex w-full items-center justify-between py-2 border-b border-[#cbaf78] " +
+                  (pathname === "/funpaper-harian" ||
+                  pathname === "/funpaper-tema"
+                    ? " font-bold text-blue-500 "
+                    : "")
+                }
+              >
+                <span>Download</span>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${
+                    dropdownOpen === "download" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {dropdownOpen === "download" && (
+                <div className="pl-4 mt-2 space-y-2">
+                  <Link
+                    href="/funpaper-harian"
+                    className={
+                      "block py-2 border-b border-[#cbaf78] " +
+                      (pathname === "/funpaper-harian"
+                        ? " font-bold text-blue-500 "
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Funpaper Harian
+                  </Link>
+                  <Link
+                    href="/funpaper-tema"
+                    className={
+                      "block py-2 border-b border-[#cbaf78] " +
+                      (pathname === "/funpaper-tema"
+                        ? " font-bold text-blue-500 "
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Funpaper Tema
+                  </Link>
+                  <Link
+                    href="/funpaper-calistung"
+                    className={
+                      "block py-2 border-b border-[#cbaf78] " +
+                      (pathname === "/funpaper-calistung"
+                        ? " font-bold text-blue-500 "
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Funpaper Calistung
+                  </Link>
+                </div>
+              )}
+            </div>
 
-          <Link
-            href="/kataba-ai"
-            className="block py-2 border-b border-[#cbaf78]"
-            onClick={() => {
-              setMenuOpen(false);
-              setDropdownOpen(null);
-            }}
-          >
-            Kataba AI{" "}
-            <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
-              New
-            </span>
-          </Link>
-
-          {/* Dropdown Lainnya */}
-          <div>
-            <button
-              onClick={() => toggleDropdown("lainnya")}
-              className={
-                (pathname === "/galeri-produk" || pathname === "/tentang-kami"
-                  ? " font-bold text-blue-500 "
-                  : "") +
-                (dropdownOpen === "lainnya"
-                  ? " border-b border-[#cbaf78] "
-                  : "") +
-                " flex w-full items-center justify-between py-2 "
-              }
+            <Link
+              href="/mini-game"
+              className="block py-2 border-b border-[#cbaf78]"
+              onClick={() => {
+                setMenuOpen(false);
+                setDropdownOpen(null);
+              }}
             >
-              <span>Lainnya</span>
-              <ChevronDown
-                size={16}
-                className={`transition-transform ${
-                  dropdownOpen === "lainnya" ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            {dropdownOpen === "lainnya" && (
-              <div className="pl-4 mt-2 space-y-2">
-                <Link
-                  href="/galeri-produk"
-                  className={
-                    "block py-2 border-b border-[#cbaf78] " +
-                    (pathname === "/galeri-produk"
-                      ? "font-bold text-blue-500"
-                      : "")
-                  }
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setDropdownOpen(null);
-                  }}
-                >
-                  Galeri Produk
-                </Link>
-                <Link
-                  href="/tentang-kami"
-                  className={
-                    "block py-2 " +
-                    (pathname === "/tentang-kami"
-                      ? "font-bold text-blue-500"
-                      : "")
-                  }
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setDropdownOpen(null);
-                  }}
-                >
-                  Tentang Kami
-                </Link>
-              </div>
-            )}
+              Mini Game{" "}
+              <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                New
+              </span>
+            </Link>
+
+            <Link
+              href="/kataba-ai"
+              className="block py-2 border-b border-[#cbaf78]"
+              onClick={() => {
+                setMenuOpen(false);
+                setDropdownOpen(null);
+              }}
+            >
+              Kataba AI{" "}
+              <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                New
+              </span>
+            </Link>
+
+            {/* Dropdown Lainnya */}
+            <div>
+              <button
+                onClick={() => toggleDropdown("lainnya")}
+                className={
+                  (pathname === "/galeri-produk" || pathname === "/tentang-kami"
+                    ? " font-bold text-blue-500 "
+                    : "") +
+                  (dropdownOpen === "lainnya"
+                    ? " border-b border-[#cbaf78] "
+                    : "") +
+                  " flex w-full items-center justify-between py-2 "
+                }
+              >
+                <span>Lainnya</span>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${
+                    dropdownOpen === "lainnya" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {dropdownOpen === "lainnya" && (
+                <div className="pl-4 mt-2 space-y-2">
+                  <Link
+                    href="/galeri-produk"
+                    className={
+                      "block py-2 border-b border-[#cbaf78] " +
+                      (pathname === "/galeri-produk"
+                        ? "font-bold text-blue-500"
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Galeri Produk
+                  </Link>
+                  <Link
+                    href="/tentang-kami"
+                    className={
+                      "block py-2 " +
+                      (pathname === "/tentang-kami"
+                        ? "font-bold text-blue-500"
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Tentang Kami
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </nav>
       )}

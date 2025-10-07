@@ -39,7 +39,7 @@ export default function page() {
               <p className="text-lg md:text-xl font-medium">
                 Kumpulan lembar kerja dengan aktivitas yang fokus pada keterampilan dasar anak usia dini seperti pengenalan angka dan huruf, kemampuan motorik halus (menggunting, menebalkan garis, menulis), kreativitas seni (mewarnai, menggambar), serta aktivitas kognitif sederhana seperti maze dan soal campuran.
               </p>
-              <Link href="/funpaper-harian" className="tombol-biru-tua">
+              <Link href="/funpaper-calistung" className="tombol-biru-tua">
                 Download Sekarang
               </Link>
             </div>

@@ -4,3 +4,4 @@ export const CLOUDFLARE_HEADER = {
   "Content-Type": "application/json",
 };
 export const CLOUDFLARE_R2_WEBSITE_ASSETS_URL = 'https://pub-61ce2a798f304449b474f2fef180a9a5.r2.dev';
+export const CLOUDFLARE_R2_PRODUCTS_MAIN_STORAGE_URL = 'https://pub-098c9d7bf3d5466b86f0f0725eb42439.r2.dev';
