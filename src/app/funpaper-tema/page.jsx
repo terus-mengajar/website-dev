@@ -15,7 +15,7 @@ export default async function Page() {
             Home &gt; <b>Funpaper Tema</b>
           </p>
 
-          <div className="card-header">
+          <div className="card-header bg-[#D4F3FF]! bg-[url(/images/shapes/logo-tm-blue-cropped.png)]!">
             <img src="/images/assets/funpaper.avif" className="w-32" alt="" />
             <div className="flex flex-col gap-3 py-4">
               <p className="font-bold">Funpaper Tema</p>

@@ -17,7 +17,7 @@ export default async function Page({ searchParams }) {
             Home &gt; <b>Funpaper Harian</b>
           </p>
 
-          <div className="card-header">
+          <div className="card-header bg-[#BDF2B2]! bg-[url(/images/shapes/logo-tm-green-cropped.png)]!">
             <img src="/images/assets/funpaper.avif" className="w-32" alt="" />
             <div className="flex flex-col gap-3 py-4">
               <p className="font-bold">Funpaper Harian</p>
