@@ -4,7 +4,7 @@ import {
   FaTiktok,
   FaInstagram,
   FaPinterest,
-  FaTelegram,
+  FaTelegramPlane,
   FaWhatsapp,
 } from "react-icons/fa";
 
@@ -14,24 +14,24 @@ export default function SidebarMedsos() {
       name: "Tiktok",
       color: "bg-black",
       icon: <FaTiktok size={28} />,
-      url: "#",
+      url: "https://www.tiktok.com/@terusmengajar.id",
     },
     {
       name: "Instagram",
-      color: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500",
+      color: "bg-gradient-to-r from-[#F6825C] to-[#9238C0]",
       icon: <FaInstagram size={28} />,
-      url: "#",
+      url: "https://instagram.com/terusmengajar",
     },
     {
       name: "Pinterest",
       color: "bg-red-600",
       icon: <FaPinterest size={28} />,
-      url: "#",
+      url: "https://pinterest.com/terusmengajar/",
     },
     // {
     //   name: "Telegram",
     //   color: "bg-sky-500",
-    //   icon: <FaTelegram size={20} />,
+    //   icon: <FaTelegramPlane size={20} />,
     //   url: "#",
     // },
     // {
@@ -65,12 +65,12 @@ export default function SidebarMedsos() {
         <div>
           <p className="text-xs mb-2 font-semibold">Bundle Funpaper Gratis tiap pekan</p>
           <a
-            href="#"
+            href="https://t.me/terusmengajarofficial"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-sky-500 text-white text-xl flex items-center gap-3 px-6 py-4 rounded-lg font-semibold hover:opacity-90 transition"
           >
-            <FaTelegram size={28} />
+            <FaTelegramPlane size={28} />
             <span>Telegram</span>
           </a>
         </div>
@@ -78,7 +78,7 @@ export default function SidebarMedsos() {
         <div>
           <p className="text-xs mb-2 font-semibold">Tanya Produk & Informasi Lainnya</p>
           <a
-            href="#"
+            href="https://api.whatsapp.com/send?phone=6281934733175"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-green-500 text-white text-xl flex items-center gap-3 px-6 py-4 rounded-lg font-semibold hover:opacity-90 transition"

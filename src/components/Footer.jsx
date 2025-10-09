@@ -55,7 +55,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://docs.google.com/forms" className="hover:underline">
+                <Link href="https://s.id/terusmengajar-internship" className="hover:underline">
                   Join Internship Program
                 </Link>
               </li>

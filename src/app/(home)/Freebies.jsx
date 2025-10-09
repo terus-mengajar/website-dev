@@ -14,7 +14,7 @@ export default function Freebies() {
           <p className="my-5 font-medium">Anda dapat Free Funpaper Bundle cuma-cuma! 👉 </p>
           <div className="flex gap-2 justify-center lg:justify-start">
               {/* <button className="tombol-biru text-[12px]! md:text-sm!">Download</button> */}
-              <a href="https://t.me/terusmengajarofficial" target="_blank" className="tombol-coklat text-[12px]! md:text-sm! inline-block">Ambil Bundlenya</a>
+              <a href="https://s.id/terusmengajar-feedback" target="_blank" className="tombol-coklat text-[12px]! md:text-sm! inline-block">Ambil Bundlenya</a>
             </div>
         </div>
 

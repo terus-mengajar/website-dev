@@ -1,5 +1,12 @@
 // import InputObrolan from "./InputObrolan";
 import Image from "next/image";
+import {
+  FaTiktok,
+  FaInstagram,
+  FaPinterest,
+  FaTelegramPlane,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 export const metadata = {
   title: "Kataba AI",
@@ -8,8 +15,41 @@ export const metadata = {
 };
 
 export default async function Page() {
+  const items = [
+    {
+      name: "Tiktok",
+      color: "bg-black",
+      icon: <FaTiktok size={24} />,
+      url: "https://www.tiktok.com/@terusmengajar.id",
+    },
+    {
+      name: "Instagram",
+      color: "bg-gradient-to-r from-[#F6825C] to-[#9238C0]",
+      icon: <FaInstagram size={24} />,
+      url: "https://instagram.com/terusmengajar",
+    },
+    {
+      name: "Pinterest",
+      color: "bg-red-600",
+      icon: <FaPinterest size={24} />,
+      url: "https://pinterest.com/terusmengajar/",
+    },
+    {
+      name: "Whatsapp",
+      color: "bg-green-500",
+      icon: <FaWhatsapp size={24} />,
+      url: "https://api.whatsapp.com/send?phone=6281934733175",
+    },
+    {
+      name: "Telegram",
+      color: "bg-sky-500",
+      icon: <FaTelegramPlane size={24} />,
+      url: "https://t.me/terusmengajarofficial",
+    },
+  ];
+
   return (
-    <main className="bg-[#fcfbf8] text-md mt-[68px] pt-[40px] pb-[80px] min-h-120">
+    <main className="bg-[#fcfbf8] text-md mt-[68px] pt-[40px] min-h-120">
       <section className="mb-14 py-14">
         <div className="container flex flex-col lg:flex-row gap-18">
           <div className="order-2 lg:order-1">
@@ -107,13 +147,35 @@ export default async function Page() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 px-4 bg-[url(/images/bg/bg-katabaai.jpg)] bg-cover bg-no-repeat bg-center lg:bg-position-[center_top_-500px] min-h-[400px] md:min-h-[300px] flex flex-col justify-center">
         <div className="container flex flex-col items-center space-y-2">
-          <h2 className="text-amber-500 text-3xl font-bold leading-10 md:leading-tight text-center">
-            Follow social media kami untuk mendapatkan info terbaru dari KATABA
-            AI
+          <h2 className="text-amber-500 text-xl md:text-3xl font-bold leading-8 md:leading-12 text-center">
+            Dapatkan pengalaman memilih produk yang lebih cerdas dan personal.
+            Tetap terhubung dengan Kataba AI untuk info dan inovasi terbaru
           </h2>
-          <p className="text-center">Kataba, teman setia Ayah Bunda dampingi si kecil belajar</p>
+          <div className="mt-20 bg-white/60 rounded-2xl p-8 w-full border-3 border-white">
+            <p className="text-amber-500 text-xl md:text-3xl font-bold leading-8 md:leading-12 text-center mb-4">
+              Follow social media kami
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              {items.map((item, i) => (
+                <a
+                  key={i}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${item.color} grow text-white text-xl flex flex-col sm:flex-row items-center gap-3 px-3 py-2 rounded-lg font-semibold hover:opacity-90 transition`}
+                >
+                  {item.icon}
+                  <span className="hidden sm:inline-block text-sm sm:text-md">
+                    {item.name}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+
           {/* <h2 className="text-amber-500 text-3xl md:text-5xl font-bold leading-10 md:leading-14 text-center">
             Jadilah yang pertama kali berinteraksi dengan KATABA
           </h2>

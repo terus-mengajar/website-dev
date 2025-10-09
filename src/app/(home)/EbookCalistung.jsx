@@ -13,7 +13,7 @@ export default function EbookCalistung() {
           </p>
           <div className="flex gap-2 pt-5 justify-center lg:justify-start">
               {/* <button className="tombol-biru text-[12px]! md:text-sm!">Download</button> */}
-              <a href="https://t.me/terusmengajarofficial" target="_blank" className="tombol-pink bg-[#DB63A7]! text-[12px]! md:text-sm! inline-block">Join Waiting List</a>
+              <a href="https://s.id/waiting-list-ebook-calistung" target="_blank" className="tombol-pink bg-[#DB63A7]! text-[12px]! md:text-sm! inline-block">Join Waiting List</a>
             </div>
         </div>
 

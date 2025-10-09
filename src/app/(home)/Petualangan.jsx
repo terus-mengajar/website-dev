@@ -215,12 +215,12 @@ export default function Petualangan() {
 
           <div className="lg:basis-5/10 text-center lg:text-left order-2 lg:order-1">
             <h2 className="text-karakter">Funsticker</h2>
-            <p>
+            <p className="mb-8">
               Buku stiker penuh aktivitas kreatif untuk anak 2–6 tahun. Membantu
               mengembangkan motorik, logika, dan bahasa, sambil menciptakan
               waktu bermain berkualitas dengan orang tua.
             </p>
-            <button className="tombol-segera mt-5">Segera Hadir</button>
+            <a className="tombol-pink" href="https://s.id/waiting-list-funsticker" target="_blank">Join Waiting List</a>
           </div>
         </div>
 
