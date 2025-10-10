@@ -5,10 +5,35 @@ import FunpaperList from "./FunpaperList";
 import Filter from "@/components/Filter";
 import { useEffect, useState } from "react";
 import FilterMobile from "@/components/FilterMobile";
+import { useSearchParams } from "next/navigation";
 
-export default function Client({ params }) {
-  const temaInitial = params.tema;
-  const aktivitasInitial = params.aktivitas;
+export default function Client() {
+  // const temaInitial = params.tema;
+  // const aktivitasInitial = params.aktivitas;
+  const searchParams = useSearchParams();
+  const temaQuery = searchParams.get("tema");
+  const aktivitasQuery = searchParams.get("aktivitas");
+
+  const [temaInitial, setTemaInitial] = useState(temaQuery || null);
+  const [aktivitasInitial, setAktivitasInitial] = useState(aktivitasQuery || null);
+
+  // Reset kalau query berubah atau hilang
+  useEffect(() => {
+    if (aktivitasQuery) {
+      setAktivitasInitial(aktivitasQuery);
+    } else {
+      setAktivitasInitial(null);
+    }
+  }, [aktivitasQuery]);
+
+    // Reset kalau query berubah atau hilang
+  useEffect(() => {
+    if (temaQuery) {
+      setTemaInitial(temaQuery);
+    } else {
+      setTemaInitial(null);
+    }
+  }, [temaQuery]);
 
   const [openMobileSidebar, setOpenMobileSidebar] = useState(false);
 

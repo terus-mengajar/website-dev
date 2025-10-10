@@ -30,7 +30,6 @@ export default function Filter({
       const res = await fetch("/api/filter/funpaper-harian/kategori");
       const data = await res.json();
       setFilterKategori(data);
-      // console.log(data);
       setLoadingKategori(false);
     }
     fetchData();
@@ -58,14 +57,24 @@ export default function Filter({
               .map((a) => `${k.value}_${a.value}`)
           ),
         ];
+      } else {
+        // aktivitasInitial null → kosongkan filter
+        defaults = [];
       }
 
       // kirim ke parent lewat toggleCheckboxKategori
-      defaults.forEach((val) => {
-        if (!selectedKategori.includes(val)) {
-          toggleCheckboxKategori(val);
-        }
-      });
+      if (defaults.length > 0) {
+        defaults.forEach((val) => {
+          if (!selectedKategori.includes(val)) {
+            toggleCheckboxKategori(val);
+          }
+        });
+      } else {
+        // aktivitasInitial hilang → uncheck semua yang sebelumnya dicentang otomatis
+        selectedKategori.forEach((val) => {
+          toggleCheckboxKategori(val); // toggle ulang semua = uncheck
+        });
+      }
     }
   }, [filterKategori]);
 
@@ -111,9 +120,7 @@ export default function Filter({
           )}
 
           {!loadingKategori && expandedKategori && (
-            
             <div className="space-y-2 py-2 pl-4">
-              
               {filterKategori.map((kategori, idx) => (
                 <div key={kategori.value + "_" + kategori.value}>
                   <p className="font-bold">{kategori.label}</p>
