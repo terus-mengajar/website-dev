@@ -138,11 +138,11 @@ export default function ProfilePage({ session }) {
                   <tbody>
                     <tr>
                       <td className="pe-8 py-2">Nama</td>
-                      <td>Mohammada Aprilianto</td>
+                      <td>{nama}</td>
                     </tr>
                     <tr>
                       <td className="pe-8 py-2">Email</td>
-                      <td>mohammada.aprilianto@gmail.com</td>
+                      <td>{email}</td>
                     </tr>
                   </tbody>
                 </table>
