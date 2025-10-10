@@ -6,12 +6,12 @@ export default async function LoginPage() {
   if (session) redirect("/");
 
   return (
-    <div className="relative overflow-hidden min-h-screen flex flex-col justify-center items-center bg-[#fff3d5]">
-      <div className="text-center mb-6">
+    <div className="relative overflow-hidden min-h-screen py-22 flex flex-col justify-center items-center bg-[#fff3d5]">
+      <div className="text-center mb-4 sm:mb-6">
         <img
           src="/images/logo/logo-tm-warna.avif"
           alt="Logo"
-          className="mx-auto w-20"
+          className="mx-auto w-16 sm:w-20"
         />
       </div>
 
