@@ -268,7 +268,7 @@ export default function page() {
 
               <p className="leading-tight">Saatnya motivasi anak untuk belajar sambil ekspresikan kreativitas mereka.</p>
 
-              <Link href="/" className="tombol-pink">
+              <Link href="/" className="tombol-pink text-lg!">
                 Pesan Sekarang
               </Link>
             </div>

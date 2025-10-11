@@ -187,7 +187,7 @@ export default function page() {
                 Yuk bantu anak siap membaca, menulis, dan berhitung dengan mudah
               </h2>
 
-              <Link href="/funpaper-calistung" className="tombol-pink">
+              <Link href="/funpaper-calistung" className="tombol-pink text-lg!">
                 Download Sekarang
               </Link>
             </div>

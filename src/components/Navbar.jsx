@@ -25,6 +25,7 @@ export default function Navbar() {
     "/info/mini-games",
     "/info/funpaper-activity",
     "/info/funpaper-calistung",
+    "/info/ebook-funpaper-calistung",
   ];
   const isTransparent = transparentRoutes.includes(pathname);
 

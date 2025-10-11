@@ -367,7 +367,7 @@ export default function page() {
                 Beri anak pengalaman belajar yang menyenangkan setiap hari
               </h2>
 
-              <Link href="/funsticker" className="tombol-pink">
+              <Link href="/funsticker" className="tombol-pink text-lg!">
                 Beli Sekarang
               </Link>
             </div>
@@ -378,7 +378,7 @@ export default function page() {
       <section className="py-20 px-4 bg-[url(/images/bg/bg-funsticker-2.avif)] bg-cover bg-no-repeat bg-center  min-h-[200px] md:min-h-[280px] flex flex-col justify-center">
         <div className="container">
           <h2 className="text-biru text-2xl md:text-4xl font-bold text-center">
-            Lorem Ipsum Dolor Sit Amet
+            Bermain bermakna, tumbuh cerdas dan bahagia
           </h2>
         </div>
       </section>

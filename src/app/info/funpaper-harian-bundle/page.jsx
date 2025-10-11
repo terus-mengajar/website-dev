@@ -318,7 +318,7 @@ export default function page() {
                     src={solusi.img}
                     width={40}
                     height={40}
-                    alt={solusi.heading}
+                    alt="solusi"
                     className="h-auto"
                   />
                 </div>
@@ -353,11 +353,11 @@ export default function page() {
                 pesan sekarang juga!
               </p>
 
-              <div className="flex flex-col md:flex-row gap-4 text-center">
-                <Link href="/funpaper-harian" className="tombol-pink">
+              <div className="flex flex-col xl:flex-row gap-4 text-center">
+                <Link href="/funpaper-harian" className="tombol-pink text-lg!">
                   Download Sekarang
                 </Link>
-                <Link href="/funpaper-harian" className="tombol-biru-muda">
+                <Link href="/funpaper-harian" className="tombol-biru-muda text-lg!">
                   Preorder Sekarang
                 </Link>
               </div>

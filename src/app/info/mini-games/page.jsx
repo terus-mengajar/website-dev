@@ -292,11 +292,13 @@ export default function page() {
               />
             </div>
             <div className="text-center md:text-left">
-              <h2 className="font-bold text-xl leading-tight sm:text-3xl lg:text-4xl mb-8 text-center md:text-left">
+              <h2 className="font-bold text-xl leading-tight sm:text-3xl lg:text-4xl text-center md:text-left mb-4">
                 Yuk Mainkan<br />Sekarang!
               </h2>
 
-              <Link href="/mini-game" className="tombol-pink">
+              <p className="mb-7">Klik tombol di bawah ini untuk langsung mencoba gamenya bersama anak!</p>
+
+              <Link href="/mini-game" className="tombol-pink text-lg!">
                 Mainkan Sekarang
               </Link>
             </div>
@@ -304,9 +306,9 @@ export default function page() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-[url(/images/bg/bg-minigame-1.avif)] bg-cover md:bg-position-[center_top_-100px] bg-no-repeat  min-h-[200px] md:min-h-[280px] flex flex-col justify-center">
+      <section className="py-24 px-4 bg-[url(/images/bg/bg-minigame-1.avif)] bg-cover md:bg-position-[center_top_-100px] bg-no-repeat  min-h-[200px] md:min-h-[280px] flex flex-col justify-center">
         <div className="container">
-          <h2 className="text-biru text-2xl md:text-4xl font-bold text-center leading-tight">
+          <h2 className="text-biru text-2xl md:text-4xl font-bold text-center leading-10 md:leading-14">
             Saatnya jadikan gadget sebagai sarana untuk kembangkan minat belajar dan keterampilan si kecil
           </h2>
         </div>

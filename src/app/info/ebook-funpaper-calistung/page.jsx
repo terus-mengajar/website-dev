@@ -296,7 +296,7 @@ export default function page() {
                 Yuk Mainkan<br />Sekarang!
               </h2>
 
-              <Link href="/mini-game" className="tombol-pink">
+              <Link href="/mini-game" className="tombol-pink text-lg!">
                 Mainkan Sekarang
               </Link>
             </div>

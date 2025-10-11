@@ -273,7 +273,7 @@ export default function page() {
                 Penuhi Kebutuhan Belajar Ananda Dengan Funpaper Harian
               </h2>
 
-              <Link href="/funpaper-harian" className="tombol-pink">
+              <Link href="/funpaper-harian" className="tombol-pink text-lg!">
                 Download Sekarang
               </Link>
             </div>

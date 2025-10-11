@@ -401,7 +401,7 @@ export default function page() {
                 </p>
               </div>
 
-              <Link href="/funpaper-tema" className="tombol-pink">
+              <Link href="/funpaper-tema" className="tombol-pink text-lg!">
                 Download Sekarang
               </Link>
             </div>
