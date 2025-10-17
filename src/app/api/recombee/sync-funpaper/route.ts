@@ -8,7 +8,10 @@ const REGION = process.env.RECOMBEE_REGION || "ap-se";
 const client = new ApiClient(DB_ID, PRIVATE_TOKEN, { region: REGION });
 
 export async function GET() {
-  return true;
+  return NextResponse.json(
+      { error: "Sync dimatikan", details: "" },
+      { status: 500 }
+  );
   
   try {
     // 1️⃣ Ambil data funpaper dari endpoint internal kamu
