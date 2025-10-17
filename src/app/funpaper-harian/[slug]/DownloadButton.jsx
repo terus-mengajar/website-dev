@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { File } from "lucide-react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { getOrCreateGuestId } from "@/lib/guest-id";
 
 export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
   const { data: session, status } = useSession();
@@ -12,6 +13,7 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
 
   const [selected, setSelected] = useState("A4");
   const [loading, setLoading] = useState(false);
+  const [hasSent, setHasSent] = useState(false);
 
   const handleDownload = async () => {
     if (status !== "authenticated") {
@@ -43,6 +45,32 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
     setLoading(false);
     window.open(url, "_blank");
   };
+
+  // ADD VIEW RECOMBEE
+  useEffect(() => {
+    if (hasSent) return;
+    if (status === "loading") return;
+
+    const userId = session?.user?.email || getOrCreateGuestId();
+    if (!userId) return;
+
+    setHasSent(true); // tandai sudah kirim
+
+    console.log(userId)
+
+    // panggil API untuk kirim event ke Recombee
+    fetch("/api/recombee/add-view", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ funpaperId: id, userId: userId }),
+    }).catch((err) => console.error("Failed to send Recombee event", err));
+  }, [id, session, hasSent]);
+
+  // console.log(session)
+  // if(session){
+  //   console.log(session.user)
+  //   console.log(session.user.email)
+  // }
 
   return (
     <div className="mt-6">

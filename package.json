@@ -22,7 +22,7 @@
     "react-dom": "19.1.0",
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
-    "recombee-js-api-client": "^5.0.2",
+    "recombee-api-client": "^5.1.1",
     "swiper": "^11.2.10",
     "yet-another-react-lightbox": "^3.25.0",
     "zod": "^4.1.11"
