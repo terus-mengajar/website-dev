@@ -24,6 +24,14 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
 
     setLoading(true);
 
+    const userId = session?.user?.email;
+
+    fetch("/api/recombee/add-purchase", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ funpaperId: id, userId }),
+    });
+    
     try {
       // update jumlah_downloaded
       await fetch(`/api/funpaper-harian/${slug}/download`, {
@@ -56,7 +64,7 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
 
     setHasSent(true); // tandai sudah kirim
 
-    console.log(userId)
+    // console.log(userId)
 
     // panggil API untuk kirim event ke Recombee
     fetch("/api/recombee/add-view", {

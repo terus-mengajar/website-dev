@@ -13,12 +13,12 @@ export async function POST(req: Request) {
     if (!funpaperId || !userId) return NextResponse.json({ error: "Missing data" }, { status: 400 });
 
     await client.send(
-      new requests.AddDetailView(userId, funpaperId.toString(), { cascadeCreate: true })
+      new requests.AddPurchase(userId, funpaperId.toString(), { cascadeCreate: true })
     );
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Recombee AddView error", err);
+    console.error("Recombee AddPurchase error", err);
     return NextResponse.json({ error: "Failed to add view" }, { status: 500 });
   }
 }
