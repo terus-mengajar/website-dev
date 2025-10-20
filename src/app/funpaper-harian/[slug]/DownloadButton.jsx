@@ -5,7 +5,7 @@ import { File } from "lucide-react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { getOrCreateGuestId } from "@/lib/guest-id";
+// import { getGuestId, createGuestId, getOrCreateGuestId } from "@/lib/guest-id"; //GA JADI, BIKIN RECOMBEE BENGKAK
 
 export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
   const { data: session, status } = useSession();
@@ -54,12 +54,12 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
     window.open(url, "_blank");
   };
 
-  // ADD VIEW RECOMBEE
+  // ADD VIEW RECOMBEE UNTUK USER YANG SUDAH LOGIN SAJA
   useEffect(() => {
     if (hasSent) return;
     if (status === "loading") return;
 
-    const userId = session?.user?.email || getOrCreateGuestId();
+    const userId = session?.user?.email;
     if (!userId) return;
 
     setHasSent(true); // tandai sudah kirim

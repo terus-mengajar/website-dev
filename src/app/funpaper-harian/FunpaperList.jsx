@@ -14,7 +14,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
   const hasParams = searchParams.toString().length > 0;
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
-  const [sort, setSort] = useState("populer");
+  const [sort, setSort] = useState("rekomendasi");
   const [page, setPage] = useState(1);
   const perPage = 18;
 
@@ -32,6 +32,9 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
   const sortedFunpaper = useMemo(() => {
     let sorted = [...funpaperData];
     switch (sort) {
+      case "rekomendasi":
+        sorted.sort((a, b) => b.urutan_rekomendasi - a.urutan_rekomendasi);
+        break;
       case "populer":
         sorted.sort((a, b) => b.downloaded - a.downloaded); // ganti sesuai ada/tidaknya kolom 'played'
         break;
@@ -132,6 +135,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
           }}
           className="border border-[#ecdab7] text-xs rounded px-2 py-1"
         >
+          <option value="rekomendasi">Paling Sesuai</option>
           <option value="populer">Terpopuler</option>
           <option value="baru">Terbaru</option>
           <option value="lama">Terlama</option>
