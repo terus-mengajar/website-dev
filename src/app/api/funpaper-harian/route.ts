@@ -4,42 +4,11 @@ import { FUNPAPER_SINGLE_PAGE } from "@/lib/funpaper_type";
 import { auth } from "@/lib/auth";
 import { ApiClient, requests } from "recombee-api-client";
 
-// const RECOMBEE_API_URL = `https://${process.env.RECOMBEE_DB_ID}.recombee.com/api/v1.4`;
-// const RECOMBEE_TOKEN = process.env.RECOMBEE_PRIVATE_TOKEN;
-
 const client = new ApiClient(
   process.env.RECOMBEE_DB_ID!,
   process.env.RECOMBEE_PRIVATE_TOKEN!,
   { region: "ap-se" }
 );
-
-// ambil rekomendasi dari recombee
-async function getRecombeeRecommendations(userId: string, limit: number = 10) {
-  try {
-    const res = await fetch(
-      `${RECOMBEE_API_URL}/recommendations/users/${encodeURIComponent(
-        userId
-      )}/items/`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Basic ${Buffer.from(RECOMBEE_TOKEN + ":").toString(
-            "base64"
-          )}`,
-        },
-        // body: JSON.stringify({ count: limit }),
-      }
-    );
-
-    if (!res.ok) throw new Error("Recombee API error");
-    const data = await res.json();
-    return data.recomms?.map((r: any) => r.id) || [];
-  } catch (err) {
-    console.error("Recombee failed:", err);
-    return [];
-  }
-}
 
 export async function GET(req: Request) {
   const session = await auth();
