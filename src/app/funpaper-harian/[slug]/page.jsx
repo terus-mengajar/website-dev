@@ -159,6 +159,8 @@ export default async function FunpaperHarianPage({ params }) {
       <ProdukTerkait
         activityId={funpaper.activity_id}
         themeId={funpaper.theme_id}
+        funpaperId={funpaper.id}
+        slug={funpaper.slug}
       />
     </div>
   );

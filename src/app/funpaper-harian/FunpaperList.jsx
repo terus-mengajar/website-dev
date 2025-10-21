@@ -33,7 +33,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
     let sorted = [...funpaperData];
     switch (sort) {
       case "rekomendasi":
-        sorted.sort((a, b) => b.urutan_rekomendasi - a.urutan_rekomendasi);
+        sorted.sort((a, b) => a.urutan_rekomendasi - b.urutan_rekomendasi);
         break;
       case "populer":
         sorted.sort((a, b) => b.downloaded - a.downloaded); // ganti sesuai ada/tidaknya kolom 'played'
@@ -57,6 +57,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
         sorted.sort((a, b) => b.name.localeCompare(a.name));
         break;
     }
+
     return sorted;
   }, [sort, funpaperData]);
 

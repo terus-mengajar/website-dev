@@ -6,13 +6,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 
-export default function ProdukTerkait({ activityId, themeId }) {
+export default function ProdukTerkait({ activityId, themeId, funpaperId, slug }) {
   const [funpapers, setFunpapers] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `/api/funpaper-harian?limit=4&activity_id=${activityId}&theme_id=${themeId}`
+        `/api/funpaper-harian/${slug}/produk-terkait?limit=4&activity_id=${activityId}&theme_id=${themeId}&funpaper_id=${funpaperId}`
       );
       const data = await res.json();
       setFunpapers(data);

@@ -24,6 +24,23 @@ export async function GET(req: Request) {
     const usia = searchParams.get("usia");
     const random = searchParams.get("random");
 
+    // AMBIL REKOMENDASI DARI RECOMBEE
+    let recombeeIds = [];
+    if (userId) {
+      const limitRecombee =
+        !isNaN(Number(limit)) && Number(limit) > 0 ? Number(limit) : 1000;
+
+      const recombeeRes = await client.send(
+        new requests.RecommendItemsToUser(userId, limitRecombee, {
+          cascadeCreate: true, // otomatis buat user kalau belum ada
+        })
+      );
+
+      // CONVERT KE NUMBER
+      // console.log(recombeeRes.recomms.length);
+      recombeeIds = recombeeRes.recomms.map((r) => Number(r.id));
+    }
+
     let sql = `
       SELECT funpaper.*, activity.name AS activity
       FROM funpaper
@@ -79,8 +96,16 @@ export async function GET(req: Request) {
       }
     }
 
+    // JIKA PAKAI LIMIT, GUNAKAN RECOMBEE REKOM ID
+    if (userId && limit && recombeeIds) {
+      sql += ` AND funpaper.id IN (${recombeeIds.map(() => "?").join(", ")}) `;
+      params.push(...recombeeIds);
+    }
+
     if (random == "1") {
       sql += ` ORDER BY RANDOM() `;
+    } else if (userId && limit && recombeeIds) {
+      sql += `  `;
     } else {
       sql += ` ORDER BY funpaper.downloaded DESC `;
     }
@@ -106,25 +131,14 @@ export async function GET(req: Request) {
 
     let sortedItems = [];
 
-    // AMBIL REKOMENDASI DARI RECOMBEE
     if (userId) {
-      const recombeeRes = await client.send(
-        new requests.RecommendItemsToUser(userId, 1000, {
-          cascadeCreate: true, // otomatis buat user kalau belum ada
-        })
-      );
-
-      // CONVERT KE NUMBER
-      console.log(recombeeRes.recomms.length);
-      const recombeeIds = recombeeRes.recomms.map((r) => Number(r.id));
-
       // urutkan sesuai rekomendasi, item tak direkomendasi di bawah
       sortedItems = logs.sort((a, b) => {
         const ia = recombeeIds.indexOf(Number(a.id));
         const ib = recombeeIds.indexOf(Number(b.id));
         return (ia === -1 ? Infinity : ia) - (ib === -1 ? Infinity : ib);
       });
-    }else{
+    } else {
       sortedItems = logs;
     }
 
