@@ -38,11 +38,6 @@ export default function NavbarRight() {
     };
   }, []);
 
-  // const openSearch = () => {
-  //   setClosing(false);
-  //   setShowSearch(true);
-  // };
-
   const startCloseSearch = () => {
     // jangan unmount dulu; biarkan animasi keluar jalan
     setClosing(true);
@@ -50,10 +45,18 @@ export default function NavbarRight() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (query.trim()) {
-      setShowSearch(false);
-      router.push(`/cari-produk?nama=${encodeURIComponent(query)}`);
+    // if (query.trim()) {
+    //   setShowSearch(false);
+    //   router.push(`/cari-produk?nama=${encodeURIComponent(query)}`);
+    // }
+
+    if (query.trim().length < 3) {
+      toast.error("Minimal 3 huruf untuk pencarian");
+      return;
     }
+
+    setShowSearch(false);
+    router.push(`/cari-produk?nama=${encodeURIComponent(query)}`);
   };
 
   // Dipanggil saat animasi slideUp selesai

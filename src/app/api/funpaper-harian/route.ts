@@ -1,3 +1,5 @@
+export const maxDuration = 60;
+
 import { NextResponse } from "next/server";
 import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 import { FUNPAPER_SINGLE_PAGE } from "@/lib/funpaper_type";
@@ -28,13 +30,33 @@ export async function GET(req: Request) {
     let recombeeIds = [];
     if (userId) {
       const limitRecombee =
-        !isNaN(Number(limit)) && Number(limit) > 0 ? Number(limit) : 1000;
+        !isNaN(Number(limit)) && Number(limit) > 0
+        ? Math.min(Number(limit), 100)
+        : 100;
 
-      const recombeeRes = await client.send(
-        new requests.RecommendItemsToUser(userId, limitRecombee, {
-          cascadeCreate: true, // otomatis buat user kalau belum ada
-        })
-      );
+      let recombeeRes;
+
+      // recombeeRes = await client.send(
+      //   new requests.RecommendItemsToUser(userId, limitRecombee, {
+      //     cascadeCreate: true, // otomatis buat user kalau belum ada
+      //   })
+      // );
+      
+      if (!nama) {
+        recombeeRes = await client.send(
+          new requests.RecommendItemsToUser(userId, limitRecombee, {
+            cascadeCreate: true, // otomatis buat user kalau belum ada
+          })
+        );
+      } else {
+        recombeeRes = await client.send(
+          new requests.SearchItems(userId, nama, limitRecombee, {
+            cascadeCreate: true,
+            scenario: "produk_search",
+            returnProperties: true, // biar langsung dapat field Recombee seperti name, theme_name, dll
+          })
+        );
+      }
 
       // CONVERT KE NUMBER
       // console.log(recombeeRes.recomms.length);
@@ -42,9 +64,11 @@ export async function GET(req: Request) {
     }
 
     let sql = `
-      SELECT funpaper.*, activity.name AS activity
+      SELECT funpaper.*, activity.name AS activity, theme.name theme, age.range age
       FROM funpaper
       JOIN activity ON funpaper.activity_id = activity.id
+      JOIN theme ON funpaper.theme_id = theme.id
+      JOIN age ON funpaper.age_id = age.id
       WHERE funpaper_type_id = ${FUNPAPER_SINGLE_PAGE}
     `;
 
@@ -97,7 +121,7 @@ export async function GET(req: Request) {
     }
 
     // JIKA PAKAI LIMIT, GUNAKAN RECOMBEE REKOM ID
-    if (userId && limit && recombeeIds) {
+    if (userId && limit && recombeeIds.length > 0) {
       sql += ` AND funpaper.id IN (${recombeeIds.map(() => "?").join(", ")}) `;
       params.push(...recombeeIds);
     }
@@ -114,6 +138,9 @@ export async function GET(req: Request) {
       sql += ` LIMIT ? `;
       params.push(Number(limit));
     }
+
+    console.log(sql)
+    console.log(params)
 
     // AMBIL DATA DARI D1
     const res = await fetch(CLOUDFLARE_D1_URL, {
@@ -147,6 +174,8 @@ export async function GET(req: Request) {
       ...item,
       urutan_rekomendasi: index + 1,
     }));
+
+    // console.log(sortedItems)
 
     return NextResponse.json(sortedItems);
   } catch (err) {

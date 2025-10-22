@@ -33,6 +33,10 @@ export async function GET() {
     // await client.send(new requests.AddItemProperty("activity_id", "string"));
     // await client.send(new requests.AddItemProperty("theme_id", "string"));
     // await client.send(new requests.AddItemProperty("age_id", "string"));
+    // await client.send(new requests.AddItemProperty("age", "string"));
+    // await client.send(new requests.AddItemProperty("theme", "string"));
+    // await client.send(new requests.AddItemProperty("keywords", "string"));
+
 
     // 3️⃣ Kirim data ke Recombee
     const results = [];
@@ -47,6 +51,10 @@ export async function GET() {
             activity_id: fp.activity_id,
             theme_id: fp.theme_id,
             age_id: fp.age_id,
+
+            age: fp.age,
+            theme: fp.theme,
+            keywords: `${fp.name} ${fp.activity} ${fp.theme} ${fp.age}`,
           },
           { cascadeCreate: true }
         )

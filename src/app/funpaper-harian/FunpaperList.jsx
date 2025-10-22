@@ -30,7 +30,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
   }, [filters]);
 
   const sortedFunpaper = useMemo(() => {
-    let sorted = [...funpaperData];
+    let sorted = Array.isArray(funpaperData) ? [...funpaperData] : [];;
     switch (sort) {
       case "rekomendasi":
         sorted.sort((a, b) => a.urutan_rekomendasi - b.urutan_rekomendasi);

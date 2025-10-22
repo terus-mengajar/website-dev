@@ -11,9 +11,9 @@ import Lottie from "lottie-react";
 export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
-  const [sort, setSort] = useState("populer");
+  const [sort, setSort] = useState("rekomendasi");
   const [page, setPage] = useState(1);
-  const perPage = 16;
+  const perPage = 18;
 
   useEffect(() => {
     async function fetchData() {
@@ -27,8 +27,11 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
   }, [nama, filters]);
 
   const sortedFunpaper = useMemo(() => {
-    let sorted = [...funpaperData];
+    let sorted = Array.isArray(funpaperData) ? [...funpaperData] : [];
     switch (sort) {
+      case "rekomendasi":
+        sorted.sort((a, b) => a.urutan_rekomendasi - b.urutan_rekomendasi);
+        break;
       case "populer":
         sorted.sort((a, b) => b.downloaded - a.downloaded); // ganti sesuai ada/tidaknya kolom 'played'
         break;
@@ -80,6 +83,7 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
           }}
           className="border border-[#ecdab7] text-xs rounded px-2 py-1"
         >
+          <option value="rekomendasi">Paling Sesuai</option>
           <option value="populer">Terpopuler</option>
           <option value="baru">Terbaru</option>
           <option value="lama">Terlama</option>
@@ -89,7 +93,7 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
       </div>
 
       {/* Funpaper List */}
-      {loading && <LoadingCard />}
+      {loading && <LoadingCard cols={3} />}
 
       {!loading && funpapers.length === 0 && (
         <div className="card-header">
@@ -111,9 +115,9 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
         </div>
       )}
 
-      {funpapers.length > 0 && (
+      {!loading && funpapers.length > 0 && (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {funpapers.map((funpaper) => (
               <Link
                 href={"/funpaper-harian/" + funpaper.slug}
