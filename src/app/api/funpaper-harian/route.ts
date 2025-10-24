@@ -31,8 +31,8 @@ export async function GET(req: Request) {
     if (userId) {
       const limitRecombee =
         !isNaN(Number(limit)) && Number(limit) > 0
-        ? Math.min(Number(limit), 100)
-        : 100;
+          ? Math.min(Number(limit), 100)
+          : 100;
 
       let recombeeRes;
 
@@ -41,21 +41,26 @@ export async function GET(req: Request) {
       //     cascadeCreate: true, // otomatis buat user kalau belum ada
       //   })
       // );
-      
-      if (!nama) {
-        recombeeRes = await client.send(
-          new requests.RecommendItemsToUser(userId, limitRecombee, {
-            cascadeCreate: true, // otomatis buat user kalau belum ada
-          })
-        );
-      } else {
-        recombeeRes = await client.send(
-          new requests.SearchItems(userId, nama, limitRecombee, {
-            cascadeCreate: true,
-            scenario: "produk_search",
-            returnProperties: true, // biar langsung dapat field Recombee seperti name, theme_name, dll
-          })
-        );
+
+      try {
+        if (!nama) {
+          recombeeRes = await client.send(
+            new requests.RecommendItemsToUser(userId, limitRecombee, {
+              cascadeCreate: true, // otomatis buat user kalau belum ada
+            })
+          );
+        } else {
+          recombeeRes = await client.send(
+            new requests.SearchItems(userId, nama, limitRecombee, {
+              cascadeCreate: true,
+              scenario: "produk_search",
+              returnProperties: true, // biar langsung dapat field Recombee seperti name, theme_name, dll
+            })
+          );
+        }
+      } catch (error) {
+        console.error("Recombee error:", error.message || error);
+        recombeeRes = { recomms: [] }; // fallback supaya web tidak error
       }
 
       // CONVERT KE NUMBER
@@ -139,8 +144,8 @@ export async function GET(req: Request) {
       params.push(Number(limit));
     }
 
-    console.log(sql)
-    console.log(params)
+    // console.log(sql)
+    // console.log(params)
 
     // AMBIL DATA DARI D1
     const res = await fetch(CLOUDFLARE_D1_URL, {
