@@ -19,7 +19,7 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const nama = searchParams.get("nama");
-    const limit = searchParams.get("limit");
+    let limit = searchParams.get("limit");
     const activity_id = searchParams.get("activity_id");
     const theme_id = searchParams.get("theme_id");
     const kategori = searchParams.get("kategori");
@@ -36,12 +36,6 @@ export async function GET(req: Request) {
 
       let recombeeRes;
 
-      // recombeeRes = await client.send(
-      //   new requests.RecommendItemsToUser(userId, limitRecombee, {
-      //     cascadeCreate: true, // otomatis buat user kalau belum ada
-      //   })
-      // );
-
       try {
         if (!nama) {
           recombeeRes = await client.send(
@@ -57,6 +51,10 @@ export async function GET(req: Request) {
               returnProperties: true, // biar langsung dapat field Recombee seperti name, theme_name, dll
             })
           );
+
+          console.log('search');
+
+          limit = "100";
         }
       } catch (error) {
         console.error("Recombee error:", error.message || error);
@@ -64,8 +62,9 @@ export async function GET(req: Request) {
       }
 
       // CONVERT KE NUMBER
-      // console.log(recombeeRes.recomms.length);
+      console.log(recombeeRes.recomms.length);
       recombeeIds = recombeeRes.recomms.map((r) => Number(r.id));
+      console.log(recombeeIds);
     }
 
     let sql = `
@@ -79,7 +78,7 @@ export async function GET(req: Request) {
 
     let params = [];
 
-    if (nama) {
+    if (nama && !userId) {
       sql += ` AND LOWER(funpaper.name || ' - ' || activity.name) LIKE LOWER(TRIM(?)) `;
       params.push(`%${nama}%`);
     }
@@ -144,8 +143,8 @@ export async function GET(req: Request) {
       params.push(Number(limit));
     }
 
-    // console.log(sql)
-    // console.log(params)
+    console.log(sql)
+    console.log(params)
 
     // AMBIL DATA DARI D1
     const res = await fetch(CLOUDFLARE_D1_URL, {
