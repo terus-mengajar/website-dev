@@ -1,55 +1,72 @@
 import { NextResponse } from "next/server";
 import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 
-export async function GET() {
+function unauthorized() {
+  return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
+}
+
+export async function GET(request: Request) {
+  const authHeader = request.headers.get("authorization") || "";
+  const bearer = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : null;
+
+  if (!bearer || bearer !== 'abcdefghijklmnopqrstuvwxyz123456789') {
+      console.warn("Invalid or missing token for dashboard request");
+      return unauthorized();
+    }
+
   try {
     // Jalankan semua query paralel agar cepat
-    const [totalDownloadRes, totalUserRes, topFunpaperRes, lowFunpaperRes, topUserRes] =
-      await Promise.all([
-        fetch(CLOUDFLARE_D1_URL, {
-          method: "POST",
-          headers: CLOUDFLARE_HEADER,
-          body: JSON.stringify({
-            sql: "SELECT SUM(downloaded) download FROM funpaper",
-          }),
+    const [
+      totalDownloadRes,
+      totalUserRes,
+      topFunpaperRes,
+      lowFunpaperRes,
+      topUserRes,
+    ] = await Promise.all([
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({
+          sql: "SELECT SUM(downloaded) download FROM funpaper",
         }),
-        fetch(CLOUDFLARE_D1_URL, {
-          method: "POST",
-          headers: CLOUDFLARE_HEADER,
-          body: JSON.stringify({
-            sql: "SELECT COUNT(*) AS jumlah FROM user",
-          }),
+      }),
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({
+          sql: "SELECT COUNT(*) AS jumlah FROM user",
         }),
-        fetch(CLOUDFLARE_D1_URL, {
-          method: "POST",
-          headers: CLOUDFLARE_HEADER,
-          body: JSON.stringify({
-            sql: `
+      }),
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({
+          sql: `
                 SELECT name, downloaded
                 FROM funpaper
                 ORDER BY downloaded DESC
                 LIMIT 10;
             `,
-          }),
         }),
-        fetch(CLOUDFLARE_D1_URL, {
-          method: "POST",
-          headers: CLOUDFLARE_HEADER,
-          body: JSON.stringify({
-            sql: `
+      }),
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({
+          sql: `
                 SELECT name
                 FROM funpaper
                 WHERE downloaded=0 AND name IS NOT NULL
                 AND funpaper_type_id=1
                 ORDER BY name DESC;
             `,
-          }),
         }),
-        fetch(CLOUDFLARE_D1_URL, {
-          method: "POST",
-          headers: CLOUDFLARE_HEADER,
-          body: JSON.stringify({
-            sql: `
+      }),
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({
+          sql: `
                 SELECT email, COUNT(*) AS total_download
                 FROM funpaper_download_log
                 WHERE email IS NOT NULL AND email != ''
@@ -57,19 +74,19 @@ export async function GET() {
                 ORDER BY total_download DESC
                 LIMIT 10;
             `,
-          }),
         }),
-      ]);
-
+      }),
+    ]);
 
     // Parse hasil semua request
-    const [totalDownload, totalUser, topFunpaper, lowFunpaper, topUser] = await Promise.all([
-      totalDownloadRes.json(),
-      totalUserRes.json(),
-      topFunpaperRes.json(),
-      lowFunpaperRes.json(),
-      topUserRes.json(),
-    ]);
+    const [totalDownload, totalUser, topFunpaper, lowFunpaper, topUser] =
+      await Promise.all([
+        totalDownloadRes.json(),
+        totalUserRes.json(),
+        topFunpaperRes.json(),
+        lowFunpaperRes.json(),
+        topUserRes.json(),
+      ]);
 
     // Cek error masing-masing
     if (!totalDownload.success) console.log(totalDownload.errors);
