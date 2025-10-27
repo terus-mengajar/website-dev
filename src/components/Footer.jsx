@@ -55,8 +55,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://s.id/terusmengajar-internship" className="hover:underline">
+                <Link href="https://s.id/terusmengajar-internship" className="hover:underline" target="_blank">
                   Join Internship Program
+                </Link>
+              </li>
+              <li>
+                <Link href="https://terusmengajar.notion.site/Expert-Partnership-Program-298138c5cbc080a88b51f171e48d0b56" className="hover:underline" target="_blank">
+                  Expert Partnership Program
                 </Link>
               </li>
               <li>
