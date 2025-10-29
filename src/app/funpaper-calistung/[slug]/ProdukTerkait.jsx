@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LoadingCard from "@/components/LoadingCard";
 import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
+import Image from "next/image";
 
 export default function ProdukTerkait({ themeCalistungId }) {
   const [funpapers, setFunpapers] = useState([]);
@@ -40,13 +41,15 @@ export default function ProdukTerkait({ themeCalistungId }) {
                 >
                   <div className="mb-2 flex flex-col items-center">
                     <div className="w-32 h-32 bg-white flex items-center justify-center rounded-md bg-[url('/images/shapes/oval-ungu.avif')] bg-cover bg-center">
-                      <img
+                      <Image
                         src={
                           CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
                           "/funpaper-calistung/" +
                           funpaper.slug +
                           ".jpg"
                         }
+                        height={180}
+                        width={128}
                         alt="Produk Terkait"
                         className="h-full object-cover w-[80%]"
                       />
