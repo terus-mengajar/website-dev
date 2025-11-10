@@ -45,8 +45,7 @@ export default function ProdukTerkait({ themeCalistungId }) {
                         src={
                           CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
                           "/funpaper-calistung/" +
-                          funpaper.slug +
-                          ".jpg"
+                          funpaper.image_url
                         }
                         height={180}
                         width={128}
