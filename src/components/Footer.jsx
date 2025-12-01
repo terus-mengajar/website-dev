@@ -23,6 +23,11 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Produk</h4>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href="/funpaper-calistung" className="">
+                  Funpaper Calistung
+                </Link>
+              </li>
+              <li>
                 <Link href="/funpaper-harian" className="">
                   Funpaper Harian
                 </Link>
@@ -30,11 +35,6 @@ export default function Footer() {
               <li>
                 <Link href="/funpaper-tema" className="">
                   Funpaper Tema
-                </Link>
-              </li>
-              <li>
-                <Link href="/funpaper-calistung" className="">
-                  Funpaper Calistung
                 </Link>
               </li>
               <li>

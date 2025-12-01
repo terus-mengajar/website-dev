@@ -14,7 +14,7 @@ export default function Hero() {
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
-        autoplay={{ delay: 4000 }}
+        autoplay={{ delay: 40000 }}
         // navigation
         // pagination={{ clickable: true }}
         // navigation={{
@@ -27,7 +27,41 @@ export default function Hero() {
         }}
         className="w-full"
       >
+
         {/* Slide 1 */}
+        <SwiperSlide>
+          <section className="relative h-[600px]">
+          <div
+            className="absolute inset-0 bg-[url('/images/bg/bg-home-carousel-calistung.jpg')] 
+                      bg-cover bg-top scale-140"
+          ></div>
+          
+            <Image
+              src="/images/funpaper/carousel-3.png"
+              alt="Slide 1"
+              height={630}
+              width={630}
+              className="w-[300px] md:w-[400px] lg:w-[580px] xl:w-[630px] h-auto absolute bottom-[-24%] -right-[120px]"
+            />
+
+            <div className="container h-full flex flex-col justify-center text-center items-center lg:items-start lg:text-left z-10 relative">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#0085A0] leading-tight">
+                Funpaper<br />Calistung
+              </h1>
+              <p className="max-w-2xl mb-6 lg:pe-30">
+                Funpaper Calistung hadir untuk memberikan teknik yang mudah dipraktikkan anak usia dini hingga awal SD agar menguasai keterampilan dasar membaca, menulis, dan berhitung.
+              </p>
+              <Link
+                href="/funpaper-calistung"
+                className="tombol-biru text-white px-6 py-3 rounded-xl transition"
+              >
+                Download
+              </Link>
+            </div>
+          </section>
+        </SwiperSlide>
+
+        {/* Slide 2 */}
         <SwiperSlide>
           <section className="relative bg-[url('/images/bg/bg-lembar-kerja.avif')] bg-cover bg-center h-[600px]">
             <Image
@@ -57,7 +91,7 @@ export default function Hero() {
           </section>
         </SwiperSlide>
 
-        {/* Slide 2 */}
+        {/* Slide 3 */}
         <SwiperSlide>
           <section className="relative bg-[url('/images/bg/bg-tele.avif')] bg-cover bg-center h-[600px]">
             <Image
@@ -88,7 +122,7 @@ export default function Hero() {
           </section>
         </SwiperSlide>
 
-        {/* Slide 3 */}
+        {/* Slide 4 */}
         <SwiperSlide>
           <section className="relative bg-[url('/images/bg/bg-tematik.jpg')] bg-cover bg-center h-[600px]">
             <Image

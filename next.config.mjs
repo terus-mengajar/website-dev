@@ -17,6 +17,16 @@ const nextConfig = {
         hostname: 'pub-098c9d7bf3d5466b86f0f0725eb42439.r2.dev',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'asset.terusmengajar.id',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'web-asset.terusmengajar.id',
+        pathname: '/**',
+      },
     ],
   },
 };

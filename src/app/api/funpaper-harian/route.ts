@@ -52,7 +52,7 @@ export async function GET(req: Request) {
             })
           );
 
-          console.log('search');
+          // console.log('search');
 
           limit = "100";
         }
@@ -62,9 +62,9 @@ export async function GET(req: Request) {
       }
 
       // CONVERT KE NUMBER
-      console.log(recombeeRes.recomms.length);
+      // console.log(recombeeRes.recomms.length);
       recombeeIds = recombeeRes.recomms.map((r) => Number(r.id));
-      console.log(recombeeIds);
+      // console.log(recombeeIds);
     }
 
     let sql = `
@@ -143,8 +143,8 @@ export async function GET(req: Request) {
       params.push(Number(limit));
     }
 
-    console.log(sql)
-    console.log(params)
+    // console.log(sql)
+    // console.log(params)
 
     // AMBIL DATA DARI D1
     const res = await fetch(CLOUDFLARE_D1_URL, {

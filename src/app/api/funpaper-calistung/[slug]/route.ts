@@ -27,7 +27,7 @@ export async function GET(
     );
 
     const data = await res.json();
-    console.log(data)
+    // console.log(data)
     if(!data.success)
       console.log(data.errors);
 

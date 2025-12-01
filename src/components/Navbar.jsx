@@ -111,6 +111,18 @@ export default function Navbar() {
                 {dropdownOpen === "download" && (
                   <div className="absolute top-9 mt-2 w-44 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
                     <Link
+                      href="/funpaper-calistung"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/funpaper-calistung"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
+                      onClick={() => setDropdownOpen(null)}
+                    >
+                      Funpaper Calistung
+                    </Link>
+                    <Link
                       href="/funpaper-harian"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
@@ -135,22 +147,25 @@ export default function Navbar() {
                       Funpaper Tema
                     </Link>
                     <Link
-                      href="/funpaper-calistung"
+                      href="/mini-game"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/funpaper-calistung"
+                        (pathname === "/mini-game"
                           ? "font-bold text-blue-500"
                           : "")
                       }
                       onClick={() => setDropdownOpen(null)}
                     >
-                      Funpaper Calistung
+                      Mini Game{" "}
+                      <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                        New
+                      </span>
                     </Link>
                   </div>
                 )}
               </div>
 
-              <Link
+              {/* <Link
                 href="/mini-game"
                 className={
                   pathname === "/mini-game" ? "font-bold text-blue-500" : ""
@@ -161,7 +176,7 @@ export default function Navbar() {
                 <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
                   New
                 </span>
-              </Link>
+              </Link> */}
 
               <Link
                 href="/kataba-ai"
@@ -272,6 +287,21 @@ export default function Navbar() {
               {dropdownOpen === "download" && (
                 <div className="pl-4 mt-2 space-y-2">
                   <Link
+                    href="/funpaper-calistung"
+                    className={
+                      "block py-2 border-b border-[#cbaf78] " +
+                      (pathname === "/funpaper-calistung"
+                        ? " font-bold text-blue-500 "
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Funpaper Calistung
+                  </Link>
+                  <Link
                     href="/funpaper-harian"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
@@ -302,10 +332,10 @@ export default function Navbar() {
                     Funpaper Tema
                   </Link>
                   <Link
-                    href="/funpaper-calistung"
+                    href="/mini-game"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/funpaper-calistung"
+                      (pathname === "/mini-game"
                         ? " font-bold text-blue-500 "
                         : "")
                     }
@@ -314,13 +344,16 @@ export default function Navbar() {
                       setDropdownOpen(null);
                     }}
                   >
-                    Funpaper Calistung
+                    Mini Game{" "}
+                    <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                      New
+                    </span>
                   </Link>
                 </div>
               )}
             </div>
 
-            <Link
+            {/* <Link
               href="/mini-game"
               className="block py-2 border-b border-[#cbaf78]"
               onClick={() => {
@@ -332,7 +365,7 @@ export default function Navbar() {
               <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
                 New
               </span>
-            </Link>
+            </Link> */}
 
             <Link
               href="/kataba-ai"

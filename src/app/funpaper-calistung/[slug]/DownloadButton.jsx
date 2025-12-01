@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function FunpaperDownload({ id, slug, link }) {
+  // console.log(link)
   const { data: session, status } = useSession();
   const router = useRouter();
 
