@@ -10,9 +10,9 @@ export default function Footer() {
           <Image
             src="/images/logo/logo-tm-putih.avif"
             alt="Terusmengajar Logo"
-            width={100}
+            width={62}
             height={40}
-            className="h-10 w-auto"
+            className="h-auto w-auto"
           />
         </div>
 

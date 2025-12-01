@@ -2,28 +2,18 @@
 
 import SidebarMedsos from "@/components/SidebarMedsos";
 import FunpaperList from "./FunpaperList";
-import Filter from "@/components/Filter";
+import Filter from "@/components/FilterCalistung";
 import { useEffect, useState } from "react";
-import FilterMobile from "@/components/FilterMobile";
+import FilterMobile from "@/components/FilterMobileCalistung";
+import { useSearchParams } from "next/navigation";
 
 export default function Client({ params }) {
-  const temaInitial = params.tema;
-  const aktivitasInitial = params.aktivitas;
-
   const [openMobileSidebar, setOpenMobileSidebar] = useState(false);
 
-  // ✅ state global untuk filter
-  const [selectedKategori, setSelectedKategori] = useState([]);
-  const [selectedUsia, setSelectedUsia] = useState([]);
+  const [selectedTema, setSelectedTema] = useState([]);
 
-  const toggleCheckboxKategori = (value) => {
-    setSelectedKategori((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
-    );
-  };
-
-  const toggleCheckboxUsia = (value) => {
-    setSelectedUsia((prev) =>
+  const toggleCheckboxTema = (value) => {
+    setSelectedTema((prev) =>
       prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
     );
   };
@@ -45,19 +35,17 @@ export default function Client({ params }) {
   useEffect(() => {
     const handler = setTimeout(() => {
       // bikin query string custom
-      const kategoriParam = selectedKategori.join(",");
-      const usiaParam = selectedUsia.join(",");
+      const temaParam = selectedTema.join(",");
 
       const query = new URLSearchParams();
-      if (kategoriParam) query.set("kategori", kategoriParam);
-      if (usiaParam) query.set("usia", usiaParam);
+      if (temaParam) query.set("tema", temaParam);
 
       setFilterValues(query.toString());
     }, 700);
 
     // kalau user klik lagi sebelum 500ms → clear timeout
     return () => clearTimeout(handler);
-  }, [selectedUsia, selectedKategori]);
+  }, [selectedTema]);
 
   return (
     <section>
@@ -65,14 +53,10 @@ export default function Client({ params }) {
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="order-2 lg:order-1 w-full lg:w-auto">
             <div className="hidden lg:block">
-              {/* <Filter
-                temaInitial={temaInitial}
-                aktivitasInitial={aktivitasInitial}
-                selectedKategori={selectedKategori}
-                toggleCheckboxKategori={toggleCheckboxKategori}
-                selectedUsia={selectedUsia}
-                toggleCheckboxUsia={toggleCheckboxUsia}
-              /> */}
+              <Filter
+                selectedTema={selectedTema}
+                toggleCheckboxTema={toggleCheckboxTema}
+              />
             </div>
             <SidebarMedsos />
           </div>
@@ -88,15 +72,11 @@ export default function Client({ params }) {
       {/* Sidebar mobile */}
       {openMobileSidebar && (
         <>
-          {/* <FilterMobile
-            temaInitial={temaInitial}
-            aktivitasInitial={aktivitasInitial}
-            selectedKategori={selectedKategori}
-            toggleCheckboxKategori={toggleCheckboxKategori}
-            selectedUsia={selectedUsia}
-            toggleCheckboxUsia={toggleCheckboxUsia}
+          <FilterMobile
+            selectedTema={selectedTema}
+            toggleCheckboxTema={toggleCheckboxTema}
             onClose={() => setOpenMobileSidebar(false)}
-          /> */}
+          />
           <div
             className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setOpenMobileSidebar(false)}

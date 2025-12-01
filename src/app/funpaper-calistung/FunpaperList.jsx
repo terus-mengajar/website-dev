@@ -21,7 +21,7 @@ export default function FunpaperList({ onOpenFilter, filters }) {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await fetch(`/api/funpaper-calistung`);
+      const res = await fetch(`/api/funpaper-calistung?${filters}`);
       const data = await res.json();
       setFunpaperData(data);
       setLoading(false);
@@ -68,12 +68,12 @@ export default function FunpaperList({ onOpenFilter, filters }) {
         </p>
 
         {/* Tombol filter khusus mobile */}
-        {/* <button
+        <button
           className="border border-[#ecdab7] hover:bg-gray-100 text-sm rounded font-medium px-2 py-1 lg:hidden flex flex-row gap-1 items-center mb-4"
           onClick={onOpenFilter}
         >
           <ListFilter size={16} /> Filter
-        </button> */}
+        </button>
 
         <select
           value={sort}
