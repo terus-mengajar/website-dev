@@ -20,6 +20,7 @@ export default function Aktivitas({ id, slug }) {
           { cache: "no-store" }
         );
         const data = await res.json();
+        // console.log(data)
         setActivities(data);
       } catch (err) {
         console.error(err);

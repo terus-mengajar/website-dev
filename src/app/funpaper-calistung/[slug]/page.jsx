@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   const funpaper = await res.json();
 
   return {
-    title: funpaper.name + " - " + funpaper.activity,
+    title: funpaper.name + " - " + funpaper.theme,
     // description: funpaper.description",
   };
 }
