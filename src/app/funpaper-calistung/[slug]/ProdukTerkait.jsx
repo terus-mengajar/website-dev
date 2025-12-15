@@ -51,6 +51,7 @@ export default function ProdukTerkait({ themeCalistungId }) {
                         width={128}
                         alt="Produk Terkait"
                         className="h-full object-cover w-[80%]"
+                        unoptimized
                       />
                     </div>
                     <h4 className="text-center text-sm font-medium mt-2">

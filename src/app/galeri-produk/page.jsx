@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import LoadingCard from "@/components/LoadingCard";
+import kameraGerak from "@/assets/lottie/kamera_gerak.json";
 
 export default function GaleriProduk() {
   const [galleries, setGalleries] = useState([]);
@@ -29,7 +30,7 @@ export default function GaleriProduk() {
           <div className="card-header">
             <div className="max-w-[200px]">
               <Lottie
-                animationData={require("/public/lottie/kamera_gerak.json")}
+                animationData={kameraGerak}
                 loop={true}
               />
             </div>

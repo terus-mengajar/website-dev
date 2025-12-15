@@ -42,6 +42,7 @@ export default function AsetMediaPembelajaranList() {
                     width={336}
                     height={188}
                     className="rounded-xl "
+                    unoptimized
                   />
                 </div>
 

@@ -53,6 +53,7 @@ export default async function MiniGamePage({ params }) {
                   width={800}
                   height={500}
                   alt="Gambar Mini Game"
+                  unoptimized
                 />
               )}
             </div>

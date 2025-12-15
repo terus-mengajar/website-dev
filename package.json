@@ -15,7 +15,7 @@
     "bcryptjs": "^3.0.2",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.542.0",
-    "next": "15.5.0",
+    "next": "^16.0.10",
     "next-auth": "^5.0.0-beta.29",
     "nprogress": "^0.2.0",
     "react": "^19.2.3",

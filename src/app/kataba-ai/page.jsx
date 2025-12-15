@@ -106,6 +106,7 @@ export default async function Page() {
               alt="demo"
               width={300}
               height={200}
+              unoptimized
             />
             {/* <video
               autoPlay

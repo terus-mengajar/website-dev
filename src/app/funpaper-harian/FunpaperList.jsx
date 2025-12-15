@@ -8,6 +8,10 @@ import Image from "next/image";
 import { ListFilter } from "lucide-react";
 import Lottie from "lottie-react";
 import { useSearchParams } from "next/navigation";
+import produkTidakDitemukan from "@/assets/lottie/produk_tidak_ditemukan.json";
+import bundleMaze from "@/assets/lottie/bundle_maze.json";
+import bundleSoalCampuran from "@/assets/lottie/bundle_soal_campuran.json";
+import bundleMewarnai from "@/assets/lottie/bundle_mewarnai.json";
 
 export default function FunpaperHarianList({ onOpenFilter, filters }) {
   const searchParams = useSearchParams();
@@ -81,7 +85,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
             >
               <div className="rounded-xl overflow-hidden mb-2">
                 <Lottie
-                  animationData={require("/public/lottie/bundle_mewarnai.json")}
+                  animationData={bundleMewarnai}
                   loop={true}
                 />
               </div>
@@ -93,7 +97,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
             >
               <div className="rounded-xl overflow-hidden mb-2">
                 <Lottie
-                  animationData={require("/public/lottie/bundle_soal_campuran.json")}
+                  animationData={bundleSoalCampuran}
                   loop={true}
                 />
               </div>
@@ -105,7 +109,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
             >
               <div className="rounded-xl overflow-hidden mb-2">
                 <Lottie
-                  animationData={require("/public/lottie/bundle_maze.json")}
+                  animationData={bundleMaze}
                   loop={true}
                 />
               </div>
@@ -152,7 +156,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
         <div className="card-header">
           <div className="w-60 lg:w-120">
             <Lottie
-              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              animationData={produkTidakDitemukan}
               loop={true}
             />
           </div>

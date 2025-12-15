@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import { ListFilter } from "lucide-react";
+import produkTidakDitemukan from "@/assets/lottie/produk_tidak_ditemukan.json";
 
 export default function FunpaperTemaList({ onOpenFilter, filters }) {
   const [loading, setLoading] = useState(true);
@@ -52,7 +53,7 @@ export default function FunpaperTemaList({ onOpenFilter, filters }) {
         <div className="card-header">
           <div className="w-60">
             <Lottie
-              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              animationData={produkTidakDitemukan}
               loop={true}
             />
           </div>
@@ -81,6 +82,7 @@ export default function FunpaperTemaList({ onOpenFilter, filters }) {
                     src={funpaper.mockup_thumbnail_url}
                     alt={funpaper.name_on_website}
                     className="mx-auto object-contain mb-6"
+                    unoptimized
                   />
                   <p className="text-xs text-center mb-2">
                     {funpaper.name_on_website}

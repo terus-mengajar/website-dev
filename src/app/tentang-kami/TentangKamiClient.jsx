@@ -2,6 +2,10 @@
 
 import Lottie from "lottie-react";
 import { MoveRight } from "lucide-react";
+import funpaperCover from "@/assets/lottie/funpaper_cover.json";
+import asetMediaAjarCounting from "@/assets/lottie/aset_media_ajar_counting.json";
+import funpaperPutar from "@/assets/lottie/funpaper_putar.json";
+import funpaperCounting from "@/assets/lottie/funpaper_counting.json";
 
 export default function TentangKamiClient() {
   return (
@@ -12,7 +16,7 @@ export default function TentangKamiClient() {
             <div className="lg:w-1/2">
               <div className="max-w-xl">
                 <Lottie
-                  animationData={require("/public/lottie/funpaper_cover.json")}
+                  animationData={funpaperCover}
                   loop={true}
                 />
               </div>
@@ -37,7 +41,7 @@ export default function TentangKamiClient() {
             <div className="lg:w-1/2 order-1 lg:order-2">
               <div className="max-w-xl">
                 <Lottie
-                  animationData={require("/public/lottie/funpaper_putar.json")}
+                  animationData={funpaperPutar}
                   loop={true}
                 />
               </div>
@@ -58,7 +62,7 @@ export default function TentangKamiClient() {
             <div className="lg:w-1/2">
               <div className="max-w-xl">
                 <Lottie
-                  animationData={require("/public/lottie/funpaper_counting.json")}
+                  animationData={funpaperCounting}
                   loop={true}
                 />
               </div>
@@ -93,7 +97,7 @@ export default function TentangKamiClient() {
             <div className="lg:w-1/2 order-1 lg:order-2">
               <div className="max-w-xs">
                 <Lottie
-                  animationData={require("/public/lottie/aset_media_ajar_counting.json")}
+                  animationData={asetMediaAjarCounting}
                   loop={true}
                 />
               </div>

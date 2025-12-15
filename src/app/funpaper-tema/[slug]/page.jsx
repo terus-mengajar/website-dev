@@ -46,12 +46,13 @@ export default async function FunpaperTemaPage({ params }) {
             {/* Card Funpaper Preview */}
             <div className="w-full max-w-lg">
               {funpaper.mockup_url && (
-                <img
+                <Image
                   src={funpaper.mockup_url}
                   width={800}
                   height={450}
                   alt="Funpaper Tema"
                   className="mx-auto"
+                  unoptimized
                 />
               )}
             </div>

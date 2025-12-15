@@ -70,6 +70,7 @@ export default async function Page({ params }) {
               width={940}
               height={520}
               alt="Gambar Aset"
+              unoptimized
             />
           )}
         </div>
@@ -96,6 +97,7 @@ export default async function Page({ params }) {
                         width={336}
                         height={188}
                         className="rounded-xl "
+                        unoptimized
                       />
                     )}
                   </div>

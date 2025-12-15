@@ -52,12 +52,13 @@ export default function Aktivitas({ id, slug }) {
                     setOpen(true);
                   }}
                 >
-                  <img
+                  <Image
                     src={activity.image_url}
                     alt={activity.name}
                     width={110}
                     height={155}
                     className="rounded-lg"
+                    unoptimized
                   />
                 </div>
                 <p className="text-center text-sm">{activity.name}</p>

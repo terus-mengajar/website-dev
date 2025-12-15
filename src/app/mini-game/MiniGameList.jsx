@@ -5,6 +5,7 @@ import LoadingCard from "@/components/LoadingCard";
 import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import Image from "next/image";
+import produkTidakDitemukan from "@/assets/lottie/produk_tidak_ditemukan.json";
 
 // type Game = {
 //   id: number;
@@ -72,7 +73,7 @@ export default function GameList() {
         <div className="card-header">
           <div className="w-60 lg:w-120">
             <Lottie
-              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              animationData={produkTidakDitemukan}
               loop={true}
             />
           </div>
@@ -124,6 +125,7 @@ export default function GameList() {
                     width={242}
                     alt={game.name}
                     className="object-contain mb-6"
+                    unoptimized
                   />
                   <p className="text-xs text-center mb-2">{game.name}</p>
                   {game.played > 0 && (

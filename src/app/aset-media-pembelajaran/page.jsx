@@ -17,6 +17,7 @@ export default function GaleriProduk() {
                 width={350}
                 height={350}
                 alt="Icon Aset"
+                unoptimized
               />
             </div>
 

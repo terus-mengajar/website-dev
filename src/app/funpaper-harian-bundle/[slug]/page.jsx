@@ -56,6 +56,7 @@ export default async function FunpaperTemaPage({ params }) {
                   height={450}
                   alt="Funpaper Bundle"
                   className="mx-auto"
+                  unoptimized
                 />
               
             </div>

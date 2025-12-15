@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Lottie from "lottie-react";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
+import produkTidakDitemukan from "@/assets/lottie/produk_tidak_ditemukan.json";
 
 export default function FunpaperTemaList() {
   const [loading, setLoading] = useState(true);
@@ -46,7 +47,7 @@ export default function FunpaperTemaList() {
         <div className="card-header">
           <div className="w-60">
             <Lottie
-              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              animationData={produkTidakDitemukan}
               loop={true}
             />
           </div>
@@ -75,6 +76,7 @@ export default function FunpaperTemaList() {
                     src={funpaper.mockup_thumbnail_url || '/images/funpaper/bundle/bundle-1.avif'}
                     alt="bundle"
                     className="mx-auto object-contain mb-6"
+                    unoptimized
                   />
                   <p className="text-xs text-center mb-2">
                     {funpaper.name_on_website}

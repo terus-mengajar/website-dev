@@ -56,6 +56,7 @@ export default async function FunpaperPage({ params }) {
                   width={328}
                   alt={funpaper.name}
                   className="mx-auto"
+                  unoptimized
                 />
               )}
             </div>
