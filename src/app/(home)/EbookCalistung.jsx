@@ -24,6 +24,7 @@ export default function EbookCalistung() {
             className="h-auto"
             width={300}
             height={200}
+            unoptimized
           />
         </div>
       </div>

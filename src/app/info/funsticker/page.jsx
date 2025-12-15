@@ -46,6 +46,7 @@ export default function page() {
                 width={400}
                 height={200}
                 className="mx-auto"
+                unoptimized
               />
               <a href="/funsticker" className="tombol-biru-tua">
                 Beli Sekarang
@@ -97,6 +98,7 @@ export default function page() {
                       width={40}
                       height={40}
                       className="mx-auto"
+                      unoptimized
                     />
                     <p className="mt-2">{item.text}</p>
                   </div>
@@ -144,6 +146,7 @@ export default function page() {
                     width={200}
                     height={300}
                     className="mx-auto"
+                    unoptimized
                   />
                 </div>
 
@@ -196,6 +199,7 @@ export default function page() {
                   width={200}
                   height={120}
                   className="rounded-lg mb-4"
+                  unoptimized
                 />
                 <p className="font-semibold text-lg">{tema.title}</p>
                 <p className="mt-3 text-lg">{tema.text}</p>
@@ -215,6 +219,7 @@ export default function page() {
                 width={120}
                 height={120}
                 className="mx-auto"
+                unoptimized
               />
               <p className="">10–15 halaman penuh warna</p>
             </div>
@@ -226,6 +231,7 @@ export default function page() {
                 width={120}
                 height={120}
                 className="mx-auto"
+                unoptimized
               />
               <p className="">Ilustrasi menarik dan informatif</p>
             </div>
@@ -237,6 +243,7 @@ export default function page() {
                 width={120}
                 height={120}
                 className="mx-auto"
+                unoptimized
               />
               <p className="">Ukuran A5, pas untuk anak</p>
             </div>
@@ -248,6 +255,7 @@ export default function page() {
                 width={120}
                 height={120}
                 className="mx-auto"
+                unoptimized
               />
               <p className="">Kertas tebal & tahan lipat</p>
             </div>
@@ -295,6 +303,7 @@ export default function page() {
                     height={44}
                     alt="solusi"
                     className="h-auto"
+                    unoptimized
                   />
                 </div>
                 <div className="text-center">
@@ -317,6 +326,7 @@ export default function page() {
                 height={40}
                 alt="tanda tanya"
                 className="h-auto"
+                unoptimized
               />
             </div>
             <div className="">
@@ -360,6 +370,7 @@ export default function page() {
                 height={700}
                 alt="Funpaper Tema Campur"
                 className="mx-auto w-120 md:w-160"
+                unoptimized
               />
             </div>
             <div className="text-center md:text-left">

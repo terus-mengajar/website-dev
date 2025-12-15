@@ -77,6 +77,7 @@ export default function page() {
                       width={40}
                       height={40}
                       className="mx-auto"
+                      unoptimized
                     />
                     <p className="mt-2">{item.text}</p>
                   </div>
@@ -94,6 +95,7 @@ export default function page() {
                 width={400}
                 alt="funpaper-tema-lain-lain"
                 className="mb-8 mx-auto w-[200px] md:w-[400px] h-auto"
+                unoptimized
               />
               <p className="font-bold text-xl md:text-3xl">
                 Kami bantu Bunda menyiapkan aktivitas belajar yang seru,
@@ -151,6 +153,7 @@ export default function page() {
                     width={40}
                     height={40}
                     className="mx-auto"
+                    unoptimized
                   />
                   <p className="mt-2">{item.text}</p>
                 </div>
@@ -203,6 +206,7 @@ export default function page() {
                   width={120}
                   height={90}
                   className="rounded-lg"
+                  unoptimized
                 />
                 <p className="mt-3 font-semibold">{tema.text}</p>
               </div>
@@ -220,6 +224,7 @@ export default function page() {
                 alt="Mainan Kayu"
                 width={120}
                 height={120}
+                unoptimized
               />
               <p className="text-pink text-xl sm:text-4xl font-bold mb-2">
                 2-4
@@ -233,6 +238,7 @@ export default function page() {
                 alt="Mainan Kayu"
                 width={120}
                 height={120}
+                unoptimized
               />
               <p className="text-biru text-xl sm:text-4xl font-bold mb-2">
                 4-5
@@ -246,6 +252,7 @@ export default function page() {
                 alt="Mainan Kayu"
                 width={120}
                 height={120}
+                unoptimized
               />
               <p className="text-hijau text-xl sm:text-4xl font-bold mb-2">
                 5-6
@@ -298,6 +305,7 @@ export default function page() {
                     height={40}
                     alt="solusi"
                     className="h-auto"
+                    unoptimized
                   />
                 </div>
                 <div>
@@ -321,6 +329,7 @@ export default function page() {
                   height={40}
                   alt="susu"
                   className="h-auto"
+                  unoptimized
                 />
               </div>
               <div>
@@ -350,6 +359,7 @@ export default function page() {
                   height={40}
                   alt="susu"
                   className="h-auto"
+                  unoptimized
                 />
               </div>
               <div>
@@ -380,6 +390,7 @@ export default function page() {
                 height={225}
                 alt="Funpaper Tema Campur"
                 className="mx-auto"
+                unoptimized
               />
             </div>
             <div>

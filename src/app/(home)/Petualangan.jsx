@@ -13,6 +13,7 @@ export default function Petualangan() {
               alt="petualangan 1"
               width={400}
               height={218}
+              unoptimized
             />
           </div>
 
@@ -35,6 +36,7 @@ export default function Petualangan() {
               alt="petualangan 2"
               width={480}
               height={120}
+              unoptimized
             />
           </div>
 
@@ -73,6 +75,7 @@ export default function Petualangan() {
               alt="petualangan 3"
               width={480}
               height={120}
+              unoptimized
             />
           </div>
 
@@ -110,6 +113,7 @@ export default function Petualangan() {
               alt="petualangan 4"
               width={480}
               height={120}
+              unoptimized
             />
           </div>
 
@@ -146,6 +150,7 @@ export default function Petualangan() {
               alt="petualangan 5"
               width={480}
               height={120}
+              unoptimized
             />
           </div>
 
@@ -184,6 +189,7 @@ export default function Petualangan() {
               alt="petualangan 6"
               width={480}
               height={120}
+              unoptimized
             />
           </div>
 
@@ -210,6 +216,7 @@ export default function Petualangan() {
               alt="petualangan 7"
               width={480}
               height={120}
+              unoptimized
             />
           </div>
 
@@ -236,6 +243,7 @@ export default function Petualangan() {
               alt="petualangan 8"
               width={480}
               height={120}
+              unoptimized
             />
           </div>
 
@@ -268,6 +276,7 @@ export default function Petualangan() {
             className="mx-auto"
             width={900}
             height={491}
+            unoptimized
           />
         </div>
       </div>

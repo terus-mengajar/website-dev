@@ -86,6 +86,7 @@ export default function page() {
                       width={40}
                       height={40}
                       className="mx-auto"
+                      unoptimized
                     />
                     <p className="mt-2 text-sm">{item.text}</p>
                   </div>
@@ -101,6 +102,7 @@ export default function page() {
                   height={200}
                   alt="calistung"
                   className="mx-auto"
+                  unoptimized
                 />
               </div>
               <div className="text-center lg:text-left lg:px-18">
@@ -157,6 +159,7 @@ export default function page() {
                     width={200}
                     height={300}
                     className="mx-auto"
+                    unoptimized
                   />
                 </div>
 
@@ -180,6 +183,7 @@ export default function page() {
                 height={700}
                 alt="Funpaper Calistung"
                 className="mx-auto w-80 md:w-160"
+                unoptimized
               />
             </div>
             <div className="text-center md:text-left space-y-10">

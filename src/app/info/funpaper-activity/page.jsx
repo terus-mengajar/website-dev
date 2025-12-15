@@ -82,6 +82,7 @@ export default function page() {
                       width={40}
                       height={40}
                       className="mx-auto"
+                      unoptimized
                     />
                     <p className="mt-2 text-sm">{item.text}</p>
                   </div>
@@ -139,6 +140,7 @@ export default function page() {
                     width={200}
                     height={300}
                     className="mx-auto"
+                    unoptimized
                   />
                 </div>
 
@@ -195,6 +197,7 @@ export default function page() {
                   width={200}
                   height={120}
                   className="rounded-lg mb-4"
+                  unoptimized
                 />
                 <p className="mt-3 font-medium text-lg">{tema.text}</p>
               </div>
@@ -237,6 +240,7 @@ export default function page() {
                     height={80}
                     alt="cocok"
                     className="h-auto"
+                    unoptimized
                   />
                 </div>
                 <div>
@@ -259,6 +263,7 @@ export default function page() {
                 height={700}
                 alt="Funpaper Tema Campur"
                 className="mx-auto w-80 md:w-160"
+                unoptimized
               />
             </div>
             <div className="text-center md:text-left space-y-10">

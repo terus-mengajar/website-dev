@@ -42,6 +42,7 @@ export default function Hero() {
               height={630}
               width={630}
               className="w-[300px] md:w-[400px] lg:w-[580px] xl:w-[630px] h-auto absolute bottom-[-24%] -right-[120px]"
+              unoptimized
             />
 
             <div className="container h-full flex flex-col justify-center text-center items-center lg:items-start lg:text-left z-10 relative">
@@ -70,6 +71,7 @@ export default function Hero() {
               height={630}
               width={630}
               className="w-[300px] md:w-[400px] lg:w-[580px] xl:w-[630px] h-auto absolute bottom-[-24%] -right-[120px]"
+              unoptimized
             />
 
             <div className="container h-full flex flex-col justify-center text-center items-center lg:items-start lg:text-left">
@@ -100,6 +102,7 @@ export default function Hero() {
               height={630}
               width={630}
               className="w-[300px] md:w-[400px] lg:w-[580px] xl:w-[630px] h-auto absolute bottom-[-24%] -right-[120px]"
+              unoptimized
             />
 
             <div className="container h-full flex flex-col items-center justify-center text-center lg:items-start lg:text-left">
@@ -131,6 +134,7 @@ export default function Hero() {
               height={630}
               width={630}
               className="w-[300px] md:w-[400px] lg:w-[580px] xl:w-[630px] h-auto absolute bottom-[-24%] -right-[120px]"
+              unoptimized
             />
 
             <div className="container h-full flex flex-col items-center justify-center text-center  lg:items-start lg:text-left">

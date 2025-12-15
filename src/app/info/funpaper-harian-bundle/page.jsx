@@ -43,6 +43,7 @@ export default function page() {
                 width={400}
                 height={100}
                 className="mx-auto"
+                unoptimized
               />
             </div>
 
@@ -58,6 +59,7 @@ export default function page() {
                 height={100}
                 alt="buku lampu"
                 className="order-1 lg:order-2 mx-auto"
+                unoptimized
               />
             </div>
 
@@ -101,6 +103,7 @@ export default function page() {
                       width={40}
                       height={40}
                       className="mx-auto"
+                      unoptimized
                     />
                     <p className="mt-2">{item.text}</p>
                   </div>
@@ -159,6 +162,7 @@ export default function page() {
                     width={40}
                     height={40}
                     className="mx-auto"
+                    unoptimized
                   />
                   <p className="mt-2">{item.text}</p>
                 </div>
@@ -224,6 +228,7 @@ export default function page() {
                     width={120}
                     height={100}
                     className="rounded-lg"
+                    unoptimized
                   />
                 </div>
                 <p className="mt-3 font-medium text-sm whitespace-pre-line">
@@ -276,6 +281,7 @@ export default function page() {
                     height={40}
                     alt="sticker"
                     className="h-auto"
+                    unoptimized
                   />
                 </div>
                 <div className="text-center">
@@ -320,6 +326,7 @@ export default function page() {
                     height={40}
                     alt="solusi"
                     className="h-auto"
+                    unoptimized
                   />
                 </div>
                 <p>{solusi.text}</p>
@@ -339,6 +346,7 @@ export default function page() {
                 height={300}
                 alt="Funpaper Tema Campur"
                 className="mx-auto"
+                unoptimized
               />
             </div>
             <div className="space-y-6">
