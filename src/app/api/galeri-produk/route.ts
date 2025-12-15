@@ -20,7 +20,7 @@ export async function GET() {
 
     const data = await res.json();
     const logs = data?.result?.[0]?.results ?? [];
-
+    
     return NextResponse.json(logs);
   } catch (err) {
     console.error("Gagal ambil data:", err);

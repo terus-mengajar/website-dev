@@ -62,6 +62,7 @@ export default function GaleriProduk() {
                       height={300}
                       src={gallery.url}
                       alt="Foto Galeri"
+                      unoptimized
                     />
                   </div>
                 </div>
