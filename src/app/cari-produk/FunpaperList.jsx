@@ -7,6 +7,7 @@ import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import Image from "next/image";
 import { ListFilter } from "lucide-react";
 import Lottie from "lottie-react";
+import produkTidakDitemukan from "@/assets/lottie/produk_tidak_ditemukan.json";
 
 export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
   const [loading, setLoading] = useState(true);
@@ -99,7 +100,7 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
         <div className="card-header">
           <div className="w-60 lg:w-120">
             <Lottie
-              animationData={require("/public/lottie/produk_tidak_ditemukan.json")}
+              animationData={produkTidakDitemukan}
               loop={true}
             />
           </div>
@@ -136,6 +137,7 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
                     width={128}
                     alt={funpaper.name}
                     className="mx-auto object-contain mb-6"
+                    unoptimized
                   />
                   <p className="text-xs text-center mb-2">
                     {funpaper.name + " - " + funpaper.activity}
