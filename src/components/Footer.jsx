@@ -12,7 +12,7 @@ export default function Footer() {
             alt="Terusmengajar Logo"
             width={62}
             height={40}
-            className="h-auto w-auto"
+            className="h-auto"
             unoptimized
           />
         </div>
