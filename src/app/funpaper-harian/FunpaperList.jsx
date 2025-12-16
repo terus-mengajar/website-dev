@@ -190,6 +190,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
                     width={128}
                     alt={funpaper.name}
                     className="mx-auto object-contain mb-6"
+                    unoptimized
                   />
                   <p className="text-xs text-center mb-2">
                     {funpaper.name + " - " + funpaper.activity}
