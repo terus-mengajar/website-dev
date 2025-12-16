@@ -13,6 +13,7 @@ export default function Footer() {
             width={62}
             height={40}
             className="h-auto w-auto"
+            unoptimized
           />
         </div>
 

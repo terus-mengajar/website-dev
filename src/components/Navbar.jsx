@@ -80,6 +80,7 @@ export default function Navbar() {
                   alt="Logo"
                   width={50}
                   height={28}
+                  unoptimized
                 />
               </Link>
             </div>
