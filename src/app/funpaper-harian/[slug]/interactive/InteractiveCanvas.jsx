@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Stage, Layer, Image as KonvaImage, Line } from "react-konva";
 import useImage from "use-image";
 
-const GAP = 80;
+const GAP = 140;
 
 export default function InteractiveCanvas({ imageUrl }) {
   const stageRef = useRef(null);
