@@ -31,7 +31,7 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ funpaperId: id, userId }),
     });
-    
+
     try {
       // update jumlah_downloaded
       await fetch(`/api/funpaper-harian/${slug}/download`, {
@@ -91,7 +91,17 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
         <li>Tekan tombol download untuk mulai mengunduh Funpaper</li>
       </ul>
 
-      <p className="text-gray-700 text-sm mb-4 font-medium">Silahkan lihat <a href="/syarat-dan-ketentuan" target="_blank" className="text-pink underline">Syarat & Ketentuan</a> sebelum klik tombol download</p>
+      <p className="text-gray-700 text-sm mb-4 font-medium">
+        Silahkan lihat{" "}
+        <a
+          href="/syarat-dan-ketentuan"
+          target="_blank"
+          className="text-pink underline"
+        >
+          Syarat & Ketentuan
+        </a>{" "}
+        sebelum klik tombol download
+      </p>
 
       <div className="flex gap-3 mb-4">
         <button
@@ -119,14 +129,20 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
         </button>
       </div>
 
-      <button
-        onClick={handleDownload}
-        className={`tombol-pink py-2! text-center ${
-          loading ? "opacity-50 cursor-not-allowed disabled" : ""
-        }`}
-      >
-        {loading ? "Loading..." : "Download"}
-      </button>
+      <div className="flex flex-row gap-2">
+        <button
+          onClick={handleDownload}
+          className={`tombol-pink py-2! text-center ${
+            loading ? "opacity-50 cursor-not-allowed disabled" : ""
+          }`}
+        >
+          {loading ? "Loading..." : "Download"}
+        </button>
+
+        <a className="tombol-biru cursor-pointer" target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_INTERACTIVE_BASE_URL+'/funpaper-harian/'+slug}>
+          Interactive
+        </a>
+      </div>
     </div>
   );
 }
