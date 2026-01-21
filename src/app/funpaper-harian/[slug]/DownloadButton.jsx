@@ -54,6 +54,34 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
     window.open(url, "_blank");
   };
 
+  const handleInteractive = async () => {
+    if (status !== "authenticated") {
+      toast("Silakan masuk terlebih dahulu untuk bermain");
+      router.push(`/auth/login?callbackUrl=/funpaper-harian/${slug}`);
+      return;
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/sso`, {
+      cache: "no-store", // biar ga cache kalau datanya dinamis
+    });
+
+    // if (res.status == 404) {
+    //   redirect("/funpaper-harian");
+    // }
+
+    const sso = await res.json();
+    console.log(sso);
+
+    window.open(
+      process.env.NEXT_PUBLIC_INTERACTIVE_BASE_URL +
+        "/funpaper-harian/" +
+        slug +
+        "?sso=" +
+        sso.sso_token,
+      "_blank",
+    );
+  };
+
   // ADD VIEW RECOMBEE UNTUK USER YANG SUDAH LOGIN SAJA
   useEffect(() => {
     if (hasSent) return;
@@ -139,9 +167,12 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
           {loading ? "Loading..." : "Download"}
         </button>
 
-        <a className="tombol-biru cursor-pointer" target="_blank" rel="noopener noreferrer" href={process.env.NEXT_PUBLIC_INTERACTIVE_BASE_URL+'/funpaper-harian/'+slug}>
+        <button
+          onClick={handleInteractive}
+          className="tombol-biru cursor-pointer"
+        >
           Interactive
-        </a>
+        </button>
       </div>
     </div>
   );
