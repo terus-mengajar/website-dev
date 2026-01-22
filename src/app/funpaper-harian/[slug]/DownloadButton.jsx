@@ -7,12 +7,19 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 // import { getGuestId, createGuestId, getOrCreateGuestId } from "@/lib/guest-id"; //GA JADI, BIKIN RECOMBEE BENGKAK
 
-export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
+export default function FunpaperDownload({
+  id,
+  slug,
+  linkA4,
+  linkA5,
+  interactive,
+}) {
   const { data: session, status } = useSession();
   const router = useRouter();
 
   const [selected, setSelected] = useState("A4");
   const [loading, setLoading] = useState(false);
+  const [loadingInteractive, setLoadingInteractive] = useState(false);
   const [hasSent, setHasSent] = useState(false);
 
   const handleDownload = async () => {
@@ -61,6 +68,8 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
       return;
     }
 
+    setLoadingInteractive(true);
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/sso`, {
       cache: "no-store", // biar ga cache kalau datanya dinamis
     });
@@ -70,7 +79,9 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
     // }
 
     const sso = await res.json();
-    console.log(sso);
+    // console.log(sso);
+
+    setLoadingInteractive(false);
 
     window.open(
       process.env.NEXT_PUBLIC_INTERACTIVE_BASE_URL +
@@ -157,7 +168,7 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
         </button>
       </div>
 
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-col sm:flex-row md:flex-col xl:flex-row gap-2">
         <button
           onClick={handleDownload}
           className={`tombol-pink py-2! text-center ${
@@ -167,12 +178,16 @@ export default function FunpaperDownload({ id, slug, linkA4, linkA5 }) {
           {loading ? "Loading..." : "Download"}
         </button>
 
-        <button
-          onClick={handleInteractive}
-          className="tombol-biru cursor-pointer"
-        >
-          Interactive
-        </button>
+        {interactive === 1 && (
+          <button
+            onClick={handleInteractive}
+            className={`tombol-biru py-2! text-center ${
+              loadingInteractive ? "opacity-50 cursor-not-allowed disabled" : ""
+            }`}
+          >
+            {loadingInteractive ? "Loading..." : "Interactive"}
+          </button>
+        )}
       </div>
     </div>
   );

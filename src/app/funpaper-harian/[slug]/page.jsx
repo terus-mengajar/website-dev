@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-harian/${slug}`,
     {
       cache: "no-store", // biar ga cache kalau datanya dinamis
-    }
+    },
   );
 
   const funpaper = await res.json();
@@ -29,7 +29,7 @@ export default async function FunpaperHarianPage({ params }) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-harian/${slug}`,
     {
       cache: "no-store", // biar ga cache kalau datanya dinamis
-    }
+    },
   );
 
   if (res.status == 404) {
@@ -150,6 +150,7 @@ export default async function FunpaperHarianPage({ params }) {
               slug={slug}
               linkA4={funpaper.link_a4}
               linkA5={funpaper.link_a5}
+              interactive={funpaper.interactive}
             />
           </div>
         </div>
