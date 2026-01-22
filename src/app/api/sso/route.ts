@@ -32,7 +32,7 @@ export async function GET(request: Request) {
 
     if (!sso_token || sso_expired_at < now) {
       sso_token = crypto.randomBytes(32).toString("hex");
-      sso_expired_at = now + 5 * 60 * 1000;
+      sso_expired_at = now + 60 * 60 * 1000; //60menit
 
       const updateRes = await fetch(CLOUDFLARE_D1_URL, {
         method: "POST",

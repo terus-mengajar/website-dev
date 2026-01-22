@@ -33,7 +33,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               sql: `SELECT * FROM user WHERE email = ? LIMIT 1`,
               params: [email],
             }),
-          }
+          },
         );
 
         const data = await res.json();
@@ -42,9 +42,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!user) return null;
 
         // validasi password
-        if(!credentials?.password) return null;
+        if (!credentials?.password) return null;
 
-        const isValid = await bcrypt.compare(password as string, user.password_hash);
+        const isValid = await bcrypt.compare(
+          password as string,
+          user.password_hash,
+        );
         if (!isValid) return null;
 
         return { id: user.id, email: user.email, name: user.name };
@@ -56,10 +59,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user }) {
       try {
         // cek ke D1
-        await fetch(`/api/users`, {
+        await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: user.email }),
+          body: JSON.stringify({
+            email: user.email,
+            avatar: user.image,
+          }),
         });
       } catch (e) {
         console.error("Gagal insert ke D1:", e);
