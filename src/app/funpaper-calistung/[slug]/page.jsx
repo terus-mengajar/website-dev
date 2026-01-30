@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-calistung/${slug}`,
     {
       cache: "no-store", // biar ga cache kalau datanya dinamis
-    }
+    },
   );
 
   const funpaper = await res.json();
@@ -28,7 +28,7 @@ export default async function FunpaperPage({ params }) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-calistung/${slug}`,
     {
       cache: "no-store", // biar ga cache kalau datanya dinamis
-    }
+    },
   );
 
   if (res.status == 404) {
@@ -110,15 +110,14 @@ export default async function FunpaperPage({ params }) {
               id={funpaper.id}
               slug={slug}
               link={funpaper.link}
+              interactive={funpaper.interactive}
             />
           </div>
         </div>
       </section>
 
       {/* Produk Terkait */}
-      <ProdukTerkait
-        themeCalistungId={funpaper.theme_calistung_id}
-      />
+      <ProdukTerkait themeCalistungId={funpaper.theme_calistung_id} />
     </div>
   );
 }
