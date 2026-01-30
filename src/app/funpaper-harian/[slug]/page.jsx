@@ -48,12 +48,13 @@ export default async function FunpaperHarianPage({ params }) {
             <div className="w-full max-w-lg">
               {funpaper.slug && (
                 <img
-                  src={
-                    CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                    "/funpaper-harian/" +
-                    funpaper.slug +
-                    ".jpg"
-                  }
+                  // src={
+                  //   CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
+                  //   "/funpaper-harian/" +
+                  //   funpaper.slug +
+                  //   ".jpg"
+                  // }
+                  src={funpaper.image_url}
                   height={461}
                   width={328}
                   alt={funpaper.name}

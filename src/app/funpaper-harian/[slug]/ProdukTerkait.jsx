@@ -6,13 +6,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 
-export default function ProdukTerkait({ activityId, themeId, funpaperId, slug }) {
+export default function ProdukTerkait({
+  activityId,
+  themeId,
+  funpaperId,
+  slug,
+}) {
   const [funpapers, setFunpapers] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `/api/funpaper-harian/${slug}/produk-terkait?limit=4&activity_id=${activityId}&theme_id=${themeId}&funpaper_id=${funpaperId}`
+        `/api/funpaper-harian/${slug}/produk-terkait?limit=4&activity_id=${activityId}&theme_id=${themeId}&funpaper_id=${funpaperId}`,
       );
       const data = await res.json();
       setFunpapers(data);
@@ -42,12 +47,13 @@ export default function ProdukTerkait({ activityId, themeId, funpaperId, slug })
                   <div className="mb-2 flex flex-col items-center">
                     <div className="w-32 h-32 bg-white flex items-center justify-center rounded-md bg-[url('/images/shapes/oval-ungu.avif')] bg-cover bg-center">
                       <img
-                        src={
-                          CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                          "/funpaper-harian/" +
-                          funpaper.slug +
-                          ".jpg"
-                        }
+                        // src={
+                        //   CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
+                        //   "/funpaper-harian/" +
+                        //   funpaper.slug +
+                        //   ".jpg"
+                        // }
+                        src={funpaper.image_url}
                         height={461}
                         width={328}
                         alt="Produk Terkait"

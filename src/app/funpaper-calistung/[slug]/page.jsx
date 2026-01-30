@@ -47,11 +47,7 @@ export default async function FunpaperPage({ params }) {
             <div className="w-full max-w-lg">
               {funpaper.slug && (
                 <Image
-                  src={
-                    CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                    "/funpaper-calistung/" +
-                    funpaper.image_url
-                  }
+                  src={funpaper.image_url}
                   height={461}
                   width={328}
                   alt={funpaper.name}

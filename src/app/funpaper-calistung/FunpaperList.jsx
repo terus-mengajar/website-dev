@@ -39,13 +39,13 @@ export default function FunpaperList({ onOpenFilter, filters }) {
       case "baru":
         sorted.sort(
           (a, b) =>
-            new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+            new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
         );
         break;
       case "lama":
         sorted.sort(
           (a, b) =>
-            new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime()
+            new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime(),
         );
         break;
       case "az":
@@ -98,10 +98,7 @@ export default function FunpaperList({ onOpenFilter, filters }) {
       {!loading && funpapers.length === 0 && (
         <div className="card-header">
           <div className="w-60 lg:w-120">
-            <Lottie
-              animationData={produkTidakDitemukan}
-              loop={true}
-            />
+            <Lottie animationData={produkTidakDitemukan} loop={true} />
           </div>
           <div>
             <p className="font-bold text-lg mb-2">
@@ -123,11 +120,7 @@ export default function FunpaperList({ onOpenFilter, filters }) {
               >
                 <div className="">
                   <Image
-                    src={
-                      CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                      "/funpaper-calistung/" +
-                      funpaper.image_url
-                    }
+                    src={funpaper.image_url}
                     height={180}
                     width={128}
                     alt={funpaper.name}

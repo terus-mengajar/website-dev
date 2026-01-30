@@ -12,7 +12,7 @@ export default function ProdukTerkait({ themeCalistungId }) {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `/api/funpaper-calistung?limit=4&theme_calistung_id=${themeCalistungId}`
+        `/api/funpaper-calistung?limit=4&theme_calistung_id=${themeCalistungId}`,
       );
       const data = await res.json();
       setFunpapers(data);
@@ -42,11 +42,7 @@ export default function ProdukTerkait({ themeCalistungId }) {
                   <div className="mb-2 flex flex-col items-center">
                     <div className="w-32 h-32 bg-white flex items-center justify-center rounded-md bg-[url('/images/shapes/oval-ungu.avif')] bg-cover bg-center">
                       <Image
-                        src={
-                          CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                          "/funpaper-calistung/" +
-                          funpaper.image_url
-                        }
+                        src={funpaper.image_url}
                         height={180}
                         width={128}
                         alt="Produk Terkait"

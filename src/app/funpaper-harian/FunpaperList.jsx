@@ -34,7 +34,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
   }, [filters]);
 
   const sortedFunpaper = useMemo(() => {
-    let sorted = Array.isArray(funpaperData) ? [...funpaperData] : [];;
+    let sorted = Array.isArray(funpaperData) ? [...funpaperData] : [];
     switch (sort) {
       case "rekomendasi":
         sorted.sort((a, b) => a.urutan_rekomendasi - b.urutan_rekomendasi);
@@ -45,13 +45,13 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
       case "baru":
         sorted.sort(
           (a, b) =>
-            new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+            new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
         );
         break;
       case "lama":
         sorted.sort(
           (a, b) =>
-            new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime()
+            new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime(),
         );
         break;
       case "az":
@@ -84,10 +84,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
               className="p-4 bg-[#FBF6F2] rounded-xl cursor-pointer"
             >
               <div className="rounded-xl overflow-hidden mb-2">
-                <Lottie
-                  animationData={bundleMewarnai}
-                  loop={true}
-                />
+                <Lottie animationData={bundleMewarnai} loop={true} />
               </div>
               <p className="font-medium text-center">Bundle Mewarnai</p>
             </Link>
@@ -96,10 +93,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
               className="p-4 bg-[#FBF6F2] rounded-xl cursor-pointer"
             >
               <div className="rounded-xl overflow-hidden mb-2">
-                <Lottie
-                  animationData={bundleSoalCampuran}
-                  loop={true}
-                />
+                <Lottie animationData={bundleSoalCampuran} loop={true} />
               </div>
               <p className="font-medium text-center">Bundle Soal Campuran</p>
             </Link>
@@ -108,10 +102,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
               className="p-4 bg-[#FBF6F2] rounded-xl"
             >
               <div className="rounded-xl overflow-hidden mb-2">
-                <Lottie
-                  animationData={bundleMaze}
-                  loop={true}
-                />
+                <Lottie animationData={bundleMaze} loop={true} />
               </div>
               <p className="font-medium text-center">Bundle Maze</p>
             </Link>
@@ -155,10 +146,7 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
       {!loading && funpapers.length === 0 && (
         <div className="card-header">
           <div className="w-60 lg:w-120">
-            <Lottie
-              animationData={produkTidakDitemukan}
-              loop={true}
-            />
+            <Lottie animationData={produkTidakDitemukan} loop={true} />
           </div>
           <div>
             <p className="font-bold text-lg mb-2">
@@ -180,12 +168,13 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
               >
                 <div className="">
                   <Image
-                    src={
-                      CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
-                      "/funpaper-harian/" +
-                      funpaper.slug +
-                      ".jpg"
-                    }
+                    // src={
+                    //   CLOUDFLARE_R2_WEBSITE_ASSETS_URL +
+                    //   "/funpaper-harian/" +
+                    //   funpaper.slug +
+                    //   ".jpg"
+                    // }
+                    src={funpaper.image_url}
                     height={180}
                     width={128}
                     alt={funpaper.name}
