@@ -24,6 +24,11 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Produk</h4>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href="/funpaper-coding" className="">
+                  Funpaper Coding
+                </Link>
+              </li>
+              <li>
                 <Link href="/funpaper-calistung" className="">
                   Funpaper Calistung
                 </Link>
@@ -56,12 +61,20 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://s.id/terusmengajar-internship" className="hover:underline" target="_blank">
+                <Link
+                  href="https://s.id/terusmengajar-internship"
+                  className="hover:underline"
+                  target="_blank"
+                >
                   Join Internship Program
                 </Link>
               </li>
               <li>
-                <Link href="https://terusmengajar.notion.site/Expert-Partnership-Program-298138c5cbc080a88b51f171e48d0b56" className="hover:underline" target="_blank">
+                <Link
+                  href="https://terusmengajar.notion.site/Expert-Partnership-Program-298138c5cbc080a88b51f171e48d0b56"
+                  className="hover:underline"
+                  target="_blank"
+                >
                   Expert Partnership Program
                 </Link>
               </li>
