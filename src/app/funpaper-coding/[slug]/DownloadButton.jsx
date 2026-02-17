@@ -149,7 +149,7 @@ export default function FunpaperDownload({ id, slug, link, interactive }) {
                   : ""
               }`}
             >
-              {loadingInteractive ? "Loading..." : "Interactive"}
+              {loadingInteractive ? "Loading..." : "Play"}
             </button>
           )}
       </div>

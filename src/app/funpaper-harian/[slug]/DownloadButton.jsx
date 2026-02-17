@@ -189,7 +189,7 @@ export default function FunpaperDownload({
                   : ""
               }`}
             >
-              {loadingInteractive ? "Loading..." : "Interactive"}
+              {loadingInteractive ? "Loading..." : "Play"}
             </button>
           )}
       </div>

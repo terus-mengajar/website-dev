@@ -42,19 +42,22 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TL3G10LTXP"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-TL3G10LTXP');
-            gtag('config', 'G-CVXXG9CDZ0');
-          `}
-        </Script>
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body className={`${poppins.variable} antialiased`}>
         <SessionProvider>
