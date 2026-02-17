@@ -111,7 +111,7 @@ export default function Navbar() {
                 </button>
                 {dropdownOpen === "download" && (
                   <div className="absolute top-9 mt-2 w-48 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
-                    {/* <Link
+                    <Link
                       href="/funpaper-coding"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
@@ -125,7 +125,7 @@ export default function Navbar() {
                       <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
                         New
                       </span>
-                    </Link> */}
+                    </Link>
                     <Link
                       href="/funpaper-calistung"
                       className={
