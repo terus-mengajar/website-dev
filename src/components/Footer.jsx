@@ -23,11 +23,11 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-3">Produk</h4>
             <ul className="space-y-2 text-sm">
-              <li>
+              {/* <li>
                 <Link href="/funpaper-coding" className="">
                   Funpaper Coding
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/funpaper-calistung" className="">
                   Funpaper Calistung
