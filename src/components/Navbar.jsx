@@ -101,7 +101,9 @@ export default function Navbar() {
                   onClick={() => toggleDropdown("download")}
                   className={
                     "flex items-center gap-1 " +
-                    (pathname === "/funpaper-harian" ||
+                    (pathname === "/funpaper-coding" ||
+                    pathname === "/funpaper-calistung" ||
+                    pathname === "/funpaper-harian" ||
                     pathname === "/funpaper-tema"
                       ? "font-bold text-blue-500"
                       : "")
@@ -162,6 +164,72 @@ export default function Navbar() {
                     >
                       Funpaper Tema
                     </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* DROPDOWN PLAY */}
+              <div className="relative">
+                <button
+                  onClick={() => toggleDropdown("play")}
+                  className={
+                    "flex items-center gap-1 " +
+                    (pathname === "/calistung" ||
+                    pathname === "/funpaper-interaktif" ||
+                    pathname === "/mini-game"
+                      ? "font-bold text-blue-500"
+                      : "")
+                  }
+                >
+                  Play <ChevronDown size={16} />
+                </button>
+                {dropdownOpen === "play" && (
+                  <div className="absolute top-9 mt-2 w-56 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
+                    <Link
+                      href="/calistung"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/calistung"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
+                      onClick={() => setDropdownOpen(null)}
+                    >
+                      Calistung{" "}
+                      <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                        New
+                      </span>
+                    </Link>
+                    <Link
+                      href="/funpaper-interaktif"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/funpaper-interaktif"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
+                      onClick={() => setDropdownOpen(null)}
+                    >
+                      Funpaper Interaktif{" "}
+                      <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                        New
+                      </span>
+                    </Link>
+                    <Link
+                      href="#"
+                      className={
+                        "block px-3 py-2 hover:bg-gray-100 " +
+                        (pathname === "/game-edukasi"
+                          ? "font-bold text-blue-500"
+                          : "")
+                      }
+                      onClick={() => setDropdownOpen(null)}
+                    >
+                      Game Edukasi{" "}
+                      <span className="text-[11px] text-[#939393] bg-[#F5F5F5] px-2 py-1 rounded-md">
+                        Segera Hadir
+                      </span>
+                    </Link>
                     <Link
                       href="/mini-game"
                       className={
@@ -172,10 +240,7 @@ export default function Navbar() {
                       }
                       onClick={() => setDropdownOpen(null)}
                     >
-                      Mini Game{" "}
-                      {/* <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
-                        New
-                      </span> */}
+                      Minigames
                     </Link>
                   </div>
                 )}
@@ -286,7 +351,9 @@ export default function Navbar() {
                 onClick={() => toggleDropdown("download")}
                 className={
                   "flex w-full items-center justify-between py-2 border-b border-[#cbaf78] " +
-                  (pathname === "/funpaper-harian" ||
+                  (pathname === "/funpaper-coding" ||
+                  pathname === "/funpaper-calistung" ||
+                  pathname === "/funpaper-harian" ||
                   pathname === "/funpaper-tema"
                     ? " font-bold text-blue-500 "
                     : "")
@@ -302,7 +369,7 @@ export default function Navbar() {
               </button>
               {dropdownOpen === "download" && (
                 <div className="pl-4 mt-2 space-y-2">
-                  {/* <Link
+                  <Link
                     href="/funpaper-coding"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
@@ -319,7 +386,7 @@ export default function Navbar() {
                     <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
                       New
                     </span>
-                  </Link> */}
+                  </Link>
                   <Link
                     href="/funpaper-calistung"
                     className={
@@ -365,6 +432,88 @@ export default function Navbar() {
                   >
                     Funpaper Tema
                   </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Dropdown Play */}
+            <div>
+              <button
+                onClick={() => toggleDropdown("play")}
+                className={
+                  "flex w-full items-center justify-between py-2 border-b border-[#cbaf78] " +
+                  (pathname === "/calistung" ||
+                  pathname === "/funpaper-interaktif" ||
+                  pathname === "/game-edukasi" ||
+                  pathname === "/mini-game"
+                    ? " font-bold text-blue-500 "
+                    : "")
+                }
+              >
+                <span>Play</span>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${
+                    dropdownOpen === "play" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {dropdownOpen === "play" && (
+                <div className="pl-4 mt-2 space-y-2">
+                  <Link
+                    href="/calistung"
+                    className={
+                      "block py-2 border-b border-[#cbaf78] " +
+                      (pathname === "/calistung"
+                        ? " font-bold text-blue-500 "
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Calistung{" "}
+                    <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                      New
+                    </span>
+                  </Link>
+                  <Link
+                    href="/funpaper-interaktif"
+                    className={
+                      "block py-2 border-b border-[#cbaf78] " +
+                      (pathname === "/funpaper-interaktif"
+                        ? " font-bold text-blue-500 "
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Funpaper Interaktif{" "}
+                    <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
+                      New
+                    </span>
+                  </Link>
+                  <Link
+                    href="#"
+                    className={
+                      "block py-2 border-b border-[#cbaf78] " +
+                      (pathname === "/game-edukasi"
+                        ? " font-bold text-blue-500 "
+                        : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setDropdownOpen(null);
+                    }}
+                  >
+                    Game Edukasi{" "}
+                    <span className="text-[11px] text-[#939393] bg-[#F5F5F5] px-2 py-1 rounded-md">
+                      Segera Hadir
+                    </span>
+                  </Link>
                   <Link
                     href="/mini-game"
                     className={
@@ -378,10 +527,7 @@ export default function Navbar() {
                       setDropdownOpen(null);
                     }}
                   >
-                    Mini Game{" "}
-                    {/* <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
-                      New
-                    </span> */}
+                    Mini Game
                   </Link>
                 </div>
               )}
