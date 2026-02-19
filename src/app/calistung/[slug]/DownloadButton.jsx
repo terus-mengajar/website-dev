@@ -1,0 +1,158 @@
+"use client";
+
+import { useState } from "react";
+import { File } from "lucide-react";
+import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+export default function FunpaperDownload({ id, slug, link, interactive }) {
+  // console.log(link)
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  const [selected, setSelected] = useState("A4");
+  const [loadingInteractive, setLoadingInteractive] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleDownload = async () => {
+    if (status !== "authenticated") {
+      toast("Silakan masuk terlebih dahulu untuk download");
+      router.push(`/auth/login?callbackUrl=/funpaper-calistung/${slug}`);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // update jumlah_downloaded
+      await fetch(`/api/funpaper-calistung/${slug}/download`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: session.user.email, // isi dari state/props/context
+          funpaper_calistung_id: id, // isi dari props atau data
+        }),
+      });
+    } catch (err) {
+      console.error("Gagal update downloaded:", err);
+    }
+
+    // tentukan link berdasarkan pilihan
+    // const url = selected === "A4" ? linkA4 : linkA5;
+    setLoading(false);
+    window.open(link, "_blank");
+  };
+
+  const handleInteractive = async () => {
+    if (status !== "authenticated") {
+      toast("Silakan masuk terlebih dahulu untuk bermain");
+      router.push(`/auth/login?callbackUrl=/funpaper-calistung/${slug}`);
+      return;
+    }
+
+    setLoadingInteractive(true);
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/sso`, {
+      cache: "no-store", // biar ga cache kalau datanya dinamis
+    });
+
+    // if (res.status == 404) {
+    //   redirect("/funpaper-harian");
+    // }
+
+    const sso = await res.json();
+    // console.log(sso);
+
+    setLoadingInteractive(false);
+
+    window.open(
+      process.env.NEXT_PUBLIC_INTERACTIVE_BASE_URL +
+        "/funpaper-calistung/" +
+        slug +
+        "?sso=" +
+        sso.sso_token,
+      "_blank",
+    );
+  };
+
+  return (
+    <div className="mt-6">
+      <h3 className="text-2xl font-bold mb-4">Gratis</h3>
+      <ul className="list-disc pl-5 mb-6 text-gray-700 text-sm space-y-3 font-medium">
+        <li>Format PDF</li>
+        <li>Siap print</li>
+        {/* <li>Tersedia dalam 2 ukuran (A4 & A5)</li> */}
+        <li>Hanya untuk penggunaan pribadi</li>
+        <li>Tekan tombol download untuk mulai mengunduh Funpaper</li>
+      </ul>
+
+      <p className="text-gray-700 text-sm mb-4 font-medium">
+        Silahkan lihat{" "}
+        <a
+          href="/syarat-dan-ketentuan"
+          target="_blank"
+          className="text-pink underline"
+        >
+          Syarat & Ketentuan
+        </a>{" "}
+        sebelum klik tombol download
+      </p>
+
+      {/* <div className="flex gap-3 mb-4">
+        <button
+          type="button"
+          onClick={() => setSelected("A4")}
+          className={`px-2 py-1 rounded-lg border flex items-center text-xs gap-2 ${
+            selected === "A4"
+              ? "text-red-600 border-red-500"
+              : "bg-white text-gray-600 border-gray-300"
+          }`}
+        >
+          <File /> Funpaper A4
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setSelected("A5")}
+          className={`px-2 py-1 rounded-lg border flex items-center text-xs gap-2 ${
+            selected === "A5"
+              ? "text-red-600 border-red-500"
+              : "bg-white text-gray-600 border-gray-300"
+          }`}
+        >
+          <File /> Funpaper A5
+        </button>
+      </div> */}
+
+      <div className="flex flex-col sm:flex-row md:flex-col xl:flex-row gap-2">
+        <button
+          onClick={handleDownload}
+          className={`tombol-pink py-2! text-center ${
+            loading ? "opacity-50 cursor-not-allowed disabled" : ""
+          }`}
+        >
+          {loading ? "Loading..." : "Download"}
+        </button>
+
+        {interactive === 1 &&
+          typeof window !== "undefined" &&
+          window.location.hostname !== "terusmengajar.id" && (
+            <button
+              onClick={handleInteractive}
+              className={`tombol-biru py-2! text-center ${
+                loadingInteractive
+                  ? "opacity-50 cursor-not-allowed disabled"
+                  : ""
+              }`}
+            >
+              {loadingInteractive ? "Loading..." : "Play"}
+            </button>
+          )}
+      </div>
+    </div>
+  );
+}

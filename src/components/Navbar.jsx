@@ -330,7 +330,7 @@ export default function Navbar() {
         <nav
           className={
             (!isTransparent ? "fixed " : "absolute ") +
-            "left-0 right-0 top-[68px] xl:hidden bg-white px-4 py-4 space-y-3 z-[999] overflow-y-auto"
+            "left-0 right-0 top-[68px] xl:hidden bg-white px-4 py-4 space-y-3 z-[999] overflow-y-auto shadow-sm"
           }
         >
           <div className="container">

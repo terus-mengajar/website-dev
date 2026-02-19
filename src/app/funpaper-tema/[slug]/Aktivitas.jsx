@@ -17,7 +17,7 @@ export default function Aktivitas({ id, slug }) {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-tema/${slug}/activity`,
-          { cache: "no-store" }
+          { cache: "no-store" },
         );
         const data = await res.json();
         // console.log(data)
@@ -39,7 +39,7 @@ export default function Aktivitas({ id, slug }) {
       </h6>
 
       <div className="mb-8">
-        {loading && <LoadingCard cols={3}/>}
+        {loading && <LoadingCard cols={3} />}
 
         {!loading && activities.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 justify-center">
@@ -57,7 +57,7 @@ export default function Aktivitas({ id, slug }) {
                     alt={activity.name}
                     width={110}
                     height={155}
-                    className="rounded-lg"
+                    className="rounded-lg mx-auto"
                     unoptimized
                   />
                 </div>
