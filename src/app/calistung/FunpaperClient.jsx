@@ -12,11 +12,11 @@ export default function Client({ params }) {
 
   const [selectedTema, setSelectedTema] = useState([]);
 
-  const toggleCheckboxTema = (value) => {
-    setSelectedTema((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
-    );
-  };
+  // const toggleCheckboxTema = (value) => {
+  //   setSelectedTema((prev) =>
+  //     prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+  //   );
+  // };
 
   useEffect(() => {
     function handleResize() {
@@ -32,20 +32,20 @@ export default function Client({ params }) {
   const [filterValues, setFilterValues] = useState("");
 
   // 🔑 Debounce: update filterValues setelah 500ms, tidak numpuk klik sebelumnya
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      // bikin query string custom
-      const temaParam = selectedTema.join(",");
+  // useEffect(() => {
+  //   const handler = setTimeout(() => {
+  //     // bikin query string custom
+  //     const temaParam = selectedTema.join(",");
 
-      const query = new URLSearchParams();
-      if (temaParam) query.set("tema", temaParam);
+  //     const query = new URLSearchParams();
+  //     if (temaParam) query.set("tema", temaParam);
 
-      setFilterValues(query.toString());
-    }, 700);
+  //     setFilterValues(query.toString());
+  //   }, 700);
 
-    // kalau user klik lagi sebelum 500ms → clear timeout
-    return () => clearTimeout(handler);
-  }, [selectedTema]);
+  //   // kalau user klik lagi sebelum 500ms → clear timeout
+  //   return () => clearTimeout(handler);
+  // }, [selectedTema]);
 
   return (
     <section>
@@ -62,8 +62,8 @@ export default function Client({ params }) {
           </div>
           <div className="flex-1 order-1 lg:order-2">
             <FunpaperList
-              // filters={filterValues} // ✅ selalu dapat filter terbaru setelah debounce
-              // onOpenFilter={() => setOpenMobileSidebar(true)}
+            // filters={filterValues} // ✅ selalu dapat filter terbaru setelah debounce
+            // onOpenFilter={() => setOpenMobileSidebar(true)}
             />
           </div>
         </div>

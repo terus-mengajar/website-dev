@@ -5,7 +5,7 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import Image from "next/image";
-import { ListFilter } from "lucide-react";
+import { ListFilter, ArrowDownToLine, Play } from "lucide-react";
 import Lottie from "lottie-react";
 import { useSearchParams } from "next/navigation";
 import produkTidakDitemukan from "@/assets/lottie/produk_tidak_ditemukan.json";
@@ -69,12 +69,12 @@ export default function FunpaperList({ onOpenFilter, filters }) {
         </p>
 
         {/* Tombol filter khusus mobile */}
-        <button
+        {/* <button
           className="border border-[#ecdab7] hover:bg-gray-100 text-sm rounded font-medium px-2 py-1 lg:hidden flex flex-row gap-1 items-center mb-4"
           onClick={onOpenFilter}
         >
           <ListFilter size={16} /> Filter
-        </button>
+        </button> */}
 
         <select
           value={sort}
@@ -127,18 +127,37 @@ export default function FunpaperList({ onOpenFilter, filters }) {
                     className="mx-auto object-contain mb-6"
                     unoptimized
                   />
-                  <p className="text-xs text-center mb-2">
-                    {funpaper.name}
-                  </p>
-                  {funpaper.downloaded > 0 && (
-                    <p className="text-xs text-gray-400 text-center">
-                      Diunduh {funpaper.downloaded} kali
-                    </p>
-                  )}
+                  <p className="text-xs text-center mb-2">{funpaper.name}</p>
+                  <div className="flex flex-row gap-1 items-center justify-center text-[10px] text-gray-400">
+                    {funpaper.downloaded > 0 && (
+                      <div
+                        className={
+                          "px-4 flex flex-col items-center " +
+                          (funpaper.downloaded > 0 && funpaper.played > 0
+                            ? "border-r-1 border-gray-300"
+                            : "")
+                        }
+                      >
+                        <p className="text-center flex flex-row gap-1 mb-1">
+                          <ArrowDownToLine size="12" /> {funpaper.downloaded} x
+                        </p>
+                        <p className="text-center">Diunduh</p>
+                      </div>
+                    )}
+
+                    {funpaper.played > 0 && (
+                      <div className="px-4 flex flex-col items-center ">
+                        <p className="text-center flex flex-row gap-1 mb-1">
+                          <Play size="12" /> {funpaper.played} x
+                        </p>
+                        <p className="text-center">Dimainkan</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div>
                   <button className="bg-[#8562a8] text-white text-xs px-4 py-1 mt-3 rounded-lg hover:bg-[#8562a8]/90 w-full">
-                    Lihat Produk
+                    Mainkan
                   </button>
                 </div>
               </Link>

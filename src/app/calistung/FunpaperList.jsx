@@ -15,14 +15,14 @@ export default function FunpaperList({ onOpenFilter, filters }) {
   const hasParams = searchParams.toString().length > 0;
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
-  const [sort, setSort] = useState("populer");
+  const [sort, setSort] = useState("baru");
   const [page, setPage] = useState(1);
   const perPage = 18;
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await fetch(`/api/funpaper-calistung?${filters}`);
+      const res = await fetch(`/api/calistung?${filters}`);
       const data = await res.json();
       setFunpaperData(data);
       setLoading(false);
@@ -33,9 +33,9 @@ export default function FunpaperList({ onOpenFilter, filters }) {
   const sortedFunpaper = useMemo(() => {
     let sorted = [...funpaperData];
     switch (sort) {
-      case "populer":
-        sorted.sort((a, b) => b.downloaded - a.downloaded); // ganti sesuai ada/tidaknya kolom 'played'
-        break;
+      // case "populer":
+      //   sorted.sort((a, b) => b.downloaded - a.downloaded); // ganti sesuai ada/tidaknya kolom 'played'
+      //   break;
       case "baru":
         sorted.sort(
           (a, b) =>
@@ -84,7 +84,7 @@ export default function FunpaperList({ onOpenFilter, filters }) {
           }}
           className="border border-[#ecdab7] text-xs rounded px-2 py-1"
         >
-          <option value="populer">Terpopuler</option>
+          {/* <option value="populer">Terpopuler</option> */}
           <option value="baru">Terbaru</option>
           <option value="lama">Terlama</option>
           <option value="az">Nama (A-Z)</option>
@@ -114,31 +114,29 @@ export default function FunpaperList({ onOpenFilter, filters }) {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {funpapers.map((funpaper) => (
               <Link
-                href={"/funpaper-calistung/" + funpaper.slug}
+                href={"/calistung/" + funpaper.slug}
                 key={funpaper.id}
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
                 <div className="">
                   <Image
-                    src={funpaper.image_url}
-                    height={180}
-                    width={128}
+                    src={"images/calistung/" + funpaper.slug + ".png"}
+                    height={140}
+                    width={160}
                     alt={funpaper.name}
                     className="mx-auto object-contain mb-6"
                     unoptimized
                   />
-                  <p className="text-xs text-center mb-2">
-                    {funpaper.name + " - " + funpaper.theme}
-                  </p>
-                  {funpaper.downloaded > 0 && (
+                  <p className="text-xs text-center mb-2">{funpaper.name}</p>
+                  {/* {funpaper.viewed > 0 && (
                     <p className="text-xs text-gray-400 text-center">
-                      Diunduh {funpaper.downloaded} kali
+                      Dilihat {funpaper.viewed} kali
                     </p>
-                  )}
+                  )} */}
                 </div>
                 <div>
                   <button className="bg-[#8562a8] text-white text-xs px-4 py-1 mt-3 rounded-lg hover:bg-[#8562a8]/90 w-full">
-                    Lihat Produk
+                    Lihat Aktivitas
                   </button>
                 </div>
               </Link>
