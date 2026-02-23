@@ -101,10 +101,12 @@ export default function Navbar() {
                   onClick={() => toggleDropdown("download")}
                   className={
                     "flex items-center gap-1 " +
-                    (pathname === "/funpaper-coding" ||
-                    pathname === "/funpaper-calistung" ||
-                    pathname === "/funpaper-harian" ||
-                    pathname === "/funpaper-tema"
+                    ([
+                      "/funpaper-coding",
+                      "/funpaper-calistung",
+                      "/funpaper-harian",
+                      "/funpaper-tema",
+                    ].some((path) => pathname.startsWith(path))
                       ? "font-bold text-blue-500"
                       : "")
                   }
@@ -117,7 +119,7 @@ export default function Navbar() {
                       href="/funpaper-coding"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/funpaper-coding"
+                        (pathname.startsWith("/funpaper-coding")
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -132,7 +134,7 @@ export default function Navbar() {
                       href="/funpaper-calistung"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/funpaper-calistung"
+                        (pathname.startsWith("/funpaper-calistung")
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -144,7 +146,7 @@ export default function Navbar() {
                       href="/funpaper-harian"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/funpaper-harian"
+                        (pathname.startsWith("/funpaper-harian")
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -156,7 +158,7 @@ export default function Navbar() {
                       href="/funpaper-tema"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/funpaper-tema"
+                        (pathname.startsWith("/funpaper-tema")
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -174,9 +176,9 @@ export default function Navbar() {
                   onClick={() => toggleDropdown("play")}
                   className={
                     "flex items-center gap-1 " +
-                    (pathname === "/calistung" ||
-                    pathname === "/funpaper-interaktif" ||
-                    pathname === "/mini-game"
+                    (["/calistung", "/funpaper-interaktif", "/mini-game"].some(
+                      (path) => pathname.startsWith(path),
+                    )
                       ? "font-bold text-blue-500"
                       : "")
                   }
@@ -189,7 +191,7 @@ export default function Navbar() {
                       href="/calistung"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/calistung"
+                        (pathname.startsWith("/calistung")
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -204,7 +206,7 @@ export default function Navbar() {
                       href="/funpaper-interaktif"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/funpaper-interaktif"
+                        (pathname.startsWith("/funpaper-interaktif")
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -219,7 +221,7 @@ export default function Navbar() {
                       href="#"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/game-edukasi"
+                        (pathname.startsWith("/game-edukasi")
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -234,7 +236,7 @@ export default function Navbar() {
                       href="/mini-game"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname === "/mini-game"
+                        (pathname.startsWith("/mini-game")
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -351,10 +353,12 @@ export default function Navbar() {
                 onClick={() => toggleDropdown("download")}
                 className={
                   "flex w-full items-center justify-between py-2 border-b border-[#cbaf78] " +
-                  (pathname === "/funpaper-coding" ||
-                  pathname === "/funpaper-calistung" ||
-                  pathname === "/funpaper-harian" ||
-                  pathname === "/funpaper-tema"
+                  ([
+                    "/funpaper-coding",
+                    "/funpaper-calistung",
+                    "/funpaper-harian",
+                    "/funpaper-tema",
+                  ].some((path) => pathname.startsWith(path))
                     ? " font-bold text-blue-500 "
                     : "")
                 }
@@ -373,7 +377,7 @@ export default function Navbar() {
                     href="/funpaper-coding"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/funpaper-coding"
+                      (pathname.startsWith("/funpaper-coding")
                         ? " font-bold text-blue-500 "
                         : "")
                     }
@@ -391,7 +395,7 @@ export default function Navbar() {
                     href="/funpaper-calistung"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/funpaper-calistung"
+                      (pathname.startsWith("/funpaper-calistung")
                         ? " font-bold text-blue-500 "
                         : "")
                     }
@@ -406,7 +410,7 @@ export default function Navbar() {
                     href="/funpaper-harian"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/funpaper-harian"
+                      (pathname.startsWith("/funpaper-harian")
                         ? " font-bold text-blue-500 "
                         : "")
                     }
@@ -421,7 +425,7 @@ export default function Navbar() {
                     href="/funpaper-tema"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/funpaper-tema"
+                      (pathname.startsWith("/funpaper-tema")
                         ? " font-bold text-blue-500 "
                         : "")
                     }
@@ -442,10 +446,12 @@ export default function Navbar() {
                 onClick={() => toggleDropdown("play")}
                 className={
                   "flex w-full items-center justify-between py-2 border-b border-[#cbaf78] " +
-                  (pathname === "/calistung" ||
-                  pathname === "/funpaper-interaktif" ||
-                  pathname === "/game-edukasi" ||
-                  pathname === "/mini-game"
+                  ([
+                    "/calistung",
+                    "/funpaper-interaktif",
+                    "/game-edukasi",
+                    "/mini-game",
+                  ].some((path) => pathname.startsWith(path))
                     ? " font-bold text-blue-500 "
                     : "")
                 }
@@ -464,7 +470,7 @@ export default function Navbar() {
                     href="/calistung"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/calistung"
+                      (pathname.startsWith("/calistung")
                         ? " font-bold text-blue-500 "
                         : "")
                     }
@@ -482,7 +488,7 @@ export default function Navbar() {
                     href="/funpaper-interaktif"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/funpaper-interaktif"
+                      (pathname.startsWith("/funpaper-interaktif")
                         ? " font-bold text-blue-500 "
                         : "")
                     }
@@ -500,7 +506,7 @@ export default function Navbar() {
                     href="#"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/game-edukasi"
+                      (pathname.startsWith("/game-edukasi")
                         ? " font-bold text-blue-500 "
                         : "")
                     }
@@ -518,7 +524,7 @@ export default function Navbar() {
                     href="/mini-game"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname === "/mini-game"
+                      (pathname.startsWith("/mini-game")
                         ? " font-bold text-blue-500 "
                         : "")
                     }

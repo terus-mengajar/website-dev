@@ -114,7 +114,12 @@ export default function FunpaperList({ onOpenFilter, filters }) {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {funpapers.map((funpaper) => (
               <Link
-                href={funpaper.link_detail}
+                href={
+                  "funpaper-interaktif/" +
+                  funpaper.slug +
+                  "?tipe=" +
+                  funpaper.tipe
+                }
                 key={funpaper.link_detail}
                 className="hover:shadow hover:cursor-pointer rounded-lg p-3 flex flex-col items-center justify-between"
               >
