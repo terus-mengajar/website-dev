@@ -1,59 +1,65 @@
 import { NextResponse } from "next/server";
 import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 
-export async function POST(
-  request: Request
-) {
+export async function POST(request: Request) {
   try {
-    const { email, funpaper_calistung_id } = await request.json();
+    const { email, funpaper_id, tipe } = await request.json();
+
+    // Tentukan tabel berdasarkan tipe
+    let tableName = "funpaper_calistung";
+    if (tipe === "funpaper-coding") {
+      tableName = "funpaper_coding";
+    } else if (tipe === "funpaper-harian") {
+      tableName = "funpaper";
+    }
 
     // 1. Update jumlah downloaded
-    const updateRes = await fetch(
-      CLOUDFLARE_D1_URL,
-      {
-        method: "POST",
-        headers: CLOUDFLARE_HEADER,
-        body: JSON.stringify({
-          sql: `
-            UPDATE funpaper_calistung
-            SET downloaded = downloaded + 1
+    const updateRes = await fetch(CLOUDFLARE_D1_URL, {
+      method: "POST",
+      headers: CLOUDFLARE_HEADER,
+      body: JSON.stringify({
+        sql: `
+            UPDATE ${tableName}
+            SET played = played + 1
             WHERE id = ?
           `,
-          params: [funpaper_calistung_id],
-        }),
-      }
-    );
+        params: [funpaper_id],
+      }),
+    });
 
     const updateData = await updateRes.json();
 
     // 2. Insert log download
-    const insertRes = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_DATABASE_ID}/query`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          sql: `
-            INSERT INTO funpaper_calistung_download_log (created_at, email, funpaper_calistung_id)
-            VALUES (CURRENT_TIMESTAMP, ?, ?)
-          `,
-          params: [email, funpaper_calistung_id],
-        }),
-      }
-    );
+    // const insertRes = await fetch(
+    //   `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_DATABASE_ID}/query`,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       sql: `
+    //         INSERT INTO funpaper_calistung_download_log (created_at, email, funpaper_calistung_id)
+    //         VALUES (CURRENT_TIMESTAMP, ?, ?)
+    //       `,
+    //       params: [email, funpaper_calistung_id],
+    //     }),
+    //   },
+    // );
 
-    const insertData = await insertRes.json();
+    // const insertData = await insertRes.json();
 
     return NextResponse.json({
       success: true,
       update: updateData,
-      insert: insertData,
+      // insert: insertData,
     });
   } catch (err) {
     console.error("Gagal update & insert:", err);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }

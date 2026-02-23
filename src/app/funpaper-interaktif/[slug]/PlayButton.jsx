@@ -26,11 +26,24 @@ export default function FunpaperDownload({ id, slug, link, interactive, tipe }) 
   const handleInteractive = async () => {
     if (status !== "authenticated") {
       toast("Silakan masuk terlebih dahulu untuk bermain");
-      router.push(`/auth/login?callbackUrl=/funpaper-calistung/${slug}`);
+      router.push(`/auth/login?callbackUrl=/funpaper-interaktif/${slug}?tipe=${tipe}`);
       return;
     }
 
     setLoadingInteractive(true);
+
+    try {
+      // Memanggil API play dengan mengirimkan tipe di dalam body request
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-interaktif/${slug}/play`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ funpaper_id: id, tipe, email: session.user.email }),
+      });
+    } catch (error) {
+      console.error("Gagal memanggil API play:", error);
+    }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/sso`, {
       cache: "no-store", // biar ga cache kalau datanya dinamis

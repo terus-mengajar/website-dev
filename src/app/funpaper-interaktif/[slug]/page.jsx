@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DownloadButton from "./DownloadButton";
+import PlayButton from "./PlayButton";
 import Image from "next/image";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import { redirect } from "next/navigation";
@@ -106,7 +106,7 @@ export default async function FunpaperPage({ params, searchParams }) {
             </div>
 
             {/* Sidebar Gratis untuk desktop */}
-            <DownloadButton
+            <PlayButton
               id={funpaper.id}
               slug={slug}
               link={funpaper.link}
@@ -116,7 +116,6 @@ export default async function FunpaperPage({ params, searchParams }) {
           </div>
         </div>
       </section>
-
     </div>
   );
 }
