@@ -114,7 +114,7 @@ export default function Navbar() {
                   Download <ChevronDown size={16} />
                 </button>
                 {dropdownOpen === "download" && (
-                  <div className="absolute top-9 mt-2 w-48 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
+                  <div className="absolute top-9 mt-2 w-52 bg-white text-black rounded shadow-lg z-50 overflow-hidden">
                     <Link
                       href="/funpaper-coding"
                       className={

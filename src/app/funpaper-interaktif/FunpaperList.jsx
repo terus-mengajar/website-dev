@@ -125,7 +125,7 @@ export default function FunpaperList({ onOpenFilter, filters }) {
               >
                 <div className="">
                   <Image
-                    src={funpaper.image_url}
+                    src={funpaper.interactive_image_url ?? funpaper.image_url}
                     height={180}
                     width={128}
                     alt={funpaper.name}
