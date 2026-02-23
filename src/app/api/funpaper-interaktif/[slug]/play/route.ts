@@ -6,11 +6,18 @@ export async function POST(request: Request) {
     const { email, funpaper_id, tipe } = await request.json();
 
     // Tentukan tabel berdasarkan tipe
-    let tableName = "funpaper_calistung";
+    let tableName = "";
     if (tipe === "funpaper-coding") {
       tableName = "funpaper_coding";
     } else if (tipe === "funpaper-harian") {
       tableName = "funpaper";
+    } else if (tipe === "funpaper-calistung") {
+      tableName = "funpaper_calistung";
+    } else {
+      return NextResponse.json(
+        { error: "Tipe funpaper tidak ditemukan" },
+        { status: 404 },
+      );
     }
 
     // 1. Update jumlah downloaded
