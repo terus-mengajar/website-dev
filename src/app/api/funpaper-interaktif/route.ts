@@ -10,7 +10,7 @@ export async function GET(req: Request) {
 
     // 1. Fetch Funpaper Calistung
     const sqlCalistung = `
-      SELECT funpaper_calistung.downloaded, funpaper_calistung.played, funpaper_calistung.slug, funpaper_calistung.updated_at, funpaper_calistung.image_url, CONCAT(funpaper_calistung.name, ' - ', theme_calistung.name) AS name, 'funpaper-calistung' AS tipe
+      SELECT funpaper_calistung.downloaded, funpaper_calistung.played, funpaper_calistung.slug, funpaper_calistung.updated_at, funpaper_calistung.image_url, funpaper_calistung.interactive_image_url, CONCAT(funpaper_calistung.name, ' - ', theme_calistung.name) AS name, 'funpaper-calistung' AS tipe
       FROM funpaper_calistung
       LEFT JOIN theme_calistung ON funpaper_calistung.theme_calistung_id = theme_calistung.id
       WHERE interactive=1
@@ -32,7 +32,7 @@ export async function GET(req: Request) {
 
     // 2. Fetch Funpaper Coding
     const sqlCoding = `
-      SELECT funpaper_coding.downloaded, funpaper_coding.played, funpaper_coding.slug, funpaper_coding.updated_at, funpaper_coding.image_url, funpaper_coding.name, 'funpaper-coding' AS tipe
+      SELECT funpaper_coding.downloaded, funpaper_coding.played, funpaper_coding.slug, funpaper_coding.updated_at, funpaper_coding.image_url, funpaper_coding.interactive_image_url, funpaper_coding.name, 'funpaper-coding' AS tipe
       FROM funpaper_coding
       WHERE interactive=1
       ORDER BY updated_at DESC
@@ -53,7 +53,7 @@ export async function GET(req: Request) {
 
     // 3. Fetch Funpaper Harian
     const sqlHarian = `
-      SELECT funpaper.downloaded, funpaper.played, funpaper.slug, funpaper.updated_at, funpaper.image_url, CONCAT(funpaper.name, ' - ', activity.name) AS name, 'funpaper-harian' as tipe
+      SELECT funpaper.downloaded, funpaper.played, funpaper.slug, funpaper.updated_at, funpaper.image_url, funpaper.interactive_image_url, CONCAT(funpaper.name, ' - ', activity.name) AS name, 'funpaper-harian' as tipe
       FROM funpaper
       JOIN activity ON funpaper.activity_id = activity.id
       WHERE funpaper_type_id = ${FUNPAPER_SINGLE_PAGE}
