@@ -8,52 +8,81 @@ export const metadata = {
 
 const SummarySection = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-    <div>
-      <h2 className="font-bold text-lg mb-4">Area Simulasi :</h2>
+    <div className="flex flex-row gap-4">
+      <h2 className="mb-4 whitespace-nowrap">Area Simulasi :</h2>
       <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>Prascil</li>
-        <li>Membaca dan Menulis</li>
-        <li>Kosakata dan Tata Bahasa</li>
-        <li>Bahasa Berhitung</li>
+        <li>Motorik halus</li>
+        <li>Fokus dan konsentrasi</li>
+        <li>Koordinasi mata dan tangan</li>
+        <li>Kesiapan berhitung</li>
       </ul>
     </div>
-    <div>
-      <h2 className="font-bold text-lg mb-4">Alat dan Bahan :</h2>
+    <div className="flex flex-row gap-4">
+      <h2 className="mb-4 whitespace-nowrap">Alat dan Bahan :</h2>
       <ul className="list-disc list-inside space-y-1 text-gray-700">
         <li>Koin</li>
-        <li>Wadah (Gelas)</li>
-        <li>Botol bekas</li>
-        <li>Gunting dan Solasi (jika botol harus dilubangi koinnya)</li>
+        <ul className="ps-5 list-disc list-inside space-y-1 text-gray-700">
+          <li>Level 1: 5 buah</li>
+          <li>Level 2 & 3: 10 buah</li>
+        </ul>
+        <li>Celengan kecil (boleh dari botol bekas atau wadah lucu)</li>
       </ul>
     </div>
   </div>
 );
 
-const LevelSection = ({ level, age, goal, observing, duration, steps }) => (
+const LevelSection = ({ level, age, goal, indicator, duration, steps }) => (
   <div className="mb-20">
-    <div className="bg-[#FAF7F2] rounded-xl p-6 mb-8">
-      <h2 className="font-bold text-xl mb-4">Level {level} ({age})</h2>
-      <div className="space-y-3 text-gray-700">
-        <p><span className="font-semibold text-black">Apa yang ingin dikembangkan :</span> {goal}</p>
-        <p><span className="font-semibold text-black">Hal yang bisa dbservasi :</span> {observing}</p>
-        <p><span className="font-semibold text-black">Durasi Bermain :</span> {duration}</p>
+    <div className="mb-14">
+      <h2 className="font-bold text-xl mb-4">
+        Level {level} ({age})
+      </h2>
+      <div className="">
+        <table>
+          <tbody>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">Manfaat Utama : </td>
+              <td className="align-top">{goal}</td>
+            </tr>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">Indikator yang diharapkan : </td>
+              <td className="align-top">{indicator}</td>
+            </tr>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">Durasi Bermain : </td>
+              <td className="align-top">{duration}</td>
+            </tr>
+          </tbody>
+        </table>
+        {/* <p className="flex flex-row gap-2">
+          <span className="whitespace-nowrap">Manfaat Utama : </span><span>{goal}</span>
+        </p>
+        <p className="flex flex-row gap-2">
+          <span className="whitespace-nowrap">Indikator yang diharapkan : </span>
+          <span>{indicator}</span>
+        </p>
+        <p className="flex flex-row gap-2">
+          <span className="whitespace-nowrap">Durasi Bermain : </span>
+          <span>{duration}</span>
+        </p> */}
       </div>
     </div>
 
     <h3 className="font-bold text-lg mb-6">Cara Bermain :</h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {steps.map((step, index) => (
-        <div key={index} className="flex flex-col gap-4">
-          <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200">
-            <img 
-              src={`https://placehold.co/600x400/f3f4f6/374151?text=Step+${index + 1}`} 
+        <div key={index} className={`flex gap-4 ${step.class ?? ''}`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src={step.img}
               alt={`Step ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-40 object-contain"
             />
-          </div>
-          <div className="flex gap-3">
-            <span className="font-bold text-gray-400">{index + 1}.</span>
-            <p className="text-gray-600 leading-relaxed">{step}</p>
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">{index + 1}.</span>
+              <p className="">{step.text}</p>
+            </div>
           </div>
         </div>
       ))}
@@ -63,63 +92,123 @@ const LevelSection = ({ level, age, goal, observing, duration, steps }) => (
 
 export default function Page() {
   const level1Steps = [
-    "Sediakan koin dan gelas. Minta anak untuk memasukkan satu per satu koin ke dalam gelas. Lakukan berkali-kali sampai koin habis.",
-    "Minta anak untuk memindahkan koin yang ada di dalam gelas ke tangan kita.",
-    "Kemudian koin yang ada di tangan kitalah dimasukkan ke dalam gelas.",
-    "Latihan memasukkan koin ke dalam botol bekas.",
-    "Koin yang dimasukkan ke dalam botol bekas, jangan dulu dikeluarkan.",
-    "Melainkan botol bekas ditiup-tiup sampa koinnya bunyi.",
+    {
+      "text" : "Ajak anak duduk bersama. Tunjukkan koin & celengan sambil mengatakan “harta karunnya kita simpan dulu yuk biar tidak hilang”",
+      "img" : "/images/calistung/menyimpan-harta-karun/1.png"
+    },
+    {
+      "text" : "Arahkan jari anak menyentuh koin sambil dihitung bersama: “Satu, dua, tiga...”",
+      "img" : "/images/calistung/menyimpan-harta-karun/2.png"
+    },
+    {
+      "text" :"Masukkan 1 koin ke celengan sambil berkata: “Hore... masuk”",
+      "img" : "/images/calistung/menyimpan-harta-karun/3.png"
+    },
+    {
+      "text" : "Berikan 1 koin ke anak, bantu ia memasukkan koin.",
+      "img" : "/images/calistung/menyimpan-harta-karun/4.png"
+    },
+    {
+      "text" : "Ulangi sampai semua koin habis sambil menghitung bersama.",
+      "img" : "/images/calistung/menyimpan-harta-karun/5.png"
+    },
+    {
+      "text" : "Beri tepuk tangan dan pujian: “Wah, hebat sekali!”",
+      "img" : "/images/calistung/menyimpan-harta-karun/6.png",
+    }
   ];
 
   const level2Steps = [
-    "Sediakan koin di atas meja.",
-    "Gunakan botol bekas untuk meletakkan koin tersebut.",
-    "Minta anak meletakkan koin di atas meja dengan berjejer.",
-    "Masukkan satu per satu koin ke dalam botol bekas.",
-    "Mintalah anak untuk menghitung jumlah koin yang dimasukkan. Berapa banyak koin yang bisa dimasukkan ke dalam botol tersebut? Gunakan benda-benda lainnya jika diperlukan.",
+    {
+      "text" : "Tambahkan jumlah koin menjadi 10",
+      "img" : "/images/calistung/menyimpan-harta-karun/7.png"
+    },
+    {
+      "text" : "Ajak anak menyusun semua koin dalam satu barisan rapi.",
+      "img" : "/images/calistung/menyimpan-harta-karun/8.png"
+    },
+    {
+      "text" : "Hitung bersama dari 1 sampai 10 sambil menunjuk koin",
+      "img" : "/images/calistung/menyimpan-harta-karun/9.png"
+    },
+    {
+      "text" : "Minta anak memasukkan koin satu per satu.",
+      "img" : "/images/calistung/menyimpan-harta-karun/10.png"
+    },
+    {
+      "text" : "Di tengah-tengah, tanyakan “Sudah berapa yang masuk?”. Biarkan anak menjawab sendiri. Jika jawabannya kurang tepat, orang tua bisa mengoreksi “Coba kita hitung ulang bersama, yuk.”",
+      "img" : "/images/calistung/menyimpan-harta-karun/11.png",
+      "class" : "md:col-span-2"
+    },
   ];
 
   const level3Steps = [
-    "Sediakan koin-koin yang sudah di masukkan ke dalam botol tersebut.",
-    "Sebutkan berapa jumlah koin.",
-    "Sediakan piring plastik di atas meja sebanyak tiga piring (Satuan, Puluhan, Ratusan).",
-    "Ambil koin tersebut dari dalam botol. Simpan piring berjejer satu per satu (koin dari piring satu, pindah ke piring dua, dst).",
-    "Gelas-gelas plastik yang telah disediakan simpan pula berdekatan dengan koin-koin itu.",
-    "Simpan koin satu ke piring satuan, satu piring puluhan, dan satu piring ratusan.",
-    "Gunakan piring lagi untuk menyimpan koin di atas piring tersebut sampai koinnya diletakkan dengan rapi.",
-    "Berilah keterangan/nama ke wadah tersebut.",
+    {
+      "text" :  "Ceritakan bahwa anak adalah penjaga harta karun di sebuah gua",
+      "img" : "/images/calistung/menyimpan-harta-karun/12.png"
+    },
+    {
+      "text" : "Minta anak menghitung 10 koin sendiri",
+      "img" : "/images/calistung/menyimpan-harta-karun/13.png"
+    },
+    {
+      "text" : "Minta anak membuat kelompok koin (misalnya 5 koin Rp. 200,- + 5 koin Rp.500,-)",
+      "img" : "/images/calistung/menyimpan-harta-karun/14.png"
+    },
+    {
+      "text" : "Berikan perintah: “Ambil 3 koin, masukkan ke celengan!”. Tanyakan “Berapa sisa koinmu sekarang?”",
+      "img" : "/images/calistung/menyimpan-harta-karun/15.png"
+    },
+    {
+      "text" : "Bisa juga pakai pertanyaan reflektif “Lebih banyak yang sudah masuk atau yang belum ya?”",
+      "img" : "/images/calistung/menyimpan-harta-karun/16.png"
+    },
+    {
+      "text" : "Ulangi dengan variasi instruksi: “Sekarang tambahkan 2 lagi. Totalnya?”",
+      "img" : "/images/calistung/menyimpan-harta-karun/17.png"
+    },
+    {
+      "text" : "Atau bisa dengan mengajak anak menghitung mundur sisa koin untuk menambah tantangan",
+      "img" : "/images/calistung/menyimpan-harta-karun/18.png"
+    },
+    {
+      "text" : "Lanjutkan hingga semua 10 koin tersimpan",
+      "img" : "/images/calistung/menyimpan-harta-karun/19.png"
+    },
   ];
 
   return (
     <CalistungPageLayout title={TITLE}>
       <SummarySection />
-      
-      <LevelSection 
-        level="1" 
+
+      <LevelSection
+        level="1"
         age="2-3 th"
-        goal="Anak belajar untuk bisa memegang benda dengan ujung jempol dan jari telunjuknya, melatih jemari kordinasi mata dan tangan."
-        observing="Anak belajar bersabar memasukkan koin satu demi satu, konsentrasi terhadap koin yang akan di masukkan."
-        duration="Anak bermain selama 5-10 menit tiap hari agar terbiasa dengan benda-benda yang dimasukkan."
+        goal="Mengasah gerakan jari, mulai mengenal urutan angka, dan membangun fokus sebentar."
+        indicator="Anak dapat memasukkan koin satu per satu ke dalam celengan dengan arahan sederhana."
+        duration="15–20 menit setiap sesi. Bisa diulang beberapa kali dalam seminggu"
         steps={level1Steps}
       />
 
-      <LevelSection 
-        level="2" 
-        age="4-6 th"
-        goal="Menghitung jumlah benda (koin) dalam botol bekas dan mengenal angka (jumlah koin yang dimasukkan jangan terlalu banyak, mungkin 1-10/20 dulu aja)."
-        observing="Anak dapat menghitung jumlah koin yang masuk ke botol atau koin yang dikeluarkannya satu demi satu."
-        duration="Anak bermain selama 10-15 menit agar terbiasa menghitung jumlah benda yang masuk."
+      <LevelSection
+        level="2"
+        age="4-5 th"
+        goal="Mengembangkan koordinasi tangan-mata, belajar berhitung lebih terstruktur, dan mengikuti instruksi lebih panjang."
+        indicator="Anak dapat menghitung koin sambil memasukkan dan mengikuti instruksi urutan."
+        duration="15–20 menit setiap sesi. Bisa diulang beberapa kali dalam seminggu."
         steps={level2Steps}
       />
 
-      <LevelSection 
-        level="3" 
-        age="6-8 th"
-        goal="Mengetahui rincian benda (jumlah koin), menumbuhkan ingatan yang kuat terhadap koin yang telah dimasukkan/dikeluarkan ke wadah piring."
-        observing="Anak dapat membedakan mana koin yang satuan, puluhan dan ratusan karena sudah diberi nama di wadah piring."
-        duration="Anak bermain selama 15-20 menit agar terbiasa menghitung jumlah benda yang masuk dan menghitung ratusan."
+      <LevelSection
+        level="3"
+        age="5-6 th"
+        goal="Melatih konsentrasi yang lebih lama, kemampuan logika sederhana, serta mengenal konsep jumlah dan urutan."
+        indicator="Anak dapat membuat pola atau kelompok koin dan menjumlahkan secara lisan."
+        duration="15–20 menit setiap sesi. Bisa diulang beberapa kali dalam seminggu"
         steps={level3Steps}
       />
+
+      <p>Aktivitas ini bisa diulang setiap beberapa hari untuk memperkuat pemahaman dan keterampilan anak secara menyenangkan.</p>
     </CalistungPageLayout>
   );
 }

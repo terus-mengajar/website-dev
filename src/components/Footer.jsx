@@ -43,6 +43,23 @@ export default function Footer() {
                   Funpaper Tema
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Bermain */}
+          <div>
+            <h4 className="font-semibold mb-3">Bermain</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/calistung" className="">
+                  Calistung
+                </Link>
+              </li>
+              <li>
+                <Link href="/funpaper-interaktif" className="">
+                  Funpaper Interaktif
+                </Link>
+              </li>
               <li>
                 <Link href="/mini-game" className="">
                   Mini Games
@@ -91,11 +108,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Spacer */}
-          {/* <div></div> */}
-
           {/* Social Media */}
-          <div className="md:col-span-2">
+          <div className="">
             <h4 className="font-semibold mb-3 md:text-right">Social Media</h4>
             <ul className="space-y-3 text-sm flex flex-col md:items-end">
               <li>
