@@ -8,75 +8,84 @@ export const metadata = {
 
 const SummarySection = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-    <div>
-      <h2 className="font-bold text-lg mb-4">Area Simulasi :</h2>
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>Prascil</li>
-        <li>Membaca dan menulis</li>
+    <div className="flex flex-row gap-4">
+      <h2 className="mb-4 whitespace-nowrap">Area Simulasi :&nbsp;&nbsp;</h2>
+      <ul className="list-disc space-y-1 text-gray-700">
+        <li>Oromotor</li>
+        <li>Fokus dan konsentrasi</li>
       </ul>
     </div>
-    <div>
-      <h2 className="font-bold text-lg mb-4">Alat dan Bahan :</h2>
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>Wadah satu buah</li>
-        <li>Wadah melingkar kecil (piring/sedotan)</li>
-        <li>Mangkuk plastik kecil</li>
-        <li>Wadah melingkar besar/kecil (untuk lubang besar dan kecil)</li>
-        <li>Pompon/bola warna-warni</li>
-        <li>Sepit sumpit/capit</li>
+    <div className="flex flex-row gap-4">
+      <h2 className="mb-4 whitespace-nowrap">Alat dan Bahan :&nbsp;&nbsp;</h2>
+      <ul className="list-disc space-y-1 text-gray-700">
+        <li>1 buah bola kecil</li>
+        <li>1 lembar kertas A4 (boleh diganti koran/majalah bekas)</li>
+        <li>1 buah mangkok plastik kecil</li>
+        <li>1 buah sedotan (lubang besar dan kecil)</li>
+        <li>7 lembar kertas bekas</li>
+        <li>1 gulung selotip</li>
         <li>Meja</li>
       </ul>
     </div>
   </div>
 );
 
-const LevelSection = ({ level, age, goal, observing, duration, prepSteps, steps }) => (
+const LevelSection = ({ level, age, goal, indicator, duration, steps }) => (
   <div className="mb-20">
-    <div className="bg-[#FAF7F2] rounded-xl p-6 mb-8">
-      <h2 className="font-bold text-xl mb-4">Level {level} ({age})</h2>
-      <div className="space-y-3 text-gray-700">
-        <p><span className="font-semibold text-black">Apa yang ingin dikembangkan :</span> {goal}</p>
-        <p><span className="font-semibold text-black">Hal yang bisa dbservasi :</span> {observing}</p>
-        <p><span className="font-semibold text-black">Durasi Bermain :</span> {duration}</p>
+    <div className="mb-14">
+      <h2 className="font-bold text-xl mb-4">
+        Level {level} ({age})
+      </h2>
+      <div className="">
+        <table>
+          <tbody>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">
+                Manfaat Utama :{" "}
+              </td>
+              <td className="align-top pb-2">{goal}</td>
+            </tr>
+            <tr>
+              <td className="align-top pr-4">Indikator yang diharapkan : </td>
+              <td className="align-top pb-2">{indicator}</td>
+            </tr>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">
+                Durasi Bermain :{" "}
+              </td>
+              <td className="align-top">{duration}</td>
+            </tr>
+          </tbody>
+        </table>
+        {/* <p className="flex flex-row gap-2">
+          <span className="whitespace-nowrap">Manfaat Utama : </span><span>{goal}</span>
+        </p>
+        <p className="flex flex-row gap-2">
+          <span className="whitespace-nowrap">Indikator yang diharapkan : </span>
+          <span>{indicator}</span>
+        </p>
+        <p className="flex flex-row gap-2">
+          <span className="whitespace-nowrap">Durasi Bermain : </span>
+          <span>{duration}</span>
+        </p> */}
       </div>
     </div>
 
-    {prepSteps && (
-      <div className="mb-10">
-        <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {prepSteps.map((step, index) => (
-            <div key={index} className="flex flex-col gap-4">
-              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200">
-                <img 
-                  src={`https://placehold.co/600x400/f3f4f6/374151?text=Prep+${index + 1}`} 
-                  alt={`Prep Step ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex gap-3">
-                <p className="text-gray-600 leading-relaxed"><span className="font-bold text-gray-400">{index + 1}.</span> {step}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    )}
-
     <h3 className="font-bold text-lg mb-6">Cara Bermain :</h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {steps.map((step, index) => (
-        <div key={index} className="flex flex-col gap-4">
-          <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200">
-            <img 
-              src={`https://placehold.co/600x400/f3f4f6/374151?text=Step+${index + 1}`} 
+        <div key={index} className={`flex gap-4 ${step.class ?? ""}`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src={step.img}
               alt={`Step ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-40 object-contain"
             />
-          </div>
-          <div className="flex gap-3">
-            <span className="font-bold text-gray-400">{index + 1}.</span>
-            <p className="text-gray-600 leading-relaxed">{step}</p>
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">{index + 1}.</span>
+              <p className="">{step.text}</p>
+            </div>
           </div>
         </div>
       ))}
@@ -85,65 +94,196 @@ const LevelSection = ({ level, age, goal, observing, duration, prepSteps, steps 
 );
 
 export default function Page() {
-  const gamePrep = [
-    "Sediakan double tape yang di tempelkan di pinggir-pinggir wadah.",
-    "Potonglah kertas/tisu untuk memudahkan perjalanan misi penyelamatan.",
-    "Bentuklah piring sumpit yang menyerupai laba-laba.",
-    "Simpan koin/pompon di atas sumpit tersebut sebanyak mungkin di atas piring agar bisa dijadikan misi penyelamatan.",
-  ];
-
   const level1Steps = [
-    "Ambilkan koin satu per satu menggunakan tangan.",
-    "Lakukan secara perlahan agar koin yang tersimpan di atas meja masuk ke dalam wadah piring.",
-    "Ulangi sampai semua koin yang ada di sumpit masuk ke dalam wadah piring.",
-    "Misi penyelamatan koin pun telah usai dilakukan.",
+    {
+      text: "Letakkan bola kecil di depan terowongan.",
+      img: "/images/calistung/misi-penyelamatan/5.png",
+    },
+    {
+      text: "Ajak anak meniup bola tanpa sedotan agar masuk ke terowongan, lalu ke mangkok.",
+      img: "/images/calistung/misi-penyelamatan/6.png",
+    },
+    {
+      text: "Bantu arahkan napas anak:'Tiup pelan ya, kita lihat bolanya jalan nggak!'",
+      img: "/images/calistung/misi-penyelamatan/7.png",
+    },
+    {
+      text: "Ulangi 3–5 kali. Beri pujian: “Yeay! Bola masuk!”",
+      img: "/images/calistung/misi-penyelamatan/8.png",
+    },
   ];
 
   const level2Steps = [
-    "Cara mengambil koin dengan sepit sumpit. Lalu simpan kedalam wadah satu per satu.",
-    "Sambil mengambil, mintalah anak untuk menghitung berapa banyak koin yang sedang diselamatkan masuk ke piring.",
-    "Ulangi sampai semua koin yang ada di sumpit masuk sedalam wadah piring.",
-    "Misi penyelamatan koin pun selesai.",
+    {
+      text: "Minta anak menggunakan sedotan besar untuk meniup bola kecil masuk ke terowongan.",
+      img: "/images/calistung/misi-penyelamatan/9.png",
+    },
+    {
+      text: "Ganti bola jadi bola kertas ukuran sedang. Tambahkan tantangan: 'Kira-kira perlu berapa tiupan sampai bola masuk?'",
+      img: "/images/calistung/misi-penyelamatan/10.png",
+    },
+    {
+      text: "Ajak anak menghitung jumlah tiupan, lalu cocokan hasilnya.",
+      img: "/images/calistung/misi-penyelamatan/11.png",
+    },
+    {
+      text: "Ulangi dengan bola ukuran berbeda.",
+      img: "/images/calistung/misi-penyelamatan/12.png",
+    },
   ];
 
   const level3Steps = [
-    "Cara mengambil koin dengan sepit sumpit. Lalu simpan kedalam wadah sesuai lubang-lubang yang telah disiapkan piringnya.",
-    "Hitunglah koin tersebut di simpan di piring yang berlubang sedang atau yang berlubang kecil.",
-    "Pisahkan koin-koin di piring yang berlabel sedang dan label yang kecil itu.",
-    "Misi penyelamatan pun pun selesai di lakukan.",
+    {
+      text: "Minta anak menggunakan sedotan kecil untuk meniup bola dari kertas ukuran kecil, sedang, dan besar.",
+      img: "/images/calistung/misi-penyelamatan/13.png",
+    },
+    {
+      text: "Tantang anak memilih sedotan yang tepat untuk tiap bola agar bisa masuk ke terowongan.",
+      img: "/images/calistung/misi-penyelamatan/14.png",
+    },
+    {
+      text: "Tambahkan misi: “Bisa nggak tiup 3 bola beda ukuran dan semuanya masuk ke mangkok dalam waktu 1 menit?”",
+      img: "/images/calistung/misi-penyelamatan/15.png",
+    },
+    {
+      text: "Ajak anak mencatat jumlah keberhasilan.",
+      img: "/images/calistung/misi-penyelamatan/16.png",
+    },
   ];
 
   return (
     <CalistungPageLayout title={TITLE}>
       <SummarySection />
-      
-      <LevelSection 
-        level="1" 
+
+      <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/misi-penyelamatan/1.png"
+              alt="1"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">1.</span>
+              <p className="">
+                Ambil selembar kertas, lipat jadi seperti terowongan kecil.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/misi-penyelamatan/2.png"
+              alt="2"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">2.</span>
+              <p className="">
+                Tempelkan ujung kiri dan kanan terowongan ke meja pakai selotip,
+                biar tidak roboh.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/misi-penyelamatan/3.png"
+              alt="3"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">3.</span>
+              <p className="">
+                Letakkan mangkok kecil di ujung terowongan, sejajar lurus.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/misi-penyelamatan/4.png"
+              alt="4"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">4.</span>
+              <p className="">
+                Siapkan bola kecil dan bola dari kertas bekas ukuran kecil,
+                sedang, dan besar. Siapkan juga sedotan besar dan kecil.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <LevelSection
+        level="1"
         age="2-3 th"
-        goal="Anak belajar tentang warna dan kemandirian, belajar memasukkan koin secara satu per satu, belajar melatih ujung jempol dan jari telunjuknya."
-        observing="Anak dapat fokus permainan memasukkan benda satu per satu sesuai dengan instruksi yang diarahkan secara mandiri."
-        duration="15-20 menit per hari."
-        prepSteps={gamePrep}
+        goal="Melatih kekuatan tiupan, koordinasi mulut dan napas, serta perhatian visual sederhana."
+        indicator="Anak dapat meniup bola melewati terowongan sederhana tanpa bantuan alat."
+        duration="15–20 menit per sesi"
         steps={level1Steps}
       />
 
-      <LevelSection 
-        level="2" 
+      <LevelSection
+        level="2"
         age="4-5 th"
-        goal="Menumbuhkan fokus dan konsentrasi terhadap koin yang diambil, melatih otot kemandirian kaki merayap/jalan mundur sambil membawa benda."
-        observing="Anak dapat mandiri mengikuti instruksi mengikuti alur kegiatan dalam penggunaan sumpit, dan mandiri membedakan banyak dan sedikitnya koin."
-        duration="20-30 menit per hari."
+        goal="Meningkatkan kontrol tiupan, memperkuat otot mulut, dan mengenal perbedaan ukuran objek."
+        indicator="Anak mampu meniup bola dari bahan berbeda menggunakan sedotan besar, serta membedakan kekuatan tiupan sesuai ukuran bola."
+        duration="15–20 menit per sesi"
         steps={level2Steps}
       />
 
-      <LevelSection 
-        level="3" 
-        age="6-8 th"
-        goal="Mengenal rincian panjang pendek, menumbuhkan konsentrasi yang tepat terhadap koin, dan melatih daya ingat gerak motorik halus."
-        observing="Anak dapat memilih potongan sesuai ukuran dengan tepat dalam menentukan benda di lubang berukuran sedang, panjang, dan yang kecil."
-        duration="30-40 menit per hari."
+      <LevelSection
+        level="3"
+        age="5-6 th"
+        goal="Mengasah ketepatan napas, pengambilan keputusan (memilih sedotan sesuai ukuran bola), dan fokus dalam menyelesaikan tantangan waktu."
+        indicator="Anak dapat memilih sedotan sesuai ukuran bola, meniup dengan kekuatan tepat, dan menyelesaikan permainan dalam batas waktu."
+        duration="15–20 menit per sesi"
         steps={level3Steps}
       />
+
+      <p className="mb-8">
+        Aktivitas ini bisa diulang setiap beberapa hari untuk memperkuat
+        pemahaman dan keterampilan anak secara menyenangkan.
+      </p>
+
+      <div className="bg-[#FBF6F2] rounded-xl p-12 flex flex-col sm:flex-row gap-8 relative overflow-hidden">
+        <div className="hidden md:block absolute -bottom-16 -left-16 opacity-40 pointer-events-none -rotate-15 -translate-x-10 translate-y-35">
+          <img
+            src="/images/shapes/logo-tm-cream.avif"
+            alt=""
+            className="w-110 h-110 object-contain"
+          />
+        </div>
+
+        <div className="z-999">
+          <h2 className="font-bold text-4xl mb-4 text-[#8562A8]">
+            Cara Memainkannya
+          </h2>
+          <p className="mb-4">
+            Lihat video disamping untuk melihat bagaimana cara memainkannya
+            sesuai dengan instruksi yang tertera
+          </p>
+          <button className="tombol-hitam">Lihat di Tiktok</button>
+        </div>
+
+        <div>
+          <img src="/images/calistung/misi-penyelamatan/17.png" alt="17" />
+        </div>
+      </div>
     </CalistungPageLayout>
   );
 }

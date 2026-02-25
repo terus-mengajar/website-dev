@@ -9,8 +9,8 @@ export const metadata = {
 const SummarySection = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
     <div className="flex flex-row gap-4">
-      <h2 className="mb-4 whitespace-nowrap">Area Simulasi :</h2>
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
+      <h2 className="mb-4 whitespace-nowrap">Area Simulasi :&nbsp;&nbsp;</h2>
+      <ul className="list-disc space-y-1 text-gray-700">
         <li>Motorik halus</li>
         <li>Fokus dan konsentrasi</li>
         <li>Koordinasi mata dan tangan</li>
@@ -18,10 +18,10 @@ const SummarySection = () => (
       </ul>
     </div>
     <div className="flex flex-row gap-4">
-      <h2 className="mb-4 whitespace-nowrap">Alat dan Bahan :</h2>
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
+      <h2 className="mb-4 whitespace-nowrap">Alat dan Bahan :&nbsp;&nbsp;</h2>
+      <ul className="list-disc space-y-1 text-gray-700">
         <li>Koin</li>
-        <ul className="ps-5 list-disc list-inside space-y-1 text-gray-700">
+        <ul className="ps-5 list-disc space-y-1 text-gray-700">
           <li>Level 1: 5 buah</li>
           <li>Level 2 & 3: 10 buah</li>
         </ul>
