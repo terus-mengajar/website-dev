@@ -133,7 +133,6 @@ export default function Page() {
       text: "Siapkan dua mangkuk, anak membuat buih di masing-masing mangkuk dan membandingkan tinggi buih.",
       img: "/images/calistung/gelembung-cinta/13.png",
       class: "md:row-span-2 md:order-2",
-      nomor: "3",
     },
   ];
 
