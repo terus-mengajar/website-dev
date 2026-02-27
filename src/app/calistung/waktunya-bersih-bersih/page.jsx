@@ -8,91 +8,78 @@ export const metadata = {
 
 const SummarySection = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-    <div>
-      <h2 className="font-bold text-lg mb-4">Area Simulasi :</h2>
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>Prascil</li>
+    <div className="flex flex-row gap-4">
+      <h2 className="mb-4 whitespace-nowrap">Area Simulasi :&nbsp;&nbsp;</h2>
+      <ul className="list-disc space-y-1 text-gray-700">
+        <li>Motorik Halus</li>
         <li>Fokus</li>
       </ul>
     </div>
-    <div>
-      <h2 className="font-bold text-lg mb-4">Alat dan Bahan :</h2>
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>Keranjang / wadah penyimpanan mainan</li>
-        <li>Berbagai jenis mainan (mobil-mobilan, bola, balok, dsb.)</li>
-        <li>Label warna / tulisan nama kategori mainan</li>
-        <li>Kantong plastik atau kotak kecil (untuk memisahkan jenis)</li>
-        <li>Timer / jam pasir (opsional)</li>
+    <div className="flex flex-row gap-4">
+      <h2 className="mb-4 whitespace-nowrap">Alat dan Bahan :&nbsp;&nbsp;</h2>
+      <ul className="list-disc space-y-1 text-gray-700">
+        <li>1 buah kain lap bersih</li>
+        <li>Air secukupnya (untuk membasahi kain)</li>
+        <li>Botol semprot (spray)</li>
+        <li>
+          Beberapa mainan anak (campurkan antara yang bisa dibasahi dan tidak)
+        </li>
+        <li>Alat tambahan (opsional): sikat gigi bekas, spons, sabun</li>
       </ul>
     </div>
   </div>
 );
 
-const PrepSection = ({ steps }) => (
-  <div className="mb-16">
-    <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {steps.map((step, index) => (
-        <div key={index} className="flex flex-col gap-4">
-          <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200">
-            <img
-              src={`https://placehold.co/600x400/faf5ff/6b21a8?text=Persiapan+${index + 1}`}
-              alt={`Persiapan ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="flex gap-3">
-            <p className="text-gray-600 leading-relaxed">
-              <span className="font-bold text-gray-400">{index + 1}.</span>{" "}
-              {step}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const LevelSection = ({ level, age, goal, observing, duration, steps }) => (
+const LevelSection = ({ level, age, goal, indicator, duration, steps }) => (
   <div className="mb-20">
-    <div className="bg-[#FAF7F2] rounded-xl p-6 mb-8">
+    <div className="mb-14">
       <h2 className="font-bold text-xl mb-4">
         Level {level} ({age})
       </h2>
-      <div className="space-y-3 text-gray-700">
-        <p>
-          <span className="font-semibold text-black">
-            Apa yang ingin dikembangkan :
-          </span>{" "}
-          {goal}
-        </p>
-        <p>
-          <span className="font-semibold text-black">
-            Hal yang bisa diobservasi :
-          </span>{" "}
-          {observing}
-        </p>
-        <p>
-          <span className="font-semibold text-black">Durasi Bermain :</span>{" "}
-          {duration}
-        </p>
+      <div className="">
+        <table>
+          <tbody>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">
+                Manfaat Utama :{" "}
+              </td>
+              <td className="align-top pb-2">{goal}</td>
+            </tr>
+            <tr>
+              <td className="align-top pr-4">Indikator yang diharapkan : </td>
+              <td className="align-top pb-2">
+                <p
+                  className=""
+                  dangerouslySetInnerHTML={{ __html: indicator }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">
+                Durasi Bermain :{" "}
+              </td>
+              <td className="align-top">{duration}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
     <h3 className="font-bold text-lg mb-6">Cara Bermain :</h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {steps.map((step, index) => (
-        <div key={index} className="flex flex-col gap-4">
-          <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200">
+        <div key={index} className={`flex gap-4 ${step.class ?? ""}`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
             <img
-              src={`https://placehold.co/600x400/f3f4f6/374151?text=Step+${index + 1}`}
+              src={step.img}
               alt={`Step ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-40 object-contain"
             />
-          </div>
-          <div className="flex gap-3">
-            <span className="font-bold text-gray-400 shrink-0">{index + 1}.</span>
-            <p className="text-gray-600 leading-relaxed">{step}</p>
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">{index + 1}.</span>
+              <p className="">{step.text}</p>
+            </div>
           </div>
         </div>
       ))}
@@ -101,65 +88,156 @@ const LevelSection = ({ level, age, goal, observing, duration, steps }) => (
 );
 
 export default function Page() {
-  const gamePrep = [
-    "Sebar berbagai jenis mainan secara acak di lantai atau meja. Pastikan semua mainan terlihat jelas dan dapat dijangkau anak.",
-    "Siapkan keranjang atau wadah penyimpanan di dekat area bermain. Bisa menggunakan satu keranjang besar, atau beberapa keranjang kecil yang sudah diberi label kategori.",
-  ];
-
   const level1Steps = [
-    "Tunjukkan kepada anak mainan-mainan yang berserakan di lantai. Katakan dengan ceria: 'Waktunya bersih-bersih! Yuk kita rapikan mainan bersama!'",
-    "Ambil satu mainan dan masukkan ke dalam keranjang sambil menyebutkan namanya. Minta anak untuk meniru dan melakukan hal yang sama.",
-    "Dampingi anak satu per satu mengambil mainan dan memasukkannya ke dalam keranjang. Berikan semangat setiap kali anak berhasil.",
-    "Setelah semua mainan masuk keranjang, hitung bersama berapa banyak mainan yang sudah dirapikan. Beri tepuk tangan sebagai apresiasi!",
+    {
+      text: "Anak memilih satu mainan dari meja.",
+      img: "/images/calistung/waktunya-bersih-bersih/3.png",
+    },
+    {
+      text: "Bunda bantu menyemprot mainan dengan air.",
+      img: "/images/calistung/waktunya-bersih-bersih/4.png",
+    },
+    {
+      text: "Anak mengelap mainan dengan kain sampai terlihat bersih.",
+      img: "/images/calistung/waktunya-bersih-bersih/5.png",
+    },
+    {
+      text: "Lanjut ke mainan berikutnya satu per satu.",
+      img: "/images/calistung/waktunya-bersih-bersih/6.png",
+    },
   ];
 
   const level2Steps = [
-    "Sebar berbagai jenis mainan (misalnya: mobil-mobilan, bola, dan balok warna-warni) di lantai secara acak.",
-    "Siapkan dua atau tiga keranjang berbeda, masing-masing dengan label kategori (misal: 'kendaraan', 'bola', 'balok').",
-    "Minta anak memilih satu mainan, mengidentifikasi jenisnya, lalu menyimpannya di keranjang yang sesuai kategori.",
-    "Lanjutkan hingga semua mainan tersortir. Ajak anak menghitung jumlah mainan di masing-masing keranjang.",
+    {
+      text: "Anak memilah mana mainan yang boleh dibasahi dan mana yang tidak.",
+      img: "/images/calistung/waktunya-bersih-bersih/7.png",
+    },
+    {
+      text: "Anak menyemprot sendiri mainan dengan botol spray. Gunakan kain lap atau spons untuk membersihkan mainan.",
+      img: "/images/calistung/waktunya-bersih-bersih/8.png",
+    },
+    {
+      text: "Ambil mainan yang lain, gunakan sikat kecil untuk membersihkannya",
+      img: "/images/calistung/waktunya-bersih-bersih/9.png",
+    },
+    {
+      text: "Keringkan mainan satu per satu. Hitung jumlah mainan yang sudah dibersihkan",
+      img: "/images/calistung/waktunya-bersih-bersih/10.png",
+    },
   ];
 
   const level3Steps = [
-    "Sebar banyak mainan beragam jenis dan warna. Ajak anak berdiskusi terlebih dahulu: mainan mana yang masuk ke kelompok mana?",
-    "Minta anak membuat aturan sendiri untuk mengelompokkan mainan, misalnya berdasarkan warna, ukuran, atau jenis bahan.",
-    "Anak menyortir semua mainan secara mandiri sesuai aturan yang telah ia tentukan sendiri.",
-    "Setelah selesai, minta anak menceritakan cara pengelompokannya: 'Kenapa mobil merah dimasukkan ke sini?'",
-    "Tantang anak untuk menghitung total mainan lalu menuliskan atau menyebutkan jumlah di masing-masing kelompok. Kelompok mana yang paling banyak?",
+    {
+      text: "Anak menyortir mainan berdasarkan jenis bahan: plastik dan elektronik.",
+      img: "/images/calistung/waktunya-bersih-bersih/11.png",
+    },
+    {
+      text: "Anak menentukan metode pembersihan sesuai bahan mainan: disemprot + dilap, disikat, atau cukup diseka kering. Anak membersihkan semua mainan satu per satu dengan teknik berbeda.",
+      img: "/images/calistung/waktunya-bersih-bersih/12.png",
+    },
+    {
+      text: "Cuci mainan sambil menyebutkan warna atau huruf awal nama mainan",
+      img: "/images/calistung/waktunya-bersih-bersih/13.png",
+    },
+    {
+      text: "Setelah selesai, mainan dijemur lalu ditata kembali ke tempatnya.",
+      img: "/images/calistung/waktunya-bersih-bersih/14.png",
+    },
+    {
+      text: "Ajak anak refleksi kegiatan dengan bertanya apa saja yang dia lakukan. Dorong anak agar bercerita “Tadi aku bersihin 8 mainan, yang paling kotor excavator.”",
+      img: "/images/calistung/waktunya-bersih-bersih/15.png",
+      class: "md:col-span-2",
+    },
   ];
 
   return (
     <CalistungPageLayout title={TITLE}>
       <SummarySection />
 
-      <PrepSection steps={gamePrep} />
+      <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/waktunya-bersih-bersih/1.png"
+              alt="1"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">1.</span>
+              <p className="">
+                Siapkan beberapa mainan anak. Campur mainan yang bisa
+                dibersihkan dengan air dan yang tidak (seperti mainan elektronik
+                atau berbahan baterai). Letakkan semua mainan di atas meja atau
+                alas lantai.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/waktunya-bersih-bersih/2.png"
+              alt="2"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">2.</span>
+              <p className="">
+                Siapkan kain lap bersih yang sudah dibasahi, botol spray berisi
+                air, serta alat pembersih tambahan seperti spons atau sikat
+                gigi. Pastikan tempat bermain aman dan tidak licin. Gunakan alas
+                plastik atau handuk agar tidak becek. Jelaskan kepada anak bahwa
+                kita akan bermain “cuci mainan” hari ini
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <LevelSection
         level="1"
         age="2-3 th"
-        goal="Anak belajar mengenal konsep 'rapi' dan 'berantakan', melatih kemampuan mengambil dan menyimpan benda, serta mengenal nama-nama mainan."
-        observing="Anak dapat secara mandiri mengambil mainan dan memasukkannya ke dalam keranjang, serta mulai menyebutkan nama benda yang ia pegang."
-        duration="~5 menit."
+        goal="Melatih gerakan jari saat mengelap, mengenal konsep bersih-kotor, dan belajar mengikuti instruksi sederhana."
+        indicator={`<ul class="list-disc ms-4">
+          <li>Anak bisa mengelap mainan dengan arah yang konsisten</li>
+          <li>Anak fokus membersihkan satu per satu</li>
+        </ul>`}
+        duration="15 menit"
         steps={level1Steps}
       />
 
       <LevelSection
         level="2"
         age="4-5 th"
-        goal="Mengembangkan kemampuan mengelompokkan benda berdasarkan kategori, melatih konsentrasi dan kemandirian, serta mengenal konsep berhitung dan perbandingan jumlah."
-        observing="Anak dapat membedakan dan menyortir mainan berdasarkan jenisnya secara mandiri, serta mampu menghitung dan membandingkan jumlah mainan di setiap kelompok."
-        duration="5-10 menit."
+        goal="Mengembangkan koordinasi tangan dan mata saat menyemprot dan mengelap, melatih fokus menyelesaikan tugas."
+        indicator={`<ul class="list-disc ms-4">
+          <li>Anak bisa menyemprot dan mengelap dengan baik</li>
+          <li>Anak bisa memilah mainan yang boleh dan tidak boleh dibasahi</li>
+        </ul>`}
+        duration="15 menit"
         steps={level2Steps}
       />
 
       <LevelSection
         level="3"
         age="5-6 th"
-        goal="Melatih kemampuan berpikir kritis dalam membuat aturan pengelompokan sendiri, mengembangkan kemandirian, serta memperkuat kemampuan berhitung dan bercerita."
-        observing="Anak dapat membuat sistem pengelompokan mainan secara mandiri, menjelaskan alasannya, dan mampu menghitung serta membandingkan jumlah di setiap kelompok dengan tepat."
-        duration="10-15 menit."
+        goal="Meningkatkan kemampuan berpikir logis dan pengambilan keputusan saat memilih metode pembersihan, melatih tanggung jawab."
+        indicator={`<ul class="list-disc ms-4">
+          <li>Anak bisa menentukan alat pembersih sesuai jenis mainan</li>
+          <li>Anak bisa membersihkan mainan hingga selesai dengan rapi</li>
+        </ul>`}
+        duration="15 menit"
         steps={level3Steps}
       />
+
+      <p>
+        Aktivitas ini bisa diulang setiap beberapa hari untuk memperkuat
+        pemahaman dan keterampilan anak secara menyenangkan.
+      </p>
     </CalistungPageLayout>
   );
 }
