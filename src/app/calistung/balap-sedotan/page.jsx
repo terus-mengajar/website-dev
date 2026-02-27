@@ -8,92 +8,76 @@ export const metadata = {
 
 const SummarySection = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-    <div>
-      <h2 className="font-bold text-lg mb-4">Area Simulasi :</h2>
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>Motorik Halus</li>
+    <div className="flex flex-row gap-4">
+      <h2 className="mb-4 whitespace-nowrap">Area Simulasi :&nbsp;&nbsp;</h2>
+      <ul className="list-disc space-y-1 text-gray-700">
+        <li>Motorik Kasar</li>
         <li>Fokus</li>
       </ul>
     </div>
-    <div>
-      <h2 className="font-bold text-lg mb-4">Alat dan Bahan :</h2>
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>4 botol / toples plastik bening dengan tutup</li>
-        <li>Sedotan plastik</li>
-        <li>Gunting</li>
-        <li>1 buah / bola kecil (pompom / kapas)</li>
-        <li>Isolasi / selotip</li>
-        <li>Penanda / spidol</li>
+    <div className="flex flex-row gap-4">
+      <h2 className="mb-4 whitespace-nowrap">Alat dan Bahan :&nbsp;&nbsp;</h2>
+      <ul className="list-disc space-y-1 text-gray-700">
+        <li>2 buah botol plastik bekas ukuran sedang</li>
+        <li>Sedikit beras untuk pemberat</li>
+        <li>10 buah sedotan plastik</li>
+        <li>5 buah Kursi</li>
+        <li>1 buah penjepit baju</li>
       </ul>
     </div>
   </div>
 );
 
-const PrepSection = ({ steps }) => (
-  <div className="mb-16">
-    <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {steps.map((step, index) => (
-        <div key={index} className="flex flex-col gap-4">
-          <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200">
-            <img
-              src={`https://placehold.co/600x400/eff6ff/1e40af?text=Persiapan+${index + 1}`}
-              alt={`Persiapan ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="flex gap-3">
-            <p className="text-gray-600 leading-relaxed">
-              <span className="font-bold text-gray-400">{index + 1}.</span>{" "}
-              {step}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const LevelSection = ({ level, age, goal, observing, duration, steps }) => (
+const LevelSection = ({ level, age, goal, indicator, duration, steps }) => (
   <div className="mb-20">
-    <div className="bg-[#FAF7F2] rounded-xl p-6 mb-8">
+    <div className="mb-14">
       <h2 className="font-bold text-xl mb-4">
         Level {level} ({age})
       </h2>
-      <div className="space-y-3 text-gray-700">
-        <p>
-          <span className="font-semibold text-black">
-            Apa yang ingin dikembangkan :
-          </span>{" "}
-          {goal}
-        </p>
-        <p>
-          <span className="font-semibold text-black">
-            Hal yang bisa diobservasi :
-          </span>{" "}
-          {observing}
-        </p>
-        <p>
-          <span className="font-semibold text-black">Durasi Bermain :</span>{" "}
-          {duration}
-        </p>
+      <div className="">
+        <table>
+          <tbody>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">
+                Manfaat Utama :{" "}
+              </td>
+              <td className="align-top pb-2">{goal}</td>
+            </tr>
+            <tr>
+              <td className="align-top pr-4">Indikator yang diharapkan : </td>
+              <td className="align-top pb-2">
+                <p
+                  className=""
+                  dangerouslySetInnerHTML={{ __html: indicator }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="align-top whitespace-nowrap pr-4">
+                Durasi Bermain :{" "}
+              </td>
+              <td className="align-top">{duration}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
     <h3 className="font-bold text-lg mb-6">Cara Bermain :</h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {steps.map((step, index) => (
-        <div key={index} className="flex flex-col gap-4">
-          <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200">
+        <div key={index} className={`flex gap-4 ${step.class ?? ""}`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
             <img
-              src={`https://placehold.co/600x400/f3f4f6/374151?text=Step+${index + 1}`}
+              src={step.img}
               alt={`Step ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-40 object-contain"
             />
-          </div>
-          <div className="flex gap-3">
-            <span className="font-bold text-gray-400 shrink-0">{index + 1}.</span>
-            <p className="text-gray-600 leading-relaxed">{step}</p>
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">{index + 1}.</span>
+              <p className="">{step.text}</p>
+            </div>
           </div>
         </div>
       ))}
@@ -102,66 +86,187 @@ const LevelSection = ({ level, age, goal, observing, duration, steps }) => (
 );
 
 export default function Page() {
-  const gamePrep = [
-    "Siapkan 4 botol plastik bening. Buat lubang kecil di tutup setiap botol menggunakan gunting, cukup besar untuk dimasuki sedotan.",
-    "Masukkan sedotan melalui lubang di tutup botol. Rekatkan sekitar lubang menggunakan isolasi agar udara tidak bocor saat ditiup.",
-    "Potong sedotan agar panjangnya sesuai dan tidak terlalu dalam masuk ke dalam botol. Pastikan tiupan udara bisa menggerakkan benda di dalam.",
-    "Letakkan pompom atau bola kecil ke dalam botol. Tutup botol dengan tutup yang sudah dipasangi sedotan. Botol siap digunakan.",
-  ];
-
   const level1Steps = [
-    "Pegang botol dengan satu tangan dan masukkan ujung sedotan ke mulut. Arahkan anak untuk meniup sedotan perlahan untuk merasakan udara keluar.",
-    "Minta anak meniup sedotan sehingga pompom di dalam botol bergerak ke atas. Lihatlah pompom naik saat ditiup keras!",
-    "Ulangi tiupan beberapa kali. Ajak anak menghitung berapa kali ia berhasil membuat pompom bergerak mencapai bagian atas botol.",
-    "Gantikan pompom dengan benda ringan lain (kapas, kertas kecil) dan bandingkan bagaimana benda yang berbeda bereaksi terhadap tiupan.",
+    {
+      text: "Anak mengambil satu sedotan dari botol. Anak berjalan pelan-pelan ke botol yang kosong sambil menggenggam sedotan erat.",
+      img: "/images/calistung/balap-sedotan/5.png",
+    },
+    {
+      text: "Sampai di botol kosong, anak memasukkan sedotan ke dalamnya. Ulangi sampai semua sedotan berpindah.",
+      img: "/images/calistung/balap-sedotan/6.png",
+    },
+    {
+      text: "Ganti jalan biasa dengan jalan mundur, merangkak, atau jalan jinjit",
+      img: "/images/calistung/balap-sedotan/7.png",
+    },
+    {
+      text: "Ubah jarak botol jadi lebih dekat (1 meter) agar anak tidak lelah",
+      img: "/images/calistung/balap-sedotan/8.png",
+    },
   ];
 
   const level2Steps = [
-    "Susun dua botol berdampingan. Minta anak dan pendamping masing-masing memegang satu botol. Siapa yang pompomnya lebih cepat naik?",
-    "Tentukan aturan: tiupan harus terus-menerus tanpa berhenti sampai pompom mencapai atas. Mulailah hitungan mundur bersama: 3, 2, 1, mulai!",
-    "Setelah satu ronde, tukar posisi botol lalu ulangi. Hitung skor tiap pemain: siapa yang menang paling banyak ronde?",
-    "Coba variasi: ganti sedotan dengan sedotan yang lebih besar/lebih kecil. Amati bersama anak perbedaan hasilnya.",
+    {
+      text: "Anak mengambil satu sedotan lalu berlari kecil menuju botol kosong. Letakkan sedotan ke dalam botol dengan hati-hati.",
+      img: "/images/calistung/balap-sedotan/9.png",
+    },
+    {
+      text: "Kembali ke botol pertama untuk mengambil sedotan berikutnya. Lanjutkan sampai semua sedotan berpindah.",
+      img: "/images/calistung/balap-sedotan/10.png",
+    },
+    {
+      text: "Tambahkan rintangan kecil (misalnya bantal atau kardus) untuk dilompati",
+      img: "/images/calistung/balap-sedotan/11.png",
+    },
+    {
+      text: "Ajak anak berlomba dengan Bunda atau saudara: siapa yang lebih cepat memindahkan 5 sedotan",
+      img: "/images/calistung/balap-sedotan/12.png",
+    },
   ];
 
   const level3Steps = [
-    "Buat lintasan balap menggunakan kursi-kursi yang dijajarkan. Letakkan botol di atas setiap kursi sebagai pos yang harus dilewati.",
-    "Anak berjalan dari satu kursi ke kursi berikutnya sambil membawa dan meniup botolnya. Pompom harus berhasil naik di setiap pos sebelum bisa pindah ke pos berikutnya.",
-    "Jika pompom belum naik, anak harus tetap di pos itu dan meniup lagi sampai berhasil. Hitung berapa banyak tiupan yang dibutuhkan di setiap pos.",
-    "Setelah menyelesaikan semua pos, ajak anak menjumlahkan total tiupan yang digunakan di seluruh lintasan dan catat hasilnya.",
+    {
+      text: "Anak mengambil dua sedotan sekaligus dengan dua tangan. Berlari cepat ke botol kosong, lalu meletakkan sedotan secara tepat.",
+      img: "/images/calistung/balap-sedotan/13.png",
+    },
+    {
+      text: "Tambahkan tantangan waktu: “Selesaikan 10 sedotan dalam 2 menit!” Ulangi beberapa ronde.",
+      img: "/images/calistung/balap-sedotan/14.png",
+    },
+    {
+      text: "Atur jalur zigzag menggunakan kursi. Main sambil berhitung: “Setiap ambil sedotan, sebutkan angka 1 sampai 10.”",
+      img: "/images/calistung/balap-sedotan/15.png",
+      class: "md:col-span-2",
+    },
+    {
+      text: "Tantangan tambahan: pindahkan sedotan pakai penjepit baju (motorik halus + fokus)",
+      img: "/images/calistung/balap-sedotan/16.png",
+      class: "md:col-span-2",
+    },
   ];
 
   return (
     <CalistungPageLayout title={TITLE}>
       <SummarySection />
 
-      <PrepSection steps={gamePrep} />
+      <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/balap-sedotan/1.png"
+              alt="1"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">1.</span>
+              <p className="">
+                Ambil 2 botol plastik ukuran sedang. Masukkan sedikit beras ke
+                dalam masing-masing botol agar tidak mudah terguling saat
+                dimainkan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/balap-sedotan/2.png"
+              alt="2"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">2.</span>
+              <p className="">
+                Masukkan semua sedotan ke salah satu botol. Botol satunya
+                dibiarkan kosong.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/balap-sedotan/3.png"
+              alt="3"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">3.</span>
+              <p className="">
+                Letakkan kedua botol di tempat yang agak lapang, misalnya
+                halaman, teras, atau ruang tengah. Jarak antara kedua botol
+                sekitar 2 meter (boleh disesuaikan dengan usia anak).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={`flex gap-4`}>
+          <div className="flex flex-col gap-2 p-4 rounded-lg overflow-hidden border border-[#F2E4D6] w-full h-full">
+            <img
+              src="/images/calistung/balap-sedotan/4.png"
+              alt="4"
+              className="w-full h-40 object-contain"
+            />
+
+            <div className="flex gap-3 text-[#201C23] leading-relaxed text-sm">
+              <span className="">4.</span>
+              <p className="">
+                Pastikan lantai atau tanah tidak licin dan bebas dari benda
+                tajam. Anak berdiri di depan botol yang berisi sedotan dan siap
+                memulai tantangan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <LevelSection
         level="1"
         age="2-3 th"
-        goal="Melatih otot mulut dan kemampuan meniup dengan terkontrol melalui sedotan, serta melatih koordinasi tangan dan mulut bekerja bersamaan."
-        observing="Anak dapat meniup sedotan dengan cukup kuat untuk menggerakkan pompom di dalam botol, dan mulai bisa menghitung jumlah tiupan yang berhasil."
-        duration="5-10 menit per hari."
+        goal="Melatih koordinasi tangan dan kaki saat berjalan membawa benda, belajar sabar dan fokus menyelesaikan satu per satu."
+        indicator={`<ul class="list-disc ms-4">
+          <li>Anak bisa membawa dan memasukkan sedotan tanpa terjatuh</li>
+          <li>Anak mengikuti instruksi satu langkah dengan baik</li>
+        </ul>`}
+        duration="15–20 menit"
         steps={level1Steps}
       />
 
       <LevelSection
         level="2"
         age="4-5 th"
-        goal="Menumbuhkan semangat kompetisi yang sehat, melatih kontrol napas panjang yang stabil, dan mengembangkan kemampuan menghitung skor sederhana."
-        observing="Anak dapat bermain dengan aturan balap, menjaga tiupan tetap stabil, menghitung poin kemenangan, dan membandingkan hasil dari sedotan berukuran berbeda."
-        duration="10-20 menit per hari."
+        goal="Mengembangkan keseimbangan saat bergerak cepat, belajar mengatur ritme gerakan, dan tetap teliti saat meletakkan benda."
+        indicator={`<ul class="list-disc ms-4">
+          <li>Anak bisa bergerak cepat dan tetap terarah</li>
+          <li>Anak mampu menyelesaikan tugas dengan urutan benar</li>
+        </ul>`}
+        duration="15–20 menit"
         steps={level2Steps}
       />
 
       <LevelSection
         level="3"
         age="5-6 th"
-        goal="Mengembangkan kemampuan berhitung dan penjumlahan dalam konteks permainan, melatih strategi, dan meningkatkan daya tahan fokus selama aktivitas multi-pos."
-        observing="Anak dapat menyelesaikan seluruh lintasan balap secara mandiri, menghitung tiupan di setiap pos, dan menjumlahkan total tiupan dengan tepat."
-        duration="15-20 menit per hari."
+        goal="Menstimulasi kemampuan fokus di bawah tekanan waktu, melatih kecepatan respons motorik dan perencanaan gerak."
+        indicator={`<ul class="list-disc ms-4">
+          <li>Anak mampu menyelesaikan tantangan waktu</li>
+          <li>Anak mampu memusatkan perhatian meskipun bergerak aktif</li>
+        </ul>`}
+        duration="15–20 menit"
         steps={level3Steps}
       />
+
+      <p>
+        Aktivitas ini bisa diulang setiap beberapa hari untuk memperkuat
+        pemahaman dan keterampilan anak secara menyenangkan.
+      </p>
     </CalistungPageLayout>
   );
 }
