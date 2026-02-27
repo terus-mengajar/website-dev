@@ -286,6 +286,31 @@ export default function Page() {
         Aktivitas ini bisa diulang setiap beberapa hari untuk memperkuat
         pemahaman dan keterampilan anak secara menyenangkan.
       </p>
+
+      <div className="bg-[#FBF6F2] rounded-xl p-12 flex flex-col sm:flex-row gap-8 relative overflow-hidden">
+        <div className="hidden md:block absolute -bottom-16 -left-16 opacity-40 pointer-events-none -rotate-15 -translate-x-10 translate-y-35">
+          <img
+            src="/images/shapes/logo-tm-cream.avif"
+            alt=""
+            className="w-110 h-110 object-contain"
+          />
+        </div>
+
+        <div className="z-999">
+          <h2 className="font-bold text-4xl mb-4 text-[#8562A8]">
+            Cara Memainkannya
+          </h2>
+          <p className="mb-4">
+            Lihat video disamping untuk melihat bagaimana cara memainkannya
+            sesuai dengan instruksi yang tertera
+          </p>
+          <button className="tombol-hitam">Lihat di Tiktok</button>
+        </div>
+
+        <div>
+          <img src="/images/calistung/misi-penyelamatan/17.png" alt="17" />
+        </div>
+      </div>
     </CalistungPageLayout>
   );
 }
