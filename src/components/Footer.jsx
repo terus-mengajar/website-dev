@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
 
         {/* Links */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Produk */}
           <div>
             <h4 className="font-semibold mb-3">Produk</h4>
@@ -110,8 +110,8 @@ export default function Footer() {
 
           {/* Social Media */}
           <div className="">
-            <h4 className="font-semibold mb-3 md:text-right">Social Media</h4>
-            <ul className="space-y-3 text-sm flex flex-col md:items-end">
+            <h4 className="font-semibold mb-3 lg:text-right">Social Media</h4>
+            <ul className="space-y-3 text-sm flex flex-col lg:items-end">
               <li>
                 <a
                   href="https://www.tiktok.com/@terusmengajar.id"

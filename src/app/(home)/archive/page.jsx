@@ -1,9 +1,6 @@
 import Hero from "./Hero";
-// import Petualangan from "./petualangan/Petualangan";
-// import KatabaAI from "./KatabaAI";
-import Rekomendasi from "./Rekomendasi";
 import Petualangan from "./Petualangan";
-import ProdukTerbaru from "./ProdukTerbaru";
+import KatabaAI from "./KatabaAI";
 import FunpaperHarian from "./FunpaperHarian";
 import EbookCalistung from "./EbookCalistung";
 import Freebies from "./Freebies";
@@ -12,11 +9,8 @@ export default function Home() {
   return (
     <main id="home" className="-mt-[68px]">
       <Hero />
-      {/* <Petualangan /> */}
-      {/* <KatabaAI /> */}
-      <Rekomendasi />
       <Petualangan />
-      <ProdukTerbaru />
+      {/* <KatabaAI /> */}
       <FunpaperHarian />
       <EbookCalistung />
       <Freebies />

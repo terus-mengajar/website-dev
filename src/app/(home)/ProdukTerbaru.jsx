@@ -1,0 +1,45 @@
+import Image from "next/image";
+
+export default function ProdukTerbaru() {
+  return (
+    <section className="base-section py-26! bg-[#FCFBF8]">
+      <div className="container gap-8 items-center">
+        <h2 className="text-ungu text-3xl md:text-4xl font-bold mb-8 text-center">
+          Produk Terbaru
+        </h2>
+
+        <div className="flex flex-col md:flex-row gap-12 items-center md:items-start justify-center">
+          {[
+            {
+              image: "/images/funpaper/bundle/bundle-1.avif",
+              text: "Funpaper Interaktif",
+            },
+            {
+              image: "/images/funpaper/bundle/bundle-1.avif",
+              text: "Funpaper Coding",
+            },
+            {
+              image: "/images/funpaper/bundle/bundle-1.avif",
+              text: "Bermain Sambil Belajar Calistung",
+            },
+          ].map((item, i) => (
+            <div className="justify-center w-80 md:w-50">
+              <div className="bg-[#FAF8F2] rounded-lg mb-4 max-w-45 mx-auto">
+                <Image
+                  src={item.image}
+                  alt="produk terbaru"
+                  className="h-auto mx-auto"
+                  width={150}
+                  height={150}
+                  unoptimized
+                />
+              </div>
+
+              <p className="text-center font-semibold">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
