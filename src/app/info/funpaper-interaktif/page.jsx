@@ -30,7 +30,7 @@ export default function page() {
       </style>
 
       {/* Hero */}
-      <section className="py-20 px-8 text-center bg-[url(/images/bg/bg-interaktif.jpg)] bg-cover bg-no-repeat h-[2300px] sm:h-[2300px] overflow-hidden">
+      <section className="py-20 px-8 text-center bg-[url(/images/bg/bg-interaktif.jpg)] bg-cover bg-no-repeat h-[2700px] sm:h-[2800px] md:h-[2500px] overflow-hidden">
         <div className="container px-4 relative">
           <div
             className="mt-24 transition-transform duration-75 space-y-60 sm:space-y-80"
@@ -118,7 +118,7 @@ export default function page() {
             </div>
 
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-14">
-              <h2 className="text-hijau leading-tight text-2xl sm:text-4xl font-bold text-center lg:text-left mx-auto sm:basis-3/4">
+              <h2 className="text-hijau leading-tight text-2xl sm:text-3xl font-bold text-center lg:text-left mx-auto sm:basis-3/4">
                 Sementara di sisi lain, gadget selalu ada di tangan anak.
                 Tinggal klik, langsung menyala.
               </h2>
@@ -135,7 +135,7 @@ export default function page() {
             </div>
 
             <div className="">
-              <h2 className="text-hijau leading-tight text-2xl sm:text-4xl font-bold text-center">
+              <h2 className="text-hijau leading-tight text-2xl sm:text-3xl font-bold text-center">
                 Pertanyaannya:
                 <br />
                 Apakah layar itu hanya dipakai untuk menonton, atau bisa menjadi
