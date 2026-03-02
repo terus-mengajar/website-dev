@@ -159,12 +159,12 @@ export default function page() {
             </p>
           </div>
           <div className="flex flex-row flex-wrap gap-6  mx-auto justify-center text-sm">
-            <div className="text-center rounded-2xl w-150">
+            <div className="text-center rounded-2xl w-full">
               <Image
                 src="/images/funpaper/interaktif/funpaper-interaktif.gif"
                 alt="interaktif gif"
-                width={540}
-                height={540}
+                width={1000}
+                height={1000}
                 className="mx-auto"
                 unoptimized
               />
