@@ -56,7 +56,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/funpaper-interaktif" className="">
+                <Link href="/info/funpaper-interaktif" className="">
                   Funpaper Interaktif
                 </Link>
               </li>

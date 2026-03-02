@@ -26,6 +26,7 @@ export default function Navbar() {
     "/info/funpaper-activity",
     "/info/funpaper-calistung",
     "/info/ebook-funpaper-calistung",
+    "/info/funpaper-interaktif",
   ];
   const isTransparent = transparentRoutes.includes(pathname);
 
@@ -176,9 +177,12 @@ export default function Navbar() {
                   onClick={() => toggleDropdown("play")}
                   className={
                     "flex items-center gap-1 " +
-                    (["/calistung", "/funpaper-interaktif", "/mini-game"].some(
-                      (path) => pathname.startsWith(path),
-                    )
+                    ([
+                      "/calistung",
+                      "/info/funpaper-interaktif",
+                      "/funpaper-interaktif",
+                      "/mini-game",
+                    ].some((path) => pathname.startsWith(path))
                       ? "font-bold text-blue-500"
                       : "")
                   }
@@ -203,10 +207,13 @@ export default function Navbar() {
                       </span>
                     </Link>
                     <Link
-                      href="/funpaper-interaktif"
+                      href="/info/funpaper-interaktif"
                       className={
                         "block px-3 py-2 hover:bg-gray-100 " +
-                        (pathname.startsWith("/funpaper-interaktif")
+                        ([
+                          "/info/funpaper-interaktif",
+                          "/funpaper-interaktif",
+                        ].some((path) => pathname.startsWith(path))
                           ? "font-bold text-blue-500"
                           : "")
                       }
@@ -448,6 +455,7 @@ export default function Navbar() {
                   "flex w-full items-center justify-between py-2 border-b border-[#cbaf78] " +
                   ([
                     "/calistung",
+                    "/info/funpaper-interaktif",
                     "/funpaper-interaktif",
                     "/game-edukasi",
                     "/mini-game",
@@ -485,10 +493,13 @@ export default function Navbar() {
                     </span>
                   </Link>
                   <Link
-                    href="/funpaper-interaktif"
+                    href="/info/funpaper-interaktif"
                     className={
                       "block py-2 border-b border-[#cbaf78] " +
-                      (pathname.startsWith("/funpaper-interaktif")
+                      ([
+                        "/info/funpaper-interaktif",
+                        "/funpaper-interaktif",
+                      ].some((path) => pathname.startsWith(path))
                         ? " font-bold text-blue-500 "
                         : "")
                     }
