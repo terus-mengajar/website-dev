@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Rekomendasi() {
   return (
@@ -13,37 +14,45 @@ export default function Rekomendasi() {
             {
               image: "/images/assets/calistung.png",
               text: "Calistung",
+              href: "/info/calistung",
             },
             {
               image: "/images/assets/menggunting.png",
               text: "Menggunting",
+              href: "/info/menggunting",
             },
             {
               image: "/images/assets/mewarnai.png",
               text: "Mewarnai",
+              href: "/info/mewarnai",
             },
             {
               image: "/images/assets/coding.png",
               text: "Coding",
+              href: "/info/coding",
             },
             {
               image: "/images/assets/gunting-tempel.png",
               text: "Gunting Tempel",
+              href: "/info/gunting-tempel",
             },
             {
               image: "/images/assets/menebalkan-garis.png",
               text: "Menebalkan Garis",
+              href: "/info/menebalkan-garis",
             },
             {
               image: "/images/assets/maze.png",
               text: "Maze",
+              href: "/info/maze",
             },
             {
               image: "/images/assets/menghubungkan-titik.png",
               text: "Menghubungkan Titik",
+              href: "/info/menghubungkan-titik",
             },
           ].map((item, i) => (
-            <div key={i} className="justify-center items-center">
+            <Link key={i} href={item.href} className="justify-center items-center hover:scale-105 transition-all duration-300">
               <div className="bg-[#FAF8F2] rounded-lg mb-4 w-20 md:w-32 mx-auto">
                 <Image
                   src={item.image}
@@ -58,7 +67,7 @@ export default function Rekomendasi() {
               <p className="text-sm md:text-md text-center font-semibold">
                 {item.text}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

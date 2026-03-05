@@ -23,7 +23,7 @@ export default function ProdukTerbaru() {
               text: "Bermain Sambil Belajar Calistung",
             },
           ].map((item, i) => (
-            <div className="justify-center w-80 md:w-50">
+            <div key={i} className="justify-center w-80 md:w-50">
               <div className="bg-[#FAF8F2] rounded-lg mb-4 max-w-45 mx-auto">
                 <Image
                   src={item.image}
