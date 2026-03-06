@@ -78,7 +78,7 @@ export default function page() {
           </h2>
 
           <div className="flex justify-center">
-            <Link href="/funpaper-interaktif" className="tombol-biru">
+            <Link href="/funpaper-tema" className="tombol-biru">
               Selengkapnya
             </Link>
           </div>

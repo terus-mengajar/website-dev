@@ -1,10 +1,8 @@
 "use client";
 
-// app/components/FunpaperTema.tsx
-import { CircleCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { MEWARNAI } from "@/lib/constants";
 
 export default function page() {
 
@@ -81,7 +79,7 @@ export default function page() {
           </h2>
 
           <div className="flex justify-center">
-            <Link href="/funpaper-harian" className="tombol-coklat">
+            <Link href={`/funpaper-harian?aktivitas=${MEWARNAI}`} className="tombol-coklat">
               Coba Sekarang
             </Link>
           </div>

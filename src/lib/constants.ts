@@ -1,0 +1,15 @@
+export const MENGGUNTING = 1;
+export const MELINGKARI_GAMBAR = 2;
+export const SOAL_CAMPURAN = 3;
+export const MEWARNAI = 4;
+export const MENEBALKAN_GARIS = 5;
+export const GUNTING_TEMPEL = 6;
+export const MAZE = 7;
+export const MENGHUBUNGKAN_TITIK = 8;
+export const MENCOCOKKAN = 9;
+export const ANALISA = 10;
+export const MEMBANDINGKAN = 11;
+export const ART_AND_CRAFT = 12;
+export const DOA = 13;
+export const MENULIS_DAN_MENGGAMBAR = 14;
+export const OPERASI_HITUNG = 15;

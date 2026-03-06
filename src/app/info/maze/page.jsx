@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { MAZE } from "@/lib/constants";
 
 export default function page() {
 
@@ -78,7 +79,7 @@ export default function page() {
           </h2>
 
           <div className="flex justify-center">
-            <Link href="/funpaper-harian" className="tombol-hijau bg-[#268E4E]! hover:bg-[#268E4E]!">
+            <Link href={`/funpaper-harian?aktivitas=${MAZE}`} className="tombol-hijau bg-[#268E4E]! hover:bg-[#268E4E]!">
               Coba Sekarang
             </Link>
           </div>
