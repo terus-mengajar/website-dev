@@ -2,8 +2,15 @@ import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
   title: "Funpaper Tema",
-  //   description:
-  //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+  description:
+    "Worksheet tematik untuk bermain sambil belajar! Koleksi lembar kerja bertema untuk anak TK dan PAUD. Cocok untuk kegiatan belajar di rumah dengan topik yang menarik.",
+  openGraph: {
+    title: "Funpaper Tema - Worksheet Tematik | Terus Mengajar",
+    description:
+      "Worksheet tematik untuk bermain sambil belajar! Koleksi lembar kerja bertema untuk anak TK dan PAUD.",
+    url: "https://terusmengajar.id/funpaper-tema",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default async function Page() {

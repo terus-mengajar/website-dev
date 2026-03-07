@@ -2,8 +2,15 @@ import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
   title: "Funpaper Harian",
-  //   description:
-  //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+  description:
+    "Ide bermain sambil belajar harian untuk anak TK dan PAUD! Download worksheet gratis setiap hari. Aktivitas menyenangkan yang bisa difilter berdasarkan usia dan kategori.",
+  openGraph: {
+    title: "Funpaper Harian - Ide Bermain Sambil Belajar | Terus Mengajar",
+    description:
+      "Ide bermain sambil belajar harian untuk anak TK dan PAUD! Download worksheet gratis setiap hari.",
+    url: "https://terusmengajar.id/funpaper-harian",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default async function Page({ searchParams }) {

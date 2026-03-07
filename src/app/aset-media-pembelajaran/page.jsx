@@ -3,6 +3,15 @@ import AsetMediaPembelajaranList from "./AsetMediaPembelajaranList";
 
 export const metadata = {
   title: "Aset Media Pembelajaran",
+  description:
+    "Aset Canva Elements untuk membuat materi bermain sambil belajar! Koleksi gratis untuk pengguna Canva Pro. Buat worksheet dan aktivitas belajar yang menarik untuk TK dan PAUD.",
+  openGraph: {
+    title: "Aset Media Pembelajaran - Canva Elements | Terus Mengajar",
+    description:
+      "Aset Canva Elements untuk membuat materi bermain sambil belajar untuk TK dan PAUD.",
+    url: "https://terusmengajar.id/aset-media-pembelajaran",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default function GaleriProduk() {

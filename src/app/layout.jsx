@@ -20,16 +20,73 @@ const poppins = Poppins({
 
 export const metadata = {
   title: {
-    default: "Terus Mengajar - Download Lembar Kerja",
-    // template: "%s | Terus Mengajar"
-    template: "%s",
+    default: "Terus Mengajar - Rekomendasi Ide Bermain Sambil Belajar untuk TK dan PAUD",
+    template: "%s | Terus Mengajar",
   },
   description:
-    "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya",
+    "Rekomendasi ide bermain sambil belajar untuk TK dan PAUD. Download worksheet Calistung dan Coding gratis! Aktivitas menyenangkan untuk anak usia 2-6 tahun.",
+  keywords: [
+    "bermain sambil belajar",
+    "worksheet anak TK",
+    "worksheet anak PAUD",
+    "calistung anak",
+    "coding anak",
+    "lembar kerja anak",
+    "mewarnai anak",
+    "belajar menghitung",
+    "belajar membaca",
+    "aktivitas anak",
+    "worksheet gratis",
+    "funpaper",
+    "anak usia dini",
+    "PAUD",
+    "TK",
+  ],
+  authors: [{ name: "Terus Mengajar" }],
+  creator: "Terus Mengajar",
+  publisher: "Terus Mengajar",
+  metadataBase: new URL("https://terusmengajar.id"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Terus Mengajar - Rekomendasi Ide Bermain Sambil Belajar untuk TK dan PAUD",
+    description:
+      "Rekomendasi ide bermain sambil belajar untuk TK dan PAUD. Download worksheet Calistung dan Coding gratis! Aktivitas menyenangkan untuk anak usia 2-6 tahun.",
+    url: "https://terusmengajar.id",
+    siteName: "Terus Mengajar",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Terus Mengajar - Bermain Sambil Belajar untuk TK dan PAUD",
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terus Mengajar - Rekomendasi Ide Bermain Sambil Belajar untuk TK dan PAUD",
+    description:
+      "Download worksheet Calistung dan Coding gratis! Aktivitas menyenangkan untuk anak usia 2-6 tahun.",
+    images: ["/images/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
-    // icon: "/images/favicon.png", // favicon default
-    // apple: "/images/apple-touch-icon.png", // optional untuk iOS
     icon: [{ rel: "icon", type: "image/png", url: "/images/favicon.png" }],
+    apple: "/images/apple-touch-icon.png",
   },
 };
 
@@ -39,7 +96,7 @@ export default function RootLayout({ children }) {
   const hideLayout = false;
 
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         {/* Google Analytics */}
         {process.env.GOOGLE_ANALYTIC_ID && (
