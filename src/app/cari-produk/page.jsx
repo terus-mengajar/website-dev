@@ -1,9 +1,16 @@
 import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
-  title: "Funpaper Harian",
-  //   description:
-  //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+  title: "Cari Worksheet",
+  description:
+    "Cari ide bermain sambil belajar untuk anak TK dan PAUD! Temukan worksheet Calistung dan Coding yang sesuai dengan kebutuhan anak. Gunakan filter untuk hasil yang tepat.",
+  openGraph: {
+    title: "Cari Worksheet - Bermain Sambil Belajar | Terus Mengajar",
+    description:
+      "Cari ide bermain sambil belajar untuk anak TK dan PAUD! Temukan worksheet yang sesuai kebutuhan.",
+    url: "https://terusmengajar.id/cari-produk",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default async function Page({ searchParams }) {

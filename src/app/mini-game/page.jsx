@@ -2,9 +2,16 @@ import SidebarMedsos from "@/components/SidebarMedsos";
 import MiniGameList from "./MiniGameList";
 
 export const metadata = {
-  title: "Mini Games",
-  //   description:
-  //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+  title: "Mini Games - Coding untuk Anak",
+  description:
+    "Permainan interaktif untuk bermain sambil belajar! Koleksi mini game edukatif dan coding untuk anak TK dan PAUD. Mainkan gratis di Smartphone, Tablet, Laptop, atau PC.",
+  openGraph: {
+    title: "Mini Games - Coding untuk Anak | Terus Mengajar",
+    description:
+      "Permainan interaktif untuk bermain sambil belajar! Mini game edukatif dan coding untuk anak TK dan PAUD.",
+    url: "https://terusmengajar.id/mini-game",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default async function Page() {

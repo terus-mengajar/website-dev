@@ -9,9 +9,16 @@ import {
 } from "react-icons/fa";
 
 export const metadata = {
-  title: "Kataba AI",
-  //   description:
-  //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+  title: "Kataba AI - Asisten Cari Ide Bermain",
+  description:
+    "Kataba AI membantu Ayah Bunda menemukan ide bermain sambil belajar yang tepat untuk anak TK dan PAUD. Tanyakan kebutuhan, dapatkan rekomendasi worksheet Calistung dan Coding gratis!",
+  openGraph: {
+    title: "Kataba AI - Asisten Cari Ide Bermain Sambil Belajar | Terus Mengajar",
+    description:
+      "Asisten AI untuk menemukan ide bermain sambil belajar dan worksheet untuk anak TK dan PAUD.",
+    url: "https://terusmengajar.id/kataba-ai",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default async function Page() {
