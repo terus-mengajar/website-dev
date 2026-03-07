@@ -1,9 +1,16 @@
 import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
-  title: "Funpaper Calistung",
-  //   description:
-  //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+  title: "Funpaper Interaktif - Worksheet Online untuk Anak",
+  description:
+    "Worksheet interaktif online untuk anak TK dan PAUD! Lembar kerja yang bisa digunakan langsung secara online. Aktivitas belajar yang lebih hidup, interaktif dan menyenangkan.",
+  openGraph: {
+    title: "Funpaper Interaktif - Worksheet Online | Terus Mengajar",
+    description:
+      "Worksheet interaktif online untuk anak TK dan PAUD! Aktivitas belajar interaktif dan menyenangkan.",
+    url: "https://terusmengajar.id/funpaper-interaktif",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default async function Page({ searchParams }) {

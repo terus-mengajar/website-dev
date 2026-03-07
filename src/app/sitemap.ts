@@ -48,6 +48,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/calistung`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/funpaper-coding`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/funpaper-interaktif`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/mini-game`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
@@ -135,6 +153,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
+  // Fetch dynamic Funpaper Coding slugs
+  const funpaperCodingSql = `
+    SELECT slug, updated_at
+    FROM funpaper_coding
+    WHERE slug IS NOT NULL
+    ORDER BY downloaded DESC
+    LIMIT 500
+  `
+  const funpaperCodingItems = await fetchFromD1(funpaperCodingSql)
+  const funpaperCodingPages: MetadataRoute.Sitemap = funpaperCodingItems.map((item: { slug: string; updated_at?: string }) => ({
+    url: `${BASE_URL}/funpaper-coding/${item.slug}`,
+    lastModified: item.updated_at ? new Date(item.updated_at) : new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }))
+
   // Fetch dynamic Mini Game slugs
   const miniGameSql = `
     SELECT slug, updated_at
@@ -172,6 +206,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...funpaperHarianPages,
     ...funpaperTemaPages,
     ...funpaperCalistungPages,
+    ...funpaperCodingPages,
     ...miniGamePages,
     ...asetMediaPages,
   ]

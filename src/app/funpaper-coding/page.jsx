@@ -1,9 +1,16 @@
 import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
-  title: "Funpaper Calistung",
-  //   description:
-  //     "Temukan berbagai macam jenis kegiatan untuk anak seperti mengenal angka, huruf, mewarnai, gunting tempel, dan masih banyak yang lainnya"
+  title: "Funpaper Coding - Download Worksheet Coding untuk Anak",
+  description:
+    "Download worksheet coding gratis untuk anak TK dan PAUD! Melatih cara berpikir logis, kritis, dan sistematis melalui permainan kode, arah dan pemecahan masalah sederhana.",
+  openGraph: {
+    title: "Funpaper Coding - Download Worksheet Coding | Terus Mengajar",
+    description:
+      "Download worksheet coding gratis untuk anak TK dan PAUD! Melatih cara berpikir logis dan sistematis.",
+    url: "https://terusmengajar.id/funpaper-coding",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default async function Page({ searchParams }) {
