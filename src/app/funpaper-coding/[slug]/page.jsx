@@ -10,15 +10,31 @@ export async function generateMetadata({ params }) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-coding/${slug}`,
     {
-      cache: "no-store", // biar ga cache kalau datanya dinamis
+      cache: "no-store",
     },
   );
 
   const funpaper = await res.json();
 
+  // Use SEO fields if available, fallback to basic info
+  const title = funpaper.seo_title || funpaper.name;
+  const description = funpaper.short_description || `Lembar kerja coding ${funpaper.name} untuk anak.`;
+
   return {
-    title: funpaper.name,
-    // description: funpaper.description",
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: funpaper.image_url ? [funpaper.image_url] : [],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: funpaper.image_url ? [funpaper.image_url] : [],
+    },
   };
 }
 
@@ -99,6 +115,26 @@ export default async function FunpaperPage({ params }) {
                   <p className="text-gray-600 text-xs lg:text-sm">Paper</p>
                 </div>
               </div>
+
+              {/* SEO Description Section */}
+              {funpaper.medium_description && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-bold mb-4">Tentang {funpaper.name}</h3>
+                  <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                    {funpaper.medium_description}
+                  </p>
+                </div>
+              )}
+
+              {/* Focus Keyword Tag */}
+              {funpaper.focus_keyword && (
+                <div className="flex flex-wrap gap-2 items-center mb-6">
+                  <span className="text-sm text-gray-500">Tagar:</span>
+                  <span className="px-3 py-1 bg-[#fcfbf8] text-sm text-gray-600 rounded-full">
+                    #{funpaper.focus_keyword.replace(/\s+/g, "").toLowerCase()}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Sidebar Gratis untuk desktop */}

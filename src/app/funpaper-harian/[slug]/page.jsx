@@ -11,15 +11,31 @@ export async function generateMetadata({ params }) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-harian/${slug}`,
     {
-      cache: "no-store", // biar ga cache kalau datanya dinamis
+      cache: "no-store",
     },
   );
 
   const funpaper = await res.json();
 
+  // Use SEO fields if available, fallback to basic info
+  const title = funpaper.seo_title || `${funpaper.name} - ${funpaper.activity}`;
+  const description = funpaper.short_description || `Lembar kerja ${funpaper.name} untuk anak usia ${funpaper.age} tahun. Aktivitas ${funpaper.activity} dengan tema ${funpaper.theme}.`;
+
   return {
-    title: funpaper.name + " - " + funpaper.activity,
-    // description: funpaper.description",
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: funpaper.image_url ? [funpaper.image_url] : [],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: funpaper.image_url ? [funpaper.image_url] : [],
+    },
   };
 }
 
@@ -38,8 +54,28 @@ export default async function FunpaperHarianPage({ params }) {
 
   const funpaper = await res.json();
 
+  // Generate JSON-LD structured data for SEO
+  const jsonLd = funpaper.schema_json
+    ? JSON.parse(funpaper.schema_json)
+    : {
+        "@context": "https://schema.org",
+        "@type": "EducationalResource",
+        name: funpaper.name,
+        description: funpaper.short_description || `Lembar kerja ${funpaper.name} untuk anak usia ${funpaper.age} tahun`,
+        image: funpaper.image_url,
+        educationalLevel: `Anak usia ${funpaper.age} tahun`,
+        learningResourceType: "Worksheet",
+        isAccessibleForFree: true,
+      };
+
   return (
     <div className="w-full mt-[68px]">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Section 1 */}
       <section className="py-12 bg-[#fcfbf8]">
         <div className="container">
@@ -156,6 +192,36 @@ export default async function FunpaperHarianPage({ params }) {
           </div>
         </div>
       </section>
+
+      {/* SEO Description Section */}
+      {funpaper.medium_description && (
+        <section className="py-12 bg-[#fcfbf8]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="prose prose-lg max-w-none">
+              <h2 className="text-2xl font-bold text-[#ef9e00] mb-6">
+                Tentang {funpaper.name}
+              </h2>
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                {funpaper.medium_description}
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Focus Keyword Section */}
+      {funpaper.focus_keyword && (
+        <section className="py-8 bg-white">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="flex flex-wrap gap-2 items-center">
+              <span className="text-sm text-gray-500">Tagar:</span>
+              <span className="px-3 py-1 bg-[#fcfbf8] text-sm text-gray-600 rounded-full">
+                #{funpaper.focus_keyword.replace(/\s+/g, "").toLowerCase()}
+              </span>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Produk Terkait */}
       <ProdukTerkait

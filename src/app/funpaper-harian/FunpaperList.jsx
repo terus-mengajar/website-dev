@@ -184,6 +184,11 @@ export default function FunpaperHarianList({ onOpenFilter, filters }) {
                   <p className="text-xs text-center mb-2">
                     {funpaper.name + " - " + funpaper.activity}
                   </p>
+                  {funpaper.short_description && (
+                    <p className="text-xs text-gray-500 text-center line-clamp-2 mb-1 px-1">
+                      {funpaper.short_description}
+                    </p>
+                  )}
                   {funpaper.downloaded > 0 && (
                     <p className="text-xs text-gray-400 text-center">
                       Diunduh {funpaper.downloaded} kali

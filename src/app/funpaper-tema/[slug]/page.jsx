@@ -10,15 +10,31 @@ export async function generateMetadata({ params }) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/funpaper-tema/${slug}`,
     {
-      cache: "no-store", // biar ga cache kalau datanya dinamis
+      cache: "no-store",
     }
   );
 
   const funpaper = await res.json();
 
+  // Use SEO fields if available, fallback to basic info
+  const title = funpaper.seo_title || funpaper.name_on_website;
+  const description = funpaper.short_description || funpaper.description?.slice(0, 160) || `Paket tema ${funpaper.name_on_website} untuk anak usia ${funpaper.age} tahun.`;
+
   return {
-    title: funpaper.name_on_website,
-    // description: funpaper.description",
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: funpaper.mockup_url ? [funpaper.mockup_url] : [],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: funpaper.mockup_url ? [funpaper.mockup_url] : [],
+    },
   };
 }
 
@@ -99,13 +115,27 @@ export default async function FunpaperTemaPage({ params }) {
                   <p className="text-gray-600 text-xs lg:text-sm">Paper</p>
                 </div>
               </div>
-              <div className="text-gray-700">
-                {funpaper.description && funpaper.description.split("\n").map((line, i) => (
-                  <p key={i} className="text-gray-700 leading-relaxed mb-3">
-                    {line}
-                  </p>
-                ))}
-              </div>
+
+              {/* SEO Description - prefer medium_description over description */}
+              {(funpaper.medium_description || funpaper.description) && (
+                <div className="text-gray-700 mb-6">
+                  {(funpaper.medium_description || funpaper.description).split("\n").map((line, i) => (
+                    <p key={i} className="text-gray-700 leading-relaxed mb-3">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              )}
+
+              {/* Focus Keyword Tag */}
+              {funpaper.focus_keyword && (
+                <div className="flex flex-wrap gap-2 items-center mb-6">
+                  <span className="text-sm text-gray-500">Tagar:</span>
+                  <span className="px-3 py-1 bg-[#fcfbf8] text-sm text-gray-600 rounded-full">
+                    #{funpaper.focus_keyword.replace(/\s+/g, "").toLowerCase()}
+                  </span>
+                </div>
+              )}
 
               <Aktivitas slug={slug} id={funpaper.id} />
             </div>
