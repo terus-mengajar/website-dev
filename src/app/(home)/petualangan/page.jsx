@@ -185,7 +185,7 @@ export default function Petualangan() {
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
           <div className="lg:basis-5/10 flex justify-center">
             <Image
-              src="/images/karakter/karakter-activity.avif"
+              src="/images/karakter/karakter-aktivitas-calistung.webp"
               alt="petualangan 6"
               width={480}
               height={120}
@@ -194,13 +194,24 @@ export default function Petualangan() {
           </div>
 
           <div className="lg:basis-5/10 text-center lg:text-left">
-            <h2 className="text-karakter">Funpaper Activity</h2>
+            <h2 className="text-karakter">
+              Bermain
+              <br />
+              Sambil Belajar
+              <br />
+              Calistung
+            </h2>
             <p>
-              Kumpulan lembar kerja berdasarkan jenis aktivitas yang disukai
-              anak. Dirancang khusus untuk mendukung tumbuh kembang anak melalui
-              aktivitas yang menyenangkan dan siap pakai!
+              Rekomendasi aktivitas untuk bantu anak belajar calistung dengan pendekatan bermain. Aktivitasnya ringan, menyenangkan, dan sesuai tahap perkembangan anak.
             </p>
-            <button className="tombol-segera mt-5">Segera Hadir</button>
+            <div className="flex gap-2 pt-5 justify-center lg:justify-start">
+              <Link href="#" className="tombol-pink">
+                Selengkapnya
+              </Link>
+              <Link href="/calistung" className="tombol-biru">
+                Download
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -212,8 +223,110 @@ export default function Petualangan() {
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center justify-items-center">
           <div className="lg:basis-5/10 flex justify-center order-1 lg:order-2">
             <Image
-              src="/images/karakter/karakter-funsticker.avif"
+              src="/images/karakter/karakter-interaktif.webp"
               alt="petualangan 7"
+              width={480}
+              height={120}
+              unoptimized
+            />
+          </div>
+
+          <div className="lg:basis-5/10 text-center lg:text-left order-2 lg:order-1">
+            <h2 className="text-karakter">
+              Funpaper
+              <br />
+              Interaktif
+            </h2>
+            <p>
+              Permainan gratis online yang disukai anak. Menghadirkan aktivitas bermain sambil belajar yang lebih hidup, interaktif dan menyenangkan.
+            </p>
+            {/* <button className="tombol-segera mt-5">Segera Hadir</button> */}
+            <div className="flex gap-2 pt-5 justify-center lg:justify-start">
+              <Link href="/info/funpaper-interaktif" className="tombol-pink">
+                Selengkapnya
+              </Link>
+              <Link href="/funpaper-interaktif" className="tombol-biru">
+                Download
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="batu">
+          <img src="/images/karakter/batu-kanan-kiri.avif" alt="" />
+        </div>
+
+        {/* 8 */}
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
+          <div className="lg:basis-5/10 flex justify-center">
+            <Image
+              src="/images/karakter/karakter-coding.webp"
+              alt="petualangan 8"
+              width={480}
+              height={120}
+              unoptimized
+            />
+          </div>
+
+          <div className="lg:basis-5/10 text-center lg:text-left">
+            <h2 className="text-karakter">
+              Funpaper
+              <br />
+              Coding
+            </h2>
+            <p>
+              Rekomendasi aktivitas belajar coding tanpa layar untuk melatih anak berpikir logis dan runtut, memecahkan masalah sederhana, dan berkreasi.
+            </p>
+            <div className="flex gap-2 pt-5 justify-center lg:justify-start">
+              <Link href="#" className="tombol-pink">
+                Selengkapnya
+              </Link>
+              <Link href="/funpaper-coding" className="tombol-biru">
+                Download
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="batu">
+          <img src="/images/karakter/batu-kiri-kanan.avif" alt="" />
+        </div>
+
+        {/* 9 */}
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
+          
+          <div className="lg:basis-5/10 text-center lg:text-left">
+            <h2 className="text-karakter">Funpaper<br />Activity</h2>
+            <p>
+              Kumpulan lembar kerja berdasarkan jenis aktivitas yang disukai
+              anak. Dirancang khusus untuk mendukung tumbuh kembang anak melalui
+              aktivitas yang menyenangkan dan siap pakai!
+            </p>
+            <button className="tombol-segera mt-5">Segera Hadir</button>
+          </div>
+
+          <div className="lg:basis-5/10 flex justify-center">
+            <Image
+              src="/images/karakter/karakter-activity.avif"
+              alt="petualangan 9"
+              width={480}
+              height={120}
+              unoptimized
+            />
+          </div>
+
+        </div>
+
+        <div className="batu">
+          <img src="/images/karakter/batu-kanan-kiri.avif" alt="" />
+        </div>
+
+        {/* 10 */}
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center justify-items-center">
+          <div className="lg:basis-5/10 flex justify-center">
+            <Image
+              src="/images/karakter/karakter-funsticker.avif"
+              alt="petualangan 10"
               width={480}
               height={120}
               unoptimized
@@ -227,55 +340,15 @@ export default function Petualangan() {
               mengembangkan motorik, logika, dan bahasa, sambil menciptakan
               waktu bermain berkualitas dengan orang tua.
             </p>
-            <a
-              className="tombol-pink"
-              href="https://s.id/waiting-list-funsticker"
-              target="_blank"
-            >
-              Join Waiting List
-            </a>
+             <button className="tombol-segera mt-5">Join Waiting List</button>
           </div>
         </div>
 
         <div className="batu">
-          <img src="/images/karakter/batu-kanan-kiri.avif" alt="" />
+          <img src="/images/karakter/batu-kiri-kanan.avif" alt="" />
         </div>
 
-        {/* 8 */}
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
-          <div className="lg:basis-5/10 flex justify-center">
-            <Image
-              src="/images/karakter/karakter-bundle.avif"
-              alt="petualangan 8"
-              width={480}
-              height={120}
-              unoptimized
-            />
-          </div>
-
-          <div className="lg:basis-5/10 text-center lg:text-left">
-            <h2 className="text-karakter">
-              Free Bundle
-              <br />
-              Funpaper
-              <br />
-              Tiap Pekan
-            </h2>
-            <p>
-              Gabung ke channel Telegram Terus Mengajar dan dapatkan Funpaper
-              gratis setiap pekan!
-            </p>
-            <a
-              href="https://t.me/terusmengajarofficial"
-              target="_blank"
-              className="tombol-pink mt-5 inline-block"
-            >
-              Dapatkan Sekarang
-            </a>
-          </div>
-        </div>
-
-        <div className="py-28">
+        <div className="py-4">
           <Image
             src="/images/karakter/masih-banyak-lagi.avif"
             alt="Masih banyak lagi"

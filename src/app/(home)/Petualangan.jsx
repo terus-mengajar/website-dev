@@ -11,7 +11,7 @@ export default function Petualangan() {
 
         <div className="text-center">
           <Link href="/petualangan">
-            <button className="tombol-biru bg-[#3FADEA]! hover:bg-[#3FADEA]!">
+            <button className="tombol-biru bg-[#3FADEA]! hover:bg-[#3FADEA]! xl:text-lg!">
               Jelajahi Sekarang
             </button>
           </Link>

@@ -30,13 +30,16 @@ export default function page() {
       </style>
 
       {/* Hero */}
-      <section className="py-20 px-8 text-center bg-[url(/images/bg/bg-interaktif.jpg)] bg-cover bg-no-repeat h-[2700px] sm:h-[2800px] md:h-[2500px] overflow-hidden">
-        <div className="container px-4 relative">
+      <section className="relative z-0 py-20 px-8 text-center h-[2500px] sm:h-[2700px] md:h-[2400px] overflow-hidden">
+        {/* Background Image Layer (Zoomed to cut bottom) */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[url(/images/bg/bg-interaktif.jpg)] bg-cover bg-top bg-no-repeat scale-[1.15] md:scale-125 origin-top -z-10"></div>
+
+        <div className="container px-4 relative z-10">
           <div
-            className="mt-24 transition-transform duration-75 space-y-60 sm:space-y-80"
+            className="mt-24 transition-transform duration-75 space-y-36 sm:space-y-80"
             style={{ transform: `translateY(-${offsetY * 0.5}px)` }}
           >
-            <div className="space-y-10 pb-30">
+            <div className="space-y-10 pb-12">
               <h1 className="text-3xl md:text-5xl text-hijau font-bold leading-tight mb-6">
                 Perkenalkan, <br /> Funpaper Interaktif
               </h1>

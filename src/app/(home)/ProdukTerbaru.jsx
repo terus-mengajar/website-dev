@@ -11,20 +11,20 @@ export default function ProdukTerbaru() {
         <div className="flex flex-col md:flex-row gap-12 items-center md:items-start justify-center">
           {[
             {
-              image: "/images/funpaper/bundle/bundle-1.avif",
+              image: "/images/home/terbaru/funpaper-interaktif.png",
               text: "Funpaper Interaktif",
             },
             {
-              image: "/images/funpaper/bundle/bundle-1.avif",
+              image: "/images/home/terbaru/funpaper-coding.png",
               text: "Funpaper Coding",
             },
             {
-              image: "/images/funpaper/bundle/bundle-1.avif",
+              image: "/images/home/terbaru/calistung.png",
               text: "Bermain Sambil Belajar Calistung",
             },
           ].map((item, i) => (
             <div key={i} className="justify-center w-80 md:w-50">
-              <div className="bg-[#FAF8F2] rounded-lg mb-4 max-w-45 mx-auto">
+              <div className="bg-[#FAF8F2] rounded-lg mb-4 max-w-45 h-45 mx-auto flex items-center">
                 <Image
                   src={item.image}
                   alt="produk terbaru"

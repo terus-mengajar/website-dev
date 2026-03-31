@@ -1,13 +1,13 @@
 import FunpaperClient from "./FunpaperClient";
 
 export const metadata = {
-  title: "Funpaper Calistung - Download Worksheet Calistung",
+  title: "Calistung | Terus Mengajar",
   description:
-    "Download worksheet Calistung gratis untuk anak TK dan PAUD! Aktivitas belajar membaca, menulis, berhitung dengan cara bermain yang menyenangkan.",
+    "Aktivitasnya ringan, menyenangkan, dan sesuai dengan tahap perkembangan anak.",
   openGraph: {
-    title: "Funpaper Calistung - Download Worksheet Calistung | Terus Mengajar",
+    title: "Calistung | Terus Mengajar",
     description:
-      "Download worksheet Calistung gratis untuk anak TK dan PAUD! Belajar membaca, menulis, berhitung sambil bermain.",
+      "Aktivitasnya ringan, menyenangkan, dan sesuai dengan tahap perkembangan anak.",
     url: "https://terusmengajar.id/calistung",
     images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
   },
