@@ -205,7 +205,7 @@ export default function Petualangan() {
               Rekomendasi aktivitas untuk bantu anak belajar calistung dengan pendekatan bermain. Aktivitasnya ringan, menyenangkan, dan sesuai tahap perkembangan anak.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <Link href="#" className="tombol-pink">
+              <Link href="/info/aktivitas-calistung" className="tombol-pink">
                 Selengkapnya
               </Link>
               <Link href="/calistung" className="tombol-biru">
@@ -278,7 +278,7 @@ export default function Petualangan() {
               Rekomendasi aktivitas belajar coding tanpa layar untuk melatih anak berpikir logis dan runtut, memecahkan masalah sederhana, dan berkreasi.
             </p>
             <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              <Link href="#" className="tombol-pink">
+              <Link href="/info/funpaper-coding" className="tombol-pink">
                 Selengkapnya
               </Link>
               <Link href="/funpaper-coding" className="tombol-biru">

@@ -27,6 +27,8 @@ export default function Navbar() {
     "/info/funpaper-calistung",
     "/info/ebook-funpaper-calistung",
     "/info/funpaper-interaktif",
+    "/info/aktivitas-calistung",
+    "/info/funpaper-coding",
   ];
   const isTransparent = transparentRoutes.includes(pathname);
 
