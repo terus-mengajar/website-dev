@@ -9,11 +9,19 @@ import { usePathname } from "next/navigation";
 import NavbarRight from "./NavbarRight";
 import Image from "next/image";
 
+// Halaman-halaman yang ingin Navbar-nya berwarna putih
+const whiteTextRoutes = [
+  "/info/funpaper-coding",
+];
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const pathname = usePathname();
   const navRef = useRef(null);
+
+  // Jika prop textColor tidak dikirim, tentukan otomatis berdasarkan pathname
+  const textColor = whiteTextRoutes.includes(pathname) ? "white" : "black";
 
   // daftar halaman yang pakai navbar transparan
   const transparentRoutes = [
@@ -65,6 +73,7 @@ export default function Navbar() {
                 className="xl:hidden"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
+                style={{ color: textColor }}
               >
                 {menuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -94,6 +103,7 @@ export default function Navbar() {
                 href="/"
                 className={pathname === "/" ? "font-bold text-blue-500" : ""}
                 onClick={() => setDropdownOpen(null)}
+                style={{ color: textColor }}
               >
                 Home
               </Link>
@@ -113,6 +123,7 @@ export default function Navbar() {
                       ? "font-bold text-blue-500"
                       : "")
                   }
+                  style={{ color: textColor }}
                 >
                   Download <ChevronDown size={16} />
                 </button>
@@ -187,6 +198,7 @@ export default function Navbar() {
                       ? "font-bold text-blue-500"
                       : "")
                   }
+                  style={{ color: textColor }}
                 >
                   Play <ChevronDown size={16} />
                 </button>
@@ -259,6 +271,7 @@ export default function Navbar() {
                   pathname === "/kataba-ai" ? "font-bold text-blue-500" : ""
                 }
                 onClick={() => setDropdownOpen(null)}
+                style={{ color: textColor }}
               >
                 Kataba AI{" "}
                 <span className="text-[11px] text-[#694092] bg-[#FFEFFE] px-2 py-1 rounded-md">
@@ -277,6 +290,7 @@ export default function Navbar() {
                       ? "font-bold text-blue-500"
                       : "")
                   }
+                  style={{ color: textColor }}
                 >
                   Lainnya <ChevronDown size={16} />
                 </button>
