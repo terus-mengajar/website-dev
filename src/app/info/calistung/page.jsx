@@ -63,13 +63,15 @@ export default function page() {
               Ide Belajar Membaca Suku Kata “me” Dengan Lagu
             </h2>
             <p className="mb-8 max-w-2xl mx-auto">Metode belajar membaca sambil bernyanyi membantu anak memahami dan mengingat kosakata baru lebih cepat.</p>
-            <Image
-              src="/images/home/rekomendasi/belajar-calistung.png"
-              width={400}
-              height={400}
-              alt="Calistung"
-              className="mx-auto w-60"
-            />
+            <Link className="inline-block" href="https://www.tiktok.com/@terusmengajar.id/video/7515392299027975431?lang=id-ID" target="_blank">
+              <Image
+                src="/images/home/rekomendasi/belajar-calistung.png"
+                width={400}
+                height={400}
+                alt="Calistung"
+                className="mx-auto w-60 rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </section>

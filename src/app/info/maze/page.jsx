@@ -61,13 +61,15 @@ export default function page() {
               Serunya Bermain Maze Sambil Belajar
             </h2>
             <p className="mb-8 max-w-2xl mx-auto">Aktivitas maze membantu anak melatih motorik halus, fokus, dan kesabaran lewat permainan yang menyenangkan.</p>
-            <Image
-              src="/images/home/rekomendasi/belajar-calistung.png"
-              width={400}
-              height={400}
-              alt="Calistung"
-              className="mx-auto w-60"
-            />
+            <Link className="inline-block" href="https://www.tiktok.com/@terusmengajar.id/video/7540246889061485842?lang=id-ID" target="_blank">
+              <Image
+                src="/images/info/tiktok/maze.webp"
+                width={400}
+                height={400}
+                alt="Calistung"
+                className="mx-auto w-60 rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </section>

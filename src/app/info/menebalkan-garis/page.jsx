@@ -61,13 +61,15 @@ export default function page() {
               Belajar Menulis Sambil Menebalkan Garis
             </h2>
             <p className="mb-8 max-w-2xl mx-auto">Selain melatih motorik halus sebagai dasar kemampuan menulis. Aktivitas ini juga membantu anak belajar angka, melatih fokus, sabar, dan percaya diri.</p>
-            <Image
-              src="/images/home/rekomendasi/belajar-calistung.png"
-              width={400}
-              height={400}
-              alt="Calistung"
-              className="mx-auto w-60"
-            />
+            <Link className="inline-block" href="https://www.tiktok.com/@terusmengajar.id/video/7378036741904583954?_r=1&_t=ZS-944e1uqfQUa" target="_blank">
+              <Image
+                src="/images/info/tiktok/menebalkan-garis.webp"
+                width={400}
+                height={400}
+                alt="Calistung"
+                className="mx-auto w-60 rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </section>

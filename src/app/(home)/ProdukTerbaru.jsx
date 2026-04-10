@@ -11,15 +11,15 @@ export default function ProdukTerbaru() {
         <div className="flex flex-col md:flex-row gap-12 items-center md:items-start justify-center">
           {[
             {
-              image: "/images/home/terbaru/funpaper-interaktif.png",
+              image: "/images/home/terbaru/funpaper-interaktif.webp",
               text: "Funpaper Interaktif",
             },
             {
-              image: "/images/home/terbaru/funpaper-coding.png",
+              image: "/images/home/terbaru/funpaper-coding.webp",
               text: "Funpaper Coding",
             },
             {
-              image: "/images/home/terbaru/calistung.png",
+              image: "/images/home/terbaru/calistung.webp",
               text: "Bermain Sambil Belajar Calistung",
             },
           ].map((item, i) => (

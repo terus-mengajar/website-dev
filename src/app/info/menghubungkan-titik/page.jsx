@@ -60,13 +60,15 @@ export default function page() {
               Belajar Angka Lewat Aktivitas Menghubungkan Titik
             </h2>
             <p className="mb-8 max-w-2xl mx-auto">Aktivitas ini memberikan stimulasi kognitif kepada anak saat memperhatikan urutan angka dan mengidentifikasi gambar yang muncul. Selain itu, aktivitas ini juga meningkatkan koordinasi mata-tangan, kontrol alat tulis dan ketepatan gerakan yang menjadi dasar penting untuk kemampuan menulis dan aktivitas sehari-hari lainnya.</p>
-            <Image
-              src="/images/home/rekomendasi/belajar-calistung.png"
-              width={400}
-              height={400}
-              alt="Calistung"
-              className="mx-auto w-60"
-            />
+            <Link className="inline-block" href="https://www.tiktok.com/@terusmengajar.id/video/7461934011489783047?lang=id-ID" target="_blank">
+              <Image
+                src="/images/info/tiktok/menghubungkan-titik.webp"
+                width={400}
+                height={400}
+                alt="Calistung"
+                className="mx-auto w-60 rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </section>

@@ -63,13 +63,15 @@ export default function page() {
               Belajar Coding Dengan Peralatan Sederhana
             </h2>
             <p className="mb-8 max-w-2xl mx-auto">Hanya dengan peralatan sederhana seperti wadah telur dan pompom anak bisa belajar coding. Lewat aktivitas ini anak dilatih untuk berpikir runut dan terstrukur yang merupakan dasar dari pembelajaran coding awal.</p>
-            <Image
-              src="/images/home/rekomendasi/belajar-calistung.png"
-              width={400}
-              height={400}
-              alt="Calistung"
-              className="mx-auto w-60"
-            />
+            <Link className="inline-block" href="https://www.tiktok.com/@terusmengajar.id/video/7594308582556945672?_r=1&_t=ZS-95NTa40pr7Q" target="_blank">
+              <Image
+                src="/images/info/tiktok/coding.webp"
+                width={400}
+                height={400}
+                alt="Calistung"
+                className="mx-auto w-60 rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </section>

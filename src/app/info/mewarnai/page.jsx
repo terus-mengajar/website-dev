@@ -61,13 +61,15 @@ export default function page() {
               Mewarnai Buah-Buahan untuk Melatih Fokus Anak
             </h2>
             <p className="mb-8 max-w-2xl mx-auto">Belajar mewarnai membantu anak lebih fokus, teliti, dan bertanggung jawab menyelesaikan tugas yang merupakan kemampuan penting untuk pembelajaran di sekolah.</p>
-            <Image
-              src="/images/home/rekomendasi/belajar-calistung.png"
-              width={400}
-              height={400}
-              alt="Calistung"
-              className="mx-auto w-60"
-            />
+            <Link className="inline-block" href="https://www.tiktok.com/@terusmengajar.id/video/7384916270367427841?_r=1&_t=ZS-944eVRrsf1c" target="_blank">
+              <Image
+                src="/images/info/tiktok/mewarnai.webp"
+                width={400}
+                height={400}
+                alt="Calistung"
+                className="mx-auto w-60 rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </section>

@@ -64,13 +64,15 @@ export default function page() {
               Jadi Lebih Mudah Belajar Menulis Lewat Aktivitas Menggunting
             </h2>
             <p className="mb-8 max-w-2xl mx-auto">Latihan motorik halus yang seru untuk melatih otot tangan anak, meningkatkan fokus, dan menyiapkan kemampuan menulis sejak dini.</p>
-            <Image
-              src="/images/home/rekomendasi/belajar-calistung.png"
-              width={400}
-              height={400}
-              alt="Calistung"
-              className="mx-auto w-60"
-            />
+            <Link className="inline-block" href="https://www.tiktok.com/@terusmengajar.id/video/7455997370682101000?lang=id-ID" target="_blank">
+              <Image
+                src="/images/info/tiktok/menggunting.webp"
+                width={400}
+                height={400}
+                alt="Calistung"
+                className="mx-auto w-60 rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </section>

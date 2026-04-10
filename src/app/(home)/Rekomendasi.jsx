@@ -12,9 +12,14 @@ export default function Rekomendasi() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-14 items-center justify-items-center">
           {[
             {
-              image: "/images/assets/calistung.png",
+              image: "/images/assets/calistung.webp",
               text: "Calistung",
               href: "/info/calistung",
+            },
+            {
+              image: "/images/assets/coding.webp",
+              text: "Coding",
+              href: "/info/coding",
             },
             {
               image: "/images/assets/menggunting.png",
@@ -25,11 +30,6 @@ export default function Rekomendasi() {
               image: "/images/assets/mewarnai.png",
               text: "Mewarnai",
               href: "/info/mewarnai",
-            },
-            {
-              image: "/images/assets/coding.png",
-              text: "Coding",
-              href: "/info/coding",
             },
             {
               image: "/images/assets/gunting-tempel.png",

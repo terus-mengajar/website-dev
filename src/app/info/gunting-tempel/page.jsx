@@ -61,13 +61,15 @@ export default function page() {
               Aktivitas Gunting Tempel untuk Belajar Angka
             </h2>
             <p className="mb-8 max-w-2xl mx-auto">Belajar angka melalui aktivitas gunting tempel adalah metode efektif untuk mengenalkan konsep berhitung sekaligus meningkatkan motorik halus, koordinasi mata-tangan, dan konsentrasi anak usia dini.</p>
-            <Image
-              src="/images/home/rekomendasi/belajar-calistung.png"
-              width={400}
-              height={400}
-              alt="Calistung"
-              className="mx-auto w-60"
-            />
+            <Link className="inline-block" href="https://www.tiktok.com/@terusmengajar.id/video/7347435995886931208?_r=1&_t=ZS-944f4hylJ1W" target="_blank">
+              <Image
+                src="/images/info/tiktok/gunting-tempel.webp"
+                width={400}
+                height={400}
+                alt="Calistung"
+                className="mx-auto w-60 rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </section>
