@@ -9,12 +9,20 @@ export default function EbookCalistung() {
             E-Book Calistung
           </h2>
           <p className="">
-            E-Book gratis untuk bantu Ayah Bunda mempersiapkan fondasi belajar calistung secara bertahap. Berisi aktivitas seru yang bisa dilakukan di rumah setiap hari.
+            E-Book gratis untuk bantu Ayah Bunda mempersiapkan fondasi belajar
+            calistung secara bertahap. Berisi aktivitas seru yang bisa dilakukan
+            di rumah setiap hari.
           </p>
           <div className="flex gap-2 pt-5 justify-center lg:justify-start">
-              {/* <button className="tombol-biru text-[12px]! md:text-sm!">Download</button> */}
-              <a href="https://s.id/waiting-list-ebook-calistung" target="_blank" className="tombol-pink bg-[#DB63A7]! text-[12px]! md:text-sm! inline-block">Join Waiting List</a>
-            </div>
+            {/* <button className="tombol-biru text-[12px]! md:text-sm!">Download</button> */}
+            <a
+              href="https://s.id/waiting-list-ebook-calistung"
+              target="_blank"
+              className="tombol-pink bg-[#DB63A7]! text-[12px]! md:text-sm! inline-block"
+            >
+              Join Waiting List
+            </a>
+          </div>
         </div>
 
         <div className="lg:basis-4/10 flex justify-center lg:justify-end order-1 lg:order-2">

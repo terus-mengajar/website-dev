@@ -263,7 +263,7 @@ export default function page() {
               />
             </div>
             <div className="basis-3/5 text-center md:text-left">
-              <p className="mb-7 font-bold">
+              <p className="mb-7 text-md md:text-xl font-bold max-w-120">
                 Funpaper Interaktif ini bisa diakses gratis agar Ayah Bunda
                 melihat bagaimana layar bisa menjadi ruang latihan berpikir,
                 bukan hanya hiburan.

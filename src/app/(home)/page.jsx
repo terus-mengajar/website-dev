@@ -6,7 +6,7 @@ import Punya from "./Punya";
 import Petualangan from "./Petualangan";
 import ProdukTerbaru from "./ProdukTerbaru";
 import FunpaperHarian from "./FunpaperHarian";
-import EbookCalistung from "./EbookCalistung";
+import EbookCalistung from "@/components/EBookCalistung";
 import Freebies from "./Freebies";
 
 export const metadata = {
