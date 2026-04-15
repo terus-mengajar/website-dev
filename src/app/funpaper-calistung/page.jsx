@@ -1,5 +1,4 @@
 import FunpaperClient from "./FunpaperClient";
-import EbookCalistung from "@/components/EBookCalistung";
 
 export const metadata = {
   title: "Funpaper Calistung - Download Worksheet Calistung",
@@ -40,7 +39,6 @@ export default async function Page({ searchParams }) {
       </section>
 
       <FunpaperClient params={params} />
-      <EbookCalistung />
     </main>
   );
 }

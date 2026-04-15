@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ProdukTerbaru() {
   return (
@@ -13,17 +14,24 @@ export default function ProdukTerbaru() {
             {
               image: "/images/home/terbaru/funpaper-interaktif.webp",
               text: "Funpaper Interaktif",
+              link: "/funpaper-interaktif",
             },
             {
               image: "/images/home/terbaru/funpaper-coding.webp",
               text: "Funpaper Coding",
+              link: "/funpaper-coding",
             },
             {
               image: "/images/home/terbaru/calistung.webp",
               text: "Bermain Sambil Belajar Calistung",
+              link: "/calistung",
             },
           ].map((item, i) => (
-            <div key={i} className="justify-center w-80 md:w-50">
+            <Link
+              href={item.link}
+              key={i}
+              className="justify-center w-80 md:w-50 hover:scale-105 transition-all duration-300"
+            >
               <div className="bg-[#FAF8F2] rounded-lg mb-4 max-w-45 h-45 mx-auto flex items-center">
                 <Image
                   src={item.image}
@@ -36,7 +44,7 @@ export default function ProdukTerbaru() {
               </div>
 
               <p className="text-center font-semibold">{item.text}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

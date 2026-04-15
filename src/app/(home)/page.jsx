@@ -2,7 +2,7 @@ import Hero from "./Hero";
 // import Petualangan from "./petualangan/Petualangan";
 // import KatabaAI from "./KatabaAI";
 import Rekomendasi from "./Rekomendasi";
-import Punya from "./Punya";
+import CaraBermain from "./CaraBermain";
 import Petualangan from "./Petualangan";
 import ProdukTerbaru from "./ProdukTerbaru";
 import FunpaperHarian from "./FunpaperHarian";
@@ -29,7 +29,7 @@ export default function Home() {
       {/* <Petualangan /> */}
       {/* <KatabaAI /> */}
       <Rekomendasi />
-      <Punya />
+      <CaraBermain />
       <Petualangan />
       <ProdukTerbaru />
       <FunpaperHarian />

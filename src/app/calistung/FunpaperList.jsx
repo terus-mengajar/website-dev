@@ -120,7 +120,7 @@ export default function FunpaperList({ onOpenFilter, filters }) {
               >
                 <div className="">
                   <Image
-                    src={"images/calistung/" + funpaper.slug + ".png"}
+                    src={"images/calistung/" + funpaper.slug + ".webp"}
                     height={140}
                     width={160}
                     alt={funpaper.name}

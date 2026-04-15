@@ -1,4 +1,5 @@
 import FunpaperClient from "./FunpaperClient";
+import EbookCalistung from "@/components/EBookCalistung";
 
 export const metadata = {
   title: "Calistung | Terus Mengajar",
@@ -17,7 +18,7 @@ export default async function Page({ searchParams }) {
   const params = await searchParams;
 
   return (
-    <main className="bg-[#fcfbf8] text-sm mt-[68px] pt-[40px] pb-[80px]">
+    <main className="bg-[#fcfbf8] text-sm mt-[68px] pt-[40px]">
       <section className="mb-14">
         <div className="container">
           <p className="mb-4 text-sm">
@@ -29,7 +30,8 @@ export default async function Page({ searchParams }) {
             <div className="flex flex-col gap-3 py-4">
               <p className="font-bold">Calistung</p>
               <p>
-                Aktivitasnya ringan, menyenangkan, dan sesuai dengan tahap perkembangan anak.
+                Aktivitasnya ringan, menyenangkan, dan sesuai dengan tahap
+                perkembangan anak.
               </p>
             </div>
           </div>
@@ -37,6 +39,7 @@ export default async function Page({ searchParams }) {
       </section>
 
       <FunpaperClient params={params} />
+      <EbookCalistung />
     </main>
   );
 }
