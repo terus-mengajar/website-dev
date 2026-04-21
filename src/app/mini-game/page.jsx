@@ -30,7 +30,8 @@ export default async function Page() {
               <p>
                 Semua bisa mainkan secara gratis!
                 <br />
-                Permainan Interaktif ini bisa dimainkan di Smartphone, Tablet, Laptop, atau PC!
+                Permainan Interaktif ini bisa dimainkan di Smartphone, Tablet,
+                Laptop, atau PC!
               </p>
             </div>
           </div>
@@ -40,7 +41,7 @@ export default async function Page() {
       <section>
         <div className="container">
           <div className="flex flex-col lg:flex-row gap-12">
-            <div className="order-2 lg:order-1 w-full lg:w-auto">
+            <div className="order-2 lg:order-1 w-full lg:w-auto bg-[#E6CBEC] rounded-xl p-6 h-fit">
               <SidebarMedsos />
             </div>
             <div className="flex-1 order-1 lg:order-2">

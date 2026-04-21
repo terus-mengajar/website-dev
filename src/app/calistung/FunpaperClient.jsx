@@ -51,7 +51,7 @@ export default function Client({ params }) {
     <section className="pb-[80px]">
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-12">
-          <div className="order-2 lg:order-1 w-full lg:w-auto">
+          <div className="order-2 lg:order-1 w-full lg:w-auto bg-[#E6CBEC] rounded-xl p-6 h-fit">
             {/* <div className="hidden lg:block">
               <Filter
                 selectedTema={selectedTema}
