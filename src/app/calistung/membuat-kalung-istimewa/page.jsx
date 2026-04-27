@@ -287,7 +287,8 @@ export default function Page() {
         pemahaman dan keterampilan anak secara menyenangkan.
       </p>
 
-      <div className="bg-[#FBF6F2] rounded-xl p-12 flex flex-col sm:flex-row gap-8 relative overflow-hidden">
+      {/* CTA TIKTOK */}
+      {/* <div className="bg-[#FBF6F2] rounded-xl p-12 flex flex-col sm:flex-row gap-8 relative overflow-hidden">
         <div className="hidden md:block absolute -bottom-16 -left-16 opacity-40 pointer-events-none -rotate-15 -translate-x-10 translate-y-35">
           <img
             src="/images/shapes/logo-tm-cream.avif"
@@ -310,7 +311,7 @@ export default function Page() {
         <div>
           <img src="/images/calistung/misi-penyelamatan/17.png" alt="17" />
         </div>
-      </div>
+      </div> */}
     </CalistungPageLayout>
   );
 }
