@@ -96,12 +96,12 @@ export default async function FunpaperPage({ params, searchParams }) {
                     Lembar Soal
                   </p>
                 </div>
-                <div className="flex-1 text-center border-r border-[#cbaf78] py-2 px-6">
+                {/* <div className="flex-1 text-center border-r border-[#cbaf78] py-2 px-6">
                   <p className="text-[#9ec288] text-xl sm:text-5xl md:text-3xl lg:text-5xl font-bold mb-1">
                     A4
                   </p>
                   <p className="text-gray-600 text-xs lg:text-sm">Paper</p>
-                </div>
+                </div> */}
               </div>
             </div>
 

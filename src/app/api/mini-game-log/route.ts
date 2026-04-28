@@ -12,23 +12,21 @@ export async function GET() {
   const email = session.user.email;
 
   try {
-    const res = await fetch(
-      CLOUDFLARE_D1_URL,
-      {
-        method: "POST",
-        headers: CLOUDFLARE_HEADER,
-        body: JSON.stringify({
-          sql: `
+    const res = await fetch(CLOUDFLARE_D1_URL, {
+      method: "POST",
+      headers: CLOUDFLARE_HEADER,
+      body: JSON.stringify({
+        sql: `
           SELECT mgml.id, mg.slug, mg.name
           FROM mini_game_main_log mgml
           JOIN mini_game mg ON mg.id=mgml.mini_game_id
           WHERE mgml.email = ? 
+          GROUP BY mg.id
           ORDER BY mgml.created_at DESC
           `,
-          params: [email],
-        }),
-      }
-    );
+        params: [email],
+      }),
+    });
 
     const data = await res.json();
     const logs = data?.result?.[0]?.results ?? [];
@@ -36,6 +34,9 @@ export async function GET() {
     return NextResponse.json(logs);
   } catch (err) {
     console.error("Gagal ambil log:", err);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }
