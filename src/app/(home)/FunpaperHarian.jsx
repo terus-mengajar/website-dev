@@ -23,50 +23,24 @@ export default function FunpaperHarian() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto">
-        {/* Judul */}
-        <h1 className="text-3xl lg:text-4xl font-bold mb-10">
-          Funpaper Harian
-        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Judul */}
+          <div>
+            <h1 className="text-ungu text-3xl lg:text-4xl font-bold mb-4">
+              Funpaper Harian
+            </h1>
+            <p className="text-lg md:max-w-[400px]">
+              Satu hari satu worksheet, beragam jenis aktivitas!
+            </p>
+          </div>
 
-        {/* Hero Section */}
-        <div className="flex items-center justify-center rounded-xl bg-[url('/images/bg/bg-konfeti.png')] bg-cover bg-center w-full h-[140px] lg:h-[180px] mb-14 p-2">
-          <h2 className="text-center font-bold text-2xl sm:text-3xl lg:text-4xl text-[#785556]">5042+ kali telah didownload</h2>
+          {/* Hero Section */}
+          <div className="flex items-center justify-center rounded-xl bg-[url('/images/bg/bg-konfeti.png')] bg-cover bg-center w-full h-[140px] mb-14 p-2">
+            <h2 className="text-center font-bold text-2xl sm:text-3xl lg:text-4xl text-[#785556]">
+              5042+ kali telah didownload
+            </h2>
+          </div>
         </div>
-        {/* <div className="flex flex-col lg:flex-row items-center justify-between mb-16 gap-4">
-          <div className="lg:flex-basis-5/10 flex items-center justify-center rounded-xl lg:mb-0 bg-[url('/images/bg/bg-activity-2.avif')] bg-cover bg-center w-full h-[140px] lg:h-[180px]">
-            <h3 className="text-2xl font-bold text-[#785556] text-center">
-              Ribuan Worksheet Telah <br /> di Download
-            </h3>
-          </div>
-          <div className="lg:flex-basis-5/10 flex items-center rounded-xl px-6 py-6 bg-[url('/images/bg/bg-tm-logo-half.avif')] bg-cover bg-center w-full h-[280px] md:h-[180px]">
-            <div className="flex flex-col md:flex-row gap-2">
-              <div className="">
-                <Image
-                  src="/images/funpaper/bundle/bundle-1.avif"
-                  alt="Funpaper Bundle"
-                  width={140}
-                  height={60}
-                  className="mx-auto md:mx-0"
-                />
-              </div>
-              <div className="flex flex-col gap-1 w-full">
-                <p className="font-semibold">Free Funpaper Harian Bundle</p>
-                <p className="text-sm text-gray-600 mb-3">
-                  Semua bisa download secara gratis! Dapatkan 15 Lembar Kerja
-                  Gratis dalam tiap bundle
-                </p>
-                <div>
-                  <a
-                    href="/funpaper-harian-bundle"
-                    className="text-center tombol-pink float-end text-white text-sm font-medium py-2! rounded-lg! transition"
-                  >
-                    Lihat
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
         {/* Produk Terkait */}
         <div className="mb-8">

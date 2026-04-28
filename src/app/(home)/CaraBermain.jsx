@@ -14,7 +14,7 @@ export default function Rekomendasi() {
             {
               image: "/images/assets/tablet.webp",
               text: "Tablet atau Smartphone",
-              href: "mini-game",
+              href: "info/tablet-smartphone",
             },
             {
               image: "/images/assets/printer.webp",
@@ -22,7 +22,7 @@ export default function Rekomendasi() {
               href: "info/print-funpaper",
             },
             {
-              image: "/images/assets/printer-tanpa-tablet.webp",
+              image: "/images/assets/benda-sekitar.webp",
               text: "Benda Sekitar",
               href: "calistung",
             },

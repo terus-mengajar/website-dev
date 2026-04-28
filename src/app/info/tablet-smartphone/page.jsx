@@ -19,14 +19,15 @@ export default function page() {
       <section className="mb-14">
         <div className="container">
           <div className="card-header">
-            <img src="/images/assets/printer.webp" className="w-28" alt="" />
+            <img src="/images/assets/tablet.webp" className="w-28" alt="" />
             <div className="flex flex-col gap-3 py-4">
-              <p className="font-bold">Print Funpaper</p>
+              <p className="font-bold">Tablet atau Smartphone</p>
               <p>
-                Jelajahi berbagai pilihan Funpaper siap cetak yang dirancang
-                khusus untuk mengasah kreativitas dan logika. Pilih Funpaper
-                favoritmu, cetak, dan hadirkan keceriaan belajar yang tak
-                terlupakan di mana saja dan kapan saja.
+                Ubah screen time si kecil menjadi petualangan belajar yang seru!
+                Dirancang untuk menstimulasi motorik dan kecepatan berpikir
+                anak. Tanpa perlu mencetak, si kecil bisa langsung berinteraksi
+                dengan elemen di layar yang bergerak dan memberikan respon
+                instan
               </p>
             </div>
           </div>
@@ -38,28 +39,18 @@ export default function page() {
           <div className="grid grid-cols-2 gap-10">
             {[
               {
-                image: "/images/info/print-funpaper/funpaper-harian.webp",
-                text: "Funpaper Harian",
-                href: "/funpaper-harian",
+                image: "/images/info/tablet-smartphone/mini-games.avif",
+                text: "Mini Games",
+                href: "/mini-game",
               },
               {
-                image: "/images/info/print-funpaper/funpaper-tema.webp",
-                text: "Funpaper Tema",
-                href: "/funpaper-tema",
-              },
-              {
-                image: "/images/info/print-funpaper/funpaper-calistung.webp",
-                text: "Funpaper Calistung",
-                href: "/funpaper-calistung",
-              },
-              {
-                image: "/images/info/print-funpaper/funpaper-coding.webp",
-                text: "Funpaper Coding",
-                href: "/funpaper-coding",
+                image: "/images/info/tablet-smartphone/funpaper-interaktif.png",
+                text: "Funpaper Interaktif",
+                href: "/funpaper-interaktif",
               },
             ].map((item, i) => (
               <Link href={item.href} key={i}>
-                <div className="bg-[#F4EBFF] rounded-xl p-4 shadow-lg mb-8 shadow-[#D963C326] bg-[url('/images/info/print-funpaper/logo-tm-ungu.webp')] bg-cover bg-center sm:h-58 flex items-center">
+                <div className="bg-[#F4EBFF] rounded-xl p-4 shadow-lg mb-8 shadow-[#D963C326] bg-[url('/images/info/print-funpaper/logo-tm-ungu.webp')] bg-cover bg-center h-54 sm:h-58 flex items-center">
                   <Image
                     src={item.image}
                     alt={item.text}
