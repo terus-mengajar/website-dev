@@ -2,9 +2,9 @@
 
 import SidebarMedsos from "@/components/SidebarMedsos";
 import FunpaperList from "./FunpaperList";
-import Filter from "@/components/FilterCalistung";
+import Filter from "@/components/FilterInteraktif";
 import { useEffect, useState } from "react";
-import FilterMobile from "@/components/FilterMobileCalistung";
+import FilterMobile from "@/components/FilterMobileInteraktif";
 import { useSearchParams } from "next/navigation";
 
 export default function Client({ params }) {
@@ -12,11 +12,11 @@ export default function Client({ params }) {
 
   const [selectedTema, setSelectedTema] = useState([]);
 
-  // const toggleCheckboxTema = (value) => {
-  //   setSelectedTema((prev) =>
-  //     prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
-  //   );
-  // };
+  const toggleCheckboxTema = (value) => {
+    setSelectedTema((prev) =>
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
+    );
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -29,7 +29,7 @@ export default function Client({ params }) {
   }, []);
 
   // Data yang sudah "final" (setelah debounce) → dikirim ke FunpaperList
-  // const [filterValues, setFilterValues] = useState("");
+  const [filterValues, setFilterValues] = useState("");
 
   // 🔑 Debounce: update filterValues setelah 500ms, tidak numpuk klik sebelumnya
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function Client({ params }) {
       const query = new URLSearchParams();
       if (temaParam) query.set("tema", temaParam);
 
-      // setFilterValues(query.toString());
+      setFilterValues(query.toString());
     }, 700);
 
     // kalau user klik lagi sebelum 500ms → clear timeout
@@ -52,25 +52,25 @@ export default function Client({ params }) {
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="order-2 lg:order-1 w-full lg:w-auto bg-[#E6CBEC] rounded-xl p-6 h-fit">
-            {/* <div className="hidden lg:block">
+            <div className="hidden lg:block">
               <Filter
                 selectedTema={selectedTema}
                 toggleCheckboxTema={toggleCheckboxTema}
               />
-            </div> */}
+            </div>
             <SidebarMedsos />
           </div>
           <div className="flex-1 order-1 lg:order-2">
             <FunpaperList
-            // filters={filterValues} // ✅ selalu dapat filter terbaru setelah debounce
-            // onOpenFilter={() => setOpenMobileSidebar(true)}
+              filters={filterValues} // ✅ selalu dapat filter terbaru setelah debounce
+              onOpenFilter={() => setOpenMobileSidebar(true)}
             />
           </div>
         </div>
       </div>
 
       {/* Sidebar mobile */}
-      {/* {openMobileSidebar && (
+      {openMobileSidebar && (
         <>
           <FilterMobile
             selectedTema={selectedTema}
@@ -82,7 +82,7 @@ export default function Client({ params }) {
             onClick={() => setOpenMobileSidebar(false)}
           />
         </>
-      )} */}
+      )}
     </section>
   );
 }

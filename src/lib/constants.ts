@@ -13,3 +13,7 @@ export const ART_AND_CRAFT = 12;
 export const DOA = 13;
 export const MENULIS_DAN_MENGGAMBAR = 14;
 export const OPERASI_HITUNG = 15;
+
+export const FUNPAPER_HARIAN = 1;
+export const FUNPAPER_CALISTUNG = 2;
+export const FUNPAPER_CODING = 3;
