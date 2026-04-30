@@ -2,9 +2,9 @@
 
 import SidebarMedsos from "@/components/SidebarMedsos";
 import FunpaperList from "./FunpaperList";
-// import Filter from "@/components/FilterCoding";
+import Filter from "@/components/FilterCoding";
 import { useEffect, useState } from "react";
-// import FilterMobile from "@/components/FilterMobileCoding";
+import FilterMobile from "@/components/FilterMobileCoding";
 import { useSearchParams } from "next/navigation";
 
 export default function Client({ params }) {
@@ -52,12 +52,12 @@ export default function Client({ params }) {
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="order-2 lg:order-1 w-full lg:w-auto bg-[#E6CBEC]  rounded-xl p-6 h-fit">
-            {/* <div className="hidden lg:block">
+            <div className="hidden lg:block">
               <Filter
                 selectedTema={selectedTema}
                 toggleCheckboxTema={toggleCheckboxTema}
               />
-            </div> */}
+            </div>
             <SidebarMedsos />
           </div>
           <div className="flex-1 order-1 lg:order-2">

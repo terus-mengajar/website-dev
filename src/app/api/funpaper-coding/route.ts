@@ -6,13 +6,14 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const limit = searchParams.get("limit");
-    // const tema = searchParams.get("tema");
+    const tema = searchParams.get("tema");
 
     // console.log(tema);
 
     let sql = `
       SELECT funpaper_coding.*
       FROM funpaper_coding
+      JOIN theme_coding ON funpaper_coding.theme_coding_id = theme_coding.id
     `;
 
     let params = [];
@@ -37,17 +38,17 @@ export async function GET(req: Request) {
     //   sql += ` AND theme_calistung_id=${Number(theme_id)}`;
     // }
 
-    // if (tema) {
-    //   const temaArr = tema
-    //     .split(",")
-    //     .map(Number)
-    //     .filter((n) => !isNaN(n));
-    //   if (temaArr.length) {
-    //     const placeholders = temaArr.map(() => "?").join(",");
-    //     sql += ` AND funpaper_calistung.theme_calistung_id IN (${placeholders}) `;
-    //     params.push(...temaArr);
-    //   }
-    // }
+    if (tema) {
+      const temaArr = tema
+        .split(",")
+        .map(Number)
+        .filter((n) => !isNaN(n));
+      if (temaArr.length) {
+        const placeholders = temaArr.map(() => "?").join(",");
+        sql += ` AND funpaper_coding.theme_coding_id IN (${placeholders}) `;
+        params.push(...temaArr);
+      }
+    }
     sql += ` ORDER BY downloaded DESC`;
 
     if (limit) {
