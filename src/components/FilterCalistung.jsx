@@ -3,10 +3,7 @@
 import { ChevronDown, ListFilter } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function Filter({
-  selectedTema,
-  toggleCheckboxTema,
-}) {
+export default function Filter({ selectedTema, toggleCheckboxTema }) {
   const [filterTema, setFilterTema] = useState([]);
   const [expandedTema, setExpandedTema] = useState(false);
   const [loadingTema, setLoadingTema] = useState(true);
@@ -25,7 +22,7 @@ export default function Filter({
   return (
     <>
       <div className="mb-8">
-        <h2 className="text-lg font-bold pb-2 border-b border-[#ecdab7]">
+        <h2 className="text-lg font-bold pb-2 border-b border-[#59287E]">
           Filter
         </h2>
 

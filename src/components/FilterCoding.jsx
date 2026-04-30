@@ -22,7 +22,7 @@ export default function Filter({ selectedTema, toggleCheckboxTema }) {
   return (
     <>
       <div className="mb-8">
-        <h2 className="text-lg font-bold pb-2 border-b border-[#ecdab7]">
+        <h2 className="text-lg font-bold pb-2 border-b border-[#59287E]">
           Filter
         </h2>
 

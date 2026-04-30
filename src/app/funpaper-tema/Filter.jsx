@@ -3,10 +3,7 @@
 import { ChevronDown, ListFilter } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function SidebarFilter({
-  selectedUsia,
-  toggleCheckboxUsia,
-}) {
+export default function SidebarFilter({ selectedUsia, toggleCheckboxUsia }) {
   const [filterUsia, setFilterUsia] = useState([]);
   const [expandedUsia, setExpandedUsia] = useState(false);
   const [loadingUsia, setLoadingUsia] = useState(true);
@@ -26,7 +23,7 @@ export default function SidebarFilter({
   return (
     <>
       <div className="mb-8">
-        <h2 className="text-lg font-bold pb-2 border-b border-[#ecdab7]">
+        <h2 className="text-lg font-bold pb-2 border-b border-[#59287E]">
           Filter
         </h2>
 

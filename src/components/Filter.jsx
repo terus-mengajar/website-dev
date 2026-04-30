@@ -54,7 +54,7 @@ export default function Filter({
           ...filterKategori.flatMap((k) =>
             k.activities
               .filter((a) => a.value == aktivitasInitial)
-              .map((a) => `${k.value}_${a.value}`)
+              .map((a) => `${k.value}_${a.value}`),
           ),
         ];
       } else {
@@ -93,12 +93,12 @@ export default function Filter({
   return (
     <>
       <div className="mb-8">
-        <h2 className="text-lg font-bold pb-2 border-b border-[#ecdab7]">
+        <h2 className="text-lg font-bold pb-2 border-b border-[#59287E]">
           Filter
         </h2>
 
         {/* FILTER KATEGORI */}
-        <div className="py-2 border-b border-[#ecdab7]">
+        <div className="py-2 border-b border-[#59287E]">
           {/* Tombol Expand/Collapse */}
           <button
             onClick={() => setExpandedKategori(!expandedKategori)}
@@ -137,11 +137,11 @@ export default function Filter({
                         <input
                           type="checkbox"
                           checked={selectedKategori.includes(
-                            kategori.value + "_" + activity.value
+                            kategori.value + "_" + activity.value,
                           )}
                           onChange={() =>
                             toggleCheckboxKategori(
-                              kategori.value + "_" + activity.value
+                              kategori.value + "_" + activity.value,
                             )
                           }
                           className="custom-checkbox"

@@ -184,7 +184,7 @@ input[type="checkbox"].custom-checkbox {
   appearance: none;
   width: 14px;
   height: 14px;
-  border: 2px solid #cbaf78;
+  border: 2px solid #59287e;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
@@ -192,7 +192,7 @@ input[type="checkbox"].custom-checkbox {
 }
 
 input[type="checkbox"].custom-checkbox:checked {
-  background-color: #cbaf78;
+  background-color: #59287e;
   position: relative;
 }
 
