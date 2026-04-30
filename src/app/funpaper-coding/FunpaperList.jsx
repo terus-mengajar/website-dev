@@ -63,7 +63,7 @@ export default function FunpaperList({ onOpenFilter, filters }) {
 
   return (
     <div className="w-full">
-      <div className="flex justify-end lg:justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4">
         <p className="font-medium hidden lg:block">
           Menampilkan {funpapers.length} dari {funpaperData.length} Produk
         </p>
