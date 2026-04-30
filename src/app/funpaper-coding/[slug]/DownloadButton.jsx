@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { File } from "lucide-react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -15,6 +15,11 @@ export default function FunpaperDownload({ id, slug, link, interactive }) {
   const [selected, setSelected] = useState("A4");
   const [loadingInteractive, setLoadingInteractive] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleDownload = async () => {
     if (status !== "authenticated") {
@@ -139,7 +144,7 @@ export default function FunpaperDownload({ id, slug, link, interactive }) {
         </button>
 
         {interactive === 1 &&
-          typeof window !== "undefined" &&
+          mounted &&
           window.location.hostname !== "terusmengajar.id" && (
             <button
               onClick={handleInteractive}
