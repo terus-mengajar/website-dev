@@ -51,7 +51,7 @@ export default function ProdukTerkait({ themeCalistungId }) {
                       />
                     </div>
                     <h4 className="text-center text-sm font-medium mt-2">
-                      {funpaper.name + " - " + funpaper.theme}
+                      {funpaper.name + " - " + funpaper.activity}
                     </h4>
                   </div>
                   <span className="mt-2 inline-block tombol-ungu text-white text-xs font-medium px-3 py-1 rounded-lg transition">

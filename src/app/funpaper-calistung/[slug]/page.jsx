@@ -17,8 +17,10 @@ export async function generateMetadata({ params }) {
   const funpaper = await res.json();
 
   // Use SEO fields if available, fallback to basic info
-  const title = funpaper.seo_title || `${funpaper.name} - ${funpaper.theme}`;
-  const description = funpaper.short_description || `Lembar kerja calistung ${funpaper.name} dengan tema ${funpaper.theme}.`;
+  const title = funpaper.seo_title || `${funpaper.name} - ${funpaper.activity}`;
+  const description =
+    funpaper.short_description ||
+    `Lembar kerja calistung ${funpaper.name} dengan tema ${funpaper.activity}.`;
 
   return {
     title,
@@ -91,7 +93,7 @@ export default async function FunpaperPage({ params }) {
             {/* Info funpaper */}
             <div className="md:col-span-2">
               <h2 className="text-2xl md:text-4xl text-center md:text-left font-bold text-[#ef9e00] mb-12">
-                {funpaper.name + " - " + funpaper.theme}
+                {funpaper.name + " - " + funpaper.activity}
               </h2>
               <div className="flex mb-10 items-center">
                 {/* <div className="flex-1 text-center border-l border-[#cbaf78] py-2 px-6">
@@ -119,7 +121,9 @@ export default async function FunpaperPage({ params }) {
               {/* SEO Description Section */}
               {funpaper.medium_description && (
                 <div className="mb-6">
-                  <h3 className="text-lg font-bold mb-4">Tentang {funpaper.name}</h3>
+                  <h3 className="text-lg font-bold mb-4">
+                    Tentang {funpaper.name}
+                  </h3>
                   <p className="text-gray-700 leading-relaxed whitespace-pre-line">
                     {funpaper.medium_description}
                   </p>

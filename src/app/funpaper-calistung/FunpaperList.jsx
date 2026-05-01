@@ -128,7 +128,7 @@ export default function FunpaperList({ onOpenFilter, filters }) {
                     unoptimized
                   />
                   <p className="text-xs text-center mb-2">
-                    {funpaper.name + " - " + funpaper.theme}
+                    {funpaper.name + " - " + funpaper.activity}
                   </p>
                   {funpaper.downloaded > 0 && (
                     <p className="text-xs text-gray-400 text-center">

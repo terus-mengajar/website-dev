@@ -49,24 +49,30 @@ export default function Filter({ selectedTema, toggleCheckboxTema }) {
           )}
 
           {!loadingTema && expandedTema && (
-            <>
-              {filterTema.map((tema, idx) => (
-                <div key={tema.value} className="mt-2 space-y-2">
-                  <label
-                    key={tema.value}
-                    className="flex items-center gap-2 cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={selectedTema.includes(tema.value)}
-                      onChange={() => toggleCheckboxTema(tema.value)}
-                      className="custom-checkbox"
-                    />
-                    <span>{tema.label}</span>
-                  </label>
-                </div>
-              ))}
-            </>
+            <div className="space-y-2 py-2 pl-4">
+              {/* TEMA */}
+              <div>
+                <p className="font-bold">Berhitung</p>
+
+                {/* KATEGORI */}
+                {filterTema.map((tema, idx) => (
+                  <div key={tema.value} className="mt-2 space-y-2">
+                    <label
+                      key={tema.value}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedTema.includes(tema.value)}
+                        onChange={() => toggleCheckboxTema(tema.value)}
+                        className="custom-checkbox"
+                      />
+                      <span>{tema.label}</span>
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </div>

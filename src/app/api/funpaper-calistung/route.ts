@@ -7,13 +7,14 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const limit = searchParams.get("limit");
     const tema = searchParams.get("tema");
+    const activity = searchParams.get("activity");
 
     // console.log(tema);
 
     let sql = `
-      SELECT funpaper_calistung.*, theme_calistung.name AS theme
+      SELECT funpaper_calistung.*, activity_calistung.name AS activity
       FROM funpaper_calistung
-      JOIN theme_calistung ON funpaper_calistung.theme_calistung_id = theme_calistung.id
+      JOIN activity_calistung ON funpaper_calistung.activity_calistung_id = activity_calistung.id
     `;
 
     let params = [];
@@ -74,7 +75,7 @@ export async function GET(req: Request) {
     console.error("Gagal ambil data:", err);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
