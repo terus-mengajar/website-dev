@@ -11,7 +11,7 @@ export default function Filter({ selectedTema, toggleCheckboxTema }) {
   useEffect(() => {
     async function fetchData() {
       setLoadingTema(true);
-      const res = await fetch("/api/filter/funpaper-interaktif/kategori");
+      const res = await fetch("/api/filter/funpaper-interaktif/aktivitas");
       const data = await res.json();
       setFilterTema(data);
       setLoadingTema(false);
@@ -33,7 +33,7 @@ export default function Filter({ selectedTema, toggleCheckboxTema }) {
             onClick={() => setExpandedTema(!expandedTema)}
             className="flex justify-between w-full text-left font-semibold py-2"
           >
-            Kategori
+            Aktivitas
             <span>
               <ChevronDown
                 size={18}
