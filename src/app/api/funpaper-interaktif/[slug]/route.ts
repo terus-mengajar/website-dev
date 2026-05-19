@@ -7,7 +7,7 @@ export async function GET(request: Request, { params }) {
     const { slug } = await params;
     const { searchParams } = new URL(request.url);
     const tipe = searchParams.get("tipe");
-    console.log("tipe:", tipe);
+    // console.log("tipe:", tipe);
 
     // Tentukan SQL berdasarkan tipe
     let sql = "";

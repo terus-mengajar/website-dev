@@ -85,7 +85,7 @@ export async function GET(req: Request) {
         ORDER BY updated_at DESC
       `;
 
-    console.log(sqlCalistung);
+    // console.log(sqlCalistung);
     const resCoding = await fetch(CLOUDFLARE_D1_URL, {
       method: "POST",
       headers: CLOUDFLARE_HEADER,

@@ -143,20 +143,16 @@ export default function FunpaperDownload({ id, slug, link, interactive }) {
           {loading ? "Loading..." : "Download"}
         </button>
 
-        {interactive === 1 &&
-          mounted &&
-          window.location.hostname !== "terusmengajar.id" && (
-            <button
-              onClick={handleInteractive}
-              className={`tombol-biru py-2! text-center ${
-                loadingInteractive
-                  ? "opacity-50 cursor-not-allowed disabled"
-                  : ""
-              }`}
-            >
-              {loadingInteractive ? "Loading..." : "Play"}
-            </button>
-          )}
+        {interactive === 1 && mounted && (
+          <button
+            onClick={handleInteractive}
+            className={`tombol-biru py-2! text-center ${
+              loadingInteractive ? "opacity-50 cursor-not-allowed disabled" : ""
+            }`}
+          >
+            {loadingInteractive ? "Loading..." : "Mainkan"}
+          </button>
+        )}
       </div>
     </div>
   );

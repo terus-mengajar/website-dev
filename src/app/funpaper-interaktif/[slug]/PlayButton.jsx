@@ -22,11 +22,14 @@ export default function FunpaperDownload({
   const [loadingInteractive, setLoadingInteractive] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [isNotProd, setIsNotProd] = useState(false);
+  // const [isNotProd, setIsNotProd] = useState(false);
+
+  // console.log("window");
+  // console.log(window.location.hostname);
 
   useEffect(() => {
     setIsMounted(true);
-    setIsNotProd(window.location.hostname !== "terusmengajar.id");
+    // setIsNotProd(window.location.hostname !== "terusmengajar.id");
   }, []);
 
   const handleInteractive = async () => {
@@ -106,7 +109,7 @@ export default function FunpaperDownload({
       </p>
 
       <div className="flex flex-col sm:flex-row md:flex-col xl:flex-row gap-2">
-        {interactive === 1 && isMounted && isNotProd && (
+        {interactive === 1 && isMounted && (
           <button
             onClick={handleInteractive}
             className={`tombol-pink py-2! text-center ${
