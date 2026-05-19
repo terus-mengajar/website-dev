@@ -12,9 +12,9 @@ export async function GET(req: Request) {
     // console.log(tema);
 
     let sql = `
-      SELECT funpaper_calistung.*, activity_calistung.name AS activity
+      SELECT funpaper_calistung.*, theme_calistung.name AS theme
       FROM funpaper_calistung
-      JOIN activity_calistung ON funpaper_calistung.activity_calistung_id = activity_calistung.id
+      JOIN theme_calistung ON funpaper_calistung.theme_calistung_id = theme_calistung.id
     `;
 
     let params = [];
