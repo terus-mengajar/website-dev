@@ -5,6 +5,8 @@ import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
+    const limit = searchParams.get("limit");
+    const offset = searchParams.get("offset");
 
     // console.log(tema);
 

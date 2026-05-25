@@ -15,20 +15,35 @@ export default function FunpaperList({ onOpenFilter, filters }) {
   const hasParams = searchParams.toString().length > 0;
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
+  const [total, setTotal] = useState(0);
   const [sort, setSort] = useState("populer");
   const [page, setPage] = useState(1);
+  const [prevFilters, setPrevFilters] = useState(filters);
   const perPage = 18;
+
+  if (filters !== prevFilters) {
+    setPrevFilters(filters);
+    setPage(1);
+  }
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await fetch(`/api/funpaper-coding?${filters}`);
-      const data = await res.json();
-      setFunpaperData(data);
+      const res = await fetch(
+        `/api/funpaper-coding?${filters}&limit=${perPage}&offset=${(page - 1) * perPage}`,
+      );
+      const resData = await res.json();
+      if (resData && typeof resData === "object" && !Array.isArray(resData)) {
+        setFunpaperData(resData.data || []);
+        setTotal(resData.total || 0);
+      } else {
+        setFunpaperData(resData || []);
+        setTotal((resData || []).length);
+      }
       setLoading(false);
     }
     fetchData();
-  }, [filters]);
+  }, [filters, page]);
 
   const sortedFunpaper = useMemo(() => {
     let sorted = [...funpaperData];
@@ -58,14 +73,14 @@ export default function FunpaperList({ onOpenFilter, filters }) {
     return sorted;
   }, [sort, funpaperData]);
 
-  const totalPages = Math.ceil(sortedFunpaper.length / perPage);
-  const funpapers = sortedFunpaper.slice((page - 1) * perPage, page * perPage);
+  const totalPages = Math.ceil(total / perPage);
+  const funpapers = sortedFunpaper;
 
   return (
     <div className="w-full">
       <div className="flex justify-between items-center mb-4">
         <p className="font-medium hidden lg:block">
-          Menampilkan {funpapers.length} dari {funpaperData.length} Produk
+          Menampilkan {funpapers.length} dari {total} Produk
         </p>
 
         {/* Tombol filter khusus mobile */}

@@ -9,7 +9,7 @@ import { ApiClient, requests } from "recombee-api-client";
 const client = new ApiClient(
   process.env.RECOMBEE_DB_ID!,
   process.env.RECOMBEE_PRIVATE_TOKEN!,
-  { region: "ap-se" }
+  { region: "ap-se" },
 );
 
 export async function GET(req: Request) {
@@ -20,11 +20,15 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const nama = searchParams.get("nama");
     let limit = searchParams.get("limit");
+    const offset = searchParams.get("offset");
     const activity_id = searchParams.get("activity_id");
     const theme_id = searchParams.get("theme_id");
     const kategori = searchParams.get("kategori");
     const usia = searchParams.get("usia");
     const random = searchParams.get("random");
+    const page = Number(searchParams.get("page") ?? 1);
+    const perPage = Number(searchParams.get("perPage") ?? 18);
+    const sort = searchParams.get("sort") ?? "rekomendasi";
 
     // AMBIL REKOMENDASI DARI RECOMBEE
     let recombeeIds = [];
@@ -41,20 +45,16 @@ export async function GET(req: Request) {
           recombeeRes = await client.send(
             new requests.RecommendItemsToUser(userId, limitRecombee, {
               cascadeCreate: true, // otomatis buat user kalau belum ada
-            })
+            }),
           );
         } else {
           recombeeRes = await client.send(
-            new requests.SearchItems(userId, nama, limitRecombee, {
+            new requests.SearchItems(userId, nama, 100, {
               cascadeCreate: true,
               scenario: "produk_search",
-              returnProperties: true, // biar langsung dapat field Recombee seperti name, theme_name, dll
-            })
+              returnProperties: true,
+            }),
           );
-
-          // console.log('search');
-
-          limit = "100";
         }
       } catch (error) {
         console.error("Recombee error:", error.message || error);
@@ -62,13 +62,15 @@ export async function GET(req: Request) {
       }
 
       // CONVERT KE NUMBER
-      // console.log(recombeeRes.recomms.length);
       recombeeIds = recombeeRes.recomms.map((r) => Number(r.id));
-      // console.log(recombeeIds);
     }
 
-    let sql = `
-      SELECT funpaper.*, activity.name AS activity, theme.name theme, age.range age
+    // Flag: gunakan filter IN (recombeeIds) jika:
+    // - user login + ada recombeeIds + (widget pakai limit ATAU search pakai nama)
+    const useRecombeeFilter =
+      userId && recombeeIds.length > 0 && (!!limit || !!nama);
+
+    let baseSql = `
       FROM funpaper
       JOIN activity ON funpaper.activity_id = activity.id
       JOIN theme ON funpaper.theme_id = theme.id
@@ -79,15 +81,15 @@ export async function GET(req: Request) {
     let params = [];
 
     if (nama && !userId) {
-      sql += ` AND LOWER(funpaper.name || ' - ' || activity.name) LIKE LOWER(TRIM(?)) `;
+      baseSql += ` AND LOWER(funpaper.name || ' - ' || activity.name) LIKE LOWER(TRIM(?)) `;
       params.push(`%${nama}%`);
     }
     if (activity_id) {
-      sql += ` AND funpaper.activity_id=? `;
+      baseSql += ` AND funpaper.activity_id=? `;
       params.push(Number(activity_id));
     }
     if (theme_id) {
-      sql += ` AND funpaper.theme_id=? `;
+      baseSql += ` AND funpaper.theme_id=? `;
       params.push(Number(theme_id));
     }
 
@@ -100,14 +102,14 @@ export async function GET(req: Request) {
         const [theme_id, activity_id] = item.split("_").map(Number);
         if (!isNaN(theme_id) && !isNaN(activity_id)) {
           kondisiKategori.push(
-            "(funpaper.theme_id=? AND funpaper.activity_id=?)"
+            "(funpaper.theme_id=? AND funpaper.activity_id=?)",
           );
           params.push(theme_id, activity_id);
         }
       });
 
       if (kondisiKategori.length) {
-        sql += " AND (" + kondisiKategori.join(" OR ") + ")";
+        baseSql += " AND (" + kondisiKategori.join(" OR ") + ")";
       }
     }
 
@@ -119,51 +121,109 @@ export async function GET(req: Request) {
         .filter((n) => !isNaN(n));
       if (usiaArr.length) {
         const placeholders = usiaArr.map(() => "?").join(",");
-        sql += ` AND funpaper.age_id IN (${placeholders}) `;
+        baseSql += ` AND funpaper.age_id IN (${placeholders}) `;
         params.push(...usiaArr);
       }
     }
 
-    // JIKA PAKAI LIMIT, GUNAKAN RECOMBEE REKOM ID
-    if (userId && limit && recombeeIds.length > 0) {
-      sql += ` AND funpaper.id IN (${recombeeIds.map(() => "?").join(", ")}) `;
-      params.push(...recombeeIds);
+    // JIKA WIDGET/SEARCH + USER LOGIN, FILTER PAKAI RECOMBEE ID
+    // ⚠️ Embed ID langsung ke SQL (bukan `?`) untuk hindari "too many SQL variables"
+    // Aman karena recombeeIds adalah integer dari Recombee API, bukan input user
+    if (useRecombeeFilter) {
+      const idList = recombeeIds
+        .map((id) => Number(id))
+        .filter((id) => !isNaN(id) && id > 0)
+        .join(", ");
+      if (idList) {
+        baseSql += ` AND funpaper.id IN (${idList}) `;
+      }
     }
 
+    // Snapshot params untuk countSql (sebelum LIMIT/OFFSET ditambahkan)
+    const countParams = [...params];
+
+    // ─── COUNT SQL (untuk total, tanpa LIMIT/OFFSET) ───────────────────────
+    const countSql = `SELECT COUNT(*) AS total` + baseSql;
+
+    // ─── DATA SQL ─────────────────────────────────────────────────────────
+    let dataSql =
+      `SELECT funpaper.*, activity.name AS activity, theme.name theme, age.range age` +
+      baseSql;
+
+    // Sorting server-side
     if (random == "1") {
-      sql += ` ORDER BY RANDOM() `;
-    } else if (userId && limit && recombeeIds) {
-      sql += `  `;
+      dataSql += ` ORDER BY RANDOM() `;
+    } else if (useRecombeeFilter) {
+      // urutan recombee dihandle di bawah setelah fetch, skip ORDER BY
+      dataSql += ``;
     } else {
-      sql += ` ORDER BY funpaper.downloaded DESC `;
+      switch (sort) {
+        case "populer":
+          dataSql += ` ORDER BY funpaper.downloaded DESC `;
+          break;
+        case "baru":
+          dataSql += ` ORDER BY funpaper.updated_at DESC `;
+          break;
+        case "lama":
+          dataSql += ` ORDER BY funpaper.updated_at ASC `;
+          break;
+        case "az":
+          dataSql += ` ORDER BY funpaper.name ASC `;
+          break;
+        case "za":
+          dataSql += ` ORDER BY funpaper.name DESC `;
+          break;
+        case "rekomendasi":
+        default:
+          dataSql += ` ORDER BY funpaper.downloaded DESC `;
+          break;
+      }
     }
 
+    // Gunakan limit eksplisit (widget) ATAU pagination
     if (limit) {
-      sql += ` LIMIT ? `;
+      dataSql += ` LIMIT ? `;
       params.push(Number(limit));
+      if (offset) {
+        dataSql += ` OFFSET ? `;
+        params.push(Number(offset));
+      }
+    } else {
+      // Server-side pagination
+      const pageOffset = (page - 1) * perPage;
+      dataSql += ` LIMIT ? OFFSET ? `;
+      params.push(perPage, pageOffset);
     }
 
-    // console.log(sql)
-    // console.log(params)
+    // console.log(dataSql);
+    // console.log(params);
 
-    // AMBIL DATA DARI D1
-    const res = await fetch(CLOUDFLARE_D1_URL, {
-      method: "POST",
-      headers: CLOUDFLARE_HEADER,
-      body: JSON.stringify({ sql, params }),
-    });
+    // AMBIL DATA & COUNT DARI D1 SECARA PARALEL
+    const [res, countRes] = await Promise.all([
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({ sql: dataSql, params }),
+      }),
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({ sql: countSql, params: countParams }),
+      }),
+    ]);
 
-    const data = await res.json();
+    const [data, countData] = await Promise.all([res.json(), countRes.json()]);
+
     const logs = data?.result?.[0]?.results ?? [];
+    const total = countData?.result?.[0]?.results?.[0]?.total ?? 0;
 
-    if (data.errors) {
-      console.log(data.errors);
-    }
+    if (data.errors) console.log(data.errors);
+    if (countData.errors) console.log(countData.errors);
 
     let sortedItems = [];
 
-    if (userId) {
-      // urutkan sesuai rekomendasi, item tak direkomendasi di bawah
+    if (useRecombeeFilter) {
+      // urutkan sesuai rekomendasi Recombee, item tak direkomendasikan di bawah
       sortedItems = logs.sort((a, b) => {
         const ia = recombeeIds.indexOf(Number(a.id));
         const ib = recombeeIds.indexOf(Number(b.id));
@@ -176,17 +236,15 @@ export async function GET(req: Request) {
     // ✅ TAMBAHKAN URUTAN_REKOMENDASI
     sortedItems = sortedItems.map((item, index) => ({
       ...item,
-      urutan_rekomendasi: index + 1,
+      urutan_rekomendasi: (page - 1) * perPage + index + 1,
     }));
 
-    // console.log(sortedItems)
-
-    return NextResponse.json(sortedItems);
+    return NextResponse.json({ data: sortedItems, total });
   } catch (err) {
     console.error("Gagal ambil data:", err);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

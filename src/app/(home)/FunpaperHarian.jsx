@@ -13,8 +13,11 @@ export default function FunpaperHarian() {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch("/api/funpaper-harian?limit=8");
-      const data = await res.json();
-      setFunpapers(data);
+      // const data = await res.json();
+      const json = await res.json();
+      setFunpapers(Array.isArray(json.data) ? json.data : []);
+      // setFunpapers(data);
+      // console.log("data home");
       // console.log(data);
     }
     fetchData();

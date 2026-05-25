@@ -5,13 +5,13 @@ import { FUNPAPER_TEMA_BUNDLE } from "@/lib/funpaper_type";
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    // const limit = searchParams.get("limit");
+    const limit = searchParams.get("limit");
+    const offset = searchParams.get("offset");
     // const activity_id = searchParams.get("activity_id");
     // const theme_id = searchParams.get("theme_id");
     const usia = searchParams.get("usia");
 
-    let sql = `
-      SELECT * 
+    let baseSql = `
       FROM funpaper_bundle
       WHERE funpaper_type_id = ${FUNPAPER_TEMA_BUNDLE}
       AND slug IS NOT NULL
@@ -27,7 +27,7 @@ export async function GET(req: Request) {
         .filter((n) => !isNaN(n));
       if (usiaArr.length) {
         const placeholders = usiaArr.map(() => "?").join(",");
-        sql += ` AND age_id IN (${placeholders}) `;
+        baseSql += ` AND age_id IN (${placeholders}) `;
         params.push(...usiaArr);
       }
     }
@@ -41,28 +41,51 @@ export async function GET(req: Request) {
 
     // sql += ` ORDER BY downloaded DESC`;
 
-    // if (limit) {
-    //   sql += ` LIMIT ${Number(limit)}`;
-    // }
+    const countSql = `SELECT COUNT(*) AS total` + baseSql;
 
-    sql += ` ORDER BY name_on_website ASC `;
+    let dataSql = `SELECT *` + baseSql;
+    dataSql += ` ORDER BY name_on_website ASC`;
 
-    const res = await fetch(CLOUDFLARE_D1_URL, {
-      method: "POST",
-      headers: CLOUDFLARE_HEADER,
-      body: JSON.stringify({ sql, params }),
-    });
+    if (limit) {
+      dataSql += ` LIMIT ${Number(limit)}`;
+    }
+    if (offset) {
+      dataSql += ` OFFSET ${Number(offset)}`;
+    }
 
-    const data = await res.json();
+    // console.log("dataSql:", dataSql);
+    // console.log("countSql:", countSql);
+
+    const [res, countRes] = await Promise.all([
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({ sql: dataSql, params }),
+      }),
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({ sql: countSql, params }),
+      }),
+    ]);
+
+    const [data, countData] = await Promise.all([res.json(), countRes.json()]);
+
     const logs = data?.result?.[0]?.results ?? [];
-    if (!data.success) console.log(data.errors);
+    const total = countData?.result?.[0]?.results?.[0]?.total ?? 0;
 
-    return NextResponse.json(logs);
+    if (!data.success) console.log("Data error:", data.errors);
+    if (!countData.success) console.log("Count error:", countData.errors);
+
+    return NextResponse.json({
+      data: logs,
+      total: total,
+    });
   } catch (err) {
     console.error("Gagal ambil data:", err);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

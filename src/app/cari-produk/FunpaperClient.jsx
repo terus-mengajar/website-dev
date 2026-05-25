@@ -15,13 +15,13 @@ export default function FunpaperHarianClient({ nama }) {
 
   const toggleCheckboxKategori = (value) => {
     setSelectedKategori((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
     );
   };
 
   const toggleCheckboxUsia = (value) => {
     setSelectedUsia((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
     );
   };
 
@@ -60,7 +60,7 @@ export default function FunpaperHarianClient({ nama }) {
     <section>
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-12">
-          <div className="order-2 lg:order-1 w-full lg:w-auto">
+          <div className="order-2 lg:order-1 w-full lg:w-auto bg-[#E6CBEC] rounded-xl p-6 h-fit">
             <div className="hidden lg:block">
               <Filter
                 selectedKategori={selectedKategori}

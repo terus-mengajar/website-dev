@@ -1,7 +1,7 @@
 "use client";
 
 import LoadingCard from "@/components/LoadingCard";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CLOUDFLARE_R2_WEBSITE_ASSETS_URL } from "@/lib/cloudflare";
 import Image from "next/image";
@@ -14,59 +14,40 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
   const [funpaperData, setFunpaperData] = useState([]);
   const [sort, setSort] = useState("rekomendasi");
   const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
   const perPage = 18;
 
+  // Fetch ulang saat nama, filters, page, atau sort berubah
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await fetch(`/api/funpaper-harian?nama=${nama}&${filters}`);
-      const data = await res.json();
-      setFunpaperData(data);
-      setLoading(false); // selesai loading
+      const params = new URLSearchParams(filters);
+      if (nama) params.set("nama", nama);
+      params.set("page", String(page));
+      params.set("perPage", String(perPage));
+      params.set("sort", sort);
+      const res = await fetch(`/api/funpaper-harian?${params.toString()}`);
+      const json = await res.json();
+      setFunpaperData(Array.isArray(json.data) ? json.data : []);
+      setTotal(json.total ?? 0);
+      setLoading(false);
     }
     fetchData();
+  }, [nama, filters, page, sort]);
+
+  // Reset ke halaman 1 saat nama atau filters berubah
+  useEffect(() => {
+    setPage(1);
   }, [nama, filters]);
 
-  const sortedFunpaper = useMemo(() => {
-    let sorted = Array.isArray(funpaperData) ? [...funpaperData] : [];
-    switch (sort) {
-      case "rekomendasi":
-        sorted.sort((a, b) => a.urutan_rekomendasi - b.urutan_rekomendasi);
-        break;
-      case "populer":
-        sorted.sort((a, b) => b.downloaded - a.downloaded); // ganti sesuai ada/tidaknya kolom 'played'
-        break;
-      case "baru":
-        sorted.sort(
-          (a, b) =>
-            new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
-        );
-        break;
-      case "lama":
-        sorted.sort(
-          (a, b) =>
-            new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime()
-        );
-        break;
-      case "az":
-        sorted.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case "za":
-        sorted.sort((a, b) => b.name.localeCompare(a.name));
-        break;
-    }
-    return sorted;
-  }, [sort, funpaperData]);
-
-  const totalPages = Math.ceil(sortedFunpaper.length / perPage);
-  const funpapers = sortedFunpaper.slice((page - 1) * perPage, page * perPage);
+  const totalPages = Math.ceil(total / perPage);
 
   return (
     <div className="w-full">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <p className="font-medium hidden lg:block">
-          Menampilkan {funpapers.length} dari {funpaperData.length} Produk
+          Menampilkan {funpaperData.length} dari {total} Produk
         </p>
 
         <button
@@ -96,13 +77,10 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
       {/* Funpaper List */}
       {loading && <LoadingCard cols={3} />}
 
-      {!loading && funpapers.length === 0 && (
+      {!loading && funpaperData.length === 0 && (
         <div className="card-header">
           <div className="w-60 lg:w-120">
-            <Lottie
-              animationData={produkTidakDitemukan}
-              loop={true}
-            />
+            <Lottie animationData={produkTidakDitemukan} loop={true} />
           </div>
           <div>
             <p className="font-bold text-lg mb-2">
@@ -116,10 +94,10 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
         </div>
       )}
 
-      {!loading && funpapers.length > 0 && (
+      {!loading && funpaperData.length > 0 && (
         <>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {funpapers.map((funpaper) => (
+            {funpaperData.map((funpaper) => (
               <Link
                 href={"/funpaper-harian/" + funpaper.slug}
                 key={funpaper.id}
@@ -158,25 +136,27 @@ export default function FunpaperHarianList({ nama, onOpenFilter, filters }) {
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-center items-center gap-2 mt-6">
-            <button
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-              disabled={page === 1}
-              className="px-3 py-1 border rounded disabled:opacity-50"
-            >
-              Sebelumnya
-            </button>
-            <span>
-              {page} / {totalPages}
-            </span>
-            <button
-              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              disabled={page === totalPages}
-              className="px-3 py-1 border border-[#DCD3BB] rounded disabled:opacity-50"
-            >
-              Berikutnya
-            </button>
-          </div>
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-6">
+              <button
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1}
+                className="px-3 py-1 border rounded disabled:opacity-50"
+              >
+                Sebelumnya
+              </button>
+              <span>
+                {page} / {totalPages}
+              </span>
+              <button
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages}
+                className="px-3 py-1 border border-[#DCD3BB] rounded disabled:opacity-50"
+              >
+                Berikutnya
+              </button>
+            </div>
+          )}
         </>
       )}
     </div>

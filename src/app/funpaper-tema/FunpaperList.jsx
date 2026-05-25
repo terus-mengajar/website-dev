@@ -11,22 +11,37 @@ import produkTidakDitemukan from "@/assets/lottie/produk_tidak_ditemukan.json";
 export default function FunpaperTemaList({ onOpenFilter, filters }) {
   const [loading, setLoading] = useState(true);
   const [funpaperData, setFunpaperData] = useState([]);
+  const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
+  const [prevFilters, setPrevFilters] = useState(filters);
   const perPage = 18;
+
+  if (filters !== prevFilters) {
+    setPrevFilters(filters);
+    setPage(1);
+  }
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await fetch(`/api/funpaper-tema?${filters}`);
-      const data = await res.json();
-      setFunpaperData(data);
+      const res = await fetch(
+        `/api/funpaper-tema?${filters}&limit=${perPage}&offset=${(page - 1) * perPage}`,
+      );
+      const resData = await res.json();
+      if (resData && typeof resData === "object" && !Array.isArray(resData)) {
+        setFunpaperData(resData.data || []);
+        setTotal(resData.total || 0);
+      } else {
+        setFunpaperData(resData || []);
+        setTotal((resData || []).length);
+      }
       setLoading(false);
     }
     fetchData();
-  }, [filters]);
+  }, [filters, page]);
 
-  const totalPages = Math.ceil(funpaperData.length / perPage);
-  const funpapers = funpaperData.slice((page - 1) * perPage, page * perPage);
+  const totalPages = Math.ceil(total / perPage);
+  const funpapers = funpaperData;
 
   // console.log(funpaperData);
 
@@ -35,7 +50,7 @@ export default function FunpaperTemaList({ onOpenFilter, filters }) {
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <p className="font-medium hidden lg:block">
-          Menampilkan {funpapers.length} dari {funpaperData.length} Produk
+          Menampilkan {funpapers.length} dari {total} Produk
         </p>
 
         <button
@@ -52,10 +67,7 @@ export default function FunpaperTemaList({ onOpenFilter, filters }) {
       {!loading && funpapers.length === 0 && (
         <div className="card-header">
           <div className="w-60">
-            <Lottie
-              animationData={produkTidakDitemukan}
-              loop={true}
-            />
+            <Lottie animationData={produkTidakDitemukan} loop={true} />
           </div>
           <div>
             <p className="font-bold text-lg mb-2">
