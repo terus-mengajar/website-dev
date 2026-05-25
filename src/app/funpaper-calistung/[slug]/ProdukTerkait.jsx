@@ -14,8 +14,10 @@ export default function ProdukTerkait({ themeCalistungId }) {
       const res = await fetch(
         `/api/funpaper-calistung?limit=4&theme_calistung_id=${themeCalistungId}`,
       );
-      const data = await res.json();
-      setFunpapers(data);
+      const json = await res.json();
+      console.log(json);
+      setFunpapers(Array.isArray(json.data) ? json.data : []);
+      // setFunpapers(Array.isArray(json) ? json : []);
     }
     fetchData();
   }, []);
@@ -51,7 +53,7 @@ export default function ProdukTerkait({ themeCalistungId }) {
                       />
                     </div>
                     <h4 className="text-center text-sm font-medium mt-2">
-                      {funpaper.name + " - " + funpaper.activity}
+                      {funpaper.name + " - " + funpaper.theme}
                     </h4>
                   </div>
                   <span className="mt-2 inline-block tombol-ungu text-white text-xs font-medium px-3 py-1 rounded-lg transition">

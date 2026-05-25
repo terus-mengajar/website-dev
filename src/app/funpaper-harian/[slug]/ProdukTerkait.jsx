@@ -19,8 +19,10 @@ export default function ProdukTerkait({
       const res = await fetch(
         `/api/funpaper-harian/${slug}/produk-terkait?limit=4&activity_id=${activityId}&theme_id=${themeId}&funpaper_id=${funpaperId}`,
       );
-      const data = await res.json();
-      setFunpapers(data);
+      const json = await res.json();
+      // console.log(json);
+      // setFunpapers(Array.isArray(json.data) ? json.data : []);
+      setFunpapers(Array.isArray(json) ? json : []);
     }
     fetchData();
   }, []);

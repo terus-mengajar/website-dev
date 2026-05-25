@@ -1,43 +1,23 @@
 import { NextResponse } from "next/server";
 import { CLOUDFLARE_D1_URL, CLOUDFLARE_HEADER } from "@/lib/cloudflare";
-// import {
-//   FUNPAPER_HARIAN,
-//   FUNPAPER_CALISTUNG,
-//   FUNPAPER_CODING,
-// } from "@/lib/constants";
 import { FUNPAPER_SINGLE_PAGE } from "@/lib/funpaper_type";
-// import { FUNPAPER_TEMA_BUNDLE } from "@/lib/funpaper_type";
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const tema = searchParams.get("tema");
-    // console.log(tema);
-    // harian-7,harian-2
-
-    // UBAH tema jadi ARRAY
-    // const temaArr =
-    //   tema
-    //     ?.split(",")
-    //     .map(Number)
-    //     .filter((n) => !isNaN(n)) ?? [];
+    const sort = searchParams.get("sort") ?? "baru";
+    const page = Math.max(1, Number(searchParams.get("page") ?? 1));
+    const perPage = Math.max(1, Number(searchParams.get("perPage") ?? 18));
 
     // BUNGKUS SEMUA TEMA PAKAI PETIK
     let temaWithQuotes = tema
       ? tema
           .split(",")
-          .map((t: string) => `"${t.trim()}"`) //bungkus pakai ""
+          .map((t: string) => `"${t.trim()}"`)
           .join(",")
       : "";
 
-    // TEMA => calistung-id, coding-id, harian-id
-
-    let itemsCalistung = [];
-    let itemsCoding = [];
-    let itemsHarian = [];
-
-    // 1. Fetch Funpaper Calistung
-    // if (temaArr.length === 0) {
     let queryFilterCalistung = tema
       ? `AND ('calistung-' || activity.id) IN (${temaWithQuotes})`
       : "";
@@ -58,23 +38,6 @@ export async function GET(req: Request) {
         ORDER BY updated_at DESC
       `;
 
-    const resCalistung = await fetch(CLOUDFLARE_D1_URL, {
-      method: "POST",
-      headers: CLOUDFLARE_HEADER,
-      body: JSON.stringify({ sql: sqlCalistung, params: [] }),
-    });
-    const dataCalistung = await resCalistung.json();
-    itemsCalistung = (dataCalistung?.result?.[0]?.results ?? []).map(
-      (item: any) => ({
-        ...item,
-        category: "calistung",
-        link_detail: `funpaper-calistung/${item.slug}`,
-      }),
-    );
-    // }
-
-    // 2. Fetch Funpaper Coding
-    // if (temaArr.length === 0) {
     const sqlCoding = `
         SELECT funpaper_coding.downloaded, funpaper_coding.played, funpaper_coding.slug, funpaper_coding.updated_at, funpaper_coding.image_url, funpaper_coding.interactive_image_url, CONCAT(funpaper_coding.name, ' - ', theme_coding.name) AS name, 'funpaper-coding' AS tipe
         FROM funpaper_coding
@@ -85,22 +48,6 @@ export async function GET(req: Request) {
         ORDER BY updated_at DESC
       `;
 
-    // console.log(sqlCalistung);
-    const resCoding = await fetch(CLOUDFLARE_D1_URL, {
-      method: "POST",
-      headers: CLOUDFLARE_HEADER,
-      body: JSON.stringify({ sql: sqlCoding, params: [] }),
-    });
-    const dataCoding = await resCoding.json();
-    itemsCoding = (dataCoding?.result?.[0]?.results ?? []).map((item: any) => ({
-      ...item,
-      category: "coding",
-      link_detail: `funpaper-coding/${item.slug}`,
-    }));
-    // }
-
-    // 3. Fetch Funpaper Harian
-    // if (temaArr.length === 0) {
     const sqlHarian = `
         SELECT funpaper.downloaded, funpaper.played, funpaper.slug, funpaper.updated_at, funpaper.image_url, funpaper.interactive_image_url, CONCAT(funpaper.name, ' - ', activity.name) AS name, 'funpaper-harian' as tipe
         FROM funpaper
@@ -110,23 +57,86 @@ export async function GET(req: Request) {
         ${queryFilterHarian}
         ORDER BY updated_at DESC
       `;
-    const resHarian = await fetch(CLOUDFLARE_D1_URL, {
-      method: "POST",
-      headers: CLOUDFLARE_HEADER,
-      body: JSON.stringify({ sql: sqlHarian, params: [] }),
-    });
-    const dataHarian = await resHarian.json();
-    itemsHarian = (dataHarian?.result?.[0]?.results ?? []).map((item: any) => ({
-      ...item,
-      category: "harian",
-      link_detail: `funpaper-harian/${item.slug}`,
-    }));
-    // }
 
-    // Combine all
-    const allItems = [...itemsCalistung, ...itemsCoding, ...itemsHarian];
+    // Fetch semua 3 tabel secara paralel
+    const [resCalistung, resCoding, resHarian] = await Promise.all([
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({ sql: sqlCalistung, params: [] }),
+      }),
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({ sql: sqlCoding, params: [] }),
+      }),
+      fetch(CLOUDFLARE_D1_URL, {
+        method: "POST",
+        headers: CLOUDFLARE_HEADER,
+        body: JSON.stringify({ sql: sqlHarian, params: [] }),
+      }),
+    ]);
 
-    return NextResponse.json(allItems);
+    const [dataCalistung, dataCoding, dataHarian] = await Promise.all([
+      resCalistung.json(),
+      resCoding.json(),
+      resHarian.json(),
+    ]);
+
+    const itemsCalistung = (dataCalistung?.result?.[0]?.results ?? []).map(
+      (item: any) => ({
+        ...item,
+        category: "calistung",
+        link_detail: `funpaper-calistung/${item.slug}`,
+      }),
+    );
+
+    const itemsCoding = (dataCoding?.result?.[0]?.results ?? []).map(
+      (item: any) => ({
+        ...item,
+        category: "coding",
+        link_detail: `funpaper-coding/${item.slug}`,
+      }),
+    );
+
+    const itemsHarian = (dataHarian?.result?.[0]?.results ?? []).map(
+      (item: any) => ({
+        ...item,
+        category: "harian",
+        link_detail: `funpaper-harian/${item.slug}`,
+      }),
+    );
+
+    // Gabungkan semua
+    let allItems = [...itemsCalistung, ...itemsCoding, ...itemsHarian];
+
+    // Sorting server-side
+    switch (sort) {
+      case "baru":
+        allItems.sort(
+          (a, b) =>
+            new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
+        );
+        break;
+      case "lama":
+        allItems.sort(
+          (a, b) =>
+            new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime(),
+        );
+        break;
+      case "az":
+        allItems.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "za":
+        allItems.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+    }
+
+    const total = allItems.length;
+    const offset = (page - 1) * perPage;
+    const data = allItems.slice(offset, offset + perPage);
+
+    return NextResponse.json({ data, total });
   } catch (err) {
     console.error("Gagal ambil data:", err);
     return NextResponse.json(
