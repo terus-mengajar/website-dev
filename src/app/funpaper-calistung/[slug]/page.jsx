@@ -97,6 +97,29 @@ export default async function FunpaperPage({ params }) {
         url: canonicalUrl,
       },
       {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Beranda",
+            item: "https://terusmengajar.id",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Funpaper Calistung",
+            item: "https://terusmengajar.id/funpaper-calistung",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: funpaper.name,
+            item: canonicalUrl,
+          },
+        ],
+      },
+      {
         "@type": "FAQPage",
         mainEntity: [
           {

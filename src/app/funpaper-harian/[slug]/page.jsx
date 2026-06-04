@@ -96,6 +96,29 @@ export default async function FunpaperHarianPage({ params }) {
         url: canonicalUrl,
       },
       {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Beranda",
+            item: "https://terusmengajar.id",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Funpaper Harian",
+            item: "https://terusmengajar.id/funpaper-harian",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: funpaper.name,
+            item: canonicalUrl,
+          },
+        ],
+      },
+      {
         "@type": "FAQPage",
         mainEntity: [
           {
