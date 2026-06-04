@@ -61,8 +61,61 @@ export default async function FunpaperPage({ params }) {
 
   const funpaper = await res.json();
 
+  // FAQPage JSON-LD for SEO
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Apa itu worksheet coding ${funpaper.name}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p><strong>${funpaper.name}</strong> adalah worksheet coding dari Terus Mengajar yang mengenalkan konsep pemrograman dasar kepada anak melalui aktivitas menyenangkan seperti algoritma, logika, dan problem solving.</p>`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Apakah worksheet coding cocok untuk anak TK?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p>Ya, worksheet coding dirancang khusus untuk anak usia 5-7 tahun. Konsepnya disajikan secara visual dan sederhana sehingga mudah dipahami oleh anak TK dan PAUD.</p>`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Apakah worksheet coding ini gratis?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p>Ya, worksheet <strong>${funpaper.name}</strong> bisa diunduh secara gratis. Anak bisa belajar coding tanpa perlu perangkat elektronik, cukup cetak dan kerjakan.</p>`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Apa manfaat belajar coding sejak dini?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p>Belajar coding sejak dini melatih logika, kemampuan problem solving, kreativitas, dan ketelitian anak. Keterampilan ini sangat bermanfaat untuk persiapan masa depan anak.</p>`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Bagaimana cara menggunakan worksheet coding ini?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p>Cetak worksheet di kertas A4, lalu pandu anak untuk mengikuti instruksi di lembar kerja. Orang tua bisa menjelaskan konsep sambil anak mengerjakan soal-soal yang ada.</p>`,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full mt-[68px]">
+      {/* FAQPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Section 1 */}
       <section className="py-12 bg-[#fcfbf8]">
         <div className="container">

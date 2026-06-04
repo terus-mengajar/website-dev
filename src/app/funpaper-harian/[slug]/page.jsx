@@ -76,12 +76,66 @@ export default async function FunpaperHarianPage({ params }) {
         isAccessibleForFree: true,
       };
 
+  // FAQPage JSON-LD for SEO
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Apa kegiatan ${funpaper.name} di Funpaper Harian?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p><strong>${funpaper.name}</strong> adalah salah satu worksheet harian dari Terus Mengajar dengan aktivitas ${funpaper.activity || "menyenangkan"} yang cocok untuk anak usia ${funpaper.age || "dini"} tahun.</p>`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Apakah Funpaper Harian gratis?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p>Ya, worksheet <strong>${funpaper.name}</strong> di Funpaper Harian bisa diunduh secara gratis. Tersedia format A4 dan A5 untuk dicetak di rumah.</p>`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Untuk usia berapa worksheet ${funpaper.name}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p>Worksheet ini dirancang untuk anak usia ${funpaper.age || "2-6"} tahun. Namun, orang tua bisa menyesuaikan sesuai perkembangan anak masing-masing.</p>`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Apa saja aktivitas di Funpaper Harian?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p>Funpaper Harian menyediakan berbagai aktivitas seperti ${funpaper.activity || "mewarnai, menggunting, menebalkan garis, maze, dan gunting tempel"}. Setiap hari ada worksheet baru yang bisa didownload gratis.</p>`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Bagaimana cara print worksheet Funpaper Harian?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `<p>Klik tombol download di halaman worksheet, pilih format A4 atau A5, lalu cetak menggunakan printer biasa di rumah. Gunakan kertas HVS untuk hasil terbaik.</p>`,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full mt-[68px]">
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      {/* FAQPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* Section 1 */}
