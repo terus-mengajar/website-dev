@@ -21,12 +21,19 @@ export async function generateMetadata({ params }) {
   const title = rawTitle.replace(/\s*\|\s*Terus Mengajar\s*$/i, "");
   const description = funpaper.short_description || funpaper.description?.slice(0, 160) || `Paket tema ${funpaper.name_on_website} untuk anak usia ${funpaper.age} tahun.`;
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";
+  const canonicalUrl = `${baseUrl}/funpaper-tema/${slug}`;
+
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
+      url: canonicalUrl,
       images: funpaper.mockup_url ? [funpaper.mockup_url] : [],
       type: "website",
     },
@@ -54,8 +61,119 @@ export default async function FunpaperTemaPage({ params }) {
 
   const funpaper = await res.json();
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";
+  const canonicalUrl = `${baseUrl}/funpaper-tema/${slug}`;
+
+  // LearningResource + BreadcrumbList + FAQPage JSON-LD via @graph
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LearningResource",
+        name: funpaper.name_on_website,
+        description:
+          funpaper.short_description ||
+          funpaper.description?.slice(0, 160) ||
+          `Paket tema ${funpaper.name_on_website} untuk anak usia ${funpaper.age} tahun.`,
+        image: funpaper.mockup_url,
+        author: {
+          "@type": "Organization",
+          name: "Terus Mengajar",
+          url: "https://terusmengajar.id",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Terus Mengajar",
+          url: "https://terusmengajar.id",
+        },
+        educationalLevel: `Anak usia ${funpaper.age || "2-6"} tahun`,
+        educationalUse: "Practice",
+        learningResourceType: "Worksheet",
+        inLanguage: "Indonesian",
+        isAccessibleForFree: false,
+        datePublished: funpaper.created_at || new Date().toISOString(),
+        dateModified: funpaper.updated_at || new Date().toISOString(),
+        url: canonicalUrl,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Beranda",
+            item: "https://terusmengajar.id",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Funpaper Tema",
+            item: "https://terusmengajar.id/funpaper-tema",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: funpaper.name_on_website,
+            item: canonicalUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `Apa isi paket tema ${funpaper.name_on_website}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p><strong>${funpaper.name_on_website}</strong> adalah paket worksheet tematik dari Terus Mengajar yang terdiri dari ${funpaper.total_pages || "beberapa"} lembar soal dengan tema terintegrasi untuk anak usia ${funpaper.age || "dini"} tahun.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Bagaimana cara membeli paket tema ini?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Klik tombol "Beli" di halaman ini, lalu ikuti proses pembayaran melalui Mayar. Setelah pembayaran berhasil, worksheet akan tersedia untuk diunduh.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `Untuk usia berapa paket tema ${funpaper.name_on_website}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Paket tema ini dirancang untuk anak usia ${funpaper.age || "2-6"} tahun. Materi disusun sesuai tahap perkembangan anak usia dini.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apakah worksheet bisa dicetak berkali-kali?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Ya, setelah membeli paket tema, Anda bisa mengunduh dan mencetak worksheet berkali-kali untuk keperluan belajar anak di rumah.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apa kelebihan Funpaper Tema dibanding worksheet biasa?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Funpaper Tema menyajikan materi pembelajaran dalam satu topik yang terintegrasi, sehingga anak belajar secara menyeluruh dan lebih bermakna. Setiap lembar saling berkaitan dengan tema yang sama.</p>`,
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="w-full mt-[68px]">
+      {/* JSON-LD Structured Data: LearningResource + BreadcrumbList + FAQPage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Section 1 */}
       <section className="py-12 bg-[#fcfbf8]">
         <div className="container">
