@@ -18,7 +18,8 @@ export async function generateMetadata({ params }) {
   const funpaper = await res.json();
 
   // Use SEO fields if available, fallback to basic info
-  const title = funpaper.seo_title || funpaper.name_on_website;
+  const rawTitle = funpaper.seo_title || funpaper.name_on_website;
+  const title = rawTitle.replace(/\s*\|\s*Terus Mengajar\s*$/i, "");
   const description = funpaper.short_description || funpaper.description?.slice(0, 160) || `Paket bundle ${funpaper.name_on_website} untuk anak.`;
 
   return {

@@ -17,7 +17,8 @@ export async function generateMetadata({ params }) {
   const funpaper = await res.json();
 
   // Use SEO fields if available, fallback to basic info
-  const title = funpaper.seo_title || `${funpaper.name} - ${funpaper.activity}`;
+  const rawTitle = funpaper.seo_title || `${funpaper.name} - ${funpaper.activity}`;
+  const title = rawTitle.replace(/\s*\|\s*Terus Mengajar\s*$/i, "");
   const description =
     funpaper.short_description ||
     `Lembar kerja calistung ${funpaper.name} dengan tema ${funpaper.activity}.`;

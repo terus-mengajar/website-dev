@@ -18,7 +18,8 @@ export async function generateMetadata({ params }) {
   const funpaper = await res.json();
 
   // Use SEO fields if available, fallback to basic info
-  const title = funpaper.seo_title || `${funpaper.name} - ${funpaper.activity}`;
+  const rawTitle = funpaper.seo_title || `${funpaper.name} - ${funpaper.activity}`;
+  const title = rawTitle.replace(/\s*\|\s*Terus Mengajar\s*$/i, "");
   const description = funpaper.short_description || `Lembar kerja ${funpaper.name} untuk anak usia ${funpaper.age} tahun. Aktivitas ${funpaper.activity} dengan tema ${funpaper.theme}.`;
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";

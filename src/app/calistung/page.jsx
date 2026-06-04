@@ -2,11 +2,11 @@ import FunpaperClient from "./FunpaperClient";
 import EbookCalistung from "@/components/EBookCalistung";
 
 export const metadata = {
-  title: "Calistung | Terus Mengajar",
+  title: "Calistung",
   description:
     "Aktivitasnya ringan, menyenangkan, dan sesuai dengan tahap perkembangan anak.",
   openGraph: {
-    title: "Calistung | Terus Mengajar",
+    title: "Calistung - Bermain Sambil Belajar",
     description:
       "Aktivitasnya ringan, menyenangkan, dan sesuai dengan tahap perkembangan anak.",
     url: "https://terusmengajar.id/calistung",
