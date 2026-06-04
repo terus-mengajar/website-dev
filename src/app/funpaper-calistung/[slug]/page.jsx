@@ -63,60 +63,93 @@ export default async function FunpaperPage({ params }) {
 
   const funpaper = await res.json();
 
-  // FAQPage JSON-LD for SEO
-  const faqJsonLd = {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";
+  const canonicalUrl = `${baseUrl}/funpaper-calistung/${slug}`;
+
+  // LearningResource + FAQPage JSON-LD via @graph
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
+    "@graph": [
       {
-        "@type": "Question",
-        name: `Apa itu worksheet ${funpaper.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Worksheet <strong>${funpaper.name}</strong> adalah lembar kerja calistung gratis dari Terus Mengajar yang dirancang untuk membantu anak belajar ${funpaper.activity || "konsep dasar"} dengan cara menyenangkan.</p>`,
+        "@type": "LearningResource",
+        name: funpaper.name,
+        description:
+          funpaper.short_description ||
+          `Lembar kerja calistung ${funpaper.name} dengan tema ${funpaper.activity}.`,
+        image: funpaper.image_url,
+        author: {
+          "@type": "Organization",
+          name: "Terus Mengajar",
+          url: "https://terusmengajar.id",
         },
+        publisher: {
+          "@type": "Organization",
+          name: "Terus Mengajar",
+          url: "https://terusmengajar.id",
+        },
+        educationalLevel: "TK / PAUD",
+        educationalUse: "Practice",
+        learningResourceType: "Worksheet",
+        inLanguage: "Indonesian",
+        isAccessibleForFree: true,
+        datePublished: funpaper.created_at || new Date().toISOString(),
+        dateModified: funpaper.updated_at || new Date().toISOString(),
+        url: canonicalUrl,
       },
       {
-        "@type": "Question",
-        name: `Untuk usia berapa worksheet ${funpaper.name} ini?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Worksheet ini cocok untuk anak usia dini, khususnya TK dan PAUD. Usia yang direkomendasikan dapat disesuaikan dengan kemampuan anak.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Apakah worksheet ini bisa diunduh gratis?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Ya, worksheet <strong>${funpaper.name}</strong> bisa diunduh secara gratis di Terus Mengajar. Cukup klik tombol download dan worksheet siap dicetak.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Bagaimana cara menggunakan worksheet ini?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Cetak worksheet di kertas A4, kemudian pandu anak untuk mengerjakannya sesuai petunjuk. Aktivitas ini bisa dilakukan bersama orang tua di rumah.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Apa manfaat worksheet calistung untuk anak?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Worksheet calistung membantu anak mengasah kemampuan membaca, menulis, dan berhitung sejak dini. Metode bermain sambil belajar membuat anak lebih termotivasi dan senang belajar.</p>`,
-        },
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `Apa itu worksheet ${funpaper.name}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Worksheet <strong>${funpaper.name}</strong> adalah lembar kerja calistung gratis dari Terus Mengajar yang dirancang untuk membantu anak belajar ${funpaper.activity || "konsep dasar"} dengan cara menyenangkan.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `Untuk usia berapa worksheet ${funpaper.name} ini?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Worksheet ini cocok untuk anak usia dini, khususnya TK dan PAUD. Usia yang direkomendasikan dapat disesuaikan dengan kemampuan anak.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apakah worksheet ini bisa diunduh gratis?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Ya, worksheet <strong>${funpaper.name}</strong> bisa diunduh secara gratis di Terus Mengajar. Cukup klik tombol download dan worksheet siap dicetak.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Bagaimana cara menggunakan worksheet ini?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Cetak worksheet di kertas A4, kemudian pandu anak untuk mengerjakannya sesuai petunjuk. Aktivitas ini bisa dilakukan bersama orang tua di rumah.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apa manfaat worksheet calistung untuk anak?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Worksheet calistung membantu anak mengasah kemampuan membaca, menulis, dan berhitung sejak dini. Metode bermain sambil belajar membuat anak lebih termotivasi dan senang belajar.</p>`,
+            },
+          },
+        ],
       },
     ],
   };
 
   return (
     <div className="w-full mt-[68px]">
-      {/* FAQPage JSON-LD */}
+      {/* JSON-LD Structured Data: LearningResource + FAQPage */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Section 1 */}
       <section className="py-12 bg-[#fcfbf8]">

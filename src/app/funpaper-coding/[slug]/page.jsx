@@ -61,60 +61,93 @@ export default async function FunpaperPage({ params }) {
 
   const funpaper = await res.json();
 
-  // FAQPage JSON-LD for SEO
-  const faqJsonLd = {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";
+  const canonicalUrl = `${baseUrl}/funpaper-coding/${slug}`;
+
+  // LearningResource + FAQPage JSON-LD via @graph
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
+    "@graph": [
       {
-        "@type": "Question",
-        name: `Apa itu worksheet coding ${funpaper.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p><strong>${funpaper.name}</strong> adalah worksheet coding dari Terus Mengajar yang mengenalkan konsep pemrograman dasar kepada anak melalui aktivitas menyenangkan seperti algoritma, logika, dan problem solving.</p>`,
+        "@type": "LearningResource",
+        name: funpaper.name,
+        description:
+          funpaper.short_description ||
+          `Worksheet coding ${funpaper.name} untuk anak usia 5-7 tahun.`,
+        image: funpaper.image_url,
+        author: {
+          "@type": "Organization",
+          name: "Terus Mengajar",
+          url: "https://terusmengajar.id",
         },
+        publisher: {
+          "@type": "Organization",
+          name: "Terus Mengajar",
+          url: "https://terusmengajar.id",
+        },
+        educationalLevel: "TK / PAUD (5-7 tahun)",
+        educationalUse: "Practice",
+        learningResourceType: "Worksheet",
+        inLanguage: "Indonesian",
+        isAccessibleForFree: true,
+        datePublished: funpaper.created_at || new Date().toISOString(),
+        dateModified: funpaper.updated_at || new Date().toISOString(),
+        url: canonicalUrl,
       },
       {
-        "@type": "Question",
-        name: "Apakah worksheet coding cocok untuk anak TK?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Ya, worksheet coding dirancang khusus untuk anak usia 5-7 tahun. Konsepnya disajikan secara visual dan sederhana sehingga mudah dipahami oleh anak TK dan PAUD.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Apakah worksheet coding ini gratis?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Ya, worksheet <strong>${funpaper.name}</strong> bisa diunduh secara gratis. Anak bisa belajar coding tanpa perlu perangkat elektronik, cukup cetak dan kerjakan.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Apa manfaat belajar coding sejak dini?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Belajar coding sejak dini melatih logika, kemampuan problem solving, kreativitas, dan ketelitian anak. Keterampilan ini sangat bermanfaat untuk persiapan masa depan anak.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Bagaimana cara menggunakan worksheet coding ini?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Cetak worksheet di kertas A4, lalu pandu anak untuk mengikuti instruksi di lembar kerja. Orang tua bisa menjelaskan konsep sambil anak mengerjakan soal-soal yang ada.</p>`,
-        },
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `Apa itu worksheet coding ${funpaper.name}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p><strong>${funpaper.name}</strong> adalah worksheet coding dari Terus Mengajar yang mengenalkan konsep pemrograman dasar kepada anak melalui aktivitas menyenangkan seperti algoritma, logika, dan problem solving.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apakah worksheet coding cocok untuk anak TK?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Ya, worksheet coding dirancang khusus untuk anak usia 5-7 tahun. Konsepnya disajikan secara visual dan sederhana sehingga mudah dipahami oleh anak TK dan PAUD.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apakah worksheet coding ini gratis?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Ya, worksheet <strong>${funpaper.name}</strong> bisa diunduh secara gratis. Anak bisa belajar coding tanpa perlu perangkat elektronik, cukup cetak dan kerjakan.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apa manfaat belajar coding sejak dini?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Belajar coding sejak dini melatih logika, kemampuan problem solving, kreativitas, dan ketelitian anak. Keterampilan ini sangat bermanfaat untuk persiapan masa depan anak.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Bagaimana cara menggunakan worksheet coding ini?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Cetak worksheet di kertas A4, lalu pandu anak untuk mengikuti instruksi di lembar kerja. Orang tua bisa menjelaskan konsep sambil anak mengerjakan soal-soal yang ada.</p>`,
+            },
+          },
+        ],
       },
     ],
   };
 
   return (
     <div className="w-full mt-[68px]">
-      {/* FAQPage JSON-LD */}
+      {/* JSON-LD Structured Data: LearningResource + FAQPage */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Section 1 */}
       <section className="py-12 bg-[#fcfbf8]">

@@ -62,80 +62,93 @@ export default async function FunpaperHarianPage({ params }) {
 
   const funpaper = await res.json();
 
-  // Generate JSON-LD structured data for SEO
-  const jsonLd = funpaper.schema_json
-    ? JSON.parse(funpaper.schema_json)
-    : {
-        "@context": "https://schema.org",
-        "@type": "EducationalResource",
-        name: funpaper.name,
-        description: funpaper.short_description || `Lembar kerja ${funpaper.name} untuk anak usia ${funpaper.age} tahun`,
-        image: funpaper.image_url,
-        educationalLevel: `Anak usia ${funpaper.age} tahun`,
-        learningResourceType: "Worksheet",
-        isAccessibleForFree: true,
-      };
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";
+  const canonicalUrl = `${baseUrl}/funpaper-harian/${slug}`;
 
-  // FAQPage JSON-LD for SEO
-  const faqJsonLd = {
+  // LearningResource + FAQPage JSON-LD via @graph
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
+    "@graph": [
       {
-        "@type": "Question",
-        name: `Apa kegiatan ${funpaper.name} di Funpaper Harian?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p><strong>${funpaper.name}</strong> adalah salah satu worksheet harian dari Terus Mengajar dengan aktivitas ${funpaper.activity || "menyenangkan"} yang cocok untuk anak usia ${funpaper.age || "dini"} tahun.</p>`,
+        "@type": "LearningResource",
+        name: funpaper.name,
+        description:
+          funpaper.short_description ||
+          `Lembar kerja ${funpaper.name} untuk anak usia ${funpaper.age} tahun.`,
+        image: funpaper.image_url,
+        author: {
+          "@type": "Organization",
+          name: "Terus Mengajar",
+          url: "https://terusmengajar.id",
         },
+        publisher: {
+          "@type": "Organization",
+          name: "Terus Mengajar",
+          url: "https://terusmengajar.id",
+        },
+        educationalLevel: `Anak usia ${funpaper.age || "2-6"} tahun`,
+        educationalUse: "Practice",
+        learningResourceType: "Worksheet",
+        inLanguage: "Indonesian",
+        isAccessibleForFree: true,
+        datePublished: funpaper.created_at || new Date().toISOString(),
+        dateModified: funpaper.updated_at || new Date().toISOString(),
+        url: canonicalUrl,
       },
       {
-        "@type": "Question",
-        name: "Apakah Funpaper Harian gratis?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Ya, worksheet <strong>${funpaper.name}</strong> di Funpaper Harian bisa diunduh secara gratis. Tersedia format A4 dan A5 untuk dicetak di rumah.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Untuk usia berapa worksheet ${funpaper.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Worksheet ini dirancang untuk anak usia ${funpaper.age || "2-6"} tahun. Namun, orang tua bisa menyesuaikan sesuai perkembangan anak masing-masing.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Apa saja aktivitas di Funpaper Harian?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Funpaper Harian menyediakan berbagai aktivitas seperti ${funpaper.activity || "mewarnai, menggunting, menebalkan garis, maze, dan gunting tempel"}. Setiap hari ada worksheet baru yang bisa didownload gratis.</p>`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Bagaimana cara print worksheet Funpaper Harian?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `<p>Klik tombol download di halaman worksheet, pilih format A4 atau A5, lalu cetak menggunakan printer biasa di rumah. Gunakan kertas HVS untuk hasil terbaik.</p>`,
-        },
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `Apa kegiatan ${funpaper.name} di Funpaper Harian?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p><strong>${funpaper.name}</strong> adalah salah satu worksheet harian dari Terus Mengajar dengan aktivitas ${funpaper.activity || "menyenangkan"} yang cocok untuk anak usia ${funpaper.age || "dini"} tahun.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apakah Funpaper Harian gratis?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Ya, worksheet <strong>${funpaper.name}</strong> di Funpaper Harian bisa diunduh secara gratis. Tersedia format A4 dan A5 untuk dicetak di rumah.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `Untuk usia berapa worksheet ${funpaper.name}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Worksheet ini dirancang untuk anak usia ${funpaper.age || "2-6"} tahun. Namun, orang tua bisa menyesuaikan sesuai perkembangan anak masing-masing.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Apa saja aktivitas di Funpaper Harian?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Funpaper Harian menyediakan berbagai aktivitas seperti ${funpaper.activity || "mewarnai, menggunting, menebalkan garis, maze, dan gunting tempel"}. Setiap hari ada worksheet baru yang bisa didownload gratis.</p>`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Bagaimana cara print worksheet Funpaper Harian?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `<p>Klik tombol download di halaman worksheet, pilih format A4 atau A5, lalu cetak menggunakan printer biasa di rumah. Gunakan kertas HVS untuk hasil terbaik.</p>`,
+            },
+          },
+        ],
       },
     ],
   };
 
   return (
     <div className="w-full mt-[68px]">
-      {/* JSON-LD Structured Data */}
+      {/* JSON-LD Structured Data: LearningResource + FAQPage */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-      {/* FAQPage JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* Section 1 */}
