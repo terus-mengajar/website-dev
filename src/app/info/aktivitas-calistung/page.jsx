@@ -8,6 +8,54 @@ import Link from "next/link";
 export default function page() {
   return (
     <main className="text-gray-800 -mt-[68px]">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Melakukan Aktivitas Calistung di Rumah",
+  "description": "Panduan melakukan aktivitas calistung membaca, menulis, dan berhitung bersama anak di rumah.",
+  "image": "/images/assets/calistung.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Pilih worksheet sesuai tema",
+      "text": "Pilih worksheet calistung yang sesuai dengan kemampuan dan minat anak saat ini.",
+      "image": "/images/assets/calistung.png"
+    },
+    {
+      "position": 2,
+      "name": "Cetak dan siapkan alat",
+      "text": "Cetak worksheet di kertas A4. Sediakan pensil, penghapus, dan rautan.",
+      "image": "/images/assets/calistung.png"
+    },
+    {
+      "position": 3,
+      "name": "Jelaskan konsep",
+      "text": "Jelaskan konsep yang akan dipelajari dengan bahasa sederhana dan contoh konkret.",
+      "image": "/images/assets/calistung.png"
+    },
+    {
+      "position": 4,
+      "name": "Bimbing mengerjakan",
+      "text": "Dampingi anak mengerjakan worksheet. Beri petunjuk jika anak kesulitan.",
+      "image": "/images/assets/calistung.png"
+    },
+    {
+      "position": 5,
+      "name": "Evaluasi dan ulangi",
+      "text": "Periksa hasil kerja anak. Ulangi konsep yang belum dikuasai dengan worksheet berbeda.",
+      "image": "/images/assets/calistung.png"
+    }
+  ]
+}) }}
+      />
       <style jsx>
         {`
           .text-biru {

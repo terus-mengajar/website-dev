@@ -8,6 +8,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Menggunakan Worksheet Mewarnai Bersama Anak",
+  "description": "Panduan lengkap menggunakan worksheet mewarnai untuk melatih fokus, kreativitas, dan koordinasi mata-tangan anak.",
+  "image": "/images/assets/mewarnai.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Cetak worksheet",
+      "text": "Pilih worksheet mewarnai yang sesuai usia anak, lalu cetak di kertas A4.",
+      "image": "/images/assets/mewarnai.png"
+    },
+    {
+      "position": 2,
+      "name": "Siapkan alat mewarnai",
+      "text": "Sediakan crayon, pensil warna, atau spidol yang aman untuk anak.",
+      "image": "/images/assets/mewarnai.png"
+    },
+    {
+      "position": 3,
+      "name": "Jelaskan gambar",
+      "text": "Ajak anak mengamati gambar dan ceritakan apa yang akan diwarnai.",
+      "image": "/images/assets/mewarnai.png"
+    },
+    {
+      "position": 4,
+      "name": "Bimbing mewarnai",
+      "text": "Pandu anak mewarnai dari tepi ke tengah. Beri kebebasan memilih warna.",
+      "image": "/images/assets/mewarnai.png"
+    },
+    {
+      "position": 5,
+      "name": "Beri pujian",
+      "text": "Puji hasil karya anak dan pajang di dinding untuk meningkatkan kepercayaan diri.",
+      "image": "/images/assets/mewarnai.png"
+    }
+  ]
+}) }}
+      />
         <style>{`
             .text-coklat {
                 color: #6B3636;

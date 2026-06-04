@@ -17,6 +17,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800 -mt-[68px]">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Menggunakan Funpaper Activity Bersama Anak",
+  "description": "Panduan lengkap menggunakan berbagai aktivitas Funpaper untuk bermain sambil belajar di rumah.",
+  "image": "/images/assets/funpaper.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Pilih aktivitas",
+      "text": "Jelajahi berbagai aktivitas Funpaper: mewarnai, menggunting, maze, dan lainnya.",
+      "image": "/images/assets/funpaper.png"
+    },
+    {
+      "position": 2,
+      "name": "Unduh worksheet",
+      "text": "Klik tombol download dan pilih format yang sesuai (A4 atau A5).",
+      "image": "/images/assets/funpaper.png"
+    },
+    {
+      "position": 3,
+      "name": "Cetak worksheet",
+      "text": "Cetak worksheet menggunakan printer biasa di rumah.",
+      "image": "/images/assets/funpaper.png"
+    },
+    {
+      "position": 4,
+      "name": "Bermain bersama anak",
+      "text": "Pandu anak menyelesaikan aktivitas sesuai petunjuk. Jadikan momen bermain yang menyenangkan.",
+      "image": "/images/assets/funpaper.png"
+    },
+    {
+      "position": 5,
+      "name": "Dokumentasikan",
+      "text": "Abadikan momen bermain anak dan bagikan ke keluarga untuk memotivasi anak.",
+      "image": "/images/assets/funpaper.png"
+    }
+  ]
+}) }}
+      />
       <style jsx>
         {`
           .text-coklat {

@@ -8,6 +8,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Menggunakan Worksheet Gunting Tempel Bersama Anak",
+  "description": "Panduan menggunakan worksheet gunting tempel untuk melatih motorik halus, fokus, dan kreativitas anak.",
+  "image": "/images/assets/gunting-tempel.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Cetak worksheet",
+      "text": "Pilih worksheet gunting tempel, lalu cetak dua lembar: satu untuk gambar dan satu untuk alas tempel.",
+      "image": "/images/assets/gunting-tempel.png"
+    },
+    {
+      "position": 2,
+      "name": "Gunting gambar",
+      "text": "Ajak anak menggunting gambar-gambar kecil mengikuti garis putus-putus.",
+      "image": "/images/assets/gunting-tempel.png"
+    },
+    {
+      "position": 3,
+      "name": "Siapkan lem",
+      "text": "Sediakan lem stik atau lem kertas yang aman untuk anak.",
+      "image": "/images/assets/gunting-tempel.png"
+    },
+    {
+      "position": 4,
+      "name": "Tempel gambar",
+      "text": "Pandu anak menempel gambar yang sudah digunting ke worksheet alas sesuai petunjuk.",
+      "image": "/images/assets/gunting-tempel.png"
+    },
+    {
+      "position": 5,
+      "name": "Hias hasil karya",
+      "text": "Ajak anak menghias hasil tempelan dengan mewarnai atau menambahkan detail.",
+      "image": "/images/assets/gunting-tempel.png"
+    }
+  ]
+}) }}
+      />
         <style>{`
             .text-coklat {
                 color: #6B3636;

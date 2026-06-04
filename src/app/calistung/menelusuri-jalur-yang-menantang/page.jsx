@@ -211,8 +211,59 @@ export default function Page() {
     },
   ];
 
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `Cara Bermain ${TITLE}`,
+    description:
+      "Permainan menelusuri jalur yang menantang untuk melatih motorik kasar, fokus, dan koordinasi mata-tangan anak menggunakan lakban di lantai.",
+    image: "/images/calistung/menelusuri-jalur-yang-menantang/5.png",
+    totalTime: "PT20M",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "IDR",
+      value: "0",
+    },
+    supply: [
+      { "@type": "HowToSupply", name: "Lakban warna-warni" },
+    ],
+    tool: [
+      { "@type": "HowToTool", name: "Lakban" },
+    ],
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Buat jalur di lantai",
+        text: "Tempelkan lakban di lantai membentuk jalur lurus, zigzag, atau melingkar. Pastikan jalur cukup lebar untuk kaki anak.",
+        image: "/images/calistung/menelusuri-jalur-yang-menantang/5.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Jalan di atas jalur",
+        text: "Ajak anak berjalan mengikuti jalur lakban tanpa keluar dari garis. Mulai dengan jalan biasa.",
+        image: "/images/calistung/menelusuri-jalur-yang-menantang/6.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Tambah tantangan",
+        text: "Tambahkan variasi seperti berjalan mundur, jinjit, atau melompat. Buat jalur lebih kompleks dengan belokan tajam.",
+        image: "/images/calistung/menelusuri-jalur-yang-menantang/7.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Bermain sambil berhitung",
+        text: "Ajak anak menghitung langkahnya sambil berjalan. Tambahkan target berhenti di titik tertentu.",
+        image: "/images/calistung/menelusuri-jalur-yang-menantang/8.png",
+      },
+    ],
+  };
+
   return (
-    <CalistungPageLayout title={TITLE}>
+    <CalistungPageLayout title={TITLE} jsonLd={howToJsonLd}>
       <SummarySection />
 
       <LevelSection

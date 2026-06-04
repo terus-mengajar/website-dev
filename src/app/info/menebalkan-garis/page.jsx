@@ -8,6 +8,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Menggunakan Worksheet Menebalkan Garis Bersama Anak",
+  "description": "Panduan menggunakan worksheet menebalkan garis untuk melatih motorik halus dan kontrol pensil anak.",
+  "image": "/images/assets/menebalkan-garis.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Cetak worksheet",
+      "text": "Pilih worksheet menebalkan garis dengan pola yang menarik, lalu cetak.",
+      "image": "/images/assets/menebalkan-garis.png"
+    },
+    {
+      "position": 2,
+      "name": "Pegang pensil dengan benar",
+      "text": "Ajar anak cara memegang pensil tripod grip yang benar.",
+      "image": "/images/assets/menebalkan-garis.png"
+    },
+    {
+      "position": 3,
+      "name": "Tebalkan garis putus-putus",
+      "text": "Ajak anak mengikuti garis putus-putus dan menebalkannya dengan pensil atau crayon.",
+      "image": "/images/assets/menebalkan-garis.png"
+    },
+    {
+      "position": 4,
+      "name": "Jaga di dalam garis",
+      "text": "Ajak anak untuk tetap di dalam garis batas agar hasilnya rapi.",
+      "image": "/images/assets/menebalkan-garis.png"
+    },
+    {
+      "position": 5,
+      "name": "Latih kedua tangan",
+      "text": "Gunakan worksheet yang mengharuskan anak berganti tangan untuk melatih koordinasi.",
+      "image": "/images/assets/menebalkan-garis.png"
+    }
+  ]
+}) }}
+      />
         <style>{`
             .text-coklat {
                 color: #6B3636;

@@ -7,6 +7,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Menggunakan Worksheet Menghubungkan Titik Bersama Anak",
+  "description": "Panduan menggunakan worksheet menghubungkan titik untuk melatih motorik halus dan pengenalan angka/huruf anak.",
+  "image": "/images/assets/menghubungkan-titik.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Cetak worksheet",
+      "text": "Pilih worksheet menghubungkan titik sesuai tema yang disukai anak, lalu cetak.",
+      "image": "/images/assets/menghubungkan-titik.png"
+    },
+    {
+      "position": 2,
+      "name": "Kenali urutan angka",
+      "text": "Ajak anak melihat urutan angka atau huruf yang harus diikuti.",
+      "image": "/images/assets/menghubungkan-titik.png"
+    },
+    {
+      "position": 3,
+      "name": "Hubungkan titik per titik",
+      "text": "Pandu anak menghubungkan titik 1 ke 2, 2 ke 3, dan seterusnya menggunakan pensil.",
+      "image": "/images/assets/menghubungkan-titik.png"
+    },
+    {
+      "position": 4,
+      "name": "Sebutkan hasilnya",
+      "text": "Setelah selesai, ajak anak menebak gambar apa yang terbentuk.",
+      "image": "/images/assets/menghubungkan-titik.png"
+    },
+    {
+      "position": 5,
+      "name": "Warnai gambar",
+      "text": "Ajak anak mewarnai gambar yang terbentuk setelah menghubungkan semua titik.",
+      "image": "/images/assets/menghubungkan-titik.png"
+    }
+  ]
+}) }}
+      />
         <style>{`
             .text-coklat {
                 color: #6B3636;

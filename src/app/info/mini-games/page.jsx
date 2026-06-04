@@ -17,6 +17,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800 -mt-[68px]">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Bermain Mini Games Edukatif Bersama Anak",
+  "description": "Panduan bermain mini games edukatif untuk melatih logika, memori, dan keterampilan kognitif anak.",
+  "image": "/images/assets/mini-games.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Pilih mini game",
+      "text": "Pilih mini game yang sesuai usia dan minat anak dari koleksi yang tersedia.",
+      "image": "/images/assets/mini-games.png"
+    },
+    {
+      "position": 2,
+      "name": "Baca instruksi",
+      "text": "Baca instruksi permainan bersama anak. Pastikan anak memahami aturan.",
+      "image": "/images/assets/mini-games.png"
+    },
+    {
+      "position": 3,
+      "name": "Mainkan bersama",
+      "text": "Bermainlah bersama anak untuk pertama kali. Tunjukkan cara bermain yang benar.",
+      "image": "/images/assets/mini-games.png"
+    },
+    {
+      "position": 4,
+      "name": "Biarkan anak mencoba sendiri",
+      "text": "Setelah beberapa ronde, biarkan anak mencoba bermain sendiri.",
+      "image": "/images/assets/mini-games.png"
+    },
+    {
+      "position": 5,
+      "name": "Tambah tingkat kesulitan",
+      "text": "Jika anak sudah mahir, pilih level yang lebih sulit atau game baru.",
+      "image": "/images/assets/mini-games.png"
+    }
+  ]
+}) }}
+      />
       <style jsx>
         {`
           .text-biru {

@@ -11,6 +11,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Menggunakan Worksheet Menggunting Bersama Anak",
+  "description": "Panduan menggunakan worksheet menggunting untuk melatih motorik halus, koordinasi mata-tangan, dan fokus anak.",
+  "image": "/images/assets/menggunting.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Cetak worksheet",
+      "text": "Pilih worksheet menggunting sesuai tingkat kesulitan anak, lalu cetak.",
+      "image": "/images/assets/menggunting.png"
+    },
+    {
+      "position": 2,
+      "name": "Siapkan gunting",
+      "text": "Berikan gunting tumpul khusus anak yang aman digunakan.",
+      "image": "/images/assets/menggunting.png"
+    },
+    {
+      "position": 3,
+      "name": "Peragakan cara menggunting",
+      "text": "Tunjukkan cara memegang gunting dan menggunting mengikuti garis putus-putus.",
+      "image": "/images/assets/menggunting.png"
+    },
+    {
+      "position": 4,
+      "name": "Bimbing anak menggunting",
+      "text": "Bantu anak memegang kertas dengan satu tangan dan menggunting dengan tangan lain.",
+      "image": "/images/assets/menggunting.png"
+    },
+    {
+      "position": 5,
+      "name": "Tempel hasil guntingan",
+      "text": "Ajak anak menempel hasil guntingan di kertas lain untuk melatih kreativitas.",
+      "image": "/images/assets/menggunting.png"
+    }
+  ]
+}) }}
+      />
         <style>{`
             .text-coklat {
                 color: #6B3636;

@@ -8,6 +8,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Menggunakan Worksheet Maze Bersama Anak",
+  "description": "Panduan menggunakan worksheet maze untuk melatih fokus, ketelitian, dan pemecahan masalah anak.",
+  "image": "/images/assets/maze.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Cetak worksheet",
+      "text": "Pilih worksheet maze sesuai tingkat kesulitan anak, lalu cetak.",
+      "image": "/images/assets/maze.png"
+    },
+    {
+      "position": 2,
+      "name": "Jelaskan aturan",
+      "text": "Jelaskan bahwa anak harus menemukan jalan dari titik awal ke titik akhir tanpa menabrak dinding.",
+      "image": "/images/assets/maze.png"
+    },
+    {
+      "position": 3,
+      "name": "Gunakan jari dulu",
+      "text": "Ajak anak menelusuri maze dengan jari terlebih dahulu sebelum menggunakan pensil.",
+      "image": "/images/assets/maze.png"
+    },
+    {
+      "position": 4,
+      "name": "Garis dengan pensil",
+      "text": "Setelah menemukan jalan, ajak anak menggambar garis dengan pensil.",
+      "image": "/images/assets/maze.png"
+    },
+    {
+      "position": 5,
+      "name": "Tambah tantangan",
+      "text": "Beri waktu tertentu atau tantangan tidak melihat maze sebelum mulai.",
+      "image": "/images/assets/maze.png"
+    }
+  ]
+}) }}
+      />
         <style>{`
             .text-coklat {
                 color: #6B3636;

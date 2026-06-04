@@ -136,8 +136,63 @@ export default function Page() {
     },
   ];
 
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `Cara Bermain ${TITLE}`,
+    description:
+      "Permainan gelembung cinta untuk melatih otot mulut, fokus, dan sensori anak. Aktivitas sederhana yang menyenangkan menggunakan bahan rumahan.",
+    image: "/images/calistung/gelembung-cinta/5.png",
+    totalTime: "PT20M",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "IDR",
+      value: "0",
+    },
+    supply: [
+      { "@type": "HowToSupply", name: "1 mangkuk sedang" },
+      { "@type": "HowToSupply", name: "Sedotan bersih" },
+      { "@type": "HowToSupply", name: "Air bersih" },
+      { "@type": "HowToSupply", name: "Sabun cuci piring cair" },
+    ],
+    tool: [
+      { "@type": "HowToTool", name: "Mangkuk" },
+      { "@type": "HowToTool", name: "Sedotan" },
+    ],
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Siapkan tempat dan bahan",
+        text: "Pilih tempat yang mudah dibersihkan. Tuangkan air bersih ke dalam mangkuk sekitar 50 ml. Tambahkan 2–3 tetes sabun cuci piring, aduk pelan.",
+        image: "/images/calistung/gelembung-cinta/1.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Peragakan cara meniup",
+        text: "Ajak anak duduk nyaman. Peragakan cara meniup dengan sedotan ke udara terlebih dahulu.",
+        image: "/images/calistung/gelembung-cinta/5.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Celupkan dan tiup",
+        text: "Minta anak mencelupkan sedotan ke air sabun, lalu meniup perlahan hingga muncul buih.",
+        image: "/images/calistung/gelembung-cinta/6.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Bermain dengan buih",
+        text: "Saat buih mulai muncul, ajak anak meniup buih di permukaan tangan. Anak boleh menyentuh atau menghancurkan buih dengan jari.",
+        image: "/images/calistung/gelembung-cinta/7.png",
+      },
+    ],
+  };
+
   return (
-    <CalistungPageLayout title={TITLE}>
+    <CalistungPageLayout title={TITLE} jsonLd={howToJsonLd}>
       <SummarySection />
 
       <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>

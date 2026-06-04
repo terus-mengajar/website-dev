@@ -17,6 +17,54 @@ export default function page() {
 
   return (
     <main className="text-gray-800 -mt-[68px]">
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara Menggunakan Funsticker Bersama Anak",
+  "description": "Panduan menggunakan Funsticker untuk melatih motorik halus, kreativitas, dan pengenalan objek anak.",
+  "image": "/images/assets/funsticker.png",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "IDR",
+    "value": "0"
+  },
+  "step": [
+    {
+      "position": 1,
+      "name": "Pilih tema sticker",
+      "text": "Pilih tema sticker yang menarik minat anak: hewan, buah, kendaraan, dll.",
+      "image": "/images/assets/funsticker.png"
+    },
+    {
+      "position": 2,
+      "name": "Siapkan alas kerja",
+      "text": "Sediakan meja datar dan kertas kosong atau worksheet sebagai alas tempel sticker.",
+      "image": "/images/assets/funsticker.png"
+    },
+    {
+      "position": 3,
+      "name": "Lepas sticker",
+      "text": "Bantu anak melepas sticker dari kertas pelindung dengan hati-hati.",
+      "image": "/images/assets/funsticker.png"
+    },
+    {
+      "position": 4,
+      "name": "Tempel dengan kreatif",
+      "text": "Ajak anak menempel sticker sesuai worksheet atau membuat komposisi sendiri.",
+      "image": "/images/assets/funsticker.png"
+    },
+    {
+      "position": 5,
+      "name": "Ceritakan gambar",
+      "text": "Ajak anak bercerita tentang gambar yang dibuat dengan sticker. Latih kemampuan bercerita.",
+      "image": "/images/assets/funsticker.png"
+    }
+  ]
+}) }}
+      />
       <style jsx>
         {`
           .text-biru {

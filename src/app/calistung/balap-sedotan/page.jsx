@@ -145,8 +145,63 @@ export default function Page() {
     },
   ];
 
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `Cara Bermain ${TITLE}`,
+    description:
+      "Permainan balap sedotan untuk melatih motorik kasar dan fokus anak. Anak memindahkan sedotan dari satu botol ke botol lain dengan berbagai variasi gerak.",
+    image: "/images/calistung/balap-sedotan/5.png",
+    totalTime: "PT20M",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "IDR",
+      value: "0",
+    },
+    supply: [
+      { "@type": "HowToSupply", name: "2 botol plastik bekas" },
+      { "@type": "HowToSupply", name: "Sedotan plastik" },
+      { "@type": "HowToSupply", name: "Sedikit beras" },
+      { "@type": "HowToSupply", name: "Kursi" },
+    ],
+    tool: [
+      { "@type": "HowToTool", name: "Botol plastik" },
+      { "@type": "HowToTool", name: "Penjepit baju" },
+    ],
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Siapkan botol dan sedotan",
+        text: "Isi satu botol dengan sedotan. Letakkan botol kosong di jarak 1-2 meter. Beri pemberat pada botol agar stabil.",
+        image: "/images/calistung/balap-sedotan/5.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Ambil dan pindahkan sedotan",
+        text: "Anak mengambil satu sedotan, berjalan pelan ke botol kosong, lalu memasukkannya. Ulangi sampai semua sedotan berpindah.",
+        image: "/images/calistung/balap-sedotan/6.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Tambah variasi gerak",
+        text: "Ganti jalan biasa dengan jalan mundur, merangkak, atau jalan jinjit. Tambahkan rintangan kecil untuk dilompati.",
+        image: "/images/calistung/balap-sedotan/7.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Bertanding dan berhitung",
+        text: "Bertanding dengan Bunda atau saudara. Atur jalur zigzag dan sebutkan angka setiap kali mengambil sedotan.",
+        image: "/images/calistung/balap-sedotan/15.png",
+      },
+    ],
+  };
+
   return (
-    <CalistungPageLayout title={TITLE}>
+    <CalistungPageLayout title={TITLE} jsonLd={howToJsonLd}>
       <SummarySection />
 
       <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>

@@ -1,8 +1,14 @@
 // src/components/calistung/CalistungPageLayout.jsx
 
-export default function CalistungPageLayout({ title, children }) {
+export default function CalistungPageLayout({ title, children, jsonLd }) {
   return (
     <main className="bg-[#FEFDF9] mt-[68px]">
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <section className="bg-[#FBF6F2] py-14 sm:py-28 relative overflow-hidden">
         <div className="hidden sm:block absolute -bottom-16 -left-16 opacity-30 pointer-events-none rotate-30 -translate-x-60 translate-y-35">
           <img

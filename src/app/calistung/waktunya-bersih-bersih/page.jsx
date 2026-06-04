@@ -150,8 +150,64 @@ export default function Page() {
     },
   ];
 
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `Cara Bermain ${TITLE}`,
+    description:
+      "Permainan waktunya bersih-bersih untuk melatih motorik halus dan fokus anak. Anak membersihkan mainan menggunakan kain lap dan air.",
+    image: "/images/calistung/waktunya-bersih-bersih/5.png",
+    totalTime: "PT20M",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "IDR",
+      value: "0",
+    },
+    supply: [
+      { "@type": "HowToSupply", name: "Kain lap bersih" },
+      { "@type": "HowToSupply", name: "Air secukupnya" },
+      { "@type": "HowToSupply", name: "Mainan anak" },
+      { "@type": "HowToSupply", name: "Sabun cuci" },
+    ],
+    tool: [
+      { "@type": "HowToTool", name: "Botol semprot" },
+      { "@type": "HowToTool", name: "Sikat gigi bekas" },
+      { "@type": "HowToTool", name: "Spons" },
+    ],
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Siapkan bahan dan mainan",
+        text: "Siapkan kain lap, air dalam baskom, dan kumpulkan mainan anak yang perlu dibersihkan.",
+        image: "/images/calistung/waktunya-bersih-bersih/5.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Basahi kain lap",
+        text: "Ajak anak membasahi kain lap dengan air. Jelaskan bahwa sekarang adalah waktu bersih-bersih mainan.",
+        image: "/images/calistung/waktunya-bersih-bersih/6.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Bersihkan mainan",
+        text: "Pandu anak mengelap mainan satu per satu. Untuk mainan berbentuk rumit, gunakan sikat gigi bekas atau spons.",
+        image: "/images/calistung/waktunya-bersih-bersih/7.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Keringkan dan rapikan",
+        text: "Setelah bersih, ajak anak mengeringkan mainan dengan kain kering lalu merapikannya kembali ke tempatnya.",
+        image: "/images/calistung/waktunya-bersih-bersih/8.png",
+      },
+    ],
+  };
+
   return (
-    <CalistungPageLayout title={TITLE}>
+    <CalistungPageLayout title={TITLE} jsonLd={howToJsonLd}>
       <SummarySection />
 
       <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>

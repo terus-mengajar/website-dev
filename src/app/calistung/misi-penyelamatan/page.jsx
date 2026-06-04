@@ -151,8 +151,63 @@ export default function Page() {
     },
   ];
 
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `Cara Bermain ${TITLE}`,
+    description:
+      "Permainan misi penyelamatan untuk melatih oromotor dan fokus anak. Anak meniup bola melalui terowongan menggunakan sedotan.",
+    image: "/images/calistung/misi-penyelamatan/5.png",
+    totalTime: "PT20M",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "IDR",
+      value: "0",
+    },
+    supply: [
+      { "@type": "HowToSupply", name: "Bola kecil" },
+      { "@type": "HowToSupply", name: "Kertas A4 atau koran bekas" },
+      { "@type": "HowToSupply", name: "Mangkok plastik kecil" },
+      { "@type": "HowToSupply", name: "Sedotan" },
+    ],
+    tool: [
+      { "@type": "HowToTool", name: "Sedotan" },
+      { "@type": "HowToTool", name: "Selotip" },
+    ],
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Buat terowongan dari kertas",
+        text: "Gulung kertas A4 menjadi terowongan. Letakkan mangkok di ujung terowongan sebagai target.",
+        image: "/images/calistung/misi-penyelamatan/5.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Tiuplah bola tanpa sedotan",
+        text: "Letakkan bola kecil di depan terowongan. Ajak anak meniup bola tanpa sedotan agar masuk ke terowongan.",
+        image: "/images/calistung/misi-penyelamatan/6.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Gunakan sedotan",
+        text: "Minta anak menggunakan sedotan untuk meniup bola kecil masuk ke terowongan. Bantu arahkan napas anak.",
+        image: "/images/calistung/misi-penyelamatan/9.png",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Tantangan tingkat lanjut",
+        text: "Tantang anak memilih sedotan yang tepat untuk tiap bola. Tambahkan misi waktu: tiup 3 bola beda ukuran dalam 1 menit.",
+        image: "/images/calistung/misi-penyelamatan/14.png",
+      },
+    ],
+  };
+
   return (
-    <CalistungPageLayout title={TITLE}>
+    <CalistungPageLayout title={TITLE} jsonLd={howToJsonLd}>
       <SummarySection />
 
       <h3 className="font-bold text-lg mb-6">Cara Menyiapkan Permainan :</h3>
