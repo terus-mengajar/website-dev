@@ -13,12 +13,23 @@ export const metadata = {
   title: "Bermain Sambil Belajar untuk TK dan PAUD",
   description:
     "Rekomendasi ide bermain sambil belajar untuk anak TK dan PAUD. Download worksheet Calistung dan Coding gratis! Funpaper Harian, Funpaper Tema, dan Mini Games interaktif.",
+  alternates: {
+    canonical: "https://terusmengajar.id",
+  },
   openGraph: {
     title: "Terus Mengajar - Bermain Sambil Belajar untuk TK dan PAUD",
     description:
       "Rekomendasi ide bermain sambil belajar untuk anak TK dan PAUD. Download worksheet Calistung dan Coding gratis!",
     url: "https://terusmengajar.id",
-    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/images/og.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terus Mengajar - Bermain Sambil Belajar untuk TK dan PAUD",
+    description:
+      "Rekomendasi ide bermain sambil belajar untuk anak TK dan PAUD. Download worksheet Calistung dan Coding gratis!",
+    images: ["/images/og.png"],
   },
 };
 

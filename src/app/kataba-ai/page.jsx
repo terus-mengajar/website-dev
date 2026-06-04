@@ -12,12 +12,23 @@ export const metadata = {
   title: "Kataba AI - Asisten Cari Ide Bermain",
   description:
     "Kataba AI membantu Ayah Bunda menemukan ide bermain sambil belajar yang tepat untuk anak TK dan PAUD. Tanyakan kebutuhan, dapatkan rekomendasi worksheet Calistung dan Coding gratis!",
+  alternates: {
+    canonical: "https://terusmengajar.id/kataba-ai",
+  },
   openGraph: {
-    title: "Kataba AI - Asisten Cari Ide Bermain Sambil Belajar | Terus Mengajar",
+    title: "Kataba AI - Asisten Cari Ide Bermain Sambil Belajar",
     description:
       "Asisten AI untuk menemukan ide bermain sambil belajar dan worksheet untuk anak TK dan PAUD.",
     url: "https://terusmengajar.id/kataba-ai",
-    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/images/og.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kataba AI - Asisten Cari Ide Bermain Sambil Belajar",
+    description:
+      "Asisten AI untuk menemukan ide bermain sambil belajar dan worksheet untuk anak TK dan PAUD.",
+    images: ["/images/og.png"],
   },
 };
 
