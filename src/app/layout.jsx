@@ -90,6 +90,31 @@ export const metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Terus Mengajar",
+  alternateName: "TM",
+  url: "https://terusmengajar.id",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://terusmengajar.id/images/og.png",
+    width: 1200,
+    height: 630,
+  },
+  sameAs: [
+    "https://www.tiktok.com/@terusmengajar.id",
+    "https://instagram.com/terusmengajar",
+    "https://pinterest.com/terusmengajar/",
+    "https://t.me/terusmengajarofficial",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    availableLanguage: "Indonesian",
+  },
+};
+
 export default function RootLayout({ children }) {
   // const pathname = usePathname();
   // const hideLayout = ["/login", "/signup", "/loading"].includes(pathname);
@@ -117,6 +142,13 @@ export default function RootLayout({ children }) {
         )}
       </head>
       <body className={`${poppins.variable} antialiased`}>
+        {/* Organization JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
         <SessionProvider>
           {!hideLayout && <Navbar />}
 
