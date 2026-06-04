@@ -22,12 +22,19 @@ export async function generateMetadata({ params }) {
     funpaper.short_description ||
     `Lembar kerja calistung ${funpaper.name} dengan tema ${funpaper.activity}.`;
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";
+  const canonicalUrl = `${baseUrl}/funpaper-calistung/${slug}`;
+
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
+      url: canonicalUrl,
       images: funpaper.image_url ? [funpaper.image_url] : [],
       type: "website",
     },

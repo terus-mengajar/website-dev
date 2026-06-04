@@ -20,12 +20,19 @@ export async function generateMetadata({ params }) {
   const title = funpaper.seo_title || funpaper.name;
   const description = funpaper.short_description || `Lembar kerja coding ${funpaper.name} untuk anak.`;
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";
+  const canonicalUrl = `${baseUrl}/funpaper-coding/${slug}`;
+
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
+      url: canonicalUrl,
       images: funpaper.image_url ? [funpaper.image_url] : [],
       type: "website",
     },

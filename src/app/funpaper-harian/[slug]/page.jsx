@@ -21,12 +21,19 @@ export async function generateMetadata({ params }) {
   const title = funpaper.seo_title || `${funpaper.name} - ${funpaper.activity}`;
   const description = funpaper.short_description || `Lembar kerja ${funpaper.name} untuk anak usia ${funpaper.age} tahun. Aktivitas ${funpaper.activity} dengan tema ${funpaper.theme}.`;
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://terusmengajar.id";
+  const canonicalUrl = `${baseUrl}/funpaper-harian/${slug}`;
+
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
+      url: canonicalUrl,
       images: funpaper.image_url ? [funpaper.image_url] : [],
       type: "website",
     },
