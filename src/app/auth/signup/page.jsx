@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { auth, signIn } from "@/lib/auth";
 import SignupForm from "./SignupForm";
 
